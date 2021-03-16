@@ -1,0 +1,57 @@
+---
+sections:
+  - label: Posts
+    name: posts
+    path: content/posts
+    templates:
+      - post
+    type: directory
+    create: documents
+    match: '**/*.md'
+    new_doc_ext: md
+  - label: Pages
+    name: pages
+    path: content/pages
+    templates:
+      - page
+    type: directory
+    create: documents
+    match: '**/*.md'
+    new_doc_ext: md
+  - label: Forms
+    name: forms
+    path: content/forms
+    templates:
+      - jen-coaching
+    type: directory
+    create: documents
+    match: '**/*.md'
+    new_doc_ext: md
+  - label: Curated
+    name: curated
+    path: content/curated
+    templates:
+      - curated
+    type: directory
+    create: documents
+    match: '**/*.md'
+    new_doc_ext: md
+  - label: Authors
+    name: authors
+    path: content/authors
+    templates:
+      - author
+      - athlete
+    type: directory
+    create: documents
+    match: '**/*.md'
+    new_doc_ext: md
+  - label: Nav
+    name: nav
+    path: content/nav
+    templates:
+      - nav
+    type: directory
+    create: documents
+    match: '**/*.md'
+    new_doc_ext: md

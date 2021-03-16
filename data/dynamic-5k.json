@@ -1,0 +1,605 @@
+{
+  "raceDistance": 10000,
+  "goalTime": 2190,
+  "vo2Percent": 0.92,
+  "vo2Factor": 6.2,
+  "maxHR": 190,
+  "intervals": [
+    {
+      "day": 1,
+      "zone": "Recovery",
+      "interval": 1800,
+      "percentHR": 0.7
+    },
+    {
+      "day": 2,
+      "message": "Take it easy today, you've got a workout tomorrow",
+      "zone": "Endurance",
+      "interval": 2400,
+      "percentHR": 0.75
+    },
+    {
+      "day": 3,
+      "message": "The goal of this workout is to improve your ability to cycle oxygen through your blood in a manner that allows you to sustain hard efforts for a prolonged period. You're in your 2nd week of the 21-day cycle, and you have 2 more workouts this week so be sure to adhere to the paces outlined, this one can get away from you quickly!",
+      "title": "Warm-up",
+      "zone": "Aerobic Threshold",
+      "interval": 720,
+      "percentHR": 0.5
+    },
+    {
+      "day": 3,
+      "zone": "Aerobic Threshold",
+      "interval": 480,
+      "percentHR": 0.85,
+      "title": "Workout",
+      "description": "This should feel hard, but manageable. As each you progress through each set it'll get a little harder, but you want to stay in control the whole time.",
+      "reps": 3
+    },
+    {
+      "day": 3,
+      "zone": "Aerobic Threshold",
+      "interval": 120,
+      "description": "Make sure you get your heart rate down before starting the next set",
+      "percentHR": 0.6
+    },
+    {
+      "day": 3,
+      "title": "Cool-down",
+      "zone": "Aerobic Threshold",
+      "interval": 600,
+      "percentHR": 0.5
+    },
+    {
+      "day": 4,
+      "zone": "Recovery",
+      "interval": 1800,
+      "percentHR": 0.7
+    },
+    {
+      "day": 5,
+      "zone": "Endurance",
+      "interval": 2400,
+      "percentHR": 0.75
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 900,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 75,
+      "percentHR": 0.9
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 75,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 75,
+      "percentHR": 0.9
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 75,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 75,
+      "percentHR": 0.9
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 75,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 75,
+      "percentHR": 0.9
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 75,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 240,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 60,
+      "percentHR": 0.93
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 60,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 60,
+      "percentHR": 0.93
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 60,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 60,
+      "percentHR": 0.93
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 60,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 60,
+      "percentHR": 0.93
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 60,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 180,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 45,
+      "percentHR": 0.96
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 45,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 45,
+      "percentHR": 0.96
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 45,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 45,
+      "percentHR": 0.96
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 45,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 45,
+      "percentHR": 0.96
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 45,
+      "percentHR": 0.6
+    },
+    {
+      "day": 6,
+      "zone": "VO2",
+      "interval": 720,
+      "percentHR": 0.5
+    },
+    {
+      "day": 7,
+      "zone": "Recovery",
+      "interval": 1800,
+      "percentHR": 0.7
+    },
+    {
+      "day": 8,
+      "zone": "Endurance",
+      "interval": 2400,
+      "percentHR": 0.75
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 720,
+      "percentHR": 0.6
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 300,
+      "percentHR": 0.88
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 90,
+      "percentHR": 0.6
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 300,
+      "percentHR": 0.88
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 90,
+      "percentHR": 0.6
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 300,
+      "percentHR": 0.88
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 90,
+      "percentHR": 0.6
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 150,
+      "percentHR": 0.6
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 180,
+      "percentHR": 0.9
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 60,
+      "percentHR": 0.6
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 180,
+      "percentHR": 0.9
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 60,
+      "percentHR": 0.6
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 180,
+      "percentHR": 0.9
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 60,
+      "percentHR": 0.6
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 180,
+      "percentHR": 0.9
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 60,
+      "percentHR": 0.6
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 180,
+      "percentHR": 0.9
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 60,
+      "percentHR": 0.6
+    },
+    {
+      "day": 9,
+      "zone": "Lactate Threshold",
+      "interval": 600,
+      "percentHR": 0.5
+    },
+    {
+      "day": 10,
+      "zone": "Recovery",
+      "interval": 1800,
+      "percentHR": 0.7
+    },
+    {
+      "day": 11,
+      "zone": "Endurance",
+      "interval": 2400,
+      "percentHR": 0.75
+    },
+    {
+      "day": 12,
+      "zone": "Long Endurance",
+      "interval": 3600,
+      "percentHR": 0.8
+    },
+    {
+      "day": 13,
+      "zone": "Recovery",
+      "interval": 1800,
+      "percentHR": 0.7
+    },
+    {
+      "day": 14,
+      "zone": "Anaerobic",
+      "interval": 1200,
+      "percentHR": 0.5
+    },
+    {
+      "day": 14,
+      "zone": "Anaerobic",
+      "interval": 45,
+      "percentHR": 1
+    },
+    {
+      "day": 14,
+      "zone": "Anaerobic",
+      "interval": 180,
+      "percentHR": 0.6
+    },
+    {
+      "day": 14,
+      "zone": "Anaerobic",
+      "interval": 45,
+      "percentHR": 1
+    },
+    {
+      "day": 14,
+      "zone": "Anaerobic",
+      "interval": 180,
+      "percentHR": 0.6
+    },
+    {
+      "day": 14,
+      "zone": "Anaerobic",
+      "interval": 45,
+      "percentHR": 1
+    },
+    {
+      "day": 14,
+      "zone": "Anaerobic",
+      "interval": 300,
+      "percentHR": 0.6
+    },
+    {
+      "day": 14,
+      "zone": "Anaerobic",
+      "interval": 45,
+      "percentHR": 1
+    },
+    {
+      "day": 14,
+      "zone": "Anaerobic",
+      "interval": 180,
+      "percentHR": 0.6
+    },
+    {
+      "day": 14,
+      "zone": "Anaerobic",
+      "interval": 45,
+      "percentHR": 1
+    },
+    {
+      "day": 14,
+      "zone": "Anaerobic",
+      "interval": 180,
+      "percentHR": 0.6
+    },
+    {
+      "day": 14,
+      "zone": "Anaerobic",
+      "interval": 45,
+      "percentHR": 1
+    },
+    {
+      "day": 14,
+      "zone": "Anaerobic",
+      "interval": 180,
+      "percentHR": 0.6
+    },
+    {
+      "day": 14,
+      "zone": "Anaerobic",
+      "interval": 720,
+      "percentHR": 0.6
+    },
+    {
+      "day": 15,
+      "zone": "Recovery",
+      "interval": 1800,
+      "percentHR": 0.7
+    },
+    {
+      "day": 16,
+      "zone": "Endurance",
+      "interval": 2400,
+      "percentHR": 0.75
+    },
+    {
+      "day": 17,
+      "zone": "Lactate Threshold",
+      "interval": 720,
+      "percentHR": 0.6
+    },
+    {
+      "day": 17,
+      "zone": "Lactate Threshold",
+      "interval": 600,
+      "percentHR": 0.87
+    },
+    {
+      "day": 17,
+      "zone": "Lactate Threshold",
+      "interval": 180,
+      "percentHR": 0.6
+    },
+    {
+      "day": 17,
+      "zone": "Lactate Threshold",
+      "interval": 480,
+      "percentHR": 0.88
+    },
+    {
+      "day": 17,
+      "zone": "Lactate Threshold",
+      "interval": 150,
+      "percentHR": 0.6
+    },
+    {
+      "day": 17,
+      "zone": "Lactate Threshold",
+      "interval": 360,
+      "percentHR": 0.89
+    },
+    {
+      "day": 17,
+      "zone": "Lactate Threshold",
+      "interval": 120,
+      "percentHR": 0.6
+    },
+    {
+      "day": 17,
+      "zone": "Lactate Threshold",
+      "interval": 240,
+      "percentHR": 0.9
+    },
+    {
+      "day": 17,
+      "zone": "Lactate Threshold",
+      "interval": 90,
+      "percentHR": 0.6
+    },
+    {
+      "day": 17,
+      "zone": "Lactate Threshold",
+      "interval": 120,
+      "percentHR": 0.91
+    },
+    {
+      "day": 17,
+      "zone": "Lactate Threshold",
+      "interval": 60,
+      "percentHR": 0.6
+    },
+    {
+      "day": 17,
+      "zone": "Lactate Threshold",
+      "interval": 600,
+      "percentHR": 0.5
+    },
+    {
+      "day": 18,
+      "zone": "Recovery",
+      "interval": 1800,
+      "percentHR": 0.7
+    },
+    {
+      "day": 19,
+      "zone": "Endurance",
+      "interval": 2400,
+      "percentHR": 0.75
+    },
+    {
+      "day": 20,
+      "zone": "Recovery",
+      "interval": 1800,
+      "percentHR": 0.7
+    },
+    {
+      "day": 21,
+      "zone": "Aerobic Threshold",
+      "interval": 720,
+      "percentHR": 0.5
+    },
+    {
+      "day": 21,
+      "zone": "Aerobic Threshold",
+      "interval": 1500,
+      "percentHR": 0.83
+    },
+    {
+      "day": 21,
+      "zone": "Aerobic Threshold",
+      "interval": 300,
+      "percentHR": 0.6
+    },
+    {
+      "day": 21,
+      "zone": "Aerobic Threshold",
+      "interval": 1500,
+      "percentHR": 0.85
+    },
+    {
+      "day": 21,
+      "zone": "Aerobic Threshold",
+      "interval": 300,
+      "percentHR": 0.6
+    },
+    {
+      "day": 21,
+      "zone": "Aerobic Threshold",
+      "interval": 600,
+      "percentHR": 0.5
+    }
+  ]
+}

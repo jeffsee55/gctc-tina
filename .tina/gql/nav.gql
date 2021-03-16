@@ -1,0 +1,102 @@
+fragment NavItem on NavItemLink_Data {
+  label
+  value
+}
+
+fragment NavPopout on NavItemPopout_Data {
+  label
+  children {
+    label
+    description
+    value
+    icon
+  }
+  extra {
+    label
+    value
+    icon
+  }
+}
+
+fragment NavItemMore on NavItemMore_Data {
+  label
+  featured_post {
+    sys {
+      path
+      breadcrumbs(excludeExtension: true)
+    }
+    data {
+      __typename
+      ... on Post_Doc_Data {
+        image
+        title
+        preface {
+          raw
+        }
+        author {
+          sys {
+            filename
+          }
+          data {
+            ... on Author_Doc_Data {
+              image
+              name
+            }
+            ... on Athlete_Doc_Data {
+              image
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+  read_more {
+    label
+    value
+  }
+  from_the_blog {
+    sys {
+      path
+      breadcrumbs(excludeExtension: true)
+    }
+    data {
+      __typename
+      ... on Post_Doc_Data {
+        title
+        image
+        preface {
+          raw
+        }
+        author {
+          ...AuthorSnippet
+        }
+      }
+    }
+  }
+}
+fragment Nav on Nav_Document {
+  data {
+    ... on Nav_Doc_Data {
+      show_auth
+      items {
+        __typename
+        ... on NavItemLink_Data {
+          ...NavItem
+        }
+        ... on NavItemPopout_Data {
+          ...NavPopout
+        }
+        ... on NavItemMore_Data {
+          ...NavItemMore
+        }
+      }
+    }
+  }
+}
+
+query getNav($relativePath: String!) {
+  getNavDocument(relativePath: $relativePath) {
+    ...Nav
+  }
+}

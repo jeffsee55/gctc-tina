@@ -1,0 +1,59 @@
+---
+name: athlete
+label: Athlete
+fields:
+  - name: name
+    label: Name
+    type: text
+    description: Your first name & last name
+  - name: description
+    label: Description
+    type: textarea
+    description: Your first name & last name
+  - name: country
+    label: Country
+    type: text
+  - name: personal_bests
+    type: field_group_list
+    fields:
+      - name: event
+        type: text
+        label: Event
+        description: A single number or word to emphasize
+      - name: time
+        type: text
+        label: Time
+    label: Personal Bests
+    description: Key accomplishments which make this person stand out
+  - name: accolades
+    type: field_group_list
+    fields:
+      - name: figure
+        type: text
+        label: Figure
+        description: A single number or word to emphasize
+      - name: description
+        type: text
+        label: Description
+    label: Accolades
+    description: Key accomplishments which make this person stand out
+  - name: social_media
+    label: Social Media
+    type: field_group_list
+    fields:
+      - name: source
+        label: Source
+        type: select
+        config:
+          source:
+            type: simple
+          options:
+            - twitter
+            - instagram
+      - name: handle
+        type: text
+        label: Hanlde
+  - name: image
+    label: Image URL
+    type: text
+    description: The external image URL

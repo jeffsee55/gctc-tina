@@ -1,0 +1,14 @@
+---
+name: layer-team
+label: Team Layer
+fields:
+  - label: Description
+    name: description
+    type: textarea
+  - name: members
+    label: Members
+    type: list
+    config:
+      source:
+        type: pages
+        section: authors

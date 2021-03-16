@@ -1,0 +1,137 @@
+query PostQuery($relativePath: String!) {
+  getNavDocument(relativePath: "site-nav.md") {
+    ...Nav
+  }
+  getPostsDocument(relativePath: $relativePath) {
+    id
+    data {
+      __typename
+      ... on Post_Doc_Data {
+        title
+        accolades {
+          figure
+          description
+        }
+        tags
+        image
+        preface {
+          markdownAst
+        }
+        _body {
+          markdownAst
+        }
+        author {
+          ...AuthorSnippet
+        }
+      }
+    }
+  }
+}
+
+fragment CuratedCollection on CuratedCollection_Data {
+  description {
+    markdownAst
+  }
+  posts_collection {
+    sys {
+      section {
+        path
+        slug
+      }
+      breadcrumbs(excludeExtension: true)
+    }
+    data {
+      ... on Post_Doc_Data {
+        title
+        image
+        preface {
+          markdownAst
+        }
+        _body {
+          markdownAst
+        }
+        author {
+          sys {
+            filename
+            breadcrumbs(excludeExtension: true)
+          }
+          data {
+            ... on Athlete_Doc_Data {
+              name
+              image
+            }
+            ... on Author_Doc_Data {
+              name
+              image
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment CuratedDocData on Curated_Doc_Data {
+  curations {
+    __typename
+    ... on CuratedHero_Data {
+      hero_post {
+        sys {
+          section {
+            path
+            slug
+          }
+          breadcrumbs(excludeExtension: true)
+        }
+        data {
+          ... on Post_Doc_Data {
+            title
+            image
+            preface {
+              markdownAst
+            }
+            _body {
+              markdownAst
+            }
+            author {
+              ... on Authors_Document {
+                sys {
+                  breadcrumbs(excludeExtension: true)
+                  filename
+                }
+                data {
+                  ... on Author_Doc_Data {
+                    name
+                    image
+                    description {
+                      markdownAst
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    ... on CuratedCollection_Data {
+      ...CuratedCollection
+    }
+  }
+}
+
+query CuratedPosts($relativePath: String!) {
+  getNavDocument(relativePath: "site-nav.md") {
+    ...Nav
+  }
+  getCuratedDocument(relativePath: $relativePath) {
+    sys {
+      filename
+    }
+    data {
+      ... on Curated_Doc_Data {
+        ...CuratedDocData
+      }
+    }
+  }
+}

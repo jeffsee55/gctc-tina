@@ -1,0 +1,14 @@
+---
+name: curated-hero
+label: Curated Hero
+fields:
+  - label: Description
+    name: description
+    type: textarea
+  - name: hero_post
+    label: Hero Post
+    type: select
+    config:
+      source:
+        type: pages
+        section: posts

@@ -1,0 +1,37 @@
+{
+  "name": "field-text",
+  "label": "Text Field",
+  "fields": [
+    {
+      "label": "Label",
+      "name": "label",
+      "type": "text"
+    },
+    {
+      "label": "Sub-Label",
+      "name": "subLabel",
+      "type": "text"
+    },
+    {
+      "label": "Placeholder",
+      "name": "placeholder",
+      "type": "text"
+    },
+    {
+      "label": "Prefix",
+      "name": "prefix",
+      "type": "text"
+    },
+    {
+      "label": "Suffix",
+      "name": "suffix",
+      "type": "text"
+    },
+    {
+      "label": "Name",
+      "name": "name",
+      "description": "This will be the identifier in the form submission, make sure it doesn't have any spaces or special characters.",
+      "type": "text"
+    }
+  ]
+}

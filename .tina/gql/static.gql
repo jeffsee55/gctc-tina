@@ -1,0 +1,13 @@
+query StaticPostsPaths {
+  getSection(section: "posts") {
+    type
+    documents {
+      ... on Posts_Document {
+        id
+        sys {
+          filename
+        }
+      }
+    }
+  }
+}
