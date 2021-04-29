@@ -1,8 +1,9 @@
 import Head from "next/head";
+import React from "react";
 import { Footer } from "../components/footer";
 
-import { TinaProvider, TinaCMS } from "tinacms";
-import { TinaCloudProvider } from "tina-graphql-gateway";
+import { TinaCMS } from "tinacms";
+import { TinaCloudAuthWall } from "tina-graphql-gateway";
 import { createClient } from "../util/create-client";
 
 const TinaComponent = ({ Component, pageProps }) => {
@@ -12,21 +13,18 @@ const TinaComponent = ({ Component, pageProps }) => {
     },
     sidebar: {
       position: "displace",
-      // position: "overlay",
     },
     enabled: true,
   });
   return (
-    <TinaProvider cms={cms}>
-      <TinaCloudProvider onLogin={(token) => token} onLogout={() => {}}>
-        <Head>
-          <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-          <script src="https://js.stripe.com/v3/"></script>
-        </Head>
-        <Component {...pageProps} />
-        <Footer />
-      </TinaCloudProvider>
-    </TinaProvider>
+    <TinaCloudAuthWall cms={cms}>
+      <Head>
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+        <script src="https://js.stripe.com/v3/"></script>
+      </Head>
+      <Component {...pageProps} />
+      <Footer />
+    </TinaCloudAuthWall>
   );
 };
 

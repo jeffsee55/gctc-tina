@@ -117,6 +117,9 @@ export function Dynamic() {
   //   const seoField = pageForm.fields.find((field) => field.name === "seo");
   //   console.log(seoField);
   // }
+  if(isLoading) {
+    return <div>Loading..</div>
+  }
 
   return (
     <>
