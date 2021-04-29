@@ -11,7 +11,6 @@ import { useGraphqlForms } from "tina-graphql-gateway";
 import { createClient } from "../util/create-client";
 import { sdk, AsyncReturnType } from "../.tina/sdk";
 import type * as Tina from "../.tina/sdk";
-import { TinaCMS, useCMS } from "tinacms";
 
 const localSdk = sdk(createClient());
 
