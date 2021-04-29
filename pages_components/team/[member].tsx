@@ -27,9 +27,9 @@ export const serverSideProps = async ({ params }) => {
   const relativePath = `${params.member}.md`;
 
   return {
-    props: await localSdk.Member({
+    props: {
       variables: { relativePath },
-    }),
+    }
   };
 };
 
@@ -57,9 +57,9 @@ export const staticPaths = async (params) => {
   };
 };
 
-export const Dynamic = (props: AsyncReturnType<typeof localSdk.Member>) => {
-  const [data] = useGraphqlForms({ payload: props });
-  return <Static {...data} />;
+export const Dynamic = (props: {variables: {relativePath: string}}) => {
+  const [data, isLoading] = useGraphqlForms(localSdk.MemberString({variables: props.variables}))
+  return isLoading ? <div>Loading..</div> : <Static {...data} />;
 };
 
 export const Static = (props: AsyncReturnType<typeof localSdk.Member>) => {

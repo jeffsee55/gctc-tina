@@ -30,18 +30,14 @@ export async function staticProps() {
   };
 }
 
-export const Dynamic = (
-  props: AsyncReturnType<typeof localSdk.CuratedPosts>
-) => {
-  const { query, variables } = localSdk.CuratedPostsString({
-    variables: { relativePath: "" },
-  });
-  const [data, isLoading] = useGraphqlForms({
-    query,
-    variables,
-  });
+export const Dynamic = () => {
+  const [data, isLoading] = useGraphqlForms(localSdk.CuratedPostsString({
+    variables: { relativePath: "posts.md" },
+  }));
+
   return isLoading ? <div>Loading...</div> : <Static {...data} />;
 };
+
 export const Static = (
   props: AsyncReturnType<typeof localSdk.CuratedPosts>
 ) => {
