@@ -15,9 +15,11 @@ export async function serverSideProps() {
   const relativePath = `posts.md`;
 
   return {
-    props: await localSdk.CuratedPosts({
-      variables: { relativePath },
-    }),
+    props: {
+      data: await localSdk.CuratedPosts({
+        variables: { relativePath },
+      })
+    },
   };
 }
 export async function staticProps() {
@@ -30,12 +32,12 @@ export async function staticProps() {
   };
 }
 
-export const Dynamic = () => {
+export const Dynamic = (props: {data: AsyncReturnType<typeof localSdk.CuratedPosts>}) => {
   const [data, isLoading] = useGraphqlForms(localSdk.CuratedPostsString({
     variables: { relativePath: "posts.md" },
   }));
 
-  return isLoading ? <div>Loading...</div> : <Static {...data} />;
+  return isLoading ? <Static {...props.data} /> : <Static {...data} />;
 };
 
 export const Static = (

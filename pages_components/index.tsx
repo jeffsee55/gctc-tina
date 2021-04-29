@@ -16,7 +16,7 @@ const localSdk = sdk(createClient());
 
 export async function serverSideProps() {
   return {
-    props: await localSdk.BaseAuthorList({variables: {}}),
+    props: {data: await localSdk.BaseAuthorList({variables: {}})},
   };
 }
 export async function staticProps() {
@@ -101,7 +101,7 @@ type PitchLayer = Tina.FilterByTypename<LayerType, "LayerDarkFeature_Data">;
 type CtaLayer = Tina.FilterByTypename<LayerType, "LayerCta_Data">;
 type LeadershipLayer = Tina.FilterByTypename<LayerType, "LayerLeadership_Data">;
 
-export function Dynamic() {
+export function Dynamic(props: {data: AsyncReturnType<typeof localSdk.BaseAuthorList>}) {
   const { query, variables } = localSdk.BaseAuthorListString({
     variables: {},
   });
@@ -109,26 +109,16 @@ export function Dynamic() {
     query,
     variables,
   });
-
-  // TODO: it'd be nice to popup the SEO widget on SEO focus
-  // const pageForm = forms.find((form) => form.name === "page");
-
-  // if (pageForm) {
-  //   const seoField = pageForm.fields.find((field) => field.name === "seo");
-  //   console.log(seoField);
-  // }
-  if(isLoading) {
-    return <div>Loading..</div>
-  }
+  const realData = isLoading ? props.data : data
 
   return (
     <>
       <HeadWrap
-        image={data.page.data.seo.image}
-        title={data.page.data.seo.title}
-        description={data.page.data.seo.description}
+        image={realData.page.data.seo.image}
+        title={realData.page.data.seo.title}
+        description={realData.page.data.seo.description}
       />
-      <Static {...data} />
+      <Static {...realData} />
     </>
   );
 }

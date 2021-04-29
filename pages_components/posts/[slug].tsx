@@ -18,6 +18,9 @@ export async function serverSideProps({ params }) {
   return {
     props: {
       variables: { relativePath },
+      data: await localSdk.PostQuery({
+        variables: { relativePath },
+      }),
     },
   };
 }
@@ -40,7 +43,10 @@ export const staticPaths = async () => {
   };
 };
 
-export const Dynamic = (props: { variables: { relativePath: string } }) => {
+export const Dynamic = (props: {
+  variables: { relativePath: string };
+  data: AsyncReturnType<typeof localSdk.PostQuery>;
+}) => {
   const [data, isLoading] = useGraphqlForms<
     AsyncReturnType<typeof localSdk.PostQuery>
   >(
@@ -49,7 +55,7 @@ export const Dynamic = (props: { variables: { relativePath: string } }) => {
     })
   );
 
-  return isLoading ? <div>Loading...</div> : <Static {...data} />;
+  return isLoading ? <Static {...props.data} /> : <Static {...data} />;
 };
 
 export const Static = (props: AsyncReturnType<typeof localSdk.PostQuery>) => {

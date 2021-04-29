@@ -8,12 +8,13 @@ import { useGraphqlForms } from "tina-graphql-gateway";
 
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
 import type * as Tina from "../../.tina/sdk";
+import { local } from "d3";
 
 const localSdk = sdk(createClient());
 
 export async function serverSideProps() {
   return {
-    props: await localSdk.BaseAuthorList({}),
+    props: {data: await localSdk.BaseAuthorList({})},
   };
 }
 
@@ -26,13 +27,11 @@ export async function staticProps() {
 type MemberDataType = Tina.BaseAuthorListQuery["chris"];
 
 export const Dynamic = (
-  props: AsyncReturnType<typeof localSdk.BaseAuthorList>
+  props: {data: AsyncReturnType<typeof localSdk.BaseAuthorList>}
 ) => {
-  const [data] = useGraphqlForms({
-    payload: props,
-  });
+  const [data, isLoading] = useGraphqlForms(localSdk.BaseAuthorListString({}));
 
-  return <Static {...data} />;
+  return isLoading ? <Static {...props.data} /> : <Static {...data} />;
 };
 export const Static = (
   props: AsyncReturnType<typeof localSdk.BaseAuthorList>
