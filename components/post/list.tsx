@@ -1,0 +1,177 @@
+import React from "react";
+import * as Tina from "../../.tina/sdk";
+import { Markdown } from "../markdown";
+import { Snippet } from "../../components/author/snippet";
+
+export const PostList = (props: Tina.LayerPostList_Data) => {
+  return (
+    <div className="">
+      <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+        <div className="absolute inset-0">
+          <div className="bg-white h-1/3 sm:h-2/3" />
+        </div>
+        <div className="relative max-w-7xl mx-auto">
+          <div className="text-center">
+            <Markdown
+              classNames={{
+                h2:
+                  "text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10",
+                p:
+                  "mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 sm:mt-4",
+              }}
+              ast={props.description?.markdownAst}
+            />
+          </div>
+          <div className="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
+            {props.posts?.map((post) => {
+              return (
+                <div
+                  key={post?.filename}
+                  className="flex flex-col rounded-lg shadow-lg overflow-hidden"
+                >
+                  <div className="flex-shrink-0">
+                    <img
+                      className="h-48 w-full object-cover"
+                      src={post?.node?.data?.image || ""}
+                      alt=""
+                    />
+                  </div>
+                  <div className="flex-1 bg-white p-6 flex flex-col justify-between">
+                    <div className="flex-1">
+                      <p className="text-sm leading-5 font-medium text-steel-medium">
+                        <a href="#" className="hover:underline">
+                          Blog
+                        </a>
+                      </p>
+                      <a
+                        href={`/${post?.section?.slug || ""}/${
+                          post?.breadcrumbs?.join("/") || ""
+                        }`}
+                        className="block"
+                      >
+                        <h3 className="mt-2 text-xl leading-7 font-semibold text-gray-900">
+                          {post?.node?.data?.title}
+                        </h3>
+                        <p className="mt-3 text-base leading-6 text-gray-500">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Architecto accusantium.
+                        </p>
+                      </a>
+                    </div>
+                    <Snippet className="mt-4" {...post?.node?.data?.author} />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const ThumbnailList = (props: {
+  title: string;
+  description: string;
+  posts: Tina.ThumbnailPostFragment[];
+}) => {
+  const colors = {
+    base: "#e1e1db",
+    first: "#e3d6b9",
+    second: "#e4bc91",
+    third: "#d8aa50",
+    fourth: "#df8449",
+  };
+  return (
+    <div
+      // style={{ backgroundColor: colors.base }}
+      className="relative pt-16 pb-64 px-4 sm:px-6 lg:pt-24 lg:pb-36 lg:px-8 bg-white overflow-hidden"
+    >
+      <div className="absolute bottom-0 righ-0 left-0">
+        <svg
+          width={2807}
+          height={253}
+          viewBox="0 0 2807 253"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx={149} cy={45} r={45} fill={colors.fourth} />
+          <path
+            d="M1 61.0029L476.04 69.7176L843.631 52.2882H1256.46L1850.26 15.9769L2353.58 0L2806 26.8703V252H1V61.0029Z"
+            fill={colors.first}
+            stroke="#DCD1C1"
+          />
+          <path
+            d="M1.01073 110.157L0.5 110.146V110.657V252V252.5H1H2806H2806.5V252V110.657V110.141L2805.98 110.157L2511.93 119.628L2511.91 119.629L2116.09 98.5007L2116.07 98.4998L2116.05 98.5L1584.46 105.057L1584.46 105.057L1115.09 115.985L1115.07 115.986L662.683 98.5004L662.662 98.4996L662.641 98.5005L272.446 115.985L1.01073 110.157Z"
+            fill={colors.second}
+            stroke="#DCD1C1"
+          />
+          <path
+            d="M1.00825 162.691L0.5 162.683V163.191V252V252.5H1H2806H2806.5V252V163.191V162.685L2805.99 162.691L2461.02 167.059L1895.52 152.5L1895.51 152.5L1895.49 152.5L1290.38 167.059L775.782 152.5L775.762 152.5L775.742 152.501L442.1 169.97L1.00825 162.691Z"
+            fill={colors.third}
+            stroke="#DCD1C1"
+          />
+          <path
+            d="M1 205.528H0.5V206.028V252V252.5H1H2806H2806.5V252V206.028V205.528H2806H2404.48L1895.51 200.5L1895.5 200.5L1460.05 205.528L1460.04 205.528L1081.15 212.711H583.49L227.22 205.528H227.21H1ZM1895.51 200.997V201V200.997Z"
+            fill={colors.fourth}
+            stroke="#DCD1C1"
+          />
+        </svg>
+      </div>
+      <div className="relative max-w-7xl mx-auto">
+        <div className="text-center">
+          <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
+            {props.title}
+          </h2>
+          <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+            {props.description}
+          </p>
+        </div>
+        <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+          {props.posts.map((post) => {
+            return (
+              <div className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+                <div className="flex-shrink-0">
+                  <img
+                    className="h-48 w-full object-cover"
+                    src={post.data.image}
+                    alt=""
+                  />
+                </div>
+                <div className="flex-1 bg-white p-6 flex flex-col justify-between">
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-steel-medium">
+                      {post.data.tags?.join(", ")}
+                    </p>
+                    <a
+                      href={`/posts/${post.sys.filename}`}
+                      className="block mt-2"
+                    >
+                      <p className="text-xl font-semibold text-gray-900">
+                        {post.data.title}
+                      </p>
+                      <Markdown
+                        ast={post.data.preface.markdownAst}
+                        classNames={{
+                          p: "mt-3 text-base text-gray-500 line-clamp-3",
+                        }}
+                      />
+                      <div className="mt-6 text-base font-medium">
+                        <a
+                          href={`/posts${post.sys.filename}`}
+                          className="text-steel-medium hover:text-steel-light"
+                        >
+                          Read
+                        </a>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};

@@ -1,0 +1,29 @@
+{
+  "name": "field-group-text",
+  "label": "Group Text Field",
+  "fields": [
+    {
+      "label": "Label",
+      "name": "label",
+      "type": "text"
+    },
+    {
+      "label": "Sub-Label",
+      "name": "subLabel",
+      "type": "text"
+    },
+    {
+      "name": "fields",
+      "label": "Fields",
+      "type": "blocks",
+      "template_types": [
+        "field-text"
+      ]
+    },
+    {
+      "label": "Prefix Class",
+      "name": "prefix_class",
+      "type": "text"
+    }
+  ]
+}

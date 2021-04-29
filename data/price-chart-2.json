@@ -1,0 +1,262 @@
+{
+  "5k": [
+    {
+      "value": "1415",
+      "zone": "advanced"
+    },
+    {
+      "value": "1500",
+      "zone": "advanced"
+    },
+    {
+      "value": "1530",
+      "zone": "advanced"
+    },
+    {
+      "value": "1600",
+      "zone": "high"
+    },
+    {
+      "value": "1700",
+      "zone": "high"
+    },
+    {
+      "value": "1800",
+      "zone": "high"
+    },
+    {
+      "value": "1900",
+      "zone": "high"
+    },
+    {
+      "value": "1900",
+      "zone": "medium"
+    },
+    {
+      "value": "2000",
+      "zone": "high"
+    },
+    {
+      "value": "2000",
+      "zone": "medium"
+    },
+    {
+      "value": "2200",
+      "zone": "medium"
+    },
+    {
+      "value": "2400",
+      "zone": "low"
+    },
+    {
+      "value": "2400",
+      "zone": "medium"
+    },
+    {
+      "value": "2600",
+      "zone": "low"
+    },
+    {
+      "value": "2800",
+      "zone": "low"
+    },
+    {
+      "value": "3000",
+      "zone": "low"
+    }
+  ],
+  "half-marathon": [
+    {
+      "value": "11400",
+      "zone": "advanced"
+    },
+    {
+      "value": "11600",
+      "zone": "advanced"
+    },
+    {
+      "value": "11800",
+      "zone": "advanced"
+    },
+    {
+      "value": "12000",
+      "zone": "high"
+    },
+    {
+      "value": "12500",
+      "zone": "high"
+    },
+    {
+      "value": "13000",
+      "zone": "high"
+    },
+    {
+      "value": "13500",
+      "zone": "high"
+    },
+    {
+      "value": "13500",
+      "zone": "medium"
+    },
+    {
+      "value": "14000",
+      "zone": "high"
+    },
+    {
+      "value": "14000",
+      "zone": "medium"
+    },
+    {
+      "value": "14500",
+      "zone": "medium"
+    },
+    {
+      "value": "15000",
+      "zone": "medium"
+    },
+    {
+      "value": "20000",
+      "zone": "low"
+    },
+    {
+      "value": "20000",
+      "zone": "medium"
+    },
+    {
+      "value": "21000",
+      "zone": "low"
+    },
+    {
+      "value": "22000",
+      "zone": "low"
+    },
+    {
+      "value": "23000",
+      "zone": "low"
+    }
+  ],
+  "high-school": [
+    {
+      "value": "250",
+      "zone": "level1"
+    },
+    {
+      "value": "300",
+      "zone": "level2"
+    },
+    {
+      "value": "350",
+      "zone": "level3"
+    },
+    {
+      "value": "400",
+      "zone": "level4"
+    },
+    {
+      "value": "450",
+      "zone": "level5"
+    },
+    {
+      "value": "500",
+      "zone": "level6"
+    },
+    {
+      "value": "550",
+      "zone": "level7"
+    }
+  ],
+  "marathon": [
+    {
+      "value": "23700",
+      "zone": "advanced"
+    },
+    {
+      "value": "24500",
+      "zone": "advanced"
+    },
+    {
+      "value": "25200",
+      "zone": "advanced"
+    },
+    {
+      "value": "30000",
+      "zone": "high"
+    },
+    {
+      "value": "30500",
+      "zone": "high"
+    },
+    {
+      "value": "31000",
+      "zone": "high"
+    },
+    {
+      "value": "32000",
+      "zone": "high"
+    },
+    {
+      "value": "32500",
+      "zone": "high"
+    },
+    {
+      "value": "33000",
+      "zone": "high"
+    },
+    {
+      "value": "33500",
+      "zone": "high"
+    },
+    {
+      "value": "33500",
+      "zone": "medium"
+    },
+    {
+      "value": "34000",
+      "zone": "high"
+    },
+    {
+      "value": "34000",
+      "zone": "medium"
+    },
+    {
+      "value": "35000",
+      "zone": "medium"
+    },
+    {
+      "value": "35500",
+      "zone": "medium"
+    },
+    {
+      "value": "40500",
+      "zone": "low"
+    },
+    {
+      "value": "40500",
+      "zone": "medium"
+    },
+    {
+      "value": "42000",
+      "zone": "low"
+    },
+    {
+      "value": "42000",
+      "zone": "medium"
+    },
+    {
+      "value": "43500",
+      "zone": "low"
+    },
+    {
+      "value": "45000",
+      "zone": "low"
+    },
+    {
+      "value": "50500",
+      "zone": "low"
+    },
+    {
+      "value": "52000",
+      "zone": "low"
+    }
+  ]
+}

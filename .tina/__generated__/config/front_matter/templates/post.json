@@ -1,0 +1,64 @@
+{
+  "name": "post",
+  "label": "Post",
+  "fields": [
+    {
+      "name": "title",
+      "label": "Title",
+      "type": "text",
+      "description": "The name of your post, keep it short!"
+    },
+    {
+      "name": "tags",
+      "label": "Tags",
+      "type": "tag_list"
+    },
+    {
+      "name": "image",
+      "label": "Image URL",
+      "type": "text",
+      "description": "The external image URL"
+    },
+    {
+      "name": "image_small",
+      "label": "Small Image URL",
+      "type": "text",
+      "description": "The external image URL for smaller rendering"
+    },
+    {
+      "name": "accolades",
+      "label": "Accolades",
+      "description": "Key accomplishments which make this person stand out",
+      "type": "field_group",
+      "fields": [
+        {
+          "name": "figure",
+          "type": "text",
+          "label": "Figure",
+          "description": "A single number or word to emphasize"
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "label": "Description"
+        }
+      ]
+    },
+    {
+      "name": "author",
+      "label": "Author",
+      "type": "select",
+      "config": {
+        "source": {
+          "type": "pages",
+          "section": "authors"
+        }
+      }
+    },
+    {
+      "name": "preface",
+      "label": "Preface",
+      "type": "textarea"
+    }
+  ]
+}
