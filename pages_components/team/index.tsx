@@ -12,15 +12,9 @@ import { local } from "d3";
 
 const localSdk = sdk(createClient());
 
-export async function serverSideProps() {
-  return {
-    props: {data: await localSdk.BaseAuthorList({})},
-  };
-}
-
 export async function staticProps() {
   return {
-    props: await localSdk.BaseAuthorList({}),
+    props: {data: await localSdk.BaseAuthorList({})},
   };
 }
 
@@ -31,10 +25,10 @@ export const Dynamic = (
 ) => {
   const [data, isLoading] = useGraphqlForms(localSdk.BaseAuthorListString({}));
 
-  return isLoading ? <Static {...props.data} /> : <Static {...data} />;
+  return isLoading ? <Static data={props.data} /> : <Static data={data} />;
 };
 export const Static = (
-  props: AsyncReturnType<typeof localSdk.BaseAuthorList>
+  props: {data: AsyncReturnType<typeof localSdk.BaseAuthorList>}
 ) => {
   const {
     terrence,
@@ -44,7 +38,7 @@ export const Static = (
     // @ts-ignore _queryString should be namespaced
     _queryString,
     ...athletes
-  } = props;
+  } = props.data;
   return (
     <>
       <Header2 {...getNavDocument} />

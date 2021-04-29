@@ -21,28 +21,20 @@ import { useGraphqlForms } from "tina-graphql-gateway";
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
 import type * as Tina from "../../.tina/sdk";
 
+
 const localSdk = sdk(createClient());
-
-export const serverSideProps = async ({ params }) => {
-  const relativePath = `${params.member}.md`;
-
-  return {
-    props: {
-      variables: { relativePath },
-    props: await localSdk.Member({
-      variables: { relativePath },
-    }),
-    }
-  };
-};
 
 export const staticProps = async ({ params }) => {
   const relativePath = `${params.member}.md`;
+  const localSdk = sdk(createClient());
 
   return {
-    props: await localSdk.Member({
+    props: {
+      variables:{ relativePath },
+      data: await localSdk.Member({
       variables: { relativePath },
     }),
+  }
   };
 };
 
@@ -62,11 +54,11 @@ export const staticPaths = async (params) => {
 
 export const Dynamic = (props: {variables: {relativePath: string}, data: AsyncReturnType<typeof localSdk.Member>}) => {
   const [data, isLoading] = useGraphqlForms(localSdk.MemberString({variables: props.variables}))
-  return isLoading ? <Static {...props.data} /> : <Static {...data} />;
+  return isLoading ? <Static data={props.data} /> : <Static data={data} />;
 };
 
-export const Static = (props: AsyncReturnType<typeof localSdk.Member>) => {
-  const { getAuthorsDocument, getNavDocument } = props;
+export const Static = (props: {data: AsyncReturnType<typeof localSdk.Member>}) => {
+  const { getAuthorsDocument, getNavDocument } = props.data;
   const { data } = getAuthorsDocument;
 
   switch (data.__typename) {

@@ -1,4 +1,4 @@
-import { serverSideProps, Dynamic } from "../../../pages_components/posts";
+import { staticProps, Dynamic } from "../../../pages_components/posts";
 
-export { serverSideProps as getServerSideProps };
+export { staticProps as getStaticProps };
 export default Dynamic;

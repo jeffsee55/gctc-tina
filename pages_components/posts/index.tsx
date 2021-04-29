@@ -11,24 +11,13 @@ import type * as Tina from "../../.tina/sdk";
 
 const localSdk = sdk(createClient());
 
-export async function serverSideProps() {
-  const relativePath = `posts.md`;
-
-  return {
-    props: {
-      data: await localSdk.CuratedPosts({
-        variables: { relativePath },
-      })
-    },
-  };
-}
 export async function staticProps() {
   const relativePath = `posts.md`;
 
   return {
-    props: await localSdk.CuratedPosts({
+    props: {data: await localSdk.CuratedPosts({
       variables: { relativePath },
-    }),
+    })},
   };
 }
 
@@ -37,13 +26,13 @@ export const Dynamic = (props: {data: AsyncReturnType<typeof localSdk.CuratedPos
     variables: { relativePath: "posts.md" },
   }));
 
-  return isLoading ? <Static {...props.data} /> : <Static {...data} />;
+  return isLoading ? <Static data={props.data} /> : <Static data={data} />;
 };
 
 export const Static = (
-  props: AsyncReturnType<typeof localSdk.CuratedPosts>
+  props: {data: AsyncReturnType<typeof localSdk.CuratedPosts>}
 ) => {
-  const { getCuratedDocument, getNavDocument } = props;
+  const { getCuratedDocument, getNavDocument } = props.data
   const rest = getCuratedDocument;
 
   return (

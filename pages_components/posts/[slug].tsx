@@ -12,7 +12,7 @@ import { sdk, AsyncReturnType } from "../../.tina/sdk";
 
 const localSdk = sdk(createClient());
 
-export async function serverSideProps({ params }) {
+export async function staticProps({ params }) {
   const relativePath = `${params.slug}.md`;
 
   return {
@@ -22,15 +22,6 @@ export async function serverSideProps({ params }) {
         variables: { relativePath },
       }),
     },
-  };
-}
-export async function staticProps({ params }) {
-  const relativePath = `${params.slug}.md`;
-
-  return {
-    props: await localSdk.PostQuery({
-      variables: { relativePath },
-    }),
   };
 }
 export const staticPaths = async () => {
@@ -55,11 +46,13 @@ export const Dynamic = (props: {
     })
   );
 
-  return isLoading ? <Static {...props.data} /> : <Static {...data} />;
+  return isLoading ? <Static data={props.data} /> : <Static data={data} />;
 };
 
-export const Static = (props: AsyncReturnType<typeof localSdk.PostQuery>) => {
-  const { getNavDocument, getPostsDocument } = props;
+export const Static = (props: {
+  data: AsyncReturnType<typeof localSdk.PostQuery>;
+}) => {
+  const { getNavDocument, getPostsDocument } = props.data;
 
   const { data } = getPostsDocument;
 

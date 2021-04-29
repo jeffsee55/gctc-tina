@@ -1,7 +1,9 @@
 import {
-  serverSideProps,
+  staticProps,
+  staticPaths,
   Dynamic,
 } from "../../../pages_components/posts/[slug]";
 
-export { serverSideProps as getServerSideProps };
+export { staticPaths as getStaticPaths };
+export { staticProps as getStaticProps };
 export default Dynamic;

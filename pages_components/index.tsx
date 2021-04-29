@@ -14,18 +14,13 @@ import type * as Tina from "../.tina/sdk";
 
 const localSdk = sdk(createClient());
 
-export async function serverSideProps() {
+export async function staticProps() {
   return {
     props: {data: await localSdk.BaseAuthorList({variables: {}})},
   };
 }
-export async function staticProps() {
-  return {
-    props: await localSdk.BaseAuthorList({variables: {}}),
-  };
-}
 
-const Seo = (props: { image: string; title: string; description: string }) => {
+const Seo = (props:  { image?: string; title: string; description: string }) => {
   const [url, setUrl] = React.useState("");
   React.useEffect(() => {
     const urlObject = new URL(window.location.toString());
@@ -50,7 +45,7 @@ const Seo = (props: { image: string; title: string; description: string }) => {
   );
 };
 const HeadWrap = (props: {
-  image: string;
+  image?: string;
   title: string;
   description: string;
 }) => {
@@ -118,12 +113,12 @@ export function Dynamic(props: {data: AsyncReturnType<typeof localSdk.BaseAuthor
         title={realData.page.data.seo.title}
         description={realData.page.data.seo.description}
       />
-      <Static {...realData} />
+      <Static data={realData} />
     </>
   );
 }
-export const Static = (props: Tina.BaseAuthorListQuery) => {
-  const { getNavDocument, page } = props;
+export const Static = (props: {data: Tina.BaseAuthorListQuery}) => {
+  const { getNavDocument, page } = props.data;
   return (
     <>
       <Seo

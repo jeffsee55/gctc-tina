@@ -5,14 +5,9 @@ import { useGraphqlForms } from "tina-graphql-gateway";
 import { sdk, AsyncReturnType } from "../.tina/sdk";
 
 const localSdk = sdk(createClient());
-export async function serverSideProps() {
-  return {
-    props: await localSdk.BaseAuthorList({ withForm: true }),
-  };
-}
 export async function staticProps() {
   return {
-    props: await localSdk.BaseAuthorList({ withForm: false }),
+    props: await localSdk.BaseAuthorList({}),
   };
 }
 
