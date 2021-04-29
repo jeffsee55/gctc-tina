@@ -19,7 +19,7 @@ export const PostList = (props: Tina.LayerPostList_Data) => {
                 p:
                   "mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 sm:mt-4",
               }}
-              ast={props.description?.markdownAst}
+              content={props.description}
             />
           </div>
           <div className="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
@@ -44,9 +44,8 @@ export const PostList = (props: Tina.LayerPostList_Data) => {
                         </a>
                       </p>
                       <a
-                        href={`/${post?.section?.slug || ""}/${
-                          post?.breadcrumbs?.join("/") || ""
-                        }`}
+                        href={`/${post?.section?.slug ||
+                          ""}/${post?.breadcrumbs?.join("/") || ""}`}
                         className="block"
                       >
                         <h3 className="mt-2 text-xl leading-7 font-semibold text-gray-900">
@@ -151,7 +150,7 @@ export const ThumbnailList = (props: {
                         {post.data.title}
                       </p>
                       <Markdown
-                        ast={post.data.preface.markdownAst}
+                        content={post.data.preface}
                         classNames={{
                           p: "mt-3 text-base text-gray-500 line-clamp-3",
                         }}

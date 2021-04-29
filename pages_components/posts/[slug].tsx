@@ -1,13 +1,11 @@
 import React from "react";
-import { Markdown, RenderElement, Markdown2 } from "../../components/markdown";
+import { Markdown } from "../../components/markdown";
 import { Snippet } from "../../components/author/snippet";
 import { createClient } from "../../util/create-client";
-import { useForm } from "tina-graphql-gateway";
+import { useGraphqlForms } from "tina-graphql-gateway";
 import PGallery from "react-photo-gallery";
-import { Calculator } from "../../components/calculator";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { Header2 } from "../../components/header";
-import { useInlineRefs } from "../../components/tina/refs";
 import { Img } from "../../components/image";
 
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
@@ -20,7 +18,6 @@ export async function serverSideProps({ params }) {
   return {
     props: await localSdk.PostQuery({
       variables: { relativePath },
-      withForm: true,
     }),
   };
 }
@@ -30,14 +27,13 @@ export async function staticProps({ params }) {
   return {
     props: await localSdk.PostQuery({
       variables: { relativePath },
-      withForm: true,
     }),
   };
 }
 export const staticPaths = async () => {
   const result = await localSdk.StaticPostsPaths({});
   return {
-    paths: result.getSection.documents.map((doc) => ({
+    paths: result.getCollection.documents.map((doc) => ({
       params: { slug: doc.sys.filename },
     })),
     fallback: false,
@@ -45,103 +41,49 @@ export const staticPaths = async () => {
 };
 
 export const Dynamic = (props: AsyncReturnType<typeof localSdk.PostQuery>) => {
-  const [data] = useForm({ payload: props });
+  const { query, variables } = localSdk.PostQueryString({
+    variables: { relativePath: "" },
+  });
+  const [data, isLoading] = useGraphqlForms<
+    AsyncReturnType<typeof localSdk.PostQuery>
+  >({
+    query,
+    variables,
+  });
 
-  return <Static {...data} />;
-};
-
-const renderElement: RenderElement = {
-  root: (props) => <div className="text-gray-500">{props.children}</div>,
-  heading: (props) => {
-    switch (props.depth) {
-      case 1:
-        return <h1 className="text-2xl">{props.children}</h1>;
-      case 2:
-        return <h2 className="text-xl">{props.children}</h2>;
-      case 3:
-        return <h3 className="text-lg text-red-400">{props.children}</h3>;
-      default:
-        return <h4>{props.children}</h4>;
-    }
-  },
-  link: (props) => {
-    return (
-      <a href={props.url} title={props.title} className="text-steal-medium">
-        {props.children}
-      </a>
-    );
-  },
-  mdxSpanElement: (props) => {
-    return <span />;
-  },
-  mdxBlockElement: (props) => {
-    return <div />;
-  },
-  Image: (props) => <Image {...props} />,
-};
-
-const _bodyRenderElement: typeof renderElement = {
-  ...renderElement,
-  root: (props) => (
-    <div className="max-w-prose mx-auto text-gray-500 " {...props} />
-  ),
-  paragraph: (props) => <p className="mb-7 leading-7" {...props} />,
+  return isLoading ? <div>Loading...</div> : <Static {...data} />;
 };
 
 export const Static = (props: AsyncReturnType<typeof localSdk.PostQuery>) => {
   const { getNavDocument, getPostsDocument } = props;
 
   const { data } = getPostsDocument;
-  const { refs, Portal } = useInlineRefs("getPostsDocument", data, {
-    preface: renderElement,
-    _body: _bodyRenderElement,
-  });
 
   return (
     <div>
-      <Portal />
       <Header2 {...getNavDocument} />
       <div className="h-12 md:h-32" />
       <div className="relative px-4 sm:px-6 lg:px-8">
         <div className="text-lg max-w-prose mx-auto mb-6 md:mb-24">
           {data.tags?.length > 0 && (
-            <p
-              ref={refs.tags}
-              className="text-base text-center leading-6 text-steel-medium font-semibold tracking-wide uppercase"
-            >
+            <p className="text-base text-center leading-6 text-steel-medium font-semibold tracking-wide uppercase">
               {data.tags.join(", ")}
             </p>
           )}
           <div className="relative">
-            <h1
-              ref={refs.title}
-              className="mt-2 mb-8 text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
-            >
+            <h1 className="mt-2 mb-8 text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
               {data.title}
             </h1>
           </div>
-          <Markdown
-            ref={refs.preface}
-            ast={data?.preface?.markdownAst}
-            // renderElement={renderElement}
-            classNames={{ root: "prose" }}
-          />
-          <div ref={refs.author}>
+          <Markdown content={data?.preface} classNames={{ root: "prose" }} />
+          <div>
             <Snippet center={true} className="my-8" {...data?.author} />
           </div>
         </div>
-        <Img
-          ref={refs.image}
-          className={"mx-auto"}
-          width={2000}
-          quality={80}
-          src={data.image}
-        />
+        <Img className={"mx-auto"} width={2000} quality={80} src={data.image} />
         <div className="my-12">
           <Markdown
-            ref={refs._body}
-            ast={data?._body?.markdownAst}
-            // renderElement={_bodyRenderElement}
+            content={data?._body}
             classNames={{
               root: "max-w-prose prose mx-auto text-gray-500 ",
             }}

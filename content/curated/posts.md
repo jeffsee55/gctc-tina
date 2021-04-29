@@ -1,10 +1,10 @@
 ---
 title: Posts
 curations:
-  - template: curated-hero
+  - template: curatedHero
     description: "## Some Description"
     hero_post: content/posts/training-camp.md
-  - template: curated-collection
+  - template: curatedCollection
     description: >-
       ## Read our latest fall training collection
 

@@ -1,0 +1,16 @@
+---
+name: layerCta
+label: Post List Layer
+fields:
+  - label: Description
+    name: description
+    type: textarea
+  - label: CTA Text
+    name: cta_text
+    type: text
+  - label: CTA Link
+    name: cta_link
+    type: text
+  - label: CTA Image
+    name: cta_image
+    type: text

@@ -2,7 +2,7 @@ import React from "react";
 import { Markdown } from "../../components/markdown";
 import { Snippet } from "../../components/author/snippet";
 import { createClient } from "../../util/create-client";
-import { useForm } from "tina-graphql-gateway";
+import { useGraphqlForms } from "tina-graphql-gateway";
 import { Header2 } from "../../components/header";
 import { Img } from "../../components/image";
 
@@ -17,7 +17,6 @@ export async function serverSideProps() {
   return {
     props: await localSdk.CuratedPosts({
       variables: { relativePath },
-      withForm: true,
     }),
   };
 }
@@ -27,7 +26,6 @@ export async function staticProps() {
   return {
     props: await localSdk.CuratedPosts({
       variables: { relativePath },
-      withForm: false,
     }),
   };
 }
@@ -35,8 +33,14 @@ export async function staticProps() {
 export const Dynamic = (
   props: AsyncReturnType<typeof localSdk.CuratedPosts>
 ) => {
-  const [data] = useForm({ payload: props });
-  return <Static {...data} />;
+  const { query, variables } = localSdk.CuratedPostsString({
+    variables: { relativePath: "" },
+  });
+  const [data, isLoading] = useGraphqlForms({
+    query,
+    variables,
+  });
+  return isLoading ? <div>Loading...</div> : <Static {...data} />;
 };
 export const Static = (
   props: AsyncReturnType<typeof localSdk.CuratedPosts>
@@ -102,7 +106,7 @@ export const HeroPost = (
             <div className="relative transform -translate-y-24">
               <div className="bg-white p-8 rounded shadow-xl">
                 <Markdown
-                  ast={props.data?.preface?.markdownAst}
+                  content={props.data?.preface}
                   classNames={{
                     p:
                       "line-clamp-3 text-base leading-6 text-gray-500 undefined",
@@ -112,7 +116,7 @@ export const HeroPost = (
                   <Snippet className="" {...props.data?.author} />
                   <a
                     href={`${
-                      props.sys?.section?.slug
+                      props.sys?.collection?.slug
                     }/${props.sys?.breadcrumbs?.join("/")}`}
                     className="flex items-center justify-between text-base leading-6 font-semibold text-steel-medium hover:text-steel-light transition ease-in-out duration-150"
                   >
@@ -150,7 +154,7 @@ export const FeatureList = (
       <div className="relative max-w-lg mx-auto lg:max-w-7xl">
         <div>
           <Markdown
-            ast={props.description?.markdownAst}
+            content={props.description}
             classNames={{
               h2:
                 "text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10",
@@ -175,7 +179,7 @@ export const FeatureList = (
                 </div>
                 <a
                   href={`${
-                    post.sys?.section?.slug
+                    post.sys?.collection?.slug
                   }/${post.sys?.breadcrumbs?.join("/")}`}
                   className="block"
                 >
@@ -183,7 +187,7 @@ export const FeatureList = (
                     {post?.data?.title}
                   </h3>
                   <Markdown
-                    ast={post?.data?.preface?.markdownAst}
+                    content={post?.data?.preface}
                     classNames={{ p: "mt-3 text-base leading-6 text-gray-500" }}
                   />
                 </a>

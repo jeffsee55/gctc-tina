@@ -18,7 +18,7 @@ import {
 } from "../../components/form";
 import { createClient } from "../../util/create-client";
 
-import { useForm } from "tina-graphql-gateway";
+import { useGraphqlForms } from "tina-graphql-gateway";
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
 import type * as Tina from "../../.tina/sdk";
 
@@ -30,7 +30,6 @@ export const serverSideProps = async ({ params }) => {
   return {
     props: await localSdk.Member({
       variables: { relativePath },
-      withForm: true,
     }),
   };
 };
@@ -41,7 +40,6 @@ export const staticProps = async ({ params }) => {
   return {
     props: await localSdk.Member({
       variables: { relativePath },
-      withForm: true,
     }),
   };
 };
@@ -61,7 +59,7 @@ export const staticPaths = async (params) => {
 };
 
 export const Dynamic = (props: AsyncReturnType<typeof localSdk.Member>) => {
-  const [data] = useForm({ payload: props });
+  const [data] = useGraphqlForms({ payload: props });
   return <Static {...data} />;
 };
 
@@ -136,7 +134,7 @@ const CoachingForm = (props: AuthorDataType["form"]["data"]) => {
             p:
               "text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl",
           }}
-          ast={props.description?.markdownAst}
+          content={props.description}
         />
         {hasSubmitted !== "0" ? (
           <AfterSignup />
@@ -320,7 +318,7 @@ const Hero = (props: AuthorDataType) => {
             </h1>
 
             <Markdown
-              ast={props.description?.markdownAst}
+              content={props.description}
               classNames={{
                 p:
                   "mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl",
@@ -430,9 +428,9 @@ const Story = (props: AuthorDataType) => {
             </div>
           </div>
           <div>
-            {props._body.markdownAst && (
+            {props._body && (
               <Markdown
-                ast={props._body.markdownAst}
+                content={props._body}
                 classNames={{
                   h2:
                     "mt-2 mb-8 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10",
@@ -462,7 +460,7 @@ const Ebook = (props: AuthorDataType["ebook"]) => {
               </h2>
               <Markdown
                 classNames={{ p: "mt-4 text-lg leading-6 text-steel-xlight" }}
-                ast={props.description?.markdownAst}
+                content={props.description}
               />
               <a
                 href={props.link || ""}

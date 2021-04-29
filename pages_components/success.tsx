@@ -1,7 +1,7 @@
 import React from "react";
 import { Header2 } from "../components/header";
 import { createClient } from "../util/create-client";
-import { useForm } from "tina-graphql-gateway";
+import { useGraphqlForms } from "tina-graphql-gateway";
 import { sdk, AsyncReturnType } from "../.tina/sdk";
 
 const localSdk = sdk(createClient());
@@ -19,7 +19,7 @@ export async function staticProps() {
 export default function Dynamic(
   props: AsyncReturnType<typeof localSdk.BaseAuthorList>
 ) {
-  const [data] = useForm({ payload: props });
+  const [data] = useGraphqlForms({ payload: props });
 
   return <Static {...data} />;
 }

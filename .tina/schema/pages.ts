@@ -38,7 +38,7 @@ export const Page: TinaCloudTemplate = {
       name: "layers",
       templates: [
         {
-          name: "layer-team",
+          name: "layerTeam",
           label: "Team Layer",
           fields: [
             {
@@ -50,12 +50,12 @@ export const Page: TinaCloudTemplate = {
               label: "Members",
               name: "members",
               type: "reference-list",
-              section: "authors",
+              collection: "authors",
             },
           ],
         },
         {
-          name: "layer-post-list",
+          name: "layerPostList",
           label: "Post List Layer",
           fields: [
             {
@@ -67,12 +67,12 @@ export const Page: TinaCloudTemplate = {
               label: "Posts",
               name: "posts",
               type: "reference-list",
-              section: "posts",
+              collection: "posts",
             },
           ],
         },
         {
-          name: "layer-dark-feature",
+          name: "layerDarkFeature",
           label: "Post List Layer",
           fields: [
             {
@@ -110,7 +110,7 @@ export const Page: TinaCloudTemplate = {
           ],
         },
         {
-          name: "layer-leadership",
+          name: "layerLeadership",
           label: "Leadership Layer",
           fields: [
             {
@@ -122,12 +122,12 @@ export const Page: TinaCloudTemplate = {
               label: "Posts",
               name: "leaders",
               type: "reference-list",
-              section: "authors",
+              collection: "authors",
             },
           ],
         },
         {
-          name: "layer-sponsors",
+          name: "layerSponsors",
           label: "Post List Layer",
           fields: [
             {
@@ -157,7 +157,7 @@ export const Page: TinaCloudTemplate = {
         },
         CuratedCollection,
         {
-          name: "layer-cta",
+          name: "layerCta",
           label: "Post List Layer",
           fields: [
             {

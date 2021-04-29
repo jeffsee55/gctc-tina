@@ -1,337 +1,17 @@
 import React from "react";
+import unified from "unified";
+import parse from "remark-parse";
 
-type Markdown2Props = {
-  ast: remarkAstPartial;
-  renderElement: RenderElement;
-};
-
-export const Markdown2 = React.forwardRef((props: Markdown2Props, ref) => {
-  const Element = BaseElement(props.renderElement)[props.ast.type];
-
-  /**
-   * HEADS UP - this is important
-   *
-   * For inline-editing, we're hijacking the DOM node by replacing the root
-   * markdown element with our slate editor instance. This looks and feels identical
-   * but this portion of the React tree knowns nothing about what we did, so a state change that would typically
-   * cause this component to rerender effectively re-mounts the component into
-   * it's node, the result is 2 nodes that look identical, one being this component and
-   * the other being our slate editor. For now memoizing is the easiest solution, it means that there won't be
-   * an attempt from react to rerender anything in here. There's probably more work to be done to exit edit-mode.
-   *
-   * From another perspective, this should definitely be memoized anyway, it's a potentially
-   * very deep tree that isn't really meant to change from the initial render. Ideally we
-   * can come up with a nice balance that allows non-edit mode stuff to work as the user
-   * intends while keep edit-mode renders bug-free.
-   */
-  return React.useMemo(() => {
-    if (props.ast.type === "root") {
-      return (
-        <span ref={ref}>
-          <Element {...props.ast} />
-        </span>
-      );
-    }
-    return <Element {...props.ast} />;
-  }, []);
-});
 export type FilterNodeByType<
   A extends remarkAstPartial,
   NodeType extends string
 > = A extends any ? (A["type"] extends NodeType ? A : never) : never;
 
-type BaseTypeFunc<T extends remarkAstPartial["type"]> = {
-  [K in T]: (props: FilterNodeByType<remarkAstPartial, K>) => JSX.Element;
-};
-export type SlateTypeFunc<T extends remarkAstPartial["type"]> = {
-  [K in T]?: (props: FilterNodeByType<remarkAstPartial, K>) => JSX.Element;
-};
-
-export type RenderElement = SlateTypeFunc<
-  Pick<remarkAstPartial, "type">["type"]
-> & { [key: string]: (props: unknown) => JSX.Element };
-
-const BaseElement: (
-  renderElement
-) => BaseTypeFunc<Pick<remarkAstPartial, "type">["type"]> = (
-  renderElement
-) => ({
-  root: (props) => {
-    const El = renderElement[props.type];
-    if (El) {
-      return (
-        <El>
-          {props.children.map((ast) => (
-            <Markdown2 ast={ast} renderElement={renderElement} />
-          ))}
-        </El>
-      );
-    }
-    return (
-      <div {...props}>
-        {props.children.map((ast) => (
-          <Markdown2 ast={ast} renderElement={renderElement} />
-        ))}
-      </div>
-    );
-  },
-  heading: (props) => {
-    const El = renderElement[props.type];
-    if (El) {
-      return (
-        <El {...props}>
-          {props.children.map((ast) => (
-            <Markdown2 ast={ast} renderElement={renderElement} />
-          ))}
-        </El>
-      );
-    }
-    return (
-      <h1>
-        {props.children.map((ast) => (
-          <Markdown2 ast={ast} renderElement={renderElement} />
-        ))}
-      </h1>
-    );
-  },
-  paragraph: (props) => {
-    const El = renderElement[props.type];
-    if (El) {
-      return (
-        <El {...props}>
-          {props.children.map((ast) => (
-            <Markdown2 ast={ast} renderElement={renderElement} />
-          ))}
-        </El>
-      );
-    }
-    return (
-      <p>
-        {props.children.map((ast) => (
-          <Markdown2 ast={ast} renderElement={renderElement} />
-        ))}
-      </p>
-    );
-  },
-  image: (props) => <img alt={props.alt} src={props.url} />,
-  link: (props) => {
-    const El = renderElement[props.type];
-    const { children, ...rest } = props;
-    if (El) {
-      return (
-        <El {...rest}>
-          {children.map((ast) => (
-            <Markdown2 ast={ast} renderElement={renderElement} />
-          ))}
-        </El>
-      );
-    }
-    return (
-      <a href={props.url} title={props.title}>
-        {props.children.map((ast) => (
-          <Markdown2 ast={ast} renderElement={renderElement} />
-        ))}
-      </a>
-    );
-  },
-  emphasis: (props) => {
-    const El = renderElement[props.type];
-    if (El) {
-      return (
-        <El>
-          {props.children.map((ast) => (
-            <Markdown2 ast={ast} renderElement={renderElement} />
-          ))}
-        </El>
-      );
-    }
-    return (
-      <strong>
-        {props.children.map((ast) => (
-          <Markdown2 ast={ast} renderElement={renderElement} />
-        ))}
-      </strong>
-    );
-  },
-  strong: (props) => {
-    const El = renderElement[props.type];
-    if (El) {
-      return (
-        <El>
-          {props.children.map((ast) => (
-            <Markdown2 ast={ast} renderElement={renderElement} />
-          ))}
-        </El>
-      );
-    }
-    return (
-      <strong>
-        {props.children.map((ast) => (
-          <Markdown2 ast={ast} renderElement={renderElement} />
-        ))}
-      </strong>
-    );
-  },
-  thematicBreak: (props) => <hr />,
-  mdxSpanElement: (props) => {
-    const El = renderElement[props.name];
-    const elementProps = {};
-    props.attributes.map((att) => {
-      elementProps[att.name] = att.value;
-    });
-    if (El) {
-      return <El {...elementProps} />;
-    }
-
-    return <span />;
-  },
-  mdxBlockElement: (props) => {
-    console.log("mdx block", props);
-    return <div />;
-  },
-  text: (props) => <>{props.value}</>,
-});
-
-const getElementAndProps = (renderElement, props) => {
-  const { element } = props;
-  // We don't pass the ast children, but the non-edit component does
-  // instead we pass in Slate's children prop, which as long as the
-  // user doesn't try to do anything special with their children this
-  // should be good to go.
-  const { children, ...elementProps } = element;
-  const El = renderElement[element.type];
-  return { El, elementProps };
-};
-
-export const SlateElement: (
-  any
-) => SlateTypeFunc<Pick<remarkAstPartial, "type">["type"]> = (
-  renderElement: RenderElement,
-  onClick: () => void
-) => ({
-  root: (props) => {
-    const El = renderElement[props.type];
-    if (El) {
-      return <El {...props} />;
-    } else {
-      return <div {...props} />;
-    }
-  },
-  heading: (props) => {
-    const { El, elementProps } = getElementAndProps(renderElement, props);
-    if (El) {
-      return <El {...elementProps}>{props.children}</El>;
-    } else {
-      return <h2 {...elementProps}>{props.children}</h2>;
-    }
-  },
-  paragraph: (props) => {
-    const { El, elementProps } = getElementAndProps(renderElement, props);
-    if (El) {
-      return <El {...elementProps}>{props.children}</El>;
-    } else {
-      return <p {...elementProps}>{props.children}</p>;
-    }
-  },
-  // FIXME: not sure about this one. It should be a void node
-  image: (props) => {
-    const { El, elementProps } = getElementAndProps(renderElement, props);
-    if (El) {
-      return <El {...elementProps} />;
-    } else {
-      return <img alt={elementProps.alt} src={elementProps.url} />;
-    }
-  },
-  link: (props) => {
-    const { El, elementProps } = getElementAndProps(renderElement, props);
-    if (El) {
-      return (
-        <span {...props.attributes}>
-          <El {...elementProps}>{props.children}</El>
-        </span>
-      );
-    } else {
-      return (
-        <a
-          {...props.attributes}
-          href={elementProps.url}
-          title={elementProps.title}
-        >
-          {props.children}
-        </a>
-      );
-    }
-  },
-  strong: (props) => {
-    const { El, elementProps } = getElementAndProps(renderElement, props);
-    if (El) {
-      return (
-        <span {...props.attributes}>
-          <El {...elementProps}>{props.children}</El>
-        </span>
-      );
-    } else {
-      return <strong {...props.attributes}>{props.children}</strong>;
-    }
-  },
-  thematicBreak: (props) => {
-    const { El, elementProps } = getElementAndProps(renderElement, props);
-    if (El) {
-      return <El {...elementProps} />;
-    } else {
-      return <hr />;
-    }
-  },
-  mdxSpanElement: (props) => {
-    const El = renderElement[props.element.name];
-    const realElementProps = {};
-    console.log("mdxspan", props);
-    props.element.attributes.map((att) => {
-      realElementProps[att.name] = att.value;
-    });
-    const mdxRef = React.useRef(null);
-    console.log("mdx render", realElementProps);
-    if (El) {
-      return (
-        // Need contentEditable=false or Firefox has issues with certain input types.
-        <div
-          ref={mdxRef}
-          onClick={() => {
-            onClick(props.element, mdxRef);
-          }}
-          style={{ cursor: "pointer" }}
-        >
-          <div
-            style={{ pointerEvents: "none" }}
-            {...props.attributes}
-            contentEditable={false}
-          >
-            <El {...realElementProps} />
-            {props.children}
-          </div>
-        </div>
-      );
-    } else {
-      return <span>{`<${props.element.name} />`}</span>;
-    }
-  },
-  mdxBlockElement: (props) => {
-    return <div />;
-  },
-  text: (props) => {
-    return (
-      <span {...props.attributes}>
-        {props.value}
-        {props.children}
-      </span>
-    );
-  },
-});
-
 export const Markdown = React.forwardRef(
   (
     {
-      ast,
+      ast: maybeAst,
+      content,
       supports = "inline",
       classNames = {
         root: "font-display",
@@ -342,7 +22,8 @@ export const Markdown = React.forwardRef(
       },
       jsxMap,
     }: {
-      ast: remarkAstPartial;
+      ast?: remarkAstPartial;
+      content?: string;
       jsxMap?: { [key: string]: (props: any) => JSX.Element };
       classNames?: {
         strong?: string;
@@ -366,6 +47,12 @@ export const Markdown = React.forwardRef(
     ref
   ) => {
     let props;
+
+    const ast = content
+      ? unified()
+          .use(parse)
+          .parse(content)
+      : maybeAst;
 
     if (!ast) {
       return null;

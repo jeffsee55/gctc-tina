@@ -43,7 +43,7 @@ export type SystemInfo = {
   relativePath?: Maybe<Scalars['String']>;
   extension?: Maybe<Scalars['String']>;
   template?: Maybe<Scalars['String']>;
-  section?: Maybe<Section>;
+  collection?: Maybe<Section>;
 };
 
 
@@ -90,7 +90,7 @@ export type Mutation = {
 
 export type MutationAddPendingDocumentArgs = {
   relativePath?: Maybe<Scalars['String']>;
-  section?: Maybe<Scalars['String']>;
+  collection?: Maybe<Scalars['String']>;
   template?: Maybe<Scalars['String']>;
 };
 
@@ -138,11 +138,10 @@ export type MutationUpdateNavDocumentArgs = {
 
 export type Query = {
   __typename?: 'Query';
-  _queryString?: Maybe<Scalars['String']>;
   node?: Maybe<Node>;
   getDocument?: Maybe<SectionDocumentUnion>;
-  getSections?: Maybe<Array<Maybe<Section>>>;
-  getSection?: Maybe<Section>;
+  getCollections?: Maybe<Array<Maybe<Section>>>;
+  getCollection?: Maybe<Section>;
   getPostsDocument?: Maybe<Posts_Document>;
   getPostsList?: Maybe<Array<Maybe<Posts_Document>>>;
   getPagesDocument?: Maybe<Pages_Document>;
@@ -164,13 +163,13 @@ export type QueryNodeArgs = {
 
 
 export type QueryGetDocumentArgs = {
-  section?: Maybe<Scalars['String']>;
+  collection?: Maybe<Scalars['String']>;
   relativePath?: Maybe<Scalars['String']>;
 };
 
 
-export type QueryGetSectionArgs = {
-  section?: Maybe<Scalars['String']>;
+export type QueryGetCollectionArgs = {
+  collection?: Maybe<Scalars['String']>;
 };
 
 
@@ -228,13 +227,6 @@ export type Post_Accolades_Data = {
   description?: Maybe<Scalars['String']>;
 };
 
-export type LongTextValue = {
-  __typename?: 'LongTextValue';
-  raw?: Maybe<Scalars['String']>;
-  markdownAst?: Maybe<Scalars['JSONObject']>;
-  html?: Maybe<Scalars['String']>;
-};
-
 export type Post_Doc_Data = {
   __typename?: 'Post_Doc_Data';
   title?: Maybe<Scalars['String']>;
@@ -243,19 +235,14 @@ export type Post_Doc_Data = {
   image_small?: Maybe<Scalars['String']>;
   accolades?: Maybe<Post_Accolades_Data>;
   author?: Maybe<Authors_Document>;
-  preface?: Maybe<LongTextValue>;
-  _body?: Maybe<LongTextValue>;
+  preface?: Maybe<Scalars['String']>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type Post_Accolades_Values = {
   __typename?: 'Post_Accolades_Values';
   figure?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
-};
-
-export type LongTextInitialValue = {
-  __typename?: 'LongTextInitialValue';
-  raw?: Maybe<Scalars['String']>;
 };
 
 export type Post_Doc_Values = {
@@ -266,8 +253,8 @@ export type Post_Doc_Values = {
   image_small?: Maybe<Scalars['String']>;
   accolades?: Maybe<Post_Accolades_Values>;
   author?: Maybe<Scalars['Reference']>;
-  preface?: Maybe<LongTextInitialValue>;
-  _body?: Maybe<LongTextInitialValue>;
+  preface?: Maybe<Scalars['String']>;
+  _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
 
@@ -324,14 +311,6 @@ export type Post_Accolades_Input = {
   description?: Maybe<Scalars['String']>;
 };
 
-export type Post_Preface_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
-export type Body_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 export type Post_Doc_Input = {
   title?: Maybe<Scalars['String']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -339,8 +318,8 @@ export type Post_Doc_Input = {
   image_small?: Maybe<Scalars['String']>;
   accolades?: Maybe<Post_Accolades_Input>;
   author?: Maybe<Scalars['String']>;
-  preface?: Maybe<Post_Preface_LongTextInput>;
-  _body?: Maybe<Body_LongTextInput>;
+  preface?: Maybe<Scalars['String']>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type Pages_Data = Page_Doc_Data;
@@ -371,13 +350,13 @@ export type Page_Seo_Data = {
 
 export type LayerTeam_Data = {
   __typename?: 'LayerTeam_Data';
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   members?: Maybe<Array<Maybe<Authors_Document>>>;
 };
 
 export type LayerPostList_Data = {
   __typename?: 'LayerPostList_Data';
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   posts?: Maybe<Array<Maybe<Posts_Document>>>;
 };
 
@@ -391,7 +370,7 @@ export type LayerDarkFeature_Data = {
   __typename?: 'LayerDarkFeature_Data';
   hint?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   feature_list?: Maybe<Array<Maybe<LayerDarkFeature_FeatureList_Data>>>;
 };
 
@@ -415,13 +394,13 @@ export type LayerSponsors_Data = {
 
 export type CuratedCollection_Data = {
   __typename?: 'CuratedCollection_Data';
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   posts_collection?: Maybe<Array<Maybe<Posts_Document>>>;
 };
 
 export type LayerCta_Data = {
   __typename?: 'LayerCta_Data';
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   cta_text?: Maybe<Scalars['String']>;
   cta_link?: Maybe<Scalars['String']>;
   cta_image?: Maybe<Scalars['String']>;
@@ -434,7 +413,7 @@ export type Page_Doc_Data = {
   title?: Maybe<Scalars['String']>;
   seo?: Maybe<Page_Seo_Data>;
   layers?: Maybe<Array<Maybe<Page_Layers_Data>>>;
-  _body?: Maybe<LongTextValue>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type Page_Seo_Values = {
@@ -446,14 +425,14 @@ export type Page_Seo_Values = {
 
 export type LayerTeam_Values = {
   __typename?: 'LayerTeam_Values';
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   members?: Maybe<Array<Maybe<Scalars['String']>>>;
   _template?: Maybe<Scalars['String']>;
 };
 
 export type LayerPostList_Values = {
   __typename?: 'LayerPostList_Values';
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   posts?: Maybe<Array<Maybe<Scalars['String']>>>;
   _template?: Maybe<Scalars['String']>;
 };
@@ -468,7 +447,7 @@ export type LayerDarkFeature_Values = {
   __typename?: 'LayerDarkFeature_Values';
   hint?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   feature_list?: Maybe<Array<Maybe<LayerDarkFeature_FeatureList_Values>>>;
   _template?: Maybe<Scalars['String']>;
 };
@@ -495,14 +474,14 @@ export type LayerSponsors_Values = {
 
 export type CuratedCollection_Values = {
   __typename?: 'CuratedCollection_Values';
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   posts_collection?: Maybe<Array<Maybe<Scalars['String']>>>;
   _template?: Maybe<Scalars['String']>;
 };
 
 export type LayerCta_Values = {
   __typename?: 'LayerCta_Values';
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   cta_text?: Maybe<Scalars['String']>;
   cta_link?: Maybe<Scalars['String']>;
   cta_image?: Maybe<Scalars['String']>;
@@ -516,7 +495,7 @@ export type Page_Doc_Values = {
   title?: Maybe<Scalars['String']>;
   seo?: Maybe<Page_Seo_Values>;
   layers?: Maybe<Array<Maybe<Page_Layers_Values>>>;
-  _body?: Maybe<LongTextInitialValue>;
+  _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
 
@@ -658,26 +637,14 @@ export type Page_Seo_Input = {
   image?: Maybe<Scalars['String']>;
 };
 
-export type LayerTeam_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 export type LayerTeam_Input = {
-  description?: Maybe<LayerTeam_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   members?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-export type LayerPostList_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 export type LayerPostList_Input = {
-  description?: Maybe<LayerPostList_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   posts?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type LayerDarkFeature_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
 };
 
 export type LayerDarkFeature_FeatureList_Input = {
@@ -688,7 +655,7 @@ export type LayerDarkFeature_FeatureList_Input = {
 export type LayerDarkFeature_Input = {
   hint?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<LayerDarkFeature_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   feature_list?: Maybe<Array<Maybe<LayerDarkFeature_FeatureList_Input>>>;
 };
 
@@ -707,21 +674,13 @@ export type LayerSponsors_Input = {
   sponsors?: Maybe<Array<Maybe<LayerSponsors_Sponsors_Input>>>;
 };
 
-export type CuratedCollection_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 export type CuratedCollection_Input = {
-  description?: Maybe<CuratedCollection_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   posts_collection?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-export type LayerCta_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 export type LayerCta_Input = {
-  description?: Maybe<LayerCta_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   cta_text?: Maybe<Scalars['String']>;
   cta_link?: Maybe<Scalars['String']>;
   cta_image?: Maybe<Scalars['String']>;
@@ -741,18 +700,18 @@ export type Page_Doc_Input = {
   title?: Maybe<Scalars['String']>;
   seo?: Maybe<Page_Seo_Input>;
   layers?: Maybe<Array<Maybe<Layers_Input>>>;
-  _body?: Maybe<Body_LongTextInput>;
+  _body?: Maybe<Scalars['String']>;
 };
 
-export type Forms_Data = JenCoaching_Doc_Data;
+export type Forms_Data = JenCcoaching_Doc_Data;
 
 export type Forms_Input = {
-  jenCoaching?: Maybe<JenCoaching_Doc_Input>;
+  jenCcoaching?: Maybe<JenCcoaching_Doc_Input>;
 };
 
-export type Forms_Values = JenCoaching_Doc_Values;
+export type Forms_Values = JenCcoaching_Doc_Values;
 
-export type Forms_Form = JenCoaching_Doc_Form;
+export type Forms_Form = JenCcoaching_Doc_Form;
 
 export type Forms_Document = Node & Document & {
   __typename?: 'Forms_Document';
@@ -836,14 +795,14 @@ export type FieldWeekCheckbox_Data = {
   name?: Maybe<Scalars['String']>;
 };
 
-export type JenCoaching_Fields_Data = FieldBoolean_Data | FieldText_Data | FieldTextarea_Data | FieldCheckbox_Data | FieldRadio_Data | FieldGroupText_Data | FieldWeekCheckbox_Data;
+export type JenCcoaching_Fields_Data = FieldBoolean_Data | FieldText_Data | FieldTextarea_Data | FieldCheckbox_Data | FieldRadio_Data | FieldGroupText_Data | FieldWeekCheckbox_Data;
 
-export type JenCoaching_Doc_Data = {
-  __typename?: 'JenCoaching_Doc_Data';
+export type JenCcoaching_Doc_Data = {
+  __typename?: 'JenCcoaching_Doc_Data';
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextValue>;
-  fields?: Maybe<Array<Maybe<JenCoaching_Fields_Data>>>;
-  _body?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<JenCcoaching_Fields_Data>>>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type FieldBoolean_Values = {
@@ -926,14 +885,14 @@ export type FieldWeekCheckbox_Values = {
   _template?: Maybe<Scalars['String']>;
 };
 
-export type JenCoaching_Fields_Values = FieldBoolean_Values | FieldText_Values | FieldTextarea_Values | FieldCheckbox_Values | FieldRadio_Values | FieldGroupText_Values | FieldWeekCheckbox_Values;
+export type JenCcoaching_Fields_Values = FieldBoolean_Values | FieldText_Values | FieldTextarea_Values | FieldCheckbox_Values | FieldRadio_Values | FieldGroupText_Values | FieldWeekCheckbox_Values;
 
-export type JenCoaching_Doc_Values = {
-  __typename?: 'JenCoaching_Doc_Values';
+export type JenCcoaching_Doc_Values = {
+  __typename?: 'JenCcoaching_Doc_Values';
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextInitialValue>;
-  fields?: Maybe<Array<Maybe<JenCoaching_Fields_Values>>>;
-  _body?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<JenCcoaching_Fields_Values>>>;
+  _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
 
@@ -1033,8 +992,8 @@ export type FieldWeekCheckbox_Form = {
   fields?: Maybe<Array<Maybe<FieldWeekCheckbox_FormFieldsUnion>>>;
 };
 
-export type JenCoaching_Fields_BlocksFieldTemplates = {
-  __typename?: 'JenCoaching_Fields_BlocksFieldTemplates';
+export type JenCcoaching_Fields_BlocksFieldTemplates = {
+  __typename?: 'JenCcoaching_Fields_BlocksFieldTemplates';
   fieldBoolean?: Maybe<FieldBoolean_Form>;
   fieldText?: Maybe<FieldText_Form>;
   fieldTextarea?: Maybe<FieldTextarea_Form>;
@@ -1044,25 +1003,21 @@ export type JenCoaching_Fields_BlocksFieldTemplates = {
   fieldWeekCheckbox?: Maybe<FieldWeekCheckbox_Form>;
 };
 
-export type JenCoaching_Fields_BlocksField = FormField & {
-  __typename?: 'JenCoaching_Fields_BlocksField';
+export type JenCcoaching_Fields_BlocksField = FormField & {
+  __typename?: 'JenCcoaching_Fields_BlocksField';
   name?: Maybe<Scalars['String']>;
   label?: Maybe<Scalars['String']>;
   component?: Maybe<Scalars['String']>;
-  templates?: Maybe<JenCoaching_Fields_BlocksFieldTemplates>;
+  templates?: Maybe<JenCcoaching_Fields_BlocksFieldTemplates>;
 };
 
-export type JenCoaching_Doc_FormFieldsUnion = TextField | TextareaField | JenCoaching_Fields_BlocksField;
+export type JenCcoaching_Doc_FormFieldsUnion = TextField | TextareaField | JenCcoaching_Fields_BlocksField;
 
-export type JenCoaching_Doc_Form = {
-  __typename?: 'JenCoaching_Doc_Form';
+export type JenCcoaching_Doc_Form = {
+  __typename?: 'JenCcoaching_Doc_Form';
   label?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
-  fields?: Maybe<Array<Maybe<JenCoaching_Doc_FormFieldsUnion>>>;
-};
-
-export type JenCoaching_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<JenCcoaching_Doc_FormFieldsUnion>>>;
 };
 
 export type FieldBoolean_Input = {
@@ -1131,11 +1086,11 @@ export type FieldWeekCheckbox_Input = {
   name?: Maybe<Scalars['String']>;
 };
 
-export type JenCoaching_Doc_Input = {
+export type JenCcoaching_Doc_Input = {
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<JenCoaching_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   fields?: Maybe<Array<Maybe<Fields_Input>>>;
-  _body?: Maybe<Body_LongTextInput>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type Curated_Data = Curated_Doc_Data;
@@ -1159,7 +1114,7 @@ export type Curated_Document = Node & Document & {
 
 export type CuratedHero_Data = {
   __typename?: 'CuratedHero_Data';
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   hero_post?: Maybe<Posts_Document>;
 };
 
@@ -1169,12 +1124,12 @@ export type Curated_Doc_Data = {
   __typename?: 'Curated_Doc_Data';
   title?: Maybe<Scalars['String']>;
   curations?: Maybe<Array<Maybe<Curated_Curations_Data>>>;
-  _body?: Maybe<LongTextValue>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type CuratedHero_Values = {
   __typename?: 'CuratedHero_Values';
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   hero_post?: Maybe<Scalars['Reference']>;
   _template?: Maybe<Scalars['String']>;
 };
@@ -1185,7 +1140,7 @@ export type Curated_Doc_Values = {
   __typename?: 'Curated_Doc_Values';
   title?: Maybe<Scalars['String']>;
   curations?: Maybe<Array<Maybe<Curated_Curations_Values>>>;
-  _body?: Maybe<LongTextInitialValue>;
+  _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
 
@@ -1221,12 +1176,8 @@ export type Curated_Doc_Form = {
   fields?: Maybe<Array<Maybe<Curated_Doc_FormFieldsUnion>>>;
 };
 
-export type CuratedHero_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 export type CuratedHero_Input = {
-  description?: Maybe<CuratedHero_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   hero_post?: Maybe<Scalars['String']>;
 };
 
@@ -1238,7 +1189,7 @@ export type Curations_Input = {
 export type Curated_Doc_Input = {
   title?: Maybe<Scalars['String']>;
   curations?: Maybe<Array<Maybe<Curations_Input>>>;
-  _body?: Maybe<Body_LongTextInput>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type Authors_Data = Author_Doc_Data | Athlete_Doc_Data;
@@ -1270,7 +1221,7 @@ export type Author_Accolades_Data = {
 export type Author_Ebook_Data = {
   __typename?: 'Author_Ebook_Data';
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   link?: Maybe<Scalars['String']>;
   link_text?: Maybe<Scalars['String']>;
   image?: Maybe<Scalars['String']>;
@@ -1279,7 +1230,7 @@ export type Author_Ebook_Data = {
 export type Author_Doc_Data = {
   __typename?: 'Author_Doc_Data';
   name?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   role?: Maybe<Scalars['String']>;
   accolades?: Maybe<Array<Maybe<Author_Accolades_Data>>>;
   image?: Maybe<Scalars['String']>;
@@ -1288,7 +1239,7 @@ export type Author_Doc_Data = {
   form?: Maybe<Forms_Document>;
   posts_collection?: Maybe<Array<Maybe<Posts_Document>>>;
   ebook?: Maybe<Author_Ebook_Data>;
-  _body?: Maybe<LongTextValue>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type Author_Accolades_Values = {
@@ -1300,7 +1251,7 @@ export type Author_Accolades_Values = {
 export type Author_Ebook_Values = {
   __typename?: 'Author_Ebook_Values';
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   link?: Maybe<Scalars['String']>;
   link_text?: Maybe<Scalars['String']>;
   image?: Maybe<Scalars['String']>;
@@ -1309,7 +1260,7 @@ export type Author_Ebook_Values = {
 export type Author_Doc_Values = {
   __typename?: 'Author_Doc_Values';
   name?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   role?: Maybe<Scalars['Reference']>;
   accolades?: Maybe<Array<Maybe<Author_Accolades_Values>>>;
   image?: Maybe<Scalars['String']>;
@@ -1318,7 +1269,7 @@ export type Author_Doc_Values = {
   form?: Maybe<Scalars['Reference']>;
   posts_collection?: Maybe<Array<Maybe<Scalars['String']>>>;
   ebook?: Maybe<Author_Ebook_Values>;
-  _body?: Maybe<LongTextInitialValue>;
+  _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
 
@@ -1351,22 +1302,14 @@ export type Author_Doc_Form = {
   fields?: Maybe<Array<Maybe<Author_Doc_FormFieldsUnion>>>;
 };
 
-export type Author_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 export type Author_Accolades_Input = {
   figure?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
 };
 
-export type Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 export type Author_Ebook_Input = {
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   link?: Maybe<Scalars['String']>;
   link_text?: Maybe<Scalars['String']>;
   image?: Maybe<Scalars['String']>;
@@ -1374,7 +1317,7 @@ export type Author_Ebook_Input = {
 
 export type Author_Doc_Input = {
   name?: Maybe<Scalars['String']>;
-  description?: Maybe<Author_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   role?: Maybe<Scalars['String']>;
   accolades?: Maybe<Array<Maybe<Author_Accolades_Input>>>;
   image?: Maybe<Scalars['String']>;
@@ -1383,7 +1326,7 @@ export type Author_Doc_Input = {
   form?: Maybe<Scalars['String']>;
   posts_collection?: Maybe<Array<Maybe<Scalars['String']>>>;
   ebook?: Maybe<Author_Ebook_Input>;
-  _body?: Maybe<Body_LongTextInput>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type Athlete_PersonalBests_Data = {
@@ -1407,13 +1350,13 @@ export type Athlete_SocialMedia_Data = {
 export type Athlete_Doc_Data = {
   __typename?: 'Athlete_Doc_Data';
   name?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   country?: Maybe<Scalars['String']>;
   personal_bests?: Maybe<Array<Maybe<Athlete_PersonalBests_Data>>>;
   accolades?: Maybe<Array<Maybe<Athlete_Accolades_Data>>>;
   social_media?: Maybe<Array<Maybe<Athlete_SocialMedia_Data>>>;
   image?: Maybe<Scalars['String']>;
-  _body?: Maybe<LongTextValue>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type Athlete_PersonalBests_Values = {
@@ -1437,13 +1380,13 @@ export type Athlete_SocialMedia_Values = {
 export type Athlete_Doc_Values = {
   __typename?: 'Athlete_Doc_Values';
   name?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   country?: Maybe<Scalars['String']>;
   personal_bests?: Maybe<Array<Maybe<Athlete_PersonalBests_Values>>>;
   accolades?: Maybe<Array<Maybe<Athlete_Accolades_Values>>>;
   social_media?: Maybe<Array<Maybe<Athlete_SocialMedia_Values>>>;
   image?: Maybe<Scalars['String']>;
-  _body?: Maybe<LongTextInitialValue>;
+  _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
 
@@ -1486,10 +1429,6 @@ export type Athlete_Doc_Form = {
   fields?: Maybe<Array<Maybe<Athlete_Doc_FormFieldsUnion>>>;
 };
 
-export type Athlete_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 export type Athlete_PersonalBests_Input = {
   event?: Maybe<Scalars['String']>;
   time?: Maybe<Scalars['String']>;
@@ -1507,13 +1446,13 @@ export type Athlete_SocialMedia_Input = {
 
 export type Athlete_Doc_Input = {
   name?: Maybe<Scalars['String']>;
-  description?: Maybe<Athlete_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   country?: Maybe<Scalars['String']>;
   personal_bests?: Maybe<Array<Maybe<Athlete_PersonalBests_Input>>>;
   accolades?: Maybe<Array<Maybe<Athlete_Accolades_Input>>>;
   social_media?: Maybe<Array<Maybe<Athlete_SocialMedia_Input>>>;
   image?: Maybe<Scalars['String']>;
-  _body?: Maybe<Body_LongTextInput>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type Nav_Data = Nav_Doc_Data;
@@ -1582,8 +1521,8 @@ export type Nav_Items_Data = NavItemPopout_Data | NavItemMore_Data | NavItemLink
 export type Nav_Doc_Data = {
   __typename?: 'Nav_Doc_Data';
   items?: Maybe<Array<Maybe<Nav_Items_Data>>>;
-  show_auth?: Maybe<Scalars['String']>;
-  _body?: Maybe<LongTextValue>;
+  show_auth?: Maybe<Scalars['Boolean']>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type NavItemPopout_Children_Values = {
@@ -1636,8 +1575,8 @@ export type Nav_Items_Values = NavItemPopout_Values | NavItemMore_Values | NavIt
 export type Nav_Doc_Values = {
   __typename?: 'Nav_Doc_Values';
   items?: Maybe<Array<Maybe<Nav_Items_Values>>>;
-  show_auth?: Maybe<Scalars['String']>;
-  _body?: Maybe<LongTextInitialValue>;
+  show_auth?: Maybe<Scalars['Boolean']>;
+  _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
 
@@ -1773,7 +1712,7 @@ export type Items_Input = {
 
 export type Nav_Doc_Input = {
   items?: Maybe<Array<Maybe<Items_Input>>>;
-  show_auth?: Maybe<Scalars['String']>;
-  _body?: Maybe<Body_LongTextInput>;
+  show_auth?: Maybe<Scalars['Boolean']>;
+  _body?: Maybe<Scalars['String']>;
 };
 

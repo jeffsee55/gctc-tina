@@ -1,7 +1,7 @@
 ---
 title: Hom
 layers:
-  - template: layer-post-list
+  - template: layerPostList
     description: >-
       ## Latest from the blog
 
@@ -15,7 +15,7 @@ layers:
       - content/posts/dreams-on-hold.md
       - content/posts/love-more-than-ever.md
       - content/posts/welcome.md
-  - template: layer-team
+  - template: layerTeam
     description: >-
       ## About Us
 

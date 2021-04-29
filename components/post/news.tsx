@@ -8,7 +8,7 @@ export const News = (props: Tina.CuratedCollectionFragment) => {
       <div className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
         <div>
           <Markdown
-            ast={props.description.markdownAst}
+            content={props.description}
             classNames={{
               root: "text-gray-200",
               h2:
@@ -40,7 +40,7 @@ const Story = (props: StoryType) => {
           {props.data.title}
         </p>
         <Markdown
-          ast={props.data.preface.markdownAst}
+          content={props.data.preface}
           classNames={{
             root: "mt-3 text-base text-gray-200",
             p: "line-clamp-3",

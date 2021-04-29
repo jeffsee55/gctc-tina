@@ -30,9 +30,7 @@ fragment NavItemMore on NavItemMore_Data {
       ... on Post_Doc_Data {
         image
         title
-        preface {
-          raw
-        }
+        preface
         author {
           sys {
             filename
@@ -65,11 +63,9 @@ fragment NavItemMore on NavItemMore_Data {
       ... on Post_Doc_Data {
         title
         image
-        preface {
-          raw
-        }
+        preface
         author {
-          ...AuthorSnippet
+          ...AuthorSnippetNav
         }
       }
     }

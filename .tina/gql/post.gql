@@ -14,12 +14,8 @@ query PostQuery($relativePath: String!) {
         }
         tags
         image
-        preface {
-          markdownAst
-        }
-        _body {
-          markdownAst
-        }
+        preface
+        _body
         author {
           ...AuthorSnippet
         }
@@ -29,12 +25,10 @@ query PostQuery($relativePath: String!) {
 }
 
 fragment CuratedCollection on CuratedCollection_Data {
-  description {
-    markdownAst
-  }
+  description
   posts_collection {
     sys {
-      section {
+      collection {
         path
         slug
       }
@@ -44,12 +38,8 @@ fragment CuratedCollection on CuratedCollection_Data {
       ... on Post_Doc_Data {
         title
         image
-        preface {
-          markdownAst
-        }
-        _body {
-          markdownAst
-        }
+        preface
+        _body
         author {
           sys {
             filename
@@ -77,7 +67,7 @@ fragment CuratedDocData on Curated_Doc_Data {
     ... on CuratedHero_Data {
       hero_post {
         sys {
-          section {
+          collection {
             path
             slug
           }
@@ -87,12 +77,8 @@ fragment CuratedDocData on Curated_Doc_Data {
           ... on Post_Doc_Data {
             title
             image
-            preface {
-              markdownAst
-            }
-            _body {
-              markdownAst
-            }
+            preface
+            _body
             author {
               ... on Authors_Document {
                 sys {
@@ -103,9 +89,7 @@ fragment CuratedDocData on Curated_Doc_Data {
                   ... on Author_Doc_Data {
                     name
                     image
-                    description {
-                      markdownAst
-                    }
+                    description
                   }
                 }
               }

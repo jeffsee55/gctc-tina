@@ -1296,12 +1296,12 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
-"@forestryio/gql@0.0.42-canary-3":
-  version "0.0.42-canary-3"
-  resolved "https://registry.yarnpkg.com/@forestryio/gql/-/gql-0.0.42-canary-3.tgz#d09ac69c1ae9af42176f354c13cccb111b261b31"
-  integrity sha512-JinDlXfH4RNwqdogcLY0axsNnBKlfIL0jwxo47Vqs6Yyqyt4+/7+1pWU7gnUyH6E4EGlVhr7XQJa+33VBXT3XA==
+"@forestryio/gql@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@forestryio/gql/-/gql-0.1.3.tgz#e29854efa8f3780dd2f05caa23cfe5e929724bac"
+  integrity sha512-qQWL9pNV9qUX64qMaQKuHX3khqDUqLZBYMmW3vnITNQNZzdzPGaOYhP3Bp1U39f+/1v7BbcpRNqkgzJBJhuHHA==
   dependencies:
-    "@forestryio/graphql-helpers" "0.0.17"
+    "@forestryio/graphql-helpers" "0.0.20"
     "@octokit/auth-app" "^2.6.0"
     "@octokit/graphql" "^4.5.6"
     "@octokit/rest" "^18.0.6"
@@ -1333,31 +1333,10 @@
     ws "^7.3.1"
     yup "^0.29.3"
 
-"@forestryio/graphql-helpers@0.0.17":
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/@forestryio/graphql-helpers/-/graphql-helpers-0.0.17.tgz#fe82d7fc85d8e164c63aa805f6b0cd9299ef34b8"
-  integrity sha512-Eq45K5tO+K9gk4SPg9jz80H7FbDPUXSURmmAIf5+4LNkJ/kyrZv3t1TliYrhSiPjFzoNeIcvv2OWkawZphwzJw==
-  dependencies:
-    "@types/lodash.get" "^4.4.6"
-    "@types/lodash.kebabcase" "^4.1.6"
-    "@types/lodash.set" "^4.3.6"
-    "@types/prettier" "^2.2.1"
-    graphql "^15.3.0"
-    lodash.camelcase "^4.3.0"
-    lodash.get "^4.4.2"
-    lodash.kebabcase "^4.1.1"
-    lodash.set "^4.3.2"
-    lodash.snakecase "^4.1.1"
-    lodash.upperfirst "^4.3.1"
-    object-visit "^1.0.1"
-    prettier "^2.2.1"
-    tslib "^1.11.1"
-    tsup "^3.7.0"
-
-"@forestryio/graphql-helpers@0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@forestryio/graphql-helpers/-/graphql-helpers-0.0.18.tgz#8fdf23d9f98b61c792f650637eeec653a892b257"
-  integrity sha512-sncb6MNLt5cKt5j6uZsCE/wZXuzY3nDB6xtRWn8mrnHY75rp4ipmV0qBX+Mx60z9P7BnsaDLvMYKeH77ZsDiJQ==
+"@forestryio/graphql-helpers@0.0.20":
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@forestryio/graphql-helpers/-/graphql-helpers-0.0.20.tgz#2dadd6b922bb526fb066ace1f027f05933e4550c"
+  integrity sha512-RwICcq4RwZo2irfxEmtOyWNAp+9aq9mIzU1zjjkMbFQxHCVmtLwNnLNy0UuKoDAt05hA1orEBoB+of9qWtUn1g==
   dependencies:
     "@types/lodash.get" "^4.4.6"
     "@types/lodash.kebabcase" "^4.1.6"
@@ -3450,6 +3429,11 @@ are-we-there-yet@~1.1.2:
     delegates "^1.0.0"
     readable-stream "^2.0.6"
 
+arg@^4.1.0:
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/arg/-/arg-4.1.3.tgz#269fc7ad5b8e42cb63c896d5666017261c144089"
+  integrity sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==
+
 argparse@^1.0.7:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/argparse/-/argparse-1.0.10.tgz#bcd6791ea5ae09725e17e5ad988134cd40b3d911"
@@ -5165,6 +5149,11 @@ create-hmac@^1.1.0, create-hmac@^1.1.4, create-hmac@^1.1.7:
     ripemd160 "^2.0.0"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
+
+create-require@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/create-require/-/create-require-1.1.1.tgz#c1d7e8f1e5f6cfc9ff65f9cd352d37348756c333"
+  integrity sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==
 
 cross-env@^7.0.2:
   version "7.0.3"
@@ -7060,6 +7049,13 @@ final-form-arrays@^3.0.1, final-form-arrays@^3.0.2:
   integrity sha512-C4RldRCUs8YZod91ydtrsT+TOeG3fwU4ip9oBDXhvbWdQ6iXl4cIrTAQkqpWijbnI3XFVA0akV7YTjSFJMJ2uw==
   dependencies:
     "@babel/runtime" "^7.8.3"
+
+final-form@4.20.1:
+  version "4.20.1"
+  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.20.1.tgz#525a7f7f27f55c28d8994b157b24d6104fc560e9"
+  integrity sha512-IIsOK3JRxJrN72OBj7vFWZxtGt3xc1bYwJVPchjVWmDol9DlzMSAOPB+vwe75TUYsw1JaH0fTQnIgwSQZQ9Acg==
+  dependencies:
+    "@babel/runtime" "^7.10.0"
 
 final-form@^4.18.2, final-form@^4.20.1:
   version "4.20.2"
@@ -9844,6 +9840,11 @@ make-dir@^3.0.0, make-dir@^3.0.2:
   integrity sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==
   dependencies:
     semver "^6.0.0"
+
+make-error@^1.1.1:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/make-error/-/make-error-1.3.6.tgz#2eb2e37ea9b67c4891f684a1394799af484cf7a2"
+  integrity sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==
 
 map-age-cleaner@^0.1.3:
   version "0.1.3"
@@ -14100,7 +14101,7 @@ source-map-resolve@^0.5.0, source-map-resolve@^0.5.2:
     source-map-url "^0.4.0"
     urix "^0.1.0"
 
-source-map-support@~0.5.12, source-map-support@~0.5.19:
+source-map-support@^0.5.17, source-map-support@~0.5.12, source-map-support@~0.5.19:
   version "0.5.19"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.19.tgz#a98b62f86dcaf4f67399648c085291ab9e8fed61"
   integrity sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw==
@@ -14901,13 +14902,13 @@ timsort@^0.3.0:
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
 
-tina-graphql-gateway-cli@0.2.32-canary-5:
-  version "0.2.32-canary-5"
-  resolved "https://registry.yarnpkg.com/tina-graphql-gateway-cli/-/tina-graphql-gateway-cli-0.2.32-canary-5.tgz#a5cc653560e4788add09a1cd86fa788a962c682d"
-  integrity sha512-cVu14MksSCg4NApGlZq5cfFEZ13trqrrb2Vx+uC1xLr0+cbanKfxXzJR0AaiztEitqT1Bli30B3/dfp+/mPZ9g==
+tina-graphql-gateway-cli@0.2.39:
+  version "0.2.39"
+  resolved "https://registry.yarnpkg.com/tina-graphql-gateway-cli/-/tina-graphql-gateway-cli-0.2.39.tgz#18cfe80cb91b54f02744a5cfc2e8c1c88d1833e6"
+  integrity sha512-tml51mFhAin+AxU6YPcaC6JJVpRrneNh9AZLm5jmYnTngiR/YcAJ5Mqvxwrw/JubMF8g48iF/jRNK1/ahdVSwQ==
   dependencies:
-    "@forestryio/gql" "0.0.42-canary-3"
-    "@forestryio/graphql-helpers" "0.0.17"
+    "@forestryio/gql" "0.1.3"
+    "@forestryio/graphql-helpers" "0.0.20"
     "@graphql-codegen/core" "^1.17.0"
     "@graphql-codegen/typescript" "^1.17.0"
     "@graphql-codegen/typescript-operations" "^1.17.0"
@@ -14953,12 +14954,12 @@ tina-graphql-gateway-cli@0.2.32-canary-5:
     yo "^3.1.1"
     yup "^0.32.9"
 
-tina-graphql-gateway@^0.1.53:
-  version "0.1.59"
-  resolved "https://registry.yarnpkg.com/tina-graphql-gateway/-/tina-graphql-gateway-0.1.59.tgz#7bb23f1f91534196c98ac2e0243ea2f0ad517d0f"
-  integrity sha512-qPCLSv7hkUW2C1bm8vHHRRSuabpCLTiVZlDQ+GsP2EjMskLHLw6gQD1y+BnrI1r05LwOmKBtB+0d3TAgwoN3sA==
+tina-graphql-gateway@0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/tina-graphql-gateway/-/tina-graphql-gateway-0.2.7.tgz#2dd0d69e2c1999d489e700c2d4dcc9d9713fcdb7"
+  integrity sha512-CZr8fny5hTH7kxlAxOQA8JMmgxmpTmSy8hqLhCznM/kGPa/IvOfUmSuJ4r1hq0sdxSlad1ThVgrH7gpyW/zKrA==
   dependencies:
-    "@forestryio/graphql-helpers" "0.0.18"
+    "@forestryio/graphql-helpers" "0.0.20"
     "@graphql-codegen/core" "^1.15.4"
     "@graphql-codegen/typescript" "^1.15.4"
     "@graphql-codegen/typescript-operations" "^1.15.4"
@@ -14969,7 +14970,7 @@ tina-graphql-gateway@^0.1.53:
     codemirror "^5.55.0"
     cors "^2.8.5"
     crypto-js "^4.0.0"
-    final-form "^4.20.1"
+    final-form "4.20.1"
     final-form-arrays "^3.0.2"
     graphql "^15.1.0"
     graphql-tag "^2.11.0"
@@ -15182,6 +15183,18 @@ ts-interface-checker@^0.1.9:
   version "0.1.13"
   resolved "https://registry.yarnpkg.com/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz#784fd3d679722bc103b1b4b8030bcddb5db2a699"
   integrity sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==
+
+ts-node@^9.1.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-9.1.1.tgz#51a9a450a3e959401bda5f004a72d54b936d376d"
+  integrity sha512-hPlt7ZACERQGf03M253ytLY3dHbGNGrAq9qIHWUY9XHYl1z7wYngSr3OQ5xmui8o2AaxsONxIzjafLUiWBo1Fg==
+  dependencies:
+    arg "^4.1.0"
+    create-require "^1.1.0"
+    diff "^4.0.1"
+    make-error "^1.1.1"
+    source-map-support "^0.5.17"
+    yn "3.1.1"
 
 ts-pnp@^1.1.6:
   version "1.2.0"
@@ -16489,6 +16502,11 @@ yeoman-generator@^4.13.0, yeoman-generator@^4.8.2:
   optionalDependencies:
     grouped-queue "^1.1.0"
     yeoman-environment "^2.9.5"
+
+yn@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/yn/-/yn-3.1.1.tgz#1e87401a09d767c1d5eab26a6e4c185182d2eb50"
+  integrity sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
 
 yo@^3.1.1:
   version "3.1.1"

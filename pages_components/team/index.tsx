@@ -4,7 +4,7 @@ import { Markdown } from "../../components/markdown";
 import { Img } from "../../components/image";
 
 import { createClient } from "../../util/create-client";
-import { useForm } from "tina-graphql-gateway";
+import { useGraphqlForms } from "tina-graphql-gateway";
 
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
 import type * as Tina from "../../.tina/sdk";
@@ -13,7 +13,7 @@ const localSdk = sdk(createClient());
 
 export async function serverSideProps() {
   return {
-    props: await localSdk.BaseAuthorList({ withForm: true }),
+    props: await localSdk.BaseAuthorList({}),
   };
 }
 
@@ -28,7 +28,7 @@ type MemberDataType = Tina.BaseAuthorListQuery["chris"];
 export const Dynamic = (
   props: AsyncReturnType<typeof localSdk.BaseAuthorList>
 ) => {
-  const [data] = useForm({
+  const [data] = useGraphqlForms({
     payload: props,
   });
 
@@ -93,11 +93,6 @@ export const Static = (
                                   .join(" • ")}
                               </p>
                             </div>
-                            {/* <div className="text-lg">
-                              <p className="text-gray-500 line-clamp-4">
-                                <Markdown ast={item.data._body.markdownAst} />
-                              </p>
-                            </div> */}
                             <ul className="flex space-x-5">
                               {item.data.social_media?.map((social) => {
                                 return (

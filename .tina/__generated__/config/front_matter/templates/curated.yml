@@ -9,5 +9,5 @@ fields:
     label: Curations
     type: blocks
     template_types:
-      - curated-hero
-      - curated-collection
+      - curatedHero
+      - curatedCollection

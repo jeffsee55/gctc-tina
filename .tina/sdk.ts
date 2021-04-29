@@ -43,7 +43,7 @@ type SystemInfo = {
   relativePath?: Maybe<Scalars['String']>;
   extension?: Maybe<Scalars['String']>;
   template?: Maybe<Scalars['String']>;
-  section?: Maybe<Section>;
+  collection?: Maybe<Section>;
 };
 
 
@@ -90,7 +90,7 @@ type Mutation = {
 
 type MutationAddPendingDocumentArgs = {
   relativePath?: Maybe<Scalars['String']>;
-  section?: Maybe<Scalars['String']>;
+  collection?: Maybe<Scalars['String']>;
   template?: Maybe<Scalars['String']>;
 };
 
@@ -138,11 +138,10 @@ type MutationUpdateNavDocumentArgs = {
 
 type Query = {
   __typename?: 'Query';
-  _queryString?: Maybe<Scalars['String']>;
   node?: Maybe<Node>;
   getDocument?: Maybe<SectionDocumentUnion>;
-  getSections?: Maybe<Array<Maybe<Section>>>;
-  getSection?: Maybe<Section>;
+  getCollections?: Maybe<Array<Maybe<Section>>>;
+  getCollection?: Maybe<Section>;
   getPostsDocument?: Maybe<Posts_Document>;
   getPostsList?: Maybe<Array<Maybe<Posts_Document>>>;
   getPagesDocument?: Maybe<Pages_Document>;
@@ -164,13 +163,13 @@ type QueryNodeArgs = {
 
 
 type QueryGetDocumentArgs = {
-  section?: Maybe<Scalars['String']>;
+  collection?: Maybe<Scalars['String']>;
   relativePath?: Maybe<Scalars['String']>;
 };
 
 
-type QueryGetSectionArgs = {
-  section?: Maybe<Scalars['String']>;
+type QueryGetCollectionArgs = {
+  collection?: Maybe<Scalars['String']>;
 };
 
 
@@ -228,13 +227,6 @@ type Post_Accolades_Data = {
   description?: Maybe<Scalars['String']>;
 };
 
-type LongTextValue = {
-  __typename?: 'LongTextValue';
-  raw?: Maybe<Scalars['String']>;
-  markdownAst?: Maybe<Scalars['JSONObject']>;
-  html?: Maybe<Scalars['String']>;
-};
-
 type Post_Doc_Data = {
   __typename?: 'Post_Doc_Data';
   title?: Maybe<Scalars['String']>;
@@ -243,19 +235,14 @@ type Post_Doc_Data = {
   image_small?: Maybe<Scalars['String']>;
   accolades?: Maybe<Post_Accolades_Data>;
   author?: Maybe<Authors_Document>;
-  preface?: Maybe<LongTextValue>;
-  _body?: Maybe<LongTextValue>;
+  preface?: Maybe<Scalars['String']>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 type Post_Accolades_Values = {
   __typename?: 'Post_Accolades_Values';
   figure?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
-};
-
-type LongTextInitialValue = {
-  __typename?: 'LongTextInitialValue';
-  raw?: Maybe<Scalars['String']>;
 };
 
 type Post_Doc_Values = {
@@ -266,8 +253,8 @@ type Post_Doc_Values = {
   image_small?: Maybe<Scalars['String']>;
   accolades?: Maybe<Post_Accolades_Values>;
   author?: Maybe<Scalars['Reference']>;
-  preface?: Maybe<LongTextInitialValue>;
-  _body?: Maybe<LongTextInitialValue>;
+  preface?: Maybe<Scalars['String']>;
+  _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
 
@@ -324,14 +311,6 @@ type Post_Accolades_Input = {
   description?: Maybe<Scalars['String']>;
 };
 
-type Post_Preface_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
-type Body_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 type Post_Doc_Input = {
   title?: Maybe<Scalars['String']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -339,8 +318,8 @@ type Post_Doc_Input = {
   image_small?: Maybe<Scalars['String']>;
   accolades?: Maybe<Post_Accolades_Input>;
   author?: Maybe<Scalars['String']>;
-  preface?: Maybe<Post_Preface_LongTextInput>;
-  _body?: Maybe<Body_LongTextInput>;
+  preface?: Maybe<Scalars['String']>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 type Pages_Data = Page_Doc_Data;
@@ -371,13 +350,13 @@ type Page_Seo_Data = {
 
 type LayerTeam_Data = {
   __typename?: 'LayerTeam_Data';
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   members?: Maybe<Array<Maybe<Authors_Document>>>;
 };
 
 type LayerPostList_Data = {
   __typename?: 'LayerPostList_Data';
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   posts?: Maybe<Array<Maybe<Posts_Document>>>;
 };
 
@@ -391,7 +370,7 @@ type LayerDarkFeature_Data = {
   __typename?: 'LayerDarkFeature_Data';
   hint?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   feature_list?: Maybe<Array<Maybe<LayerDarkFeature_FeatureList_Data>>>;
 };
 
@@ -415,13 +394,13 @@ type LayerSponsors_Data = {
 
 type CuratedCollection_Data = {
   __typename?: 'CuratedCollection_Data';
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   posts_collection?: Maybe<Array<Maybe<Posts_Document>>>;
 };
 
 type LayerCta_Data = {
   __typename?: 'LayerCta_Data';
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   cta_text?: Maybe<Scalars['String']>;
   cta_link?: Maybe<Scalars['String']>;
   cta_image?: Maybe<Scalars['String']>;
@@ -434,7 +413,7 @@ type Page_Doc_Data = {
   title?: Maybe<Scalars['String']>;
   seo?: Maybe<Page_Seo_Data>;
   layers?: Maybe<Array<Maybe<Page_Layers_Data>>>;
-  _body?: Maybe<LongTextValue>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 type Page_Seo_Values = {
@@ -446,14 +425,14 @@ type Page_Seo_Values = {
 
 type LayerTeam_Values = {
   __typename?: 'LayerTeam_Values';
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   members?: Maybe<Array<Maybe<Scalars['String']>>>;
   _template?: Maybe<Scalars['String']>;
 };
 
 type LayerPostList_Values = {
   __typename?: 'LayerPostList_Values';
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   posts?: Maybe<Array<Maybe<Scalars['String']>>>;
   _template?: Maybe<Scalars['String']>;
 };
@@ -468,7 +447,7 @@ type LayerDarkFeature_Values = {
   __typename?: 'LayerDarkFeature_Values';
   hint?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   feature_list?: Maybe<Array<Maybe<LayerDarkFeature_FeatureList_Values>>>;
   _template?: Maybe<Scalars['String']>;
 };
@@ -495,14 +474,14 @@ type LayerSponsors_Values = {
 
 type CuratedCollection_Values = {
   __typename?: 'CuratedCollection_Values';
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   posts_collection?: Maybe<Array<Maybe<Scalars['String']>>>;
   _template?: Maybe<Scalars['String']>;
 };
 
 type LayerCta_Values = {
   __typename?: 'LayerCta_Values';
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   cta_text?: Maybe<Scalars['String']>;
   cta_link?: Maybe<Scalars['String']>;
   cta_image?: Maybe<Scalars['String']>;
@@ -516,7 +495,7 @@ type Page_Doc_Values = {
   title?: Maybe<Scalars['String']>;
   seo?: Maybe<Page_Seo_Values>;
   layers?: Maybe<Array<Maybe<Page_Layers_Values>>>;
-  _body?: Maybe<LongTextInitialValue>;
+  _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
 
@@ -658,26 +637,14 @@ type Page_Seo_Input = {
   image?: Maybe<Scalars['String']>;
 };
 
-type LayerTeam_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 type LayerTeam_Input = {
-  description?: Maybe<LayerTeam_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   members?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-type LayerPostList_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 type LayerPostList_Input = {
-  description?: Maybe<LayerPostList_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   posts?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-type LayerDarkFeature_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
 };
 
 type LayerDarkFeature_FeatureList_Input = {
@@ -688,7 +655,7 @@ type LayerDarkFeature_FeatureList_Input = {
 type LayerDarkFeature_Input = {
   hint?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<LayerDarkFeature_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   feature_list?: Maybe<Array<Maybe<LayerDarkFeature_FeatureList_Input>>>;
 };
 
@@ -707,21 +674,13 @@ type LayerSponsors_Input = {
   sponsors?: Maybe<Array<Maybe<LayerSponsors_Sponsors_Input>>>;
 };
 
-type CuratedCollection_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 type CuratedCollection_Input = {
-  description?: Maybe<CuratedCollection_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   posts_collection?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-type LayerCta_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 type LayerCta_Input = {
-  description?: Maybe<LayerCta_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   cta_text?: Maybe<Scalars['String']>;
   cta_link?: Maybe<Scalars['String']>;
   cta_image?: Maybe<Scalars['String']>;
@@ -741,18 +700,18 @@ type Page_Doc_Input = {
   title?: Maybe<Scalars['String']>;
   seo?: Maybe<Page_Seo_Input>;
   layers?: Maybe<Array<Maybe<Layers_Input>>>;
-  _body?: Maybe<Body_LongTextInput>;
+  _body?: Maybe<Scalars['String']>;
 };
 
-type Forms_Data = JenCoaching_Doc_Data;
+type Forms_Data = JenCcoaching_Doc_Data;
 
 type Forms_Input = {
-  jenCoaching?: Maybe<JenCoaching_Doc_Input>;
+  jenCcoaching?: Maybe<JenCcoaching_Doc_Input>;
 };
 
-type Forms_Values = JenCoaching_Doc_Values;
+type Forms_Values = JenCcoaching_Doc_Values;
 
-type Forms_Form = JenCoaching_Doc_Form;
+type Forms_Form = JenCcoaching_Doc_Form;
 
 type Forms_Document = Node & Document & {
   __typename?: 'Forms_Document';
@@ -836,14 +795,14 @@ type FieldWeekCheckbox_Data = {
   name?: Maybe<Scalars['String']>;
 };
 
-type JenCoaching_Fields_Data = FieldBoolean_Data | FieldText_Data | FieldTextarea_Data | FieldCheckbox_Data | FieldRadio_Data | FieldGroupText_Data | FieldWeekCheckbox_Data;
+type JenCcoaching_Fields_Data = FieldBoolean_Data | FieldText_Data | FieldTextarea_Data | FieldCheckbox_Data | FieldRadio_Data | FieldGroupText_Data | FieldWeekCheckbox_Data;
 
-type JenCoaching_Doc_Data = {
-  __typename?: 'JenCoaching_Doc_Data';
+type JenCcoaching_Doc_Data = {
+  __typename?: 'JenCcoaching_Doc_Data';
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextValue>;
-  fields?: Maybe<Array<Maybe<JenCoaching_Fields_Data>>>;
-  _body?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<JenCcoaching_Fields_Data>>>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 type FieldBoolean_Values = {
@@ -926,14 +885,14 @@ type FieldWeekCheckbox_Values = {
   _template?: Maybe<Scalars['String']>;
 };
 
-type JenCoaching_Fields_Values = FieldBoolean_Values | FieldText_Values | FieldTextarea_Values | FieldCheckbox_Values | FieldRadio_Values | FieldGroupText_Values | FieldWeekCheckbox_Values;
+type JenCcoaching_Fields_Values = FieldBoolean_Values | FieldText_Values | FieldTextarea_Values | FieldCheckbox_Values | FieldRadio_Values | FieldGroupText_Values | FieldWeekCheckbox_Values;
 
-type JenCoaching_Doc_Values = {
-  __typename?: 'JenCoaching_Doc_Values';
+type JenCcoaching_Doc_Values = {
+  __typename?: 'JenCcoaching_Doc_Values';
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextInitialValue>;
-  fields?: Maybe<Array<Maybe<JenCoaching_Fields_Values>>>;
-  _body?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<JenCcoaching_Fields_Values>>>;
+  _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
 
@@ -1033,8 +992,8 @@ type FieldWeekCheckbox_Form = {
   fields?: Maybe<Array<Maybe<FieldWeekCheckbox_FormFieldsUnion>>>;
 };
 
-type JenCoaching_Fields_BlocksFieldTemplates = {
-  __typename?: 'JenCoaching_Fields_BlocksFieldTemplates';
+type JenCcoaching_Fields_BlocksFieldTemplates = {
+  __typename?: 'JenCcoaching_Fields_BlocksFieldTemplates';
   fieldBoolean?: Maybe<FieldBoolean_Form>;
   fieldText?: Maybe<FieldText_Form>;
   fieldTextarea?: Maybe<FieldTextarea_Form>;
@@ -1044,25 +1003,21 @@ type JenCoaching_Fields_BlocksFieldTemplates = {
   fieldWeekCheckbox?: Maybe<FieldWeekCheckbox_Form>;
 };
 
-type JenCoaching_Fields_BlocksField = FormField & {
-  __typename?: 'JenCoaching_Fields_BlocksField';
+type JenCcoaching_Fields_BlocksField = FormField & {
+  __typename?: 'JenCcoaching_Fields_BlocksField';
   name?: Maybe<Scalars['String']>;
   label?: Maybe<Scalars['String']>;
   component?: Maybe<Scalars['String']>;
-  templates?: Maybe<JenCoaching_Fields_BlocksFieldTemplates>;
+  templates?: Maybe<JenCcoaching_Fields_BlocksFieldTemplates>;
 };
 
-type JenCoaching_Doc_FormFieldsUnion = TextField | TextareaField | JenCoaching_Fields_BlocksField;
+type JenCcoaching_Doc_FormFieldsUnion = TextField | TextareaField | JenCcoaching_Fields_BlocksField;
 
-type JenCoaching_Doc_Form = {
-  __typename?: 'JenCoaching_Doc_Form';
+type JenCcoaching_Doc_Form = {
+  __typename?: 'JenCcoaching_Doc_Form';
   label?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
-  fields?: Maybe<Array<Maybe<JenCoaching_Doc_FormFieldsUnion>>>;
-};
-
-type JenCoaching_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<JenCcoaching_Doc_FormFieldsUnion>>>;
 };
 
 type FieldBoolean_Input = {
@@ -1131,11 +1086,11 @@ type FieldWeekCheckbox_Input = {
   name?: Maybe<Scalars['String']>;
 };
 
-type JenCoaching_Doc_Input = {
+type JenCcoaching_Doc_Input = {
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<JenCoaching_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   fields?: Maybe<Array<Maybe<Fields_Input>>>;
-  _body?: Maybe<Body_LongTextInput>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 type Curated_Data = Curated_Doc_Data;
@@ -1159,7 +1114,7 @@ type Curated_Document = Node & Document & {
 
 type CuratedHero_Data = {
   __typename?: 'CuratedHero_Data';
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   hero_post?: Maybe<Posts_Document>;
 };
 
@@ -1169,12 +1124,12 @@ type Curated_Doc_Data = {
   __typename?: 'Curated_Doc_Data';
   title?: Maybe<Scalars['String']>;
   curations?: Maybe<Array<Maybe<Curated_Curations_Data>>>;
-  _body?: Maybe<LongTextValue>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 type CuratedHero_Values = {
   __typename?: 'CuratedHero_Values';
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   hero_post?: Maybe<Scalars['Reference']>;
   _template?: Maybe<Scalars['String']>;
 };
@@ -1185,7 +1140,7 @@ type Curated_Doc_Values = {
   __typename?: 'Curated_Doc_Values';
   title?: Maybe<Scalars['String']>;
   curations?: Maybe<Array<Maybe<Curated_Curations_Values>>>;
-  _body?: Maybe<LongTextInitialValue>;
+  _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
 
@@ -1221,12 +1176,8 @@ type Curated_Doc_Form = {
   fields?: Maybe<Array<Maybe<Curated_Doc_FormFieldsUnion>>>;
 };
 
-type CuratedHero_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 type CuratedHero_Input = {
-  description?: Maybe<CuratedHero_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   hero_post?: Maybe<Scalars['String']>;
 };
 
@@ -1238,7 +1189,7 @@ type Curations_Input = {
 type Curated_Doc_Input = {
   title?: Maybe<Scalars['String']>;
   curations?: Maybe<Array<Maybe<Curations_Input>>>;
-  _body?: Maybe<Body_LongTextInput>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 type Authors_Data = Author_Doc_Data | Athlete_Doc_Data;
@@ -1270,7 +1221,7 @@ type Author_Accolades_Data = {
 type Author_Ebook_Data = {
   __typename?: 'Author_Ebook_Data';
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   link?: Maybe<Scalars['String']>;
   link_text?: Maybe<Scalars['String']>;
   image?: Maybe<Scalars['String']>;
@@ -1279,7 +1230,7 @@ type Author_Ebook_Data = {
 type Author_Doc_Data = {
   __typename?: 'Author_Doc_Data';
   name?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   role?: Maybe<Scalars['String']>;
   accolades?: Maybe<Array<Maybe<Author_Accolades_Data>>>;
   image?: Maybe<Scalars['String']>;
@@ -1288,7 +1239,7 @@ type Author_Doc_Data = {
   form?: Maybe<Forms_Document>;
   posts_collection?: Maybe<Array<Maybe<Posts_Document>>>;
   ebook?: Maybe<Author_Ebook_Data>;
-  _body?: Maybe<LongTextValue>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 type Author_Accolades_Values = {
@@ -1300,7 +1251,7 @@ type Author_Accolades_Values = {
 type Author_Ebook_Values = {
   __typename?: 'Author_Ebook_Values';
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   link?: Maybe<Scalars['String']>;
   link_text?: Maybe<Scalars['String']>;
   image?: Maybe<Scalars['String']>;
@@ -1309,7 +1260,7 @@ type Author_Ebook_Values = {
 type Author_Doc_Values = {
   __typename?: 'Author_Doc_Values';
   name?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   role?: Maybe<Scalars['Reference']>;
   accolades?: Maybe<Array<Maybe<Author_Accolades_Values>>>;
   image?: Maybe<Scalars['String']>;
@@ -1318,7 +1269,7 @@ type Author_Doc_Values = {
   form?: Maybe<Scalars['Reference']>;
   posts_collection?: Maybe<Array<Maybe<Scalars['String']>>>;
   ebook?: Maybe<Author_Ebook_Values>;
-  _body?: Maybe<LongTextInitialValue>;
+  _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
 
@@ -1351,22 +1302,14 @@ type Author_Doc_Form = {
   fields?: Maybe<Array<Maybe<Author_Doc_FormFieldsUnion>>>;
 };
 
-type Author_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 type Author_Accolades_Input = {
   figure?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
 };
 
-type Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 type Author_Ebook_Input = {
   title?: Maybe<Scalars['String']>;
-  description?: Maybe<Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   link?: Maybe<Scalars['String']>;
   link_text?: Maybe<Scalars['String']>;
   image?: Maybe<Scalars['String']>;
@@ -1374,7 +1317,7 @@ type Author_Ebook_Input = {
 
 type Author_Doc_Input = {
   name?: Maybe<Scalars['String']>;
-  description?: Maybe<Author_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   role?: Maybe<Scalars['String']>;
   accolades?: Maybe<Array<Maybe<Author_Accolades_Input>>>;
   image?: Maybe<Scalars['String']>;
@@ -1383,7 +1326,7 @@ type Author_Doc_Input = {
   form?: Maybe<Scalars['String']>;
   posts_collection?: Maybe<Array<Maybe<Scalars['String']>>>;
   ebook?: Maybe<Author_Ebook_Input>;
-  _body?: Maybe<Body_LongTextInput>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 type Athlete_PersonalBests_Data = {
@@ -1407,13 +1350,13 @@ type Athlete_SocialMedia_Data = {
 type Athlete_Doc_Data = {
   __typename?: 'Athlete_Doc_Data';
   name?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextValue>;
+  description?: Maybe<Scalars['String']>;
   country?: Maybe<Scalars['String']>;
   personal_bests?: Maybe<Array<Maybe<Athlete_PersonalBests_Data>>>;
   accolades?: Maybe<Array<Maybe<Athlete_Accolades_Data>>>;
   social_media?: Maybe<Array<Maybe<Athlete_SocialMedia_Data>>>;
   image?: Maybe<Scalars['String']>;
-  _body?: Maybe<LongTextValue>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 type Athlete_PersonalBests_Values = {
@@ -1437,13 +1380,13 @@ type Athlete_SocialMedia_Values = {
 type Athlete_Doc_Values = {
   __typename?: 'Athlete_Doc_Values';
   name?: Maybe<Scalars['String']>;
-  description?: Maybe<LongTextInitialValue>;
+  description?: Maybe<Scalars['String']>;
   country?: Maybe<Scalars['String']>;
   personal_bests?: Maybe<Array<Maybe<Athlete_PersonalBests_Values>>>;
   accolades?: Maybe<Array<Maybe<Athlete_Accolades_Values>>>;
   social_media?: Maybe<Array<Maybe<Athlete_SocialMedia_Values>>>;
   image?: Maybe<Scalars['String']>;
-  _body?: Maybe<LongTextInitialValue>;
+  _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
 
@@ -1486,10 +1429,6 @@ type Athlete_Doc_Form = {
   fields?: Maybe<Array<Maybe<Athlete_Doc_FormFieldsUnion>>>;
 };
 
-type Athlete_Description_LongTextInput = {
-  raw?: Maybe<Scalars['String']>;
-};
-
 type Athlete_PersonalBests_Input = {
   event?: Maybe<Scalars['String']>;
   time?: Maybe<Scalars['String']>;
@@ -1507,13 +1446,13 @@ type Athlete_SocialMedia_Input = {
 
 type Athlete_Doc_Input = {
   name?: Maybe<Scalars['String']>;
-  description?: Maybe<Athlete_Description_LongTextInput>;
+  description?: Maybe<Scalars['String']>;
   country?: Maybe<Scalars['String']>;
   personal_bests?: Maybe<Array<Maybe<Athlete_PersonalBests_Input>>>;
   accolades?: Maybe<Array<Maybe<Athlete_Accolades_Input>>>;
   social_media?: Maybe<Array<Maybe<Athlete_SocialMedia_Input>>>;
   image?: Maybe<Scalars['String']>;
-  _body?: Maybe<Body_LongTextInput>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 type Nav_Data = Nav_Doc_Data;
@@ -1582,8 +1521,8 @@ type Nav_Items_Data = NavItemPopout_Data | NavItemMore_Data | NavItemLink_Data;
 type Nav_Doc_Data = {
   __typename?: 'Nav_Doc_Data';
   items?: Maybe<Array<Maybe<Nav_Items_Data>>>;
-  show_auth?: Maybe<Scalars['String']>;
-  _body?: Maybe<LongTextValue>;
+  show_auth?: Maybe<Scalars['Boolean']>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 type NavItemPopout_Children_Values = {
@@ -1636,8 +1575,8 @@ type Nav_Items_Values = NavItemPopout_Values | NavItemMore_Values | NavItemLink_
 type Nav_Doc_Values = {
   __typename?: 'Nav_Doc_Values';
   items?: Maybe<Array<Maybe<Nav_Items_Values>>>;
-  show_auth?: Maybe<Scalars['String']>;
-  _body?: Maybe<LongTextInitialValue>;
+  show_auth?: Maybe<Scalars['Boolean']>;
+  _body?: Maybe<Scalars['String']>;
   _template?: Maybe<Scalars['String']>;
 };
 
@@ -1773,36 +1712,35 @@ type Items_Input = {
 
 type Nav_Doc_Input = {
   items?: Maybe<Array<Maybe<Items_Input>>>;
-  show_auth?: Maybe<Scalars['String']>;
-  _body?: Maybe<Body_LongTextInput>;
+  show_auth?: Maybe<Scalars['Boolean']>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type AuthorSnippetFragment = { sys?: Maybe<Pick<SystemInfo, 'filename'>>, data?: Maybe<Pick<Author_Doc_Data, 'image' | 'name'> | Pick<Athlete_Doc_Data, 'image' | 'name'>> };
+
+export type AuthorSnippetNavFragment = { sys?: Maybe<Pick<SystemInfo, 'filename'>>, data?: Maybe<Pick<Author_Doc_Data, 'image' | 'name'> | Pick<Athlete_Doc_Data, 'image' | 'name'>> };
 
 export type BaseAuthorFragment = (
   { __typename: 'Authors_Document' }
   & Pick<Authors_Document, 'id'>
   & { sys?: Maybe<(
     Pick<SystemInfo, 'filename'>
-    & { section?: Maybe<Pick<Section, 'slug'>> }
+    & { collection?: Maybe<Pick<Section, 'slug'>> }
   )>, data?: Maybe<(
     { __typename: 'Author_Doc_Data' }
-    & Pick<Author_Doc_Data, 'name' | 'role' | 'image'>
-    & { accolades?: Maybe<Array<Maybe<Pick<Author_Accolades_Data, 'figure' | 'description'>>>>, description?: Maybe<Pick<LongTextValue, 'markdownAst'>>, _body?: Maybe<Pick<LongTextValue, 'raw' | 'markdownAst'>>, ebook?: Maybe<(
-      Pick<Author_Ebook_Data, 'title' | 'link' | 'link_text' | 'image'>
-      & { description?: Maybe<Pick<LongTextValue, 'markdownAst'>> }
-    )> }
+    & Pick<Author_Doc_Data, 'name' | 'description' | 'role' | 'image' | '_body'>
+    & { accolades?: Maybe<Array<Maybe<Pick<Author_Accolades_Data, 'figure' | 'description'>>>>, ebook?: Maybe<Pick<Author_Ebook_Data, 'title' | 'description' | 'link' | 'link_text' | 'image'>> }
   ) | (
     { __typename: 'Athlete_Doc_Data' }
-    & Pick<Athlete_Doc_Data, 'name' | 'country' | 'image'>
-    & { social_media?: Maybe<Array<Maybe<Pick<Athlete_SocialMedia_Data, 'source' | 'handle'>>>>, personal_bests?: Maybe<Array<Maybe<Pick<Athlete_PersonalBests_Data, 'event' | 'time'>>>>, _body?: Maybe<Pick<LongTextValue, 'markdownAst'>> }
+    & Pick<Athlete_Doc_Data, 'name' | 'country' | 'image' | '_body'>
+    & { social_media?: Maybe<Array<Maybe<Pick<Athlete_SocialMedia_Data, 'source' | 'handle'>>>>, personal_bests?: Maybe<Array<Maybe<Pick<Athlete_PersonalBests_Data, 'event' | 'time'>>>> }
   )> }
 );
 
 export type ThumbnailPostFragment = { sys?: Maybe<Pick<SystemInfo, 'filename'>>, data?: Maybe<(
     { __typename: 'Post_Doc_Data' }
-    & Pick<Post_Doc_Data, 'title' | 'tags' | 'image'>
-    & { preface?: Maybe<Pick<LongTextValue, 'markdownAst'>>, author?: Maybe<{ sys?: Maybe<Pick<SystemInfo, 'filename'>>, data?: Maybe<(
+    & Pick<Post_Doc_Data, 'title' | 'tags' | 'image' | 'preface'>
+    & { author?: Maybe<{ sys?: Maybe<Pick<SystemInfo, 'filename'>>, data?: Maybe<(
         { __typename: 'Author_Doc_Data' }
         & Pick<Author_Doc_Data, 'name' | 'image'>
       ) | (
@@ -1818,13 +1756,13 @@ export type MemberQueryVariables = Exact<{
 
 export type MemberQuery = { getNavDocument?: Maybe<NavFragment>, getAuthorsDocument?: Maybe<{ sys?: Maybe<(
       Pick<SystemInfo, 'filename'>
-      & { section?: Maybe<Pick<Section, 'slug'>> }
+      & { collection?: Maybe<Pick<Section, 'slug'>> }
     )>, data?: Maybe<(
       { __typename: 'Author_Doc_Data' }
-      & Pick<Author_Doc_Data, 'name' | 'role' | 'image' | 'story_image' | 'bio_image'>
-      & { accolades?: Maybe<Array<Maybe<Pick<Author_Accolades_Data, 'figure' | 'description'>>>>, description?: Maybe<Pick<LongTextValue, 'markdownAst'>>, posts_collection?: Maybe<Array<Maybe<ThumbnailPostFragment>>>, form?: Maybe<{ data?: Maybe<(
-          Pick<JenCoaching_Doc_Data, 'title'>
-          & { description?: Maybe<Pick<LongTextValue, 'markdownAst'>>, fields?: Maybe<Array<Maybe<(
+      & Pick<Author_Doc_Data, 'name' | 'description' | 'role' | 'image' | 'story_image' | 'bio_image' | '_body'>
+      & { accolades?: Maybe<Array<Maybe<Pick<Author_Accolades_Data, 'figure' | 'description'>>>>, posts_collection?: Maybe<Array<Maybe<ThumbnailPostFragment>>>, form?: Maybe<{ data?: Maybe<(
+          Pick<JenCcoaching_Doc_Data, 'title' | 'description'>
+          & { fields?: Maybe<Array<Maybe<(
             { __typename: 'FieldBoolean_Data' }
             & Pick<FieldBoolean_Data, 'label' | 'subLabel' | 'name'>
           ) | (
@@ -1852,10 +1790,7 @@ export type MemberQuery = { getNavDocument?: Maybe<NavFragment>, getAuthorsDocum
             { __typename: 'FieldWeekCheckbox_Data' }
             & Pick<FieldWeekCheckbox_Data, 'label' | 'subLabel' | 'name'>
           )>>> }
-        )> }>, _body?: Maybe<Pick<LongTextValue, 'raw' | 'markdownAst'>>, ebook?: Maybe<(
-        Pick<Author_Ebook_Data, 'title' | 'link' | 'link_text' | 'image'>
-        & { description?: Maybe<Pick<LongTextValue, 'markdownAst'>> }
-      )> }
+        )> }>, ebook?: Maybe<Pick<Author_Ebook_Data, 'title' | 'description' | 'link' | 'link_text' | 'image'>> }
     ) | (
       { __typename: 'Athlete_Doc_Data' }
       & Pick<Athlete_Doc_Data, 'name'>
@@ -1870,14 +1805,15 @@ export type BaseAuthorListQuery = { getNavDocument?: Maybe<NavFragment>, page?: 
       { __typename: 'Page_Doc_Data' }
       & { seo?: Maybe<Pick<Page_Seo_Data, 'title' | 'description' | 'image'>>, layers?: Maybe<Array<Maybe<{ __typename: 'LayerTeam_Data' } | (
         { __typename: 'LayerPostList_Data' }
-        & { description?: Maybe<Pick<LongTextValue, 'markdownAst'>>, posts?: Maybe<Array<Maybe<{ data?: Maybe<(
-            Pick<Post_Doc_Data, 'title' | 'tags' | 'image' | 'image_small'>
-            & { preface?: Maybe<Pick<LongTextValue, 'markdownAst'>>, author?: Maybe<BaseAuthorFragment> }
+        & Pick<LayerPostList_Data, 'description'>
+        & { posts?: Maybe<Array<Maybe<{ data?: Maybe<(
+            Pick<Post_Doc_Data, 'title' | 'tags' | 'preface' | 'image' | 'image_small'>
+            & { author?: Maybe<BaseAuthorFragment> }
           )> }>>> }
       ) | (
         { __typename: 'LayerDarkFeature_Data' }
-        & Pick<LayerDarkFeature_Data, 'hint' | 'title'>
-        & { description?: Maybe<Pick<LongTextValue, 'markdownAst'>>, feature_list?: Maybe<Array<Maybe<Pick<LayerDarkFeature_FeatureList_Data, 'header' | 'description'>>>> }
+        & Pick<LayerDarkFeature_Data, 'hint' | 'title' | 'description'>
+        & { feature_list?: Maybe<Array<Maybe<Pick<LayerDarkFeature_FeatureList_Data, 'header' | 'description'>>>> }
       ) | (
         { __typename: 'LayerLeadership_Data' }
         & Pick<LayerLeadership_Data, 'title'>
@@ -1891,8 +1827,7 @@ export type BaseAuthorListQuery = { getNavDocument?: Maybe<NavFragment>, page?: 
         & CuratedCollectionFragment
       ) | (
         { __typename: 'LayerCta_Data' }
-        & Pick<LayerCta_Data, 'cta_text' | 'cta_link' | 'cta_image'>
-        & { description?: Maybe<Pick<LongTextValue, 'markdownAst'>> }
+        & Pick<LayerCta_Data, 'description' | 'cta_text' | 'cta_link' | 'cta_image'>
       )>>> }
     )> }
   )>, terrence?: Maybe<BaseAuthorFragment>, jen?: Maybe<BaseAuthorFragment>, christian?: Maybe<BaseAuthorFragment>, chris?: Maybe<BaseAuthorFragment>, emily?: Maybe<BaseAuthorFragment>, eric?: Maybe<BaseAuthorFragment>, heidi?: Maybe<BaseAuthorFragment>, nicole?: Maybe<BaseAuthorFragment>, sarah?: Maybe<BaseAuthorFragment> };
@@ -1908,12 +1843,12 @@ export type NavItemMoreFragment = (
   Pick<NavItemMore_Data, 'label'>
   & { featured_post?: Maybe<{ sys?: Maybe<Pick<SystemInfo, 'path' | 'breadcrumbs'>>, data?: Maybe<(
       { __typename: 'Post_Doc_Data' }
-      & Pick<Post_Doc_Data, 'image' | 'title'>
-      & { preface?: Maybe<Pick<LongTextValue, 'raw'>>, author?: Maybe<{ sys?: Maybe<Pick<SystemInfo, 'filename'>>, data?: Maybe<Pick<Author_Doc_Data, 'image' | 'name'> | Pick<Athlete_Doc_Data, 'image' | 'name'>> }> }
+      & Pick<Post_Doc_Data, 'image' | 'title' | 'preface'>
+      & { author?: Maybe<{ sys?: Maybe<Pick<SystemInfo, 'filename'>>, data?: Maybe<Pick<Author_Doc_Data, 'image' | 'name'> | Pick<Athlete_Doc_Data, 'image' | 'name'>> }> }
     )> }>, read_more?: Maybe<Pick<NavItemMore_ReadMore_Data, 'label' | 'value'>>, from_the_blog?: Maybe<Array<Maybe<{ sys?: Maybe<Pick<SystemInfo, 'path' | 'breadcrumbs'>>, data?: Maybe<(
       { __typename: 'Post_Doc_Data' }
-      & Pick<Post_Doc_Data, 'title' | 'image'>
-      & { preface?: Maybe<Pick<LongTextValue, 'raw'>>, author?: Maybe<AuthorSnippetFragment> }
+      & Pick<Post_Doc_Data, 'title' | 'image' | 'preface'>
+      & { author?: Maybe<AuthorSnippetNavFragment> }
     )> }>>> }
 );
 
@@ -1947,30 +1882,30 @@ export type PostQueryQuery = { getNavDocument?: Maybe<NavFragment>, getPostsDocu
     Pick<Posts_Document, 'id'>
     & { data?: Maybe<(
       { __typename: 'Post_Doc_Data' }
-      & Pick<Post_Doc_Data, 'title' | 'tags' | 'image'>
-      & { accolades?: Maybe<Pick<Post_Accolades_Data, 'figure' | 'description'>>, preface?: Maybe<Pick<LongTextValue, 'markdownAst'>>, _body?: Maybe<Pick<LongTextValue, 'markdownAst'>>, author?: Maybe<AuthorSnippetFragment> }
+      & Pick<Post_Doc_Data, 'title' | 'tags' | 'image' | 'preface' | '_body'>
+      & { accolades?: Maybe<Pick<Post_Accolades_Data, 'figure' | 'description'>>, author?: Maybe<AuthorSnippetFragment> }
     )> }
   )> };
 
-export type CuratedCollectionFragment = { description?: Maybe<Pick<LongTextValue, 'markdownAst'>>, posts_collection?: Maybe<Array<Maybe<{ sys?: Maybe<(
+export type CuratedCollectionFragment = (
+  Pick<CuratedCollection_Data, 'description'>
+  & { posts_collection?: Maybe<Array<Maybe<{ sys?: Maybe<(
       Pick<SystemInfo, 'breadcrumbs'>
-      & { section?: Maybe<Pick<Section, 'path' | 'slug'>> }
+      & { collection?: Maybe<Pick<Section, 'path' | 'slug'>> }
     )>, data?: Maybe<(
-      Pick<Post_Doc_Data, 'title' | 'image'>
-      & { preface?: Maybe<Pick<LongTextValue, 'markdownAst'>>, _body?: Maybe<Pick<LongTextValue, 'markdownAst'>>, author?: Maybe<{ sys?: Maybe<Pick<SystemInfo, 'filename' | 'breadcrumbs'>>, data?: Maybe<Pick<Author_Doc_Data, 'name' | 'image'> | Pick<Athlete_Doc_Data, 'name' | 'image'>> }> }
-    )> }>>> };
+      Pick<Post_Doc_Data, 'title' | 'image' | 'preface' | '_body'>
+      & { author?: Maybe<{ sys?: Maybe<Pick<SystemInfo, 'filename' | 'breadcrumbs'>>, data?: Maybe<Pick<Author_Doc_Data, 'name' | 'image'> | Pick<Athlete_Doc_Data, 'name' | 'image'>> }> }
+    )> }>>> }
+);
 
 export type CuratedDocDataFragment = { curations?: Maybe<Array<Maybe<(
     { __typename: 'CuratedHero_Data' }
     & { hero_post?: Maybe<{ sys?: Maybe<(
         Pick<SystemInfo, 'breadcrumbs'>
-        & { section?: Maybe<Pick<Section, 'path' | 'slug'>> }
+        & { collection?: Maybe<Pick<Section, 'path' | 'slug'>> }
       )>, data?: Maybe<(
-        Pick<Post_Doc_Data, 'title' | 'image'>
-        & { preface?: Maybe<Pick<LongTextValue, 'markdownAst'>>, _body?: Maybe<Pick<LongTextValue, 'markdownAst'>>, author?: Maybe<{ sys?: Maybe<Pick<SystemInfo, 'breadcrumbs' | 'filename'>>, data?: Maybe<(
-            Pick<Author_Doc_Data, 'name' | 'image'>
-            & { description?: Maybe<Pick<LongTextValue, 'markdownAst'>> }
-          )> }> }
+        Pick<Post_Doc_Data, 'title' | 'image' | 'preface' | '_body'>
+        & { author?: Maybe<{ sys?: Maybe<Pick<SystemInfo, 'breadcrumbs' | 'filename'>>, data?: Maybe<Pick<Author_Doc_Data, 'name' | 'image' | 'description'>> }> }
       )> }> }
   ) | (
     { __typename: 'CuratedCollection_Data' }
@@ -1987,7 +1922,7 @@ export type CuratedPostsQuery = { getNavDocument?: Maybe<NavFragment>, getCurate
 export type StaticPostsPathsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type StaticPostsPathsQuery = { getSection?: Maybe<(
+export type StaticPostsPathsQuery = { getCollection?: Maybe<(
     Pick<Section, 'type'>
     & { documents?: Maybe<Array<Maybe<(
       Pick<Posts_Document, 'id'>
@@ -2000,18 +1935,15 @@ export type AuthorFragmentFragment = (
   & Pick<Authors_Document, 'id'>
   & { sys?: Maybe<(
     Pick<SystemInfo, 'filename'>
-    & { section?: Maybe<Pick<Section, 'slug'>> }
+    & { collection?: Maybe<Pick<Section, 'slug'>> }
   )>, data?: Maybe<(
     { __typename: 'Author_Doc_Data' }
-    & Pick<Author_Doc_Data, 'name' | 'role' | 'image'>
-    & { accolades?: Maybe<Array<Maybe<Pick<Author_Accolades_Data, 'figure' | 'description'>>>>, description?: Maybe<Pick<LongTextValue, 'markdownAst'>>, _body?: Maybe<Pick<LongTextValue, 'raw' | 'markdownAst'>>, ebook?: Maybe<(
-      Pick<Author_Ebook_Data, 'title' | 'link' | 'link_text' | 'image'>
-      & { description?: Maybe<Pick<LongTextValue, 'markdownAst'>> }
-    )> }
+    & Pick<Author_Doc_Data, 'name' | 'description' | 'role' | 'image' | '_body'>
+    & { accolades?: Maybe<Array<Maybe<Pick<Author_Accolades_Data, 'figure' | 'description'>>>>, ebook?: Maybe<Pick<Author_Ebook_Data, 'title' | 'description' | 'link' | 'link_text' | 'image'>> }
   ) | (
     { __typename: 'Athlete_Doc_Data' }
-    & Pick<Athlete_Doc_Data, 'name' | 'country' | 'image'>
-    & { social_media?: Maybe<Array<Maybe<Pick<Athlete_SocialMedia_Data, 'source' | 'handle'>>>>, personal_bests?: Maybe<Array<Maybe<Pick<Athlete_PersonalBests_Data, 'event' | 'time'>>>>, _body?: Maybe<Pick<LongTextValue, 'markdownAst'>> }
+    & Pick<Athlete_Doc_Data, 'name' | 'country' | 'image' | '_body'>
+    & { social_media?: Maybe<Array<Maybe<Pick<Athlete_SocialMedia_Data, 'source' | 'handle'>>>>, personal_bests?: Maybe<Array<Maybe<Pick<Athlete_PersonalBests_Data, 'event' | 'time'>>>> }
   )> }
 );
 
@@ -2026,25 +1958,43 @@ export type AuthorListQuery = { getNavDocument?: Maybe<NavFragment>, page?: Mayb
       { __typename: 'Page_Doc_Data' }
       & { layers?: Maybe<Array<Maybe<{ __typename: 'LayerTeam_Data' } | (
         { __typename: 'LayerPostList_Data' }
-        & { description?: Maybe<Pick<LongTextValue, 'markdownAst'>>, posts?: Maybe<Array<Maybe<{ data?: Maybe<(
-            Pick<Post_Doc_Data, 'title' | 'tags' | 'image' | 'image_small'>
-            & { preface?: Maybe<Pick<LongTextValue, 'markdownAst'>>, author?: Maybe<AuthorFragmentFragment> }
+        & Pick<LayerPostList_Data, 'description'>
+        & { posts?: Maybe<Array<Maybe<{ data?: Maybe<(
+            Pick<Post_Doc_Data, 'title' | 'tags' | 'preface' | 'image' | 'image_small'>
+            & { author?: Maybe<AuthorFragmentFragment> }
           )> }>>> }
       ) | (
         { __typename: 'LayerDarkFeature_Data' }
-        & Pick<LayerDarkFeature_Data, 'hint' | 'title'>
-        & { description?: Maybe<Pick<LongTextValue, 'markdownAst'>>, feature_list?: Maybe<Array<Maybe<Pick<LayerDarkFeature_FeatureList_Data, 'header' | 'description'>>>> }
+        & Pick<LayerDarkFeature_Data, 'hint' | 'title' | 'description'>
+        & { feature_list?: Maybe<Array<Maybe<Pick<LayerDarkFeature_FeatureList_Data, 'header' | 'description'>>>> }
       ) | { __typename: 'LayerLeadership_Data' } | { __typename: 'LayerSponsors_Data' } | { __typename: 'CuratedCollection_Data' } | { __typename: 'LayerCta_Data' }>>> }
     )> }
   )>, terrence?: Maybe<AuthorFragmentFragment>, jen?: Maybe<AuthorFragmentFragment>, christian?: Maybe<AuthorFragmentFragment>, chris?: Maybe<AuthorFragmentFragment>, emily?: Maybe<AuthorFragmentFragment>, eric?: Maybe<AuthorFragmentFragment>, heidi?: Maybe<AuthorFragmentFragment>, nicole?: Maybe<AuthorFragmentFragment>, sarah?: Maybe<AuthorFragmentFragment> };
 
+export const AuthorSnippetFragmentDoc = `
+    fragment AuthorSnippet on Authors_Document {
+  sys {
+    filename
+  }
+  data {
+    ... on Author_Doc_Data {
+      image
+      name
+    }
+    ... on Athlete_Doc_Data {
+      image
+      name
+    }
+  }
+}
+    `;
 export const BaseAuthorFragmentDoc = `
     fragment BaseAuthor on Authors_Document {
   __typename
   id
   sys {
     filename
-    section {
+    collection {
       slug
     }
   }
@@ -2062,9 +2012,7 @@ export const BaseAuthorFragmentDoc = `
         event
         time
       }
-      _body {
-        markdownAst
-      }
+      _body
     }
     ... on Author_Doc_Data {
       name
@@ -2072,20 +2020,13 @@ export const BaseAuthorFragmentDoc = `
         figure
         description
       }
-      description {
-        markdownAst
-      }
+      description
       role
       image
-      _body {
-        raw
-        markdownAst
-      }
+      _body
       ebook {
         title
-        description {
-          markdownAst
-        }
+        description
         link
         link_text
         image
@@ -2105,9 +2046,7 @@ export const ThumbnailPostFragmentDoc = `
       title
       tags
       image
-      preface {
-        markdownAst
-      }
+      preface
       author {
         sys {
           filename
@@ -2150,8 +2089,8 @@ export const NavPopoutFragmentDoc = `
   }
 }
     `;
-export const AuthorSnippetFragmentDoc = `
-    fragment AuthorSnippet on Authors_Document {
+export const AuthorSnippetNavFragmentDoc = `
+    fragment AuthorSnippetNav on Authors_Document {
   sys {
     filename
   }
@@ -2180,9 +2119,7 @@ export const NavItemMoreFragmentDoc = `
       ... on Post_Doc_Data {
         image
         title
-        preface {
-          raw
-        }
+        preface
         author {
           sys {
             filename
@@ -2215,17 +2152,15 @@ export const NavItemMoreFragmentDoc = `
       ... on Post_Doc_Data {
         title
         image
-        preface {
-          raw
-        }
+        preface
         author {
-          ...AuthorSnippet
+          ...AuthorSnippetNav
         }
       }
     }
   }
 }
-    ${AuthorSnippetFragmentDoc}`;
+    ${AuthorSnippetNavFragmentDoc}`;
 export const NavFragmentDoc = `
     fragment Nav on Nav_Document {
   data {
@@ -2251,12 +2186,10 @@ ${NavPopoutFragmentDoc}
 ${NavItemMoreFragmentDoc}`;
 export const CuratedCollectionFragmentDoc = `
     fragment CuratedCollection on CuratedCollection_Data {
-  description {
-    markdownAst
-  }
+  description
   posts_collection {
     sys {
-      section {
+      collection {
         path
         slug
       }
@@ -2266,12 +2199,8 @@ export const CuratedCollectionFragmentDoc = `
       ... on Post_Doc_Data {
         title
         image
-        preface {
-          markdownAst
-        }
-        _body {
-          markdownAst
-        }
+        preface
+        _body
         author {
           sys {
             filename
@@ -2300,7 +2229,7 @@ export const CuratedDocDataFragmentDoc = `
     ... on CuratedHero_Data {
       hero_post {
         sys {
-          section {
+          collection {
             path
             slug
           }
@@ -2310,12 +2239,8 @@ export const CuratedDocDataFragmentDoc = `
           ... on Post_Doc_Data {
             title
             image
-            preface {
-              markdownAst
-            }
-            _body {
-              markdownAst
-            }
+            preface
+            _body
             author {
               ... on Authors_Document {
                 sys {
@@ -2326,9 +2251,7 @@ export const CuratedDocDataFragmentDoc = `
                   ... on Author_Doc_Data {
                     name
                     image
-                    description {
-                      markdownAst
-                    }
+                    description
                   }
                 }
               }
@@ -2349,7 +2272,7 @@ export const AuthorFragmentFragmentDoc = `
   id
   sys {
     filename
-    section {
+    collection {
       slug
     }
   }
@@ -2367,9 +2290,7 @@ export const AuthorFragmentFragmentDoc = `
         event
         time
       }
-      _body {
-        markdownAst
-      }
+      _body
     }
     ... on Author_Doc_Data {
       name
@@ -2377,20 +2298,13 @@ export const AuthorFragmentFragmentDoc = `
         figure
         description
       }
-      description {
-        markdownAst
-      }
+      description
       role
       image
-      _body {
-        raw
-        markdownAst
-      }
+      _body
       ebook {
         title
-        description {
-          markdownAst
-        }
+        description
         link
         link_text
         image
@@ -2407,7 +2321,7 @@ export const MemberDocument = `
   getAuthorsDocument(relativePath: $relativePath) {
     sys {
       filename
-      section {
+      collection {
         slug
       }
     }
@@ -2422,9 +2336,7 @@ export const MemberDocument = `
           figure
           description
         }
-        description {
-          markdownAst
-        }
+        description
         role
         image
         story_image
@@ -2434,11 +2346,9 @@ export const MemberDocument = `
         }
         form {
           data {
-            ... on JenCoaching_Doc_Data {
+            ... on JenCcoaching_Doc_Data {
               title
-              description {
-                markdownAst
-              }
+              description
               fields {
                 __typename
                 ... on FieldText_Data {
@@ -2505,15 +2415,10 @@ export const MemberDocument = `
             }
           }
         }
-        _body {
-          raw
-          markdownAst
-        }
+        _body
         ebook {
           title
-          description {
-            markdownAst
-          }
+          description
           link
           link_text
           image
@@ -2524,19 +2429,17 @@ export const MemberDocument = `
 }
     ${NavFragmentDoc}
 ${ThumbnailPostFragmentDoc}`;
-const Member = (client: Client) =>  async ({variables, withForm}: {variables: MemberQueryVariables, withForm?: boolean}) => {
-        if(withForm) {
-          return client.requestWithForm<MemberQuery>(
-            gql => gql(MemberDocument),
-            { variables: variables }
-          );
-        } else {
-          return client.request<MemberQuery>(
-            `${MemberDocument}`,
-            { variables: variables }
-          );
-        }
-    }
+const Member = (client: Client) =>  async ({variables }: {variables: MemberQueryVariables}) => {
+        return client.request<MemberQuery>(
+          `${MemberDocument}`,
+          { variables: variables }
+        );
+      }
+      const MemberString = (client: Client) =>  ({variables }: {variables: MemberQueryVariables}) => {
+        return {query: gql => gql(MemberDocument), variables}
+      }
+
+    
 export const BaseAuthorListDocument = `
     query BaseAuthorList {
   getNavDocument(relativePath: "site-nav.md") {
@@ -2565,9 +2468,7 @@ export const BaseAuthorListDocument = `
             }
           }
           ... on LayerCta_Data {
-            description {
-              markdownAst
-            }
+            description
             cta_text
             cta_link
             cta_image
@@ -2579,17 +2480,13 @@ export const BaseAuthorListDocument = `
             }
           }
           ... on LayerPostList_Data {
-            description {
-              markdownAst
-            }
+            description
             posts {
               data {
                 ... on Post_Doc_Data {
                   title
                   tags
-                  preface {
-                    markdownAst
-                  }
+                  preface
                   image
                   image_small
                   author {
@@ -2602,9 +2499,7 @@ export const BaseAuthorListDocument = `
           ... on LayerDarkFeature_Data {
             hint
             title
-            description {
-              markdownAst
-            }
+            description
             feature_list {
               header
               description
@@ -2645,19 +2540,17 @@ export const BaseAuthorListDocument = `
     ${NavFragmentDoc}
 ${CuratedCollectionFragmentDoc}
 ${BaseAuthorFragmentDoc}`;
-const BaseAuthorList = (client: Client) =>  async ({variables, withForm}: {variables?: BaseAuthorListQueryVariables, withForm?: boolean}) => {
-        if(withForm) {
-          return client.requestWithForm<BaseAuthorListQuery>(
-            gql => gql(BaseAuthorListDocument),
-            { variables: variables }
-          );
-        } else {
-          return client.request<BaseAuthorListQuery>(
-            `${BaseAuthorListDocument}`,
-            { variables: variables }
-          );
-        }
-    }
+const BaseAuthorList = (client: Client) =>  async ({variables }: {variables?: BaseAuthorListQueryVariables}) => {
+        return client.request<BaseAuthorListQuery>(
+          `${BaseAuthorListDocument}`,
+          { variables: variables }
+        );
+      }
+      const BaseAuthorListString = (client: Client) =>  ({variables }: {variables?: BaseAuthorListQueryVariables}) => {
+        return {query: gql => gql(BaseAuthorListDocument), variables}
+      }
+
+    
 export const GetNavDocument = `
     query getNav($relativePath: String!) {
   getNavDocument(relativePath: $relativePath) {
@@ -2665,19 +2558,17 @@ export const GetNavDocument = `
   }
 }
     ${NavFragmentDoc}`;
-const getNav = (client: Client) =>  async ({variables, withForm}: {variables: GetNavQueryVariables, withForm?: boolean}) => {
-        if(withForm) {
-          return client.requestWithForm<GetNavQuery>(
-            gql => gql(GetNavDocument),
-            { variables: variables }
-          );
-        } else {
-          return client.request<GetNavQuery>(
-            `${GetNavDocument}`,
-            { variables: variables }
-          );
-        }
-    }
+const getNav = (client: Client) =>  async ({variables }: {variables: GetNavQueryVariables}) => {
+        return client.request<GetNavQuery>(
+          `${GetNavDocument}`,
+          { variables: variables }
+        );
+      }
+      const getNavString = (client: Client) =>  ({variables }: {variables: GetNavQueryVariables}) => {
+        return {query: gql => gql(GetNavDocument), variables}
+      }
+
+    
 export const PostQueryDocument = `
     query PostQuery($relativePath: String!) {
   getNavDocument(relativePath: "site-nav.md") {
@@ -2695,12 +2586,8 @@ export const PostQueryDocument = `
         }
         tags
         image
-        preface {
-          markdownAst
-        }
-        _body {
-          markdownAst
-        }
+        preface
+        _body
         author {
           ...AuthorSnippet
         }
@@ -2710,19 +2597,17 @@ export const PostQueryDocument = `
 }
     ${NavFragmentDoc}
 ${AuthorSnippetFragmentDoc}`;
-const PostQuery = (client: Client) =>  async ({variables, withForm}: {variables: PostQueryQueryVariables, withForm?: boolean}) => {
-        if(withForm) {
-          return client.requestWithForm<PostQueryQuery>(
-            gql => gql(PostQueryDocument),
-            { variables: variables }
-          );
-        } else {
-          return client.request<PostQueryQuery>(
-            `${PostQueryDocument}`,
-            { variables: variables }
-          );
-        }
-    }
+const PostQuery = (client: Client) =>  async ({variables }: {variables: PostQueryQueryVariables}) => {
+        return client.request<PostQueryQuery>(
+          `${PostQueryDocument}`,
+          { variables: variables }
+        );
+      }
+      const PostQueryString = (client: Client) =>  ({variables }: {variables: PostQueryQueryVariables}) => {
+        return {query: gql => gql(PostQueryDocument), variables}
+      }
+
+    
 export const CuratedPostsDocument = `
     query CuratedPosts($relativePath: String!) {
   getNavDocument(relativePath: "site-nav.md") {
@@ -2741,22 +2626,20 @@ export const CuratedPostsDocument = `
 }
     ${NavFragmentDoc}
 ${CuratedDocDataFragmentDoc}`;
-const CuratedPosts = (client: Client) =>  async ({variables, withForm}: {variables: CuratedPostsQueryVariables, withForm?: boolean}) => {
-        if(withForm) {
-          return client.requestWithForm<CuratedPostsQuery>(
-            gql => gql(CuratedPostsDocument),
-            { variables: variables }
-          );
-        } else {
-          return client.request<CuratedPostsQuery>(
-            `${CuratedPostsDocument}`,
-            { variables: variables }
-          );
-        }
-    }
+const CuratedPosts = (client: Client) =>  async ({variables }: {variables: CuratedPostsQueryVariables}) => {
+        return client.request<CuratedPostsQuery>(
+          `${CuratedPostsDocument}`,
+          { variables: variables }
+        );
+      }
+      const CuratedPostsString = (client: Client) =>  ({variables }: {variables: CuratedPostsQueryVariables}) => {
+        return {query: gql => gql(CuratedPostsDocument), variables}
+      }
+
+    
 export const StaticPostsPathsDocument = `
     query StaticPostsPaths {
-  getSection(section: "posts") {
+  getCollection(collection: "posts") {
     type
     documents {
       ... on Posts_Document {
@@ -2769,19 +2652,17 @@ export const StaticPostsPathsDocument = `
   }
 }
     `;
-const StaticPostsPaths = (client: Client) =>  async ({variables, withForm}: {variables?: StaticPostsPathsQueryVariables, withForm?: boolean}) => {
-        if(withForm) {
-          return client.requestWithForm<StaticPostsPathsQuery>(
-            gql => gql(StaticPostsPathsDocument),
-            { variables: variables }
-          );
-        } else {
-          return client.request<StaticPostsPathsQuery>(
-            `${StaticPostsPathsDocument}`,
-            { variables: variables }
-          );
-        }
-    }
+const StaticPostsPaths = (client: Client) =>  async ({variables }: {variables?: StaticPostsPathsQueryVariables}) => {
+        return client.request<StaticPostsPathsQuery>(
+          `${StaticPostsPathsDocument}`,
+          { variables: variables }
+        );
+      }
+      const StaticPostsPathsString = (client: Client) =>  ({variables }: {variables?: StaticPostsPathsQueryVariables}) => {
+        return {query: gql => gql(StaticPostsPathsDocument), variables}
+      }
+
+    
 export const AuthorListDocument = `
     query AuthorList($relativePath: String = "site-nav.md") {
   getNavDocument(relativePath: $relativePath) {
@@ -2795,17 +2676,13 @@ export const AuthorListDocument = `
         layers {
           __typename
           ... on LayerPostList_Data {
-            description {
-              markdownAst
-            }
+            description
             posts {
               data {
                 ... on Post_Doc_Data {
                   title
                   tags
-                  preface {
-                    markdownAst
-                  }
+                  preface
                   image
                   image_small
                   author {
@@ -2818,9 +2695,7 @@ export const AuthorListDocument = `
           ... on LayerDarkFeature_Data {
             hint
             title
-            description {
-              markdownAst
-            }
+            description
             feature_list {
               header
               description
@@ -2860,19 +2735,17 @@ export const AuthorListDocument = `
 }
     ${NavFragmentDoc}
 ${AuthorFragmentFragmentDoc}`;
-const AuthorList = (client: Client) =>  async ({variables, withForm}: {variables?: AuthorListQueryVariables, withForm?: boolean}) => {
-        if(withForm) {
-          return client.requestWithForm<AuthorListQuery>(
-            gql => gql(AuthorListDocument),
-            { variables: variables }
-          );
-        } else {
-          return client.request<AuthorListQuery>(
-            `${AuthorListDocument}`,
-            { variables: variables }
-          );
-        }
-    }
+const AuthorList = (client: Client) =>  async ({variables }: {variables?: AuthorListQueryVariables}) => {
+        return client.request<AuthorListQuery>(
+          `${AuthorListDocument}`,
+          { variables: variables }
+        );
+      }
+      const AuthorListString = (client: Client) =>  ({variables }: {variables?: AuthorListQueryVariables}) => {
+        return {query: gql => gql(AuthorListDocument), variables}
+      }
+
+    
 export type AsyncReturnType<T extends (...args: any) => Promise<any>> = T extends (
       ...args: any
     ) => Promise<infer R>
@@ -2884,10 +2757,17 @@ export type FilterByTypename<
     > = A extends { __typename: Property } ? A : never;
 export const sdk = (client: Client) => ({
 Member: Member(client),
+MemberString: MemberString(client),
 BaseAuthorList: BaseAuthorList(client),
+BaseAuthorListString: BaseAuthorListString(client),
 getNav: getNav(client),
+getNavString: getNavString(client),
 PostQuery: PostQuery(client),
+PostQueryString: PostQueryString(client),
 CuratedPosts: CuratedPosts(client),
+CuratedPostsString: CuratedPostsString(client),
 StaticPostsPaths: StaticPostsPaths(client),
-AuthorList: AuthorList(client)
+StaticPostsPathsString: StaticPostsPathsString(client),
+AuthorList: AuthorList(client),
+AuthorListString: AuthorListString(client)
 });

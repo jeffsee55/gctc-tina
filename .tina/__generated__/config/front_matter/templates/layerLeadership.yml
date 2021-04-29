@@ -1,0 +1,14 @@
+---
+name: layerLeadership
+label: Leadership Layer
+fields:
+  - label: Title
+    name: title
+    type: text
+  - name: leaders
+    label: Posts
+    type: list
+    config:
+      source:
+        type: pages
+        section: authors

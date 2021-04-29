@@ -22,10 +22,10 @@ fields:
     label: Layers
     type: blocks
     template_types:
-      - layer-team
-      - layer-post-list
-      - layer-dark-feature
-      - layer-leadership
-      - layer-sponsors
-      - curated-collection
-      - layer-cta
+      - layerTeam
+      - layerPostList
+      - layerDarkFeature
+      - layerLeadership
+      - layerSponsors
+      - curatedCollection
+      - layerCta

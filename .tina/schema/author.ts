@@ -150,13 +150,13 @@ export const Author: TinaCloudTemplate = {
       name: "form",
       label: "Form",
       type: "reference",
-      section: "forms",
+      collection: "forms",
     },
     {
       label: "Post Collection",
       name: "posts_collection",
       type: "reference-list",
-      section: "posts",
+      collection: "posts",
     },
     {
       name: "ebook",

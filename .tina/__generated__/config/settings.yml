@@ -22,7 +22,7 @@ sections:
     name: forms
     path: content/forms
     templates:
-      - jen-coaching
+      - jenCcoaching
     type: directory
     create: documents
     match: '**/*.md'

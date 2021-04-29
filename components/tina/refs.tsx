@@ -170,7 +170,7 @@ const FieldOverlay = <T extends object>({
   if (field?.fields) {
     field = field.fields.find((f) => f.name === "markdownAst");
     field.component = "textarea";
-    richValue = form.values[originalField.name].markdownAst;
+    richValue = form.values[originalField.name];
   }
   if (field.component === "text") {
     return (
@@ -215,7 +215,7 @@ const InlineTextFieldOverlay = <T extends object>({
   if (field.fields) {
     field = field.fields.find((f) => f.name === "markdownAst");
     field.component = "textarea";
-    richValue = form.values[originalField.name].markdownAst;
+    richValue = form.values[originalField.name];
   }
   const [isHovered, setIsHovered] = React.useState(false);
   const [isOverlayHovered, setOverlayHovered] = React.useState(false);
@@ -337,7 +337,7 @@ const RichTextFieldOverlay = <T extends object>({
   if (field.fields) {
     field = field.fields.find((f) => f.name === "markdownAst");
     field.component = "textarea";
-    richValue = form.values[originalField.name].markdownAst;
+    richValue = form.values[originalField.name];
   }
   const [isFocused, setIsFocused] = React.useState(null);
 
@@ -506,7 +506,7 @@ const GenericFieldOverlay = <T extends object>({
   if (field.fields) {
     field = field.fields.find((f) => f.name === "markdownAst");
     field.component = "textarea";
-    richValue = form.values[originalField.name].markdownAst;
+    richValue = form.values[originalField.name];
   }
   const [isHovered, setIsHovered] = React.useState(false);
   const [isOverlayHovered, setOverlayHovered] = React.useState(false);

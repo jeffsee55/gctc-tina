@@ -1,6 +1,6 @@
 ---
 items:
-  - template: nav-item-popout
+  - template: navItemPopout
     label: Services
     children:
       - label: Training Plans
@@ -34,7 +34,7 @@ items:
       - label: Work with Jen
         value: /team/jen
         icon: play
-  - template: nav-item-more
+  - template: navItemMore
     label: Blog
     featured_post: training-camp.md
     from_the_blog:
@@ -43,13 +43,13 @@ items:
     read_more:
       label: View all posts
       value: /posts
-  - template: nav-item-link
+  - template: navItemLink
     label: Our Team
     value: /team
-  - template: nav-item-link
+  - template: navItemLink
     label: Training Plans
     value: /training-plans
-  - template: nav-item-link
+  - template: navItemLink
     label: Merch
     value: "https://shop.goldencoasttrackclub.com"
 _template: nav

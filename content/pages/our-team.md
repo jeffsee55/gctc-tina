@@ -9,7 +9,7 @@ seo:
   image: >-
     https://res.cloudinary.com/deuzrsg3m/image/upload/f_auto,w_500,q_90/v1613613891/ACtC-3fdr81NYXHLd7g26j_VuMPN17azl76HuNPgcBhMcIPPpYUrPTopWjrWRqRZK5f3KnHDhOdcHoF7YHahU1h3M8akE-n0lUpqUCFYeDbOV2SijIenL4nizPv1F7zja81T5iNMX-SNBAAVc3SBteBsyYjP_w2560-h1708-no_hieao0.jpg
 layers:
-  - template: layer-post-list
+  - template: layerPostList
     description: >-
       ### Some description
 
@@ -18,7 +18,7 @@ layers:
       - content/posts/fall-training-1.md
       - content/posts/dreams-on-hold.md
       - content/posts/training-camp.md
-  - template: layer-cta
+  - template: layerCta
     description: >-
       ## Training Plans for every skill-level
 
@@ -29,7 +29,7 @@ layers:
     cta_link: /training-plans
     cta_image: >-
       https://res.cloudinary.com/deuzrsg3m/image/upload/v1612736830/uploads/Screen_Shot_2021-02-07_at_2.27.00_PM_ptwqab.png
-  - template: layer-dark-feature
+  - template: layerDarkFeature
     hint: Golden Coast Track Club
     title: Our Vision
     description: >-
@@ -51,12 +51,12 @@ layers:
       and helps our runners to stay committed to their athletic endeavors. By
       joining our team you are taking the first step in breaking down barriers
       and achieving your goals.
-  - template: layer-leadership
+  - template: layerLeadership
     title: Meet our Leadership
     leaders:
       - content/authors/terrence.md
       - content/authors/jen.md
-  - template: layer-sponsors
+  - template: layerSponsors
     title: Thanks to our sponsors
     sponsors:
       - name: kinetik
@@ -65,7 +65,7 @@ layers:
         link: "https://adidas.com/"
       - name: hyperice
         link: "https://hyperice.com/"
-  - template: curated-collection
+  - template: curatedCollection
     description: |-
       ## Press
 

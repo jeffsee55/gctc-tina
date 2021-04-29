@@ -16,7 +16,7 @@ export const Team = (props: Tina.LayerTeam_Data) => {
                   "text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl",
                 p: "text-xl leading-7 text-gray-500",
               }}
-              ast={props.description?.markdownAst}
+              content={props.description}
             />
           </div>
           <div className="lg:col-span-2">
@@ -41,7 +41,7 @@ export const Team = (props: Tina.LayerTeam_Data) => {
                         </p>
                       </div>
                       <Markdown
-                        ast={member?.node?.data?.description?.markdownAst}
+                        content={member?.node?.data?.description}
                         classNames={{
                           root: "text-lg leading-7",
                           p: "text-gray-500",

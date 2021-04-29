@@ -1,7 +1,7 @@
 import type { TinaCloudTemplate } from "tina-graphql-gateway-cli";
 
 export const CuratedCollection: TinaCloudTemplate = {
-  name: "curated-collection",
+  name: "curatedCollection",
   label: "Curated Collection",
   fields: [
     {
@@ -13,7 +13,7 @@ export const CuratedCollection: TinaCloudTemplate = {
       label: "Collection Curations",
       name: "posts_collection",
       type: "reference-list",
-      section: "posts",
+      collection: "posts",
     },
   ],
 };
@@ -67,7 +67,7 @@ export const Post: TinaCloudTemplate = {
     {
       name: "author",
       type: "reference",
-      section: "authors",
+      collection: "authors",
       label: "Author",
     },
     {
@@ -93,7 +93,7 @@ export const Curated: TinaCloudTemplate = {
       label: "Curations",
       templates: [
         {
-          name: "curated-hero",
+          name: "curatedHero",
           label: "Curated Hero",
           fields: [
             {
@@ -105,7 +105,7 @@ export const Curated: TinaCloudTemplate = {
               label: "Hero Post",
               name: "hero_post",
               type: "reference",
-              section: "posts",
+              collection: "posts",
             },
           ],
         },

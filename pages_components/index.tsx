@@ -7,7 +7,7 @@ import { Sponsors } from "../components/sponsors";
 import { Home } from "../components/hero/home";
 import { Img } from "../components/image";
 
-import { useForm } from "tina-graphql-gateway";
+import { useGraphqlForms } from "tina-graphql-gateway";
 import { createClient } from "../util/create-client";
 import { sdk, AsyncReturnType } from "../.tina/sdk";
 import type * as Tina from "../.tina/sdk";
@@ -17,12 +17,12 @@ const localSdk = sdk(createClient());
 
 export async function serverSideProps() {
   return {
-    props: await localSdk.BaseAuthorList({ withForm: true }),
+    props: await localSdk.BaseAuthorList({variables: {}}),
   };
 }
 export async function staticProps() {
   return {
-    props: await localSdk.BaseAuthorList({ withForm: false }),
+    props: await localSdk.BaseAuthorList({variables: {}}),
   };
 }
 
@@ -102,10 +102,14 @@ type PitchLayer = Tina.FilterByTypename<LayerType, "LayerDarkFeature_Data">;
 type CtaLayer = Tina.FilterByTypename<LayerType, "LayerCta_Data">;
 type LeadershipLayer = Tina.FilterByTypename<LayerType, "LayerLeadership_Data">;
 
-export function Dynamic(
-  props: AsyncReturnType<typeof localSdk.BaseAuthorList>
-) {
-  const [propsWithTina, forms] = useForm({ payload: props });
+export function Dynamic() {
+  const { query, variables } = localSdk.BaseAuthorListString({
+    variables: {},
+  });
+  const [data, isLoading] = useGraphqlForms<AsyncReturnType<typeof localSdk.BaseAuthorList>>({
+    query,
+    variables,
+  });
 
   // TODO: it'd be nice to popup the SEO widget on SEO focus
   // const pageForm = forms.find((form) => form.name === "page");
@@ -118,11 +122,11 @@ export function Dynamic(
   return (
     <>
       <HeadWrap
-        image={propsWithTina.page.data.seo.image}
-        title={propsWithTina.page.data.seo.title}
-        description={propsWithTina.page.data.seo.description}
+        image={data.page.data.seo.image}
+        title={data.page.data.seo.title}
+        description={data.page.data.seo.description}
       />
-      <Static {...propsWithTina} />
+      <Static {...data} />
     </>
   );
 }
@@ -275,7 +279,7 @@ const Leadership = (props: Tina.BaseAuthorFragment) => {
                     classNames={{
                       p: "text-gray-500 line-clamp-2",
                     }}
-                    ast={props.data.description.markdownAst}
+                    content={props.data.description}
                   />
                   <div className="mt-6 text-sm font-medium">
                     <a
@@ -324,7 +328,7 @@ const Pitch = (props: PitchLayer) => {
                 </div>
               </div>
               <Markdown
-                ast={props?.description?.markdownAst}
+                content={props?.description}
                 classNames={{
                   p:
                     "mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-base lg:mx-0",
@@ -422,7 +426,7 @@ const Screenshot = (props: CtaLayer) => {
               <div className="lg:flex lg:justify-end">
                 <div className="mx-auto lg:self-center max-w-xl relative z-10">
                   <Markdown
-                    ast={props.description.markdownAst}
+                    content={props.description}
                     classNames={{
                       h2:
                         "text-3xl font-extrabold text-white tracking-tight sm:text-4xl",

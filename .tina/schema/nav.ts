@@ -96,7 +96,7 @@ export const Nav: TinaCloudTemplate = {
       name: "items",
       templates: [
         {
-          name: "nav-item-popout",
+          name: "navItemPopout",
           label: "Nav Item Popout",
           fields: [
             {
@@ -157,7 +157,7 @@ export const Nav: TinaCloudTemplate = {
         },
         {
           label: "Nav Item More",
-          name: "nav-item-more",
+          name: "navItemMore",
           fields: [
             {
               label: "Label",
@@ -168,13 +168,13 @@ export const Nav: TinaCloudTemplate = {
               label: "Featured Post",
               name: "featured_post",
               type: "reference",
-              section: "posts",
+              collection: "posts",
             },
             {
               label: "From The Blog",
               name: "from_the_blog",
               type: "reference-list",
-              section: "posts",
+              collection: "posts",
             },
             {
               label: "Read More",
@@ -197,7 +197,7 @@ export const Nav: TinaCloudTemplate = {
         },
         {
           label: "Nav Item Link",
-          name: "nav-item-link",
+          name: "navItemLink",
           fields: [
             {
               name: "label",

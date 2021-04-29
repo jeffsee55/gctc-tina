@@ -6,7 +6,7 @@ import { Page } from "./schema/pages";
 import { Post, Curated } from "./schema/post";
 
 export default defineSchema({
-  sections: [
+  collections: [
     {
       label: "Posts",
       name: "posts",

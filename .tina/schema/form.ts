@@ -1,7 +1,7 @@
 import type { TinaCloudTemplate } from "tina-graphql-gateway-cli";
 
 export const Form: TinaCloudTemplate = {
-  name: "jen-coaching",
+  name: "jenCcoaching",
   label: "Jen Coaching",
   fields: [
     {
@@ -20,7 +20,7 @@ export const Form: TinaCloudTemplate = {
       type: "blocks",
       templates: [
         {
-          name: "field-boolean",
+          name: "fieldBoolean",
           label: "Boolean Field",
           fields: [
             {
@@ -29,7 +29,7 @@ export const Form: TinaCloudTemplate = {
               type: "text",
             },
             {
-              label: "Sub-Label",
+              label: "Sub Label",
               name: "subLabel",
               type: "text",
             },
@@ -43,7 +43,7 @@ export const Form: TinaCloudTemplate = {
           ],
         },
         {
-          name: "field-text",
+          name: "fieldText",
           label: "Text Field",
           fields: [
             {
@@ -52,7 +52,7 @@ export const Form: TinaCloudTemplate = {
               type: "text",
             },
             {
-              label: "Sub-Label",
+              label: "Sub Label",
               name: "subLabel",
               type: "text",
             },
@@ -81,7 +81,7 @@ export const Form: TinaCloudTemplate = {
           ],
         },
         {
-          name: "field-textarea",
+          name: "fieldTextarea",
           label: "TextArea Field",
           fields: [
             {
@@ -90,7 +90,7 @@ export const Form: TinaCloudTemplate = {
               type: "text",
             },
             {
-              label: "Sub-Label",
+              label: "Sub Label",
               name: "subLabel",
               type: "text",
             },
@@ -109,7 +109,7 @@ export const Form: TinaCloudTemplate = {
           ],
         },
         {
-          name: "field-checkbox",
+          name: "fieldCheckbox",
           label: "Checkbox Field",
           fields: [
             {
@@ -118,7 +118,7 @@ export const Form: TinaCloudTemplate = {
               type: "text",
             },
             {
-              label: "Sub-Label",
+              label: "Sub Label",
               name: "subLabel",
               type: "text",
             },
@@ -156,7 +156,7 @@ export const Form: TinaCloudTemplate = {
           ],
         },
         {
-          name: "field-radio",
+          name: "fieldRadio",
           label: "Radio Field",
           fields: [
             {
@@ -165,7 +165,7 @@ export const Form: TinaCloudTemplate = {
               type: "text",
             },
             {
-              label: "Sub-Label",
+              label: "Sub Label",
               name: "subLabel",
               type: "text",
             },
@@ -203,7 +203,7 @@ export const Form: TinaCloudTemplate = {
           ],
         },
         {
-          name: "field-group-text",
+          name: "fieldGroupText",
           label: "Group Text Field",
           fields: [
             {
@@ -212,7 +212,7 @@ export const Form: TinaCloudTemplate = {
               type: "text",
             },
             {
-              label: "Sub-Label",
+              label: "Sub Label",
               name: "subLabel",
               type: "text",
             },
@@ -222,7 +222,7 @@ export const Form: TinaCloudTemplate = {
               label: "Fields",
               templates: [
                 {
-                  name: "field-text",
+                  name: "fieldText",
                   label: "Text Field",
                   fields: [
                     {
@@ -231,7 +231,7 @@ export const Form: TinaCloudTemplate = {
                       type: "text",
                     },
                     {
-                      label: "Sub-Label",
+                      label: "Sub Label",
                       name: "subLabel",
                       type: "text",
                     },
@@ -254,7 +254,7 @@ export const Form: TinaCloudTemplate = {
           ],
         },
         {
-          name: "field-week-checkbox",
+          name: "fieldWeekCheckbox",
           label: "Group Text Field",
           fields: [
             {
@@ -263,7 +263,7 @@ export const Form: TinaCloudTemplate = {
               type: "text",
             },
             {
-              label: "Sub-Label",
+              label: "Sub Label",
               name: "subLabel",
               type: "text",
             },

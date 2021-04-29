@@ -6,9 +6,9 @@ fields:
     label: Items
     type: blocks
     template_types:
-      - nav-item-popout
-      - nav-item-more
-      - nav-item-link
+      - navItemPopout
+      - navItemMore
+      - navItemLink
   - label: Show Auth
     name: show_auth
     type: boolean

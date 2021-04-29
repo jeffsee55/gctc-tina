@@ -1,0 +1,14 @@
+---
+name: curatedCollection
+label: Curated Collection
+fields:
+  - label: Description
+    name: description
+    type: textarea
+  - name: posts_collection
+    label: Collection Curations
+    type: list
+    config:
+      source:
+        type: pages
+        section: posts

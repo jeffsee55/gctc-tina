@@ -1,0 +1,21 @@
+---
+name: jenCcoaching
+label: Jen Coaching
+fields:
+  - label: Title
+    name: title
+    type: text
+  - label: Description
+    name: description
+    type: textarea
+  - name: fields
+    label: Fields
+    type: blocks
+    template_types:
+      - fieldBoolean
+      - fieldText
+      - fieldTextarea
+      - fieldCheckbox
+      - fieldRadio
+      - fieldGroupText
+      - fieldWeekCheckbox

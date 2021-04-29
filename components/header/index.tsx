@@ -278,7 +278,7 @@ const FromTheBlog = (props: {
                       {child.data.title}
                     </h4>
                     <p className="mt-1 text-sm text-gray-500 line-clamp-3">
-                      {child.data.preface.raw}
+                      {child.data.preface}
                     </p>
                   </div>
                 </a>
@@ -619,7 +619,7 @@ const MoreNav = (
                   {child.data.title}
                 </h4>
                 <p className="mt-1 text-sm text-gray-500 line-clamp-6">
-                  {child.data.preface.raw}
+                  {child.data.preface}
                 </p>
 
                 <div className="mt-4 text-sm font-medium">

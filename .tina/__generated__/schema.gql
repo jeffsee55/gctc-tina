@@ -31,7 +31,7 @@ type SystemInfo {
   relativePath: String
   extension: String
   template: String
-  section: Section
+  collection: Section
 }
 
 type Section {
@@ -58,7 +58,7 @@ input SectionParams {
 }
 
 type Mutation {
-  addPendingDocument(relativePath: String, section: String, template: String): Document
+  addPendingDocument(relativePath: String, collection: String, template: String): Document
   updateDocument(relativePath: String, params: SectionParams): SectionDocumentUnion
   updatePostsDocument(relativePath: String, params: Posts_Input): Posts_Document
   updatePagesDocument(relativePath: String, params: Pages_Input): Pages_Document
@@ -69,11 +69,10 @@ type Mutation {
 }
 
 type Query {
-  _queryString: String
   node(id: ID!): Node
-  getDocument(section: String, relativePath: String): SectionDocumentUnion
-  getSections: [Section]
-  getSection(section: String): Section
+  getDocument(collection: String, relativePath: String): SectionDocumentUnion
+  getCollections: [Section]
+  getCollection(collection: String): Section
   getPostsDocument(relativePath: String): Posts_Document
   getPostsList: [Posts_Document]
   getPagesDocument(relativePath: String): Pages_Document
@@ -111,12 +110,6 @@ type Post_Accolades_Data {
   description: String
 }
 
-type LongTextValue {
-  raw: String
-  markdownAst: JSONObject
-  html: String
-}
-
 type Post_Doc_Data {
   title: String
   tags: [String]
@@ -124,17 +117,13 @@ type Post_Doc_Data {
   image_small: String
   accolades: Post_Accolades_Data
   author: Authors_Document
-  preface: LongTextValue
-  _body: LongTextValue
+  preface: String
+  _body: String
 }
 
 type Post_Accolades_Values {
   figure: String
   description: String
-}
-
-type LongTextInitialValue {
-  raw: String
 }
 
 type Post_Doc_Values {
@@ -144,8 +133,8 @@ type Post_Doc_Values {
   image_small: String
   accolades: Post_Accolades_Values
   author: Reference
-  preface: LongTextInitialValue
-  _body: LongTextInitialValue
+  preface: String
+  _body: String
   _template: String
 }
 
@@ -196,14 +185,6 @@ input Post_Accolades_Input {
   description: String
 }
 
-input Post_Preface_LongTextInput {
-  raw: String
-}
-
-input Body_LongTextInput {
-  raw: String
-}
-
 input Post_Doc_Input {
   title: String
   tags: [String]
@@ -211,8 +192,8 @@ input Post_Doc_Input {
   image_small: String
   accolades: Post_Accolades_Input
   author: String
-  preface: Post_Preface_LongTextInput
-  _body: Body_LongTextInput
+  preface: String
+  _body: String
 }
 
 union Pages_Data = Page_Doc_Data
@@ -240,12 +221,12 @@ type Page_Seo_Data {
 }
 
 type LayerTeam_Data {
-  description: LongTextValue
+  description: String
   members: [Authors_Document]
 }
 
 type LayerPostList_Data {
-  description: LongTextValue
+  description: String
   posts: [Posts_Document]
 }
 
@@ -257,7 +238,7 @@ type LayerDarkFeature_FeatureList_Data {
 type LayerDarkFeature_Data {
   hint: String
   title: String
-  description: LongTextValue
+  description: String
   feature_list: [LayerDarkFeature_FeatureList_Data]
 }
 
@@ -277,12 +258,12 @@ type LayerSponsors_Data {
 }
 
 type CuratedCollection_Data {
-  description: LongTextValue
+  description: String
   posts_collection: [Posts_Document]
 }
 
 type LayerCta_Data {
-  description: LongTextValue
+  description: String
   cta_text: String
   cta_link: String
   cta_image: String
@@ -294,7 +275,7 @@ type Page_Doc_Data {
   title: String
   seo: Page_Seo_Data
   layers: [Page_Layers_Data]
-  _body: LongTextValue
+  _body: String
 }
 
 type Page_Seo_Values {
@@ -304,13 +285,13 @@ type Page_Seo_Values {
 }
 
 type LayerTeam_Values {
-  description: LongTextInitialValue
+  description: String
   members: [String]
   _template: String
 }
 
 type LayerPostList_Values {
-  description: LongTextInitialValue
+  description: String
   posts: [String]
   _template: String
 }
@@ -323,7 +304,7 @@ type LayerDarkFeature_FeatureList_Values {
 type LayerDarkFeature_Values {
   hint: String
   title: String
-  description: LongTextInitialValue
+  description: String
   feature_list: [LayerDarkFeature_FeatureList_Values]
   _template: String
 }
@@ -346,13 +327,13 @@ type LayerSponsors_Values {
 }
 
 type CuratedCollection_Values {
-  description: LongTextInitialValue
+  description: String
   posts_collection: [String]
   _template: String
 }
 
 type LayerCta_Values {
-  description: LongTextInitialValue
+  description: String
   cta_text: String
   cta_link: String
   cta_image: String
@@ -365,7 +346,7 @@ type Page_Doc_Values {
   title: String
   seo: Page_Seo_Values
   layers: [Page_Layers_Values]
-  _body: LongTextInitialValue
+  _body: String
   _template: String
 }
 
@@ -493,26 +474,14 @@ input Page_Seo_Input {
   image: String
 }
 
-input LayerTeam_Description_LongTextInput {
-  raw: String
-}
-
 input LayerTeam_Input {
-  description: LayerTeam_Description_LongTextInput
+  description: String
   members: [String]
 }
 
-input LayerPostList_Description_LongTextInput {
-  raw: String
-}
-
 input LayerPostList_Input {
-  description: LayerPostList_Description_LongTextInput
+  description: String
   posts: [String]
-}
-
-input LayerDarkFeature_Description_LongTextInput {
-  raw: String
 }
 
 input LayerDarkFeature_FeatureList_Input {
@@ -523,7 +492,7 @@ input LayerDarkFeature_FeatureList_Input {
 input LayerDarkFeature_Input {
   hint: String
   title: String
-  description: LayerDarkFeature_Description_LongTextInput
+  description: String
   feature_list: [LayerDarkFeature_FeatureList_Input]
 }
 
@@ -542,21 +511,13 @@ input LayerSponsors_Input {
   sponsors: [LayerSponsors_Sponsors_Input]
 }
 
-input CuratedCollection_Description_LongTextInput {
-  raw: String
-}
-
 input CuratedCollection_Input {
-  description: CuratedCollection_Description_LongTextInput
+  description: String
   posts_collection: [String]
 }
 
-input LayerCta_Description_LongTextInput {
-  raw: String
-}
-
 input LayerCta_Input {
-  description: LayerCta_Description_LongTextInput
+  description: String
   cta_text: String
   cta_link: String
   cta_image: String
@@ -576,18 +537,18 @@ input Page_Doc_Input {
   title: String
   seo: Page_Seo_Input
   layers: [Layers_Input]
-  _body: Body_LongTextInput
+  _body: String
 }
 
-union Forms_Data = JenCoaching_Doc_Data
+union Forms_Data = JenCcoaching_Doc_Data
 
 input Forms_Input {
-  jenCoaching: JenCoaching_Doc_Input
+  jenCcoaching: JenCcoaching_Doc_Input
 }
 
-union Forms_Values = JenCoaching_Doc_Values
+union Forms_Values = JenCcoaching_Doc_Values
 
-union Forms_Form = JenCoaching_Doc_Form
+union Forms_Form = JenCcoaching_Doc_Form
 
 type Forms_Document implements Node & Document {
   id: ID!
@@ -661,13 +622,13 @@ type FieldWeekCheckbox_Data {
   name: String
 }
 
-union JenCoaching_Fields_Data = FieldBoolean_Data | FieldText_Data | FieldTextarea_Data | FieldCheckbox_Data | FieldRadio_Data | FieldGroupText_Data | FieldWeekCheckbox_Data
+union JenCcoaching_Fields_Data = FieldBoolean_Data | FieldText_Data | FieldTextarea_Data | FieldCheckbox_Data | FieldRadio_Data | FieldGroupText_Data | FieldWeekCheckbox_Data
 
-type JenCoaching_Doc_Data {
+type JenCcoaching_Doc_Data {
   title: String
-  description: LongTextValue
-  fields: [JenCoaching_Fields_Data]
-  _body: LongTextValue
+  description: String
+  fields: [JenCcoaching_Fields_Data]
+  _body: String
 }
 
 type FieldBoolean_Values {
@@ -741,13 +702,13 @@ type FieldWeekCheckbox_Values {
   _template: String
 }
 
-union JenCoaching_Fields_Values = FieldBoolean_Values | FieldText_Values | FieldTextarea_Values | FieldCheckbox_Values | FieldRadio_Values | FieldGroupText_Values | FieldWeekCheckbox_Values
+union JenCcoaching_Fields_Values = FieldBoolean_Values | FieldText_Values | FieldTextarea_Values | FieldCheckbox_Values | FieldRadio_Values | FieldGroupText_Values | FieldWeekCheckbox_Values
 
-type JenCoaching_Doc_Values {
+type JenCcoaching_Doc_Values {
   title: String
-  description: LongTextInitialValue
-  fields: [JenCoaching_Fields_Values]
-  _body: LongTextInitialValue
+  description: String
+  fields: [JenCcoaching_Fields_Values]
+  _body: String
   _template: String
 }
 
@@ -836,7 +797,7 @@ type FieldWeekCheckbox_Form {
   fields: [FieldWeekCheckbox_FormFieldsUnion]
 }
 
-type JenCoaching_Fields_BlocksFieldTemplates {
+type JenCcoaching_Fields_BlocksFieldTemplates {
   fieldBoolean: FieldBoolean_Form
   fieldText: FieldText_Form
   fieldTextarea: FieldTextarea_Form
@@ -846,23 +807,19 @@ type JenCoaching_Fields_BlocksFieldTemplates {
   fieldWeekCheckbox: FieldWeekCheckbox_Form
 }
 
-type JenCoaching_Fields_BlocksField implements FormField {
+type JenCcoaching_Fields_BlocksField implements FormField {
   name: String
   label: String
   component: String
-  templates: JenCoaching_Fields_BlocksFieldTemplates
+  templates: JenCcoaching_Fields_BlocksFieldTemplates
 }
 
-union JenCoaching_Doc_FormFieldsUnion = TextField | TextareaField | JenCoaching_Fields_BlocksField
+union JenCcoaching_Doc_FormFieldsUnion = TextField | TextareaField | JenCcoaching_Fields_BlocksField
 
-type JenCoaching_Doc_Form {
+type JenCcoaching_Doc_Form {
   label: String
   name: String
-  fields: [JenCoaching_Doc_FormFieldsUnion]
-}
-
-input JenCoaching_Description_LongTextInput {
-  raw: String
+  fields: [JenCcoaching_Doc_FormFieldsUnion]
 }
 
 input FieldBoolean_Input {
@@ -931,11 +888,11 @@ input FieldWeekCheckbox_Input {
   name: String
 }
 
-input JenCoaching_Doc_Input {
+input JenCcoaching_Doc_Input {
   title: String
-  description: JenCoaching_Description_LongTextInput
+  description: String
   fields: [Fields_Input]
-  _body: Body_LongTextInput
+  _body: String
 }
 
 union Curated_Data = Curated_Doc_Data
@@ -957,7 +914,7 @@ type Curated_Document implements Node & Document {
 }
 
 type CuratedHero_Data {
-  description: LongTextValue
+  description: String
   hero_post: Posts_Document
 }
 
@@ -966,11 +923,11 @@ union Curated_Curations_Data = CuratedHero_Data | CuratedCollection_Data
 type Curated_Doc_Data {
   title: String
   curations: [Curated_Curations_Data]
-  _body: LongTextValue
+  _body: String
 }
 
 type CuratedHero_Values {
-  description: LongTextInitialValue
+  description: String
   hero_post: Reference
   _template: String
 }
@@ -980,7 +937,7 @@ union Curated_Curations_Values = CuratedHero_Values | CuratedCollection_Values
 type Curated_Doc_Values {
   title: String
   curations: [Curated_Curations_Values]
-  _body: LongTextInitialValue
+  _body: String
   _template: String
 }
 
@@ -1012,12 +969,8 @@ type Curated_Doc_Form {
   fields: [Curated_Doc_FormFieldsUnion]
 }
 
-input CuratedHero_Description_LongTextInput {
-  raw: String
-}
-
 input CuratedHero_Input {
-  description: CuratedHero_Description_LongTextInput
+  description: String
   hero_post: String
 }
 
@@ -1029,7 +982,7 @@ input Curations_Input {
 input Curated_Doc_Input {
   title: String
   curations: [Curations_Input]
-  _body: Body_LongTextInput
+  _body: String
 }
 
 union Authors_Data = Author_Doc_Data | Athlete_Doc_Data
@@ -1058,7 +1011,7 @@ type Author_Accolades_Data {
 
 type Author_Ebook_Data {
   title: String
-  description: LongTextValue
+  description: String
   link: String
   link_text: String
   image: String
@@ -1066,7 +1019,7 @@ type Author_Ebook_Data {
 
 type Author_Doc_Data {
   name: String
-  description: LongTextValue
+  description: String
   role: String
   accolades: [Author_Accolades_Data]
   image: String
@@ -1075,7 +1028,7 @@ type Author_Doc_Data {
   form: Forms_Document
   posts_collection: [Posts_Document]
   ebook: Author_Ebook_Data
-  _body: LongTextValue
+  _body: String
 }
 
 type Author_Accolades_Values {
@@ -1085,7 +1038,7 @@ type Author_Accolades_Values {
 
 type Author_Ebook_Values {
   title: String
-  description: LongTextInitialValue
+  description: String
   link: String
   link_text: String
   image: String
@@ -1093,7 +1046,7 @@ type Author_Ebook_Values {
 
 type Author_Doc_Values {
   name: String
-  description: LongTextInitialValue
+  description: String
   role: Reference
   accolades: [Author_Accolades_Values]
   image: String
@@ -1102,7 +1055,7 @@ type Author_Doc_Values {
   form: Reference
   posts_collection: [String]
   ebook: Author_Ebook_Values
-  _body: LongTextInitialValue
+  _body: String
   _template: String
 }
 
@@ -1132,22 +1085,14 @@ type Author_Doc_Form {
   fields: [Author_Doc_FormFieldsUnion]
 }
 
-input Author_Description_LongTextInput {
-  raw: String
-}
-
 input Author_Accolades_Input {
   figure: String
   description: String
 }
 
-input Description_LongTextInput {
-  raw: String
-}
-
 input Author_Ebook_Input {
   title: String
-  description: Description_LongTextInput
+  description: String
   link: String
   link_text: String
   image: String
@@ -1155,7 +1100,7 @@ input Author_Ebook_Input {
 
 input Author_Doc_Input {
   name: String
-  description: Author_Description_LongTextInput
+  description: String
   role: String
   accolades: [Author_Accolades_Input]
   image: String
@@ -1164,7 +1109,7 @@ input Author_Doc_Input {
   form: String
   posts_collection: [String]
   ebook: Author_Ebook_Input
-  _body: Body_LongTextInput
+  _body: String
 }
 
 type Athlete_PersonalBests_Data {
@@ -1184,13 +1129,13 @@ type Athlete_SocialMedia_Data {
 
 type Athlete_Doc_Data {
   name: String
-  description: LongTextValue
+  description: String
   country: String
   personal_bests: [Athlete_PersonalBests_Data]
   accolades: [Athlete_Accolades_Data]
   social_media: [Athlete_SocialMedia_Data]
   image: String
-  _body: LongTextValue
+  _body: String
 }
 
 type Athlete_PersonalBests_Values {
@@ -1210,13 +1155,13 @@ type Athlete_SocialMedia_Values {
 
 type Athlete_Doc_Values {
   name: String
-  description: LongTextInitialValue
+  description: String
   country: String
   personal_bests: [Athlete_PersonalBests_Values]
   accolades: [Athlete_Accolades_Values]
   social_media: [Athlete_SocialMedia_Values]
   image: String
-  _body: LongTextInitialValue
+  _body: String
   _template: String
 }
 
@@ -1255,10 +1200,6 @@ type Athlete_Doc_Form {
   fields: [Athlete_Doc_FormFieldsUnion]
 }
 
-input Athlete_Description_LongTextInput {
-  raw: String
-}
-
 input Athlete_PersonalBests_Input {
   event: String
   time: String
@@ -1276,13 +1217,13 @@ input Athlete_SocialMedia_Input {
 
 input Athlete_Doc_Input {
   name: String
-  description: Athlete_Description_LongTextInput
+  description: String
   country: String
   personal_bests: [Athlete_PersonalBests_Input]
   accolades: [Athlete_Accolades_Input]
   social_media: [Athlete_SocialMedia_Input]
   image: String
-  _body: Body_LongTextInput
+  _body: String
 }
 
 union Nav_Data = Nav_Doc_Data
@@ -1343,8 +1284,8 @@ union Nav_Items_Data = NavItemPopout_Data | NavItemMore_Data | NavItemLink_Data
 
 type Nav_Doc_Data {
   items: [Nav_Items_Data]
-  show_auth: String
-  _body: LongTextValue
+  show_auth: Boolean
+  _body: String
 }
 
 type NavItemPopout_Children_Values {
@@ -1390,8 +1331,8 @@ union Nav_Items_Values = NavItemPopout_Values | NavItemMore_Values | NavItemLink
 
 type Nav_Doc_Values {
   items: [Nav_Items_Values]
-  show_auth: String
-  _body: LongTextInitialValue
+  show_auth: Boolean
+  _body: String
   _template: String
 }
 
@@ -1517,8 +1458,8 @@ input Items_Input {
 
 input Nav_Doc_Input {
   items: [Items_Input]
-  show_auth: String
-  _body: Body_LongTextInput
+  show_auth: Boolean
+  _body: String
 }
 
   
