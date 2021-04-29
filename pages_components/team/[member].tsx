@@ -2,7 +2,6 @@ import React from "react";
 import { Markdown } from "../../components/markdown";
 import { Header2 } from "../../components/header";
 import { ThumbnailList } from "../../components/post/list";
-import { Grunge } from "../../components/patterns/grunge";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import {
   Form2,
@@ -371,9 +370,6 @@ const Stats = (props: AuthorDataType) => {
       style={{ backgroundColor: "rgb(255, 244, 239)" }}
       className="relative overflow-hidden"
     >
-      <div className="absolute inset-0 z-10">
-        <Grunge />
-      </div>
       {/* <Pattern /> */}
       <div className="relative z-20 max-w-screen-xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="max-w-4xl mx-auto text-center">
