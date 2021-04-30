@@ -4,7 +4,7 @@ import { Markdown } from "../markdown";
 
 export const News = (props: Tina.CuratedCollectionFragment) => {
   return (
-    <div className="pt-24 md:pt-36 lg:pt-0 bg-steel-xdark pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+    <div className="md:pt-36 bg-steel-xdark pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
       <div className="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
         <div>
           <Markdown
@@ -32,10 +32,7 @@ type StoryType = Tina.CuratedCollectionFragment["posts_collection"][0];
 const Story = (props: StoryType) => {
   return (
     <div>
-      <p className="text-sm text-gray-200">
-        <time dateTime="2020-03-16">Mar 16, 2020</time>
-      </p>
-      <a href="#" className="mt-2 block">
+      <a href={`/posts/${props.sys.breadcrumbs.join("/")}`} className="mt-2 block">
         <p className="text-xl font-semibold text-gray-100">
           {props.data.title}
         </p>

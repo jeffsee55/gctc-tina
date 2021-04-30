@@ -6,25 +6,25 @@ import { News } from "../components/post/news";
 import { Sponsors } from "../components/sponsors";
 import { Home } from "../components/hero/home";
 import { Img } from "../components/image";
-import {Loading} from '../components/loading'
-import {Form, GlobalFormPlugin, useCMS} from 'tinacms'
+import { Footer } from "../components/footer";
 
-import { useGraphqlForms } from "tina-graphql-gateway";
 import { createLocalClient } from "../util/create-client";
-import { sdk, AsyncReturnType } from "../.tina/sdk";
-import type * as Tina from "../.tina/sdk";
+import { sdk } from "../.tina/sdk";
+import * as Tina from "../.tina/sdk";
 
 const localSdk = sdk(createLocalClient());
 
 export async function getStaticProps(props) {
   return {
-    props: {data: await localSdk.Home({variables: {}}), preview: !!props.preview,
-    ...localSdk.HomeString({variables: {}}),
-   }
+    props: {
+      data: await localSdk.Home({ variables: {} }),
+      preview: !!props.preview,
+      ...localSdk.HomeString({ variables: {} }),
+    },
   };
 }
 
-export const Static = (props: {data: Tina.BaseAuthorListQuery}) => {
+export const Static = (props: { data: Tina.BaseAuthorListQuery }) => {
   const { getNavDocument, page } = props.data;
   return (
     <>
@@ -49,6 +49,7 @@ export const Static = (props: {data: Tina.BaseAuthorListQuery}) => {
             return null;
         }
       })}
+      <Footer {...getNavDocument} />
     </>
   );
 };

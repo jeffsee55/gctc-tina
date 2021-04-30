@@ -3,27 +3,10 @@ import type * as Tina from "../../.tina/sdk";
 import { Link } from '../link'
 import { Snippet } from "../author/snippet";
 import { Img } from "../image";
-import {
-  Any,
-  Boolean,
-  Class,
-  Function,
-  Iteration,
-  List,
-  Number,
-  Object,
-  String,
-  Union,
-} from "ts-toolbelt";
-const auth = {
-  signIn: { value: "/signin", label: "Sign In" },
-  signUp: { value: "/signup", label: "Sign Up", type: "button" },
-};
 
 export const Header2 = (props: Tina.NavFragment) => {
   const dt = {
     ...props.data,
-    auth: auth,
   };
   const [activeItem, setActiveItem] = React.useState(null);
   const [isMobileNavOpen, setMobileNavOpen] = React.useState(false);
@@ -121,7 +104,7 @@ To: "opacity-0 -translate-y-1"
 type OnItemSelect = (item: string) => void;
 
 const Header = (props: {
-  menu: { auth: typeof auth } & Tina.NavFragment;
+  menu: & Tina.NavFragment;
   onItemSelect: OnItemSelect;
   toggleMobileNav: () => void;
 }) => {
@@ -136,7 +119,8 @@ const Header = (props: {
   );
 };
 
-type MainNavMenuType = { auth: typeof auth } & Tina.NavFragment["data"];
+type MainNavMenuType = Tina.NavFragment
+
 const MainNav = (props: {
   menu: MainNavMenuType;
   onItemSelect: OnItemSelect;
@@ -148,12 +132,12 @@ const MainNav = (props: {
           return <MainNavItem {...item} onItemSelect={props.onItemSelect} />;
         })}
       </nav>
-      {props.menu.show_auth && <DesktopAuth {...props.menu.auth} />}
+      {props.menu.show_auth && <DesktopAuth  />}
     </div>
   );
 };
 
-const DesktopAuth = (props: typeof auth) => {
+const DesktopAuth = (props) => {
   return (
     <div className="flex items-center md:ml-12">
       <Link

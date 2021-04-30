@@ -1,6 +1,7 @@
 import React from "react";
+import { NavFragment } from "../../.tina/sdk";
 
-export const Footer = () => {
+export const Footer = (props: NavFragment) => {
   return (
     <footer className="bg-steel-xdark" aria-labelledby="footerHeading">
       <h2 id="footerHeading" className="sr-only">
@@ -11,43 +12,36 @@ export const Footer = () => {
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-                  Services
-                </h3>
-                <ul className="mt-4 space-y-4">
-                  <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-300 hover:text-white"
-                    >
-                      Training Plans
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-300 hover:text-white"
-                    >
-                      1-on-1 Coaching
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-300 hover:text-white"
-                    >
-                      Strength Guide
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-300 hover:text-white"
-                    >
-                      Nutrition Guide
-                    </a>
-                  </li>
-                </ul>
+                {props.data.items.map((item) => {
+                  switch (item.__typename) {
+                    case "NavItemPopout_Data":
+                      return (
+                        <>
+                          <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                            {item.label}
+                          </h3>
+                          <ul className="mt-4 space-y-4">
+                            {item.children.map((childItem) => {
+                              return (
+                                <li>
+                                  <a
+                                    href={childItem.value}
+                                    className="text-base text-gray-300 hover:text-white"
+                                  >
+                                    {childItem.label}
+                                  </a>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </>
+                      );
+                      break;
+
+                    default:
+                      break;
+                  }
+                })}
               </div>
               <div className="mt-12 md:mt-0">
                 <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">

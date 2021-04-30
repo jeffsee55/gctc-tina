@@ -2,18 +2,22 @@ import "../styles/globals.css";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { Footer } from "../components/footer";
 import dynamic from "next/dynamic";
 
 function MyApp({ Component, pageProps }) {
+  const { route } = useRouter();
   if (pageProps.preview) {
     const TinaWrapper = dynamic(() => import("../components/tina-wrapper"));
     return (
       <>
+        <Head>
+          {route.startsWith("/training-plans") && (
+            <script src="https://js.stripe.com/v3/"></script>
+          )}
+        </Head>
         <TinaWrapper {...pageProps}>
           {(props) => <Component {...props} />}
         </TinaWrapper>
-        <Footer />
         <EditToggle isInEditMode={true} />
       </>
     );
@@ -21,12 +25,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        {/* {route.startsWith("/training-plans") && (
+        {route.startsWith("/training-plans") && (
           <script src="https://js.stripe.com/v3/"></script>
-        )} */}
+        )}
       </Head>
       <Component {...pageProps} />
-      <Footer />
       <EditToggle isInEditMode={false} />
     </>
   );
