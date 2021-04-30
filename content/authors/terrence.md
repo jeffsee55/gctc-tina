@@ -1,7 +1,10 @@
 ---
 name: Terrence Mahon
 description: >-
-  **Co-Founder of Golden Coast Track Club**, Terrence Mahon is an expert coach for both male and female endurance runners. He has coached athletes to national titles/records and Olympic/World finals from 800-meters up to the marathon.
+  **Co-Founder of Golden Coast Track Club**, Terrence Mahon is an expert coach
+  for both male and female endurance runners. He has coached athletes to
+  national titles/records and Olympic/World finals from 800-meters up to the
+  marathon.
 role: Head Coach & Founder
 image: >-
   https://res.cloudinary.com/deuzrsg3m/image/upload/v1604705863/jen-photos/_DSC2787_bqawhl.jpg
@@ -31,52 +34,6 @@ _template: author
 **Lead Endurance Coach, British Athletics Federation** — 2012-2013
 
 **Head Coach and President, Mammoth Track Club** — 2005-2012
-
-### Skills/Awards:
-
-2009 Doc Counsilman Science Award Winner - Track & Field Coach
-
-2010 USATF World Indoor Championship Coach - Men‘s Middle & Long Distance
-
-2011 USATF World Championships Coach - Women’s Middle & Long Distance
-
-2011 & 2012 Center of Excellence Award - USATF, Mammoth Track Club
-
-2012 Running USA “Allen Steinfeld Award” for Elite LDR Training Center - Mammoth Track Club
-
-2015 USATF World Championships Coach - Women’s Middle & Long Distance
-
-2019 IAAF Endurance Coaching - Faculty Member/ Lecturer
-
-### COACHING ACHIEVEMENTS
-
-American Records:
-
-Women - 8k, 15k, Half Marathon, Marathon
-
-Men - 20k, Half Marathon
-
-High School National Record:
-
-Men - 800m Indoors
-
-Scottish Records:
-
-Women - 800m indoors/outdoors
-
-Men - 1500m, 1mile, 3k, 5k
-
-Irish National Record: 5k, 5k Roads, Half Marathon
-
-Major Marathon Champion: Chicago, London, NYC
-
-Major Marathon Podium Finishes: Boston, NYC
-
-US National Champions: 1500m, 10k, 15k roads, 20k roads, Half Marathon, Marathon
-
-World Ranked Athletes: 800m #2, 1500m #1, 5,000m # 7, 10,000m # 9, Marathon #1
-
-Olympic & World Finalists since 2005: 800m, 1500m, 5k, 10k, Marathon
 
 ### TOP ATHLETES
 
