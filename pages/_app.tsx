@@ -27,21 +27,21 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Component {...pageProps} />
       <Footer />
-      <EditToggle isInEditMode={true} />
+      <EditToggle isInEditMode={false} />
     </>
   );
 }
 
 export default MyApp;
 
-const EditToggle = (isInEditMode) => {
+const EditToggle = ({ isInEditMode }: { isInEditMode: boolean }) => {
   return (
-    <>
+    <div className="absolute top-6 right-4 z-50">
       <Link href={`/api/preview`}>
-        <a className="editLink">
+        <a className="cursor-pointer relative bg-steel-medium text-white rounded-lg shadow-md p-4">
           {isInEditMode ? "Exit edit mode" : "Enter edit mode"}
         </a>
       </Link>
-    </>
+    </div>
   );
 };

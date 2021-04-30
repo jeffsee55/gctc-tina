@@ -249,7 +249,7 @@ export const Hero = (props: AuthorDataType) => {
                   "mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl",
               }}
             />
-            <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
+            {props.form && <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
               <a
                 href="#questionnaire"
                 // className="w-76 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-steel-medium hover:bg-steel-light focus:outline-none focus:border-steel-dark focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
@@ -272,7 +272,7 @@ export const Hero = (props: AuthorDataType) => {
                   />
                 </svg>
               </a>
-            </div>
+            </div>}
           </div>
         </div>
         <div
