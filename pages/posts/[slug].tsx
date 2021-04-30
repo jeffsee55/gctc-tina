@@ -6,6 +6,7 @@ import PGallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { Header2 } from "../../components/header";
 import { Img } from "../../components/image";
+import { Footer } from "../../components/footer";
 
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
 
@@ -43,7 +44,7 @@ export const Static = (props: {
   const { data } = getPostsDocument;
 
   return (
-    <div>
+    <>
       <Header2 {...getNavDocument} />
       <div className="h-12 md:h-32" />
       <div className="relative px-4 sm:px-6 lg:px-8">
@@ -73,7 +74,8 @@ export const Static = (props: {
           />
         </div>
       </div>
-    </div>
+      <Footer {...getNavDocument} />
+    </>
   );
 };
 export default Static;

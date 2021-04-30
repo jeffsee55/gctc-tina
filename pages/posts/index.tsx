@@ -3,6 +3,7 @@ import { Markdown } from "../../components/markdown";
 import { Snippet } from "../../components/author/snippet";
 import { createLocalClient } from "../../util/create-client";
 import { Header2 } from "../../components/header";
+import { Footer } from "../../components/footer";
 import { Img } from "../../components/image";
 
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
@@ -32,7 +33,7 @@ export const Static = (props: {
   const rest = getCuratedDocument;
 
   return (
-    <div>
+    <>
       <Header2 {...getNavDocument} />
       {rest.data.curations?.map((curation) => {
         switch (curation?.__typename) {
@@ -45,7 +46,8 @@ export const Static = (props: {
       <div>
         <NewsletterCta />
       </div>
-    </div>
+      <Footer {...getNavDocument} />
+    </>
   );
 };
 export default Static;

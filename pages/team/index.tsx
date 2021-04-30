@@ -1,34 +1,31 @@
 import React from "react";
 import { Header2 } from "../../components/header";
+import { Footer } from "../../components/footer";
 import { Img } from "../../components/image";
 
 import { createLocalClient } from "../../util/create-client";
 
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
-import type * as Tina from "../../.tina/sdk";
+import * as Tina from "../../.tina/sdk";
 
 const localSdk = sdk(createLocalClient());
 
 export async function getStaticProps(props) {
   return {
     props: {
-      ...localSdk.BaseAuthorListString({variables: {}}),
+      ...localSdk.BaseAuthorListString({ variables: {} }),
       data: await localSdk.BaseAuthorList({}),
-      preview: !!props.preview
-    }
-  }
+      preview: !!props.preview,
+    },
+  };
 }
 
 type MemberDataType = Tina.BaseAuthorListQuery["chris"];
 
-export const Static = (
-  props: {data: AsyncReturnType<typeof localSdk.BaseAuthorList>}
-) => {
-  const {
-    getNavDocument,
-    page,
-    ...athletes
-  } = props.data;
+export const Static = (props: {
+  data: AsyncReturnType<typeof localSdk.BaseAuthorList>;
+}) => {
+  const { getNavDocument, page, ...athletes } = props.data;
   return (
     <>
       <Header2 {...getNavDocument} />
@@ -56,7 +53,7 @@ export const Static = (
                               <Img
                                 className="object-cover shadow-lg rounded-lg"
                                 width={300}
-                                quality={90}
+                                quality={95}
                                 src={item.data.image}
                                 alt=""
                               />
@@ -114,10 +111,11 @@ export const Static = (
           </div>
         </div>
       </div>
+      <Footer {...getNavDocument} />
     </>
   );
 };
-export default Static
+export default Static;
 
 const SocialIcon = (props: { source: "twitter" | "instagram" }) => {
   switch (props.source) {

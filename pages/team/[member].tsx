@@ -1,5 +1,6 @@
 import React from "react";
 import { Header2 } from "../../components/header";
+import { Footer } from "../../components/footer";
 import { ThumbnailList } from "../../components/post/list";
 import {
   Hero,
@@ -66,6 +67,7 @@ export const Static = (props: {
           <Story {...data} />
           {data.form && <CoachingForm {...data?.form?.data} />}
           {data.ebook && <Ebook {...data.ebook} />}
+          <Footer {...getNavDocument} />
         </div>
       );
   }
