@@ -6,9 +6,9 @@ import { Header2 } from "../components/header";
 import { tenK, fiveK, halfMarathon, marathon } from "../data/paces";
 
 import { sdk, AsyncReturnType } from "../.tina/sdk";
-import { createClient } from "../util/create-client";
+import { createLocalClient } from "../util/create-client";
 
-const localSdk = sdk(createClient());
+const localSdk = sdk(createLocalClient());
 
 export const staticProps = async () => {
   return {
@@ -503,8 +503,14 @@ Leaving: "ease-in duration-200"
                 }
                 formClassName="space-y-8"
                 schema={yup.object({
-                  consent: yup.bool().required().oneOf([true]),
-                  email: yup.string().required().email(),
+                  consent: yup
+                    .bool()
+                    .required()
+                    .oneOf([true]),
+                  email: yup
+                    .string()
+                    .required()
+                    .email(),
                   event: yup.string().required(),
                   free: yup.string().required(),
                   pace: yup.string().required(),
@@ -588,7 +594,7 @@ const onSubmit = async (
           // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
           sessionId: res.id,
         })
-        .then(function (result) {
+        .then(function(result) {
           console.log("oh no", result);
           // If `redirectToCheckout` fails due to a browser or network
           // error, display the localized error message to your customer

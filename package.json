@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "yarn tina-gql server:start -c \"yarn next-dev\"",
-    "next-dev": "next dev --port 2999",
+    "next-dev": "next dev",
     "next-build": "next build",
     "build-sdk": "ts-node --project tsconfig.sdk-builder.json lib/sdk-builder/index.ts",
     "build": "CI=true yarn tina-gql server:start -c \"yarn next-build\""

@@ -1,7 +1,7 @@
 import React from "react";
 import { Markdown } from "../../components/markdown";
 import { Snippet } from "../../components/author/snippet";
-import { createClient } from "../../util/create-client";
+import { createLocalClient } from "../../util/create-client";
 import { useGraphqlForms } from "tina-graphql-gateway";
 import PGallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
@@ -10,7 +10,7 @@ import { Img } from "../../components/image";
 
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
 
-const localSdk = sdk(createClient());
+const localSdk = sdk(createLocalClient());
 
 export async function staticProps({ params }) {
   const relativePath = `${params.slug}.md`;

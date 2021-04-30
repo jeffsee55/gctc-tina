@@ -8,11 +8,11 @@ import { Home } from "../components/hero/home";
 import { Img } from "../components/image";
 
 import { useGraphqlForms } from "tina-graphql-gateway";
-import { createClient } from "../util/create-client";
+import { createLocalClient } from "../util/create-client";
 import { sdk, AsyncReturnType } from "../.tina/sdk";
 import type * as Tina from "../.tina/sdk";
 
-const localSdk = sdk(createClient());
+const localSdk = sdk(createLocalClient());
 
 export async function staticProps() {
   return {

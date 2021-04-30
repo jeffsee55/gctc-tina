@@ -3,14 +3,14 @@ import { Header2 } from "../../components/header";
 import { Markdown } from "../../components/markdown";
 import { Img } from "../../components/image";
 
-import { createClient } from "../../util/create-client";
+import { createLocalClient } from "../../util/create-client";
 import { useGraphqlForms } from "tina-graphql-gateway";
 
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
 import type * as Tina from "../../.tina/sdk";
 import { local } from "d3";
 
-const localSdk = sdk(createClient());
+const localSdk = sdk(createLocalClient());
 
 export async function staticProps() {
   return {

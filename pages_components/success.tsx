@@ -1,10 +1,10 @@
 import React from "react";
 import { Header2 } from "../components/header";
-import { createClient } from "../util/create-client";
+import { createLocalClient } from "../util/create-client";
 import { useGraphqlForms } from "tina-graphql-gateway";
 import { sdk, AsyncReturnType } from "../.tina/sdk";
 
-const localSdk = sdk(createClient());
+const localSdk = sdk(createLocalClient());
 export async function staticProps() {
   return {
     props: await localSdk.BaseAuthorList({}),

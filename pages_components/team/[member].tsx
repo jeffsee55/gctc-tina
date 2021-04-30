@@ -15,18 +15,18 @@ import {
   WeekCheckbox,
   CheckboxButtonGroup,
 } from "../../components/form";
-import { createClient } from "../../util/create-client";
+import { createLocalClient } from "../../util/create-client";
 
 import { useGraphqlForms } from "tina-graphql-gateway";
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
 import type * as Tina from "../../.tina/sdk";
 
 
-const localSdk = sdk(createClient());
+const localSdk = sdk(createLocalClient());
 
 export const staticProps = async ({ params }) => {
   const relativePath = `${params.member}.md`;
-  const localSdk = sdk(createClient());
+  const localSdk = sdk(createLocalClient());
 
   return {
     props: {

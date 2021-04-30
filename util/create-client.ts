@@ -3,7 +3,7 @@ import { Client, LocalClient } from "tina-graphql-gateway";
 export const createClient = () => {
   return process.env.NEXT_PUBLIC_USE_LOCAL_CLIENT === "1"
     ? createLocalClient()
-    : createLocalClient();
+    : createCloudClient();
 };
 
 export const createCloudClient = () => {
