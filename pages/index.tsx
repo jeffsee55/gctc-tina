@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import { Header2 } from "../components/header";
 import { Markdown } from "../components/markdown";
 import { News } from "../components/post/news";
