@@ -23,7 +23,7 @@ layers:
 
 
       We offer expert training plans designed by world-class coaches and
-      athletes. Testing
+      athletes.
     cta_text: Join Now
     cta_link: /training-plans
     cta_image: >-
