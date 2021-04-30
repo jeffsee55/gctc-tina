@@ -10,9 +10,8 @@ seo:
     https://res.cloudinary.com/deuzrsg3m/image/upload/f_auto,w_500,q_90/v1613613891/ACtC-3fdr81NYXHLd7g26j_VuMPN17azl76HuNPgcBhMcIPPpYUrPTopWjrWRqRZK5f3KnHDhOdcHoF7YHahU1h3M8akE-n0lUpqUCFYeDbOV2SijIenL4nizPv1F7zja81T5iNMX-SNBAAVc3SBteBsyYjP_w2560-h1708-no_hieao0.jpg
 layers:
   - template: layerPostList
-    description: >-
+    description: |-
       ### Some description
-
       Some more text <MyAuthor id={() => 'my-id'} />
     posts:
       - content/posts/fall-training-1.md
@@ -24,7 +23,7 @@ layers:
 
 
       We offer expert training plans designed by world-class coaches and
-      athletes
+      athletes. Testing
     cta_text: Join Now
     cta_link: /training-plans
     cta_image: >-
@@ -60,11 +59,11 @@ layers:
     title: Thanks to our sponsors
     sponsors:
       - name: kinetik
-        link: "https://kinetikperformanceco.com/"
+        link: 'https://kinetikperformanceco.com/'
       - name: adidas
-        link: "https://adidas.com/"
+        link: 'https://adidas.com/'
       - name: hyperice
-        link: "https://hyperice.com/"
+        link: 'https://hyperice.com/'
   - template: curatedCollection
     description: |-
       ## Press
@@ -75,3 +74,4 @@ layers:
       - content/posts/welcome.md
 _template: page
 ---
+
