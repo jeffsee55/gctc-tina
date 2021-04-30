@@ -17,6 +17,11 @@ layers:
       - content/posts/fall-training-1.md
       - content/posts/dreams-on-hold.md
       - content/posts/training-camp.md
+  - template: layerLeadership
+    title: Meet our Leadership
+    leaders:
+      - content/authors/terrence.md
+      - content/authors/jen.md
   - template: layerCta
     description: >-
       ## Training Plans for every skill-level
@@ -28,11 +33,6 @@ layers:
     cta_link: /training-plans
     cta_image: >-
       https://res.cloudinary.com/deuzrsg3m/image/upload/v1612736830/uploads/Screen_Shot_2021-02-07_at_2.27.00_PM_ptwqab.png
-  - template: layerLeadership
-    title: Meet our Leadership
-    leaders:
-      - content/authors/terrence.md
-      - content/authors/jen.md
   - template: layerDarkFeature
     hint: Golden Coast Track Club
     title: Our Vision
