@@ -2,29 +2,29 @@ import React from "react";
 import { Markdown } from "../../components/markdown";
 import { Snippet } from "../../components/author/snippet";
 import { createLocalClient } from "../../util/create-client";
-import { useGraphqlForms } from "tina-graphql-gateway";
 import PGallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { Header2 } from "../../components/header";
 import { Img } from "../../components/image";
-import { Loading } from "../../components/loading";
 
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
 
 const localSdk = sdk(createLocalClient());
 
-export async function staticProps({ params }) {
+export async function staticProps({ params, preview }) {
   const relativePath = `${params.slug}.md`;
 
   return {
     props: {
-      variables: { relativePath },
+      preview: !!preview,
       data: await localSdk.PostQuery({
         variables: { relativePath },
       }),
+      ...localSdk.PostQueryString({ variables: { relativePath } }),
     },
   };
 }
+
 export const staticPaths = async () => {
   const result = await localSdk.StaticPostsPaths({});
   return {
@@ -33,27 +33,6 @@ export const staticPaths = async () => {
     })),
     fallback: false,
   };
-};
-
-export const Dynamic = (props: {
-  variables: { relativePath: string };
-  data: AsyncReturnType<typeof localSdk.PostQuery>;
-}) => {
-  const [data, isLoading] = useGraphqlForms<
-    AsyncReturnType<typeof localSdk.PostQuery>
-  >(
-    localSdk.PostQueryString({
-      variables: props.variables,
-    })
-  );
-
-  return isLoading ? (
-    <Loading>
-      <Static data={props.data} />
-    </Loading>
-  ) : (
-    <Static data={data} />
-  );
 };
 
 export const Static = (props: {

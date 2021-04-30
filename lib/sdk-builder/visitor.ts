@@ -152,7 +152,7 @@ ${items.join(",\n")}
           ? `{variables }: {variables: ${operationVariablesTypes}}`
           : `{variables }: {variables?: ${operationVariablesTypes}}`
       }) => {
-        return {query: gql => gql(${documentVariableName}), variables}
+        return {query: ${documentVariableName}, variables}
       }
 
     `;

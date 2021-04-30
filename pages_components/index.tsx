@@ -1,143 +1,32 @@
 import React from "react";
-import Head from "next/head";
 import { Header2 } from "../components/header";
 import { Markdown } from "../components/markdown";
 import { News } from "../components/post/news";
 import { Sponsors } from "../components/sponsors";
 import { Home } from "../components/hero/home";
 import { Img } from "../components/image";
-import {Loading} from '../components/loading'
-import {Form, GlobalFormPlugin, useCMS} from 'tinacms'
 
-import { useGraphqlForms } from "tina-graphql-gateway";
 import { createLocalClient } from "../util/create-client";
-import { sdk, AsyncReturnType } from "../.tina/sdk";
+import { sdk } from "../.tina/sdk";
 import type * as Tina from "../.tina/sdk";
 
 const localSdk = sdk(createLocalClient());
 
-export async function staticProps() {
+export async function staticProps(props) {
   return {
-    props: {data: await localSdk.Home({variables: {}})},
+    props: {data: await localSdk.Home({variables: {}}), editMode: !!props.preview },
   };
 }
-
-const Seo = (props:  { image?: string; title: string; description: string }) => {
-  const [url, setUrl] = React.useState("");
-  React.useEffect(() => {
-    const urlObject = new URL(window.location.toString());
-    setUrl(urlObject.href);
-  }, []);
-  return (
-    <Head>
-      <title>{props.title}</title>
-      <meta name="title" content={props.title} />
-      <meta name="description" content={props.description} />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={url} />
-      <meta property="og:title" content={props.title} />
-      <meta property="og:description" content={props.description} />
-      <meta property="og:image" content={props.image} />
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={url} />
-      <meta property="twitter:title" content={props.title} />
-      <meta property="twitter:description" content={props.description} />
-      <meta property="twitter:image" content={props.image}></meta>
-    </Head>
-  );
-};
-const HeadWrap = (props: {
-  image?: string;
-  title: string;
-  description: string;
-}) => {
-  const [url, setUrl] = React.useState("");
-  React.useEffect(() => {
-    const urlObject = new URL(window.location.toString());
-    setUrl(urlObject.href);
-  }, []);
-  const [isOpen, setIsOpen] = React.useState(false);
-  return (
-    <>
-      <Seo {...props} />
-      <div className="absolute top-3 right-6 z-50 bg-white shadow-lg rounded-md">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="mt-4 py-3 px-6 max-w-md text-xs text-gray-400 font-bold tracking-wide uppercase"
-          type="button"
-        >
-          View SEO
-        </button>
-      </div>
-      {isOpen && (
-        <div className="absolute top-20 right-6 z-50 bg-white shadow-lg rounded-md">
-          <div className="bg-gray-50 sm:rounded-lg">
-            <div className="max-w-md p-3">
-              <Img width={500} src={props.image} />
-              <div className="py-3">
-                <h3 className="text-lg leading-6 font-medium text-gray-900">
-                  {props.title}
-                </h3>
-                <div className="mt-2 max-w-md text-sm text-gray-500">
-                  <p>{props.description}</p>
-                </div>
-                <div className="mt-4 max-w-md text-xs text-gray-400 font-bold tracking-wide uppercase">
-                  <a href={url}>{url}</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
-  );
-};
 
 type LayerType = Tina.BaseAuthorListQuery["page"]["data"]["layers"][0];
 type PitchLayer = Tina.FilterByTypename<LayerType, "LayerDarkFeature_Data">;
 type CtaLayer = Tina.FilterByTypename<LayerType, "LayerCta_Data">;
 type LeadershipLayer = Tina.FilterByTypename<LayerType, "LayerLeadership_Data">;
 
-export function Dynamic(props: {data: AsyncReturnType<typeof localSdk.Home>}) {
-  const { query, variables } = localSdk.HomeString({
-    variables: {},
-  });
-  const cms = useCMS()
-  const [data, isLoading] = useGraphqlForms<AsyncReturnType<typeof localSdk.Home>>({
-    query,
-    formify: ({ formConfig, createForm, skip }) => {
-      if (formConfig.id === 'getNavDocument') {
-        const form = new Form(formConfig)
-        // The site nav will be a global plugin
-        cms.plugins.add(new GlobalFormPlugin(form))
-        return form
-      }
-
-      return createForm(formConfig)
-    },
-    variables,
-  });
-
-  return (
-    <>
-      {/* <HeadWrap
-        image={realData.page.data.seo.image}
-        title={realData.page.data.seo.title}
-        description={realData.page.data.seo.description}
-      /> */}
-      {isLoading ? <Loading><Static data={props.data} /></Loading> : <Static data={data} />}
-    </>
-  );
-}
 export const Static = (props: {data: Tina.BaseAuthorListQuery}) => {
   const { getNavDocument, page } = props.data;
   return (
     <>
-      <Seo
-        image={page.data.seo.image}
-        title={page.data.seo.title}
-        description={page.data.seo.description}
-      />
       <Header2 {...getNavDocument} />
 
       {page.data.layers.map((layer) => {

@@ -16,13 +16,16 @@ import type * as Tina from "../.tina/sdk";
 
 const localSdk = sdk(createLocalClient());
 
-export async function getStaticProps(props) {
+export async function staticProps(props) {
   return {
-    props: {data: await localSdk.Home({variables: {}}), preview: !!props.preview,
-    ...localSdk.HomeString({variables: {}}),
-   }
+    props: {data: await localSdk.Home({variables: {}}), editMode: !!props.preview },
   };
 }
+
+type LayerType = Tina.BaseAuthorListQuery["page"]["data"]["layers"][0];
+type PitchLayer = Tina.FilterByTypename<LayerType, "LayerDarkFeature_Data">;
+type CtaLayer = Tina.FilterByTypename<LayerType, "LayerCta_Data">;
+type LeadershipLayer = Tina.FilterByTypename<LayerType, "LayerLeadership_Data">;
 
 export const Static = (props: {data: Tina.BaseAuthorListQuery}) => {
   const { getNavDocument, page } = props.data;
@@ -52,13 +55,6 @@ export const Static = (props: {data: Tina.BaseAuthorListQuery}) => {
     </>
   );
 };
-
-export default Static;
-
-type LayerType = Tina.BaseAuthorListQuery["page"]["data"]["layers"][0];
-type PitchLayer = Tina.FilterByTypename<LayerType, "LayerDarkFeature_Data">;
-type CtaLayer = Tina.FilterByTypename<LayerType, "LayerCta_Data">;
-type LeadershipLayer = Tina.FilterByTypename<LayerType, "LayerLeadership_Data">;
 
 const LeadershipLayer = (layer: LeadershipLayer) => {
   return (

@@ -2472,7 +2472,7 @@ const Member = (client: Client) =>  async ({variables }: {variables: MemberQuery
         );
       }
       const MemberString = (client: Client) =>  ({variables }: {variables: MemberQueryVariables}) => {
-        return {query: gql => gql(MemberDocument), variables}
+        return {query: MemberDocument, variables}
       }
 
     
@@ -2583,7 +2583,7 @@ const BaseAuthorList = (client: Client) =>  async ({variables }: {variables?: Ba
         );
       }
       const BaseAuthorListString = (client: Client) =>  ({variables }: {variables?: BaseAuthorListQueryVariables}) => {
-        return {query: gql => gql(BaseAuthorListDocument), variables}
+        return {query: BaseAuthorListDocument, variables}
       }
 
     
@@ -2667,7 +2667,7 @@ const Home = (client: Client) =>  async ({variables }: {variables?: HomeQueryVar
         );
       }
       const HomeString = (client: Client) =>  ({variables }: {variables?: HomeQueryVariables}) => {
-        return {query: gql => gql(HomeDocument), variables}
+        return {query: HomeDocument, variables}
       }
 
     
@@ -2685,7 +2685,7 @@ const getNav = (client: Client) =>  async ({variables }: {variables: GetNavQuery
         );
       }
       const getNavString = (client: Client) =>  ({variables }: {variables: GetNavQueryVariables}) => {
-        return {query: gql => gql(GetNavDocument), variables}
+        return {query: GetNavDocument, variables}
       }
 
     
@@ -2724,7 +2724,7 @@ const PostQuery = (client: Client) =>  async ({variables }: {variables: PostQuer
         );
       }
       const PostQueryString = (client: Client) =>  ({variables }: {variables: PostQueryQueryVariables}) => {
-        return {query: gql => gql(PostQueryDocument), variables}
+        return {query: PostQueryDocument, variables}
       }
 
     
@@ -2753,7 +2753,7 @@ const CuratedPosts = (client: Client) =>  async ({variables }: {variables: Curat
         );
       }
       const CuratedPostsString = (client: Client) =>  ({variables }: {variables: CuratedPostsQueryVariables}) => {
-        return {query: gql => gql(CuratedPostsDocument), variables}
+        return {query: CuratedPostsDocument, variables}
       }
 
     
@@ -2779,7 +2779,7 @@ const StaticPostsPaths = (client: Client) =>  async ({variables }: {variables?: 
         );
       }
       const StaticPostsPathsString = (client: Client) =>  ({variables }: {variables?: StaticPostsPathsQueryVariables}) => {
-        return {query: gql => gql(StaticPostsPathsDocument), variables}
+        return {query: StaticPostsPathsDocument, variables}
       }
 
     
@@ -2862,7 +2862,7 @@ const AuthorList = (client: Client) =>  async ({variables }: {variables?: Author
         );
       }
       const AuthorListString = (client: Client) =>  ({variables }: {variables?: AuthorListQueryVariables}) => {
-        return {query: gql => gql(AuthorListDocument), variables}
+        return {query: AuthorListDocument, variables}
       }
 
     

@@ -2,38 +2,33 @@ import React from "react";
 import { Markdown } from "../../components/markdown";
 import { Snippet } from "../../components/author/snippet";
 import { createLocalClient } from "../../util/create-client";
-import { useGraphqlForms } from "tina-graphql-gateway";
 import { Header2 } from "../../components/header";
 import { Img } from "../../components/image";
-import {Loading} from '../../components/loading'
 
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
-import type * as Tina from "../../.tina/sdk";
+import { CuratedPostsQuery, FilterByTypename } from "../../.tina/sdk";
 
 const localSdk = sdk(createLocalClient());
 
-export async function staticProps() {
+export async function staticProps({ preview }) {
   const relativePath = `posts.md`;
+  const variables = { relativePath };
 
   return {
-    props: {data: await localSdk.CuratedPosts({
-      variables: { relativePath },
-    })},
+    props: {
+      data: await localSdk.CuratedPosts({
+        variables,
+      }),
+      preview: !!preview,
+      ...localSdk.CuratedPostsString({ variables }),
+    },
   };
 }
 
-export const Dynamic = (props: {data: AsyncReturnType<typeof localSdk.CuratedPosts>}) => {
-  const [data, isLoading] = useGraphqlForms(localSdk.CuratedPostsString({
-    variables: { relativePath: "posts.md" },
-  }));
-
-  return isLoading ? <Loading><Static data={props.data} /></Loading> : <Static data={data} />;
-};
-
-export const Static = (
-  props: {data: AsyncReturnType<typeof localSdk.CuratedPosts>}
-) => {
-  const { getCuratedDocument, getNavDocument } = props.data
+export const Static = (props: {
+  data: AsyncReturnType<typeof localSdk.CuratedPosts>;
+}) => {
+  const { getCuratedDocument, getNavDocument } = props.data;
   const rest = getCuratedDocument;
 
   return (
@@ -54,10 +49,10 @@ export const Static = (
   );
 };
 
-type CurationsType = Tina.CuratedPostsQuery["getCuratedDocument"]["data"]["curations"][0];
+type CurationsType = CuratedPostsQuery["getCuratedDocument"]["data"]["curations"][0];
 
 export const HeroPost = (
-  props: Tina.FilterByTypename<CurationsType, "CuratedHero_Data">["hero_post"]
+  props: FilterByTypename<CurationsType, "CuratedHero_Data">["hero_post"]
 ) => {
   return (
     <div className="relative mb-24">
@@ -135,7 +130,7 @@ export const HeroPost = (
 };
 
 export const FeatureList = (
-  props: Tina.FilterByTypename<CurationsType, "CuratedCollection_Data">
+  props: FilterByTypename<CurationsType, "CuratedCollection_Data">
 ) => {
   return (
     <div className="bg-white pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
