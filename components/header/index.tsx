@@ -1,5 +1,6 @@
 import React from "react";
 import type * as Tina from "../../.tina/sdk";
+import { Link } from '../link'
 import { Snippet } from "../author/snippet";
 import { Img } from "../image";
 import {
@@ -155,18 +156,25 @@ const MainNav = (props: {
 const DesktopAuth = (props: typeof auth) => {
   return (
     <div className="flex items-center md:ml-12">
-      <a
+      <Link
         href={props.signIn.value}
+        >
+
+      <a
         className="text-base font-medium text-gray-500 hover:text-gray-900"
       >
         {props.signIn.label}
       </a>
-      <a
+      </Link>
+      <Link
         href={props.signUp.value}
+      >
+      <a
         className="ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-steel-medium hover:bg-steel-dark"
       >
         {props.signUp.label}
       </a>
+      </Link>
     </div>
   );
 };
@@ -229,12 +237,15 @@ type MainNavLinkType = Tina.FilterByTypename<
 const MainNavLink = (props: MainNavLinkType) => {
   // const MainNavLink = (props: <MainNavItemType, >) => {
   return (
-    <a
+    <Link
       href={props.value}
+    >
+    <a
       className="text-base font-medium text-gray-500 hover:text-gray-900"
     >
       {props.label}
     </a>
+    </Link>
   );
 };
 
@@ -260,8 +271,9 @@ const FromTheBlog = (props: {
             }
             return (
               <li className="flow-root">
+                <Link href={`/posts/${child?.sys?.breadcrumbs.join("/")}`}>
                 <a
-                  href={`/posts/${child?.sys?.breadcrumbs.join("/")}`}
+
                   className="-m-3 p-3 flex rounded-lg hover:bg-gray-100"
                 >
                   <div className="hidden sm:block flex-shrink-0">
@@ -282,19 +294,23 @@ const FromTheBlog = (props: {
                     </p>
                   </div>
                 </a>
+</Link>
               </li>
             );
           })}
         </ul>
       </div>
       <div className="mt-6 text-sm font-medium">
-        <a
+        <Link
           href={props.readMore?.value}
+        >
+        <a
           className="text-steel-medium hover:text-steel-light"
         >
           {" "}
           {props.readMore?.label} <span aria-hidden="true">→</span>
         </a>
+</Link>
       </div>
     </div>
   );
@@ -317,8 +333,11 @@ const IconNav = (
           {props.extra?.map((item) => {
             return (
               <div className="flow-root">
-                <a
+                <Link
+
                   href={item.value}
+                  >
+                <a
                   className="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
                 >
                   {/* Heroicon name: outline/play */}
@@ -345,6 +364,7 @@ const IconNav = (
                   </svg>
                   <span className="ml-3">{item.label}</span>
                 </a>
+</Link>
               </div>
             );
           })}
@@ -449,8 +469,10 @@ const IconNavItem = (props) => {
       ? "strength"
       : "nutrition";
   return (
-    <a
+    <Link
       href={props.value}
+    >
+    <a
       className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50"
     >
       <div className="flex md:h-full lg:flex-col">
@@ -478,6 +500,7 @@ const IconNavItem = (props) => {
         </div>
       </div>
     </a>
+    </Link>
   );
 };
 
@@ -515,9 +538,8 @@ export const Logo = (props) => {
   const image =
     "https://res.cloudinary.com/deuzrsg3m/image/upload/v1612715590/uploads/shirt-2_u4ryhw.png";
   return (
+    <Link href="/">
     <a
-      // href={props.value}
-      href="/"
       className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50"
     >
       <div className="flex md:h-full lg:flex-col">
@@ -580,6 +602,7 @@ export const Logo = (props) => {
         </div>
       </div>
     </a>
+</Link>
   );
 };
 
@@ -601,8 +624,11 @@ const MoreNav = (
               {/* {props.label} */}
               Featured Article
             </h3>
-            <a
+            <Link
               href={`/posts/${child.sys.breadcrumbs.join("/")}`}
+              >
+
+            <a
               className="mt-3 -mx-3 p-3 flex rounded-lg hover:bg-gray-100"
             >
               <div className="hidden sm:block flex-shrink-0">
@@ -632,6 +658,7 @@ const MoreNav = (
                 </div>
               </div>
             </a>
+            </Link>
           </div>
         )}
         <FromTheBlog readMore={props.read_more} posts={fromTheBlog} />
@@ -717,34 +744,18 @@ To: "opacity-0 scale-95"
           <div className="grid grid-cols-2 gap-4">
             {mainItem.extra.map((item) => {
               return (
-                <a
+                <Link
                   href={item.value}
+                  >
+                <a
                   className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700"
                 >
                   {item.label}
                 </a>
+</Link>
               );
             })}
           </div>
-          {props.show_auth && (
-            <div className="mt-6">
-              <a
-                href={props.auth.signUp.value}
-                className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-steel-medium hover:bg-steel-dark"
-              >
-                {props.auth.signUp.label}
-              </a>
-              <p className="mt-6 text-center text-base font-medium text-gray-500">
-                Existing customer?{" "}
-                <a
-                  href={props.auth.signIn.value}
-                  className="text-steel-medium hover:text-steel-light"
-                >
-                  {props.auth.signIn.label}
-                </a>
-              </p>
-            </div>
-          )}
         </div>
       </div>
     </div>

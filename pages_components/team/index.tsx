@@ -1,7 +1,7 @@
 import React from "react";
 import { Header2 } from "../../components/header";
-import { Markdown } from "../../components/markdown";
 import { Img } from "../../components/image";
+import { Loading } from "../../components/loading";
 
 import { createLocalClient } from "../../util/create-client";
 import { useGraphqlForms } from "tina-graphql-gateway";
@@ -25,7 +25,7 @@ export const Dynamic = (
 ) => {
   const [data, isLoading] = useGraphqlForms(localSdk.BaseAuthorListString({}));
 
-  return isLoading ? <Static data={props.data} /> : <Static data={data} />;
+  return isLoading ? <Loading><Static data={props.data} /> </Loading>: <Static data={data} />;
 };
 export const Static = (
   props: {data: AsyncReturnType<typeof localSdk.BaseAuthorList>}

@@ -6,6 +6,7 @@ import { News } from "../components/post/news";
 import { Sponsors } from "../components/sponsors";
 import { Home } from "../components/hero/home";
 import { Img } from "../components/image";
+import {Loading} from '../components/loading'
 
 import { useGraphqlForms } from "tina-graphql-gateway";
 import { createLocalClient } from "../util/create-client";
@@ -104,16 +105,15 @@ export function Dynamic(props: {data: AsyncReturnType<typeof localSdk.BaseAuthor
     query,
     variables,
   });
-  const realData = isLoading ? props.data : data
 
   return (
     <>
-      <HeadWrap
+      {/* <HeadWrap
         image={realData.page.data.seo.image}
         title={realData.page.data.seo.title}
         description={realData.page.data.seo.description}
-      />
-      <Static data={realData} />
+      /> */}
+      {isLoading ? <Loading><Static data={props.data} /></Loading> : <Static data={data} />}
     </>
   );
 }

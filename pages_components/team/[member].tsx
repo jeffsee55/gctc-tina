@@ -16,6 +16,7 @@ import {
   CheckboxButtonGroup,
 } from "../../components/form";
 import { createLocalClient } from "../../util/create-client";
+import { Loading } from "../../components/loading";
 
 import { useGraphqlForms } from "tina-graphql-gateway";
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
@@ -54,7 +55,7 @@ export const staticPaths = async (params) => {
 
 export const Dynamic = (props: {variables: {relativePath: string}, data: AsyncReturnType<typeof localSdk.Member>}) => {
   const [data, isLoading] = useGraphqlForms(localSdk.MemberString({variables: props.variables}))
-  return isLoading ? <Static data={props.data} /> : <Static data={data} />;
+  return isLoading ? <Loading><Static data={props.data} /></Loading> : <Static data={data} />;
 };
 
 export const Static = (props: {data: AsyncReturnType<typeof localSdk.Member>}) => {

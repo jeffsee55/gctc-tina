@@ -7,6 +7,7 @@ import PGallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { Header2 } from "../../components/header";
 import { Img } from "../../components/image";
+import { Loading } from "../../components/loading";
 
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
 
@@ -46,7 +47,13 @@ export const Dynamic = (props: {
     })
   );
 
-  return isLoading ? <Static data={props.data} /> : <Static data={data} />;
+  return isLoading ? (
+    <Loading>
+      <Static data={props.data} />
+    </Loading>
+  ) : (
+    <Static data={data} />
+  );
 };
 
 export const Static = (props: {

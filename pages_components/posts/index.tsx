@@ -5,6 +5,7 @@ import { createLocalClient } from "../../util/create-client";
 import { useGraphqlForms } from "tina-graphql-gateway";
 import { Header2 } from "../../components/header";
 import { Img } from "../../components/image";
+import {Loading} from '../../components/loading'
 
 import { sdk, AsyncReturnType } from "../../.tina/sdk";
 import type * as Tina from "../../.tina/sdk";
@@ -26,7 +27,7 @@ export const Dynamic = (props: {data: AsyncReturnType<typeof localSdk.CuratedPos
     variables: { relativePath: "posts.md" },
   }));
 
-  return isLoading ? <Static data={props.data} /> : <Static data={data} />;
+  return isLoading ? <Loading><Static data={props.data} /></Loading> : <Static data={data} />;
 };
 
 export const Static = (
