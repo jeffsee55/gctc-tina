@@ -14,6 +14,7 @@ sections:
     path: content/pages
     templates:
       - page
+      - trainingPage
     type: directory
     create: documents
     match: '**/*.md'

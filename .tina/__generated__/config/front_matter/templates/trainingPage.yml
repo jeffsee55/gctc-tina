@@ -1,0 +1,14 @@
+---
+name: trainingPage
+label: Training Page
+fields:
+  - type: field_group_list
+    name: faq
+    label: FAQ
+    fields:
+      - type: text
+        name: question
+        label: Question
+      - type: text
+        name: answer
+        label: Answer

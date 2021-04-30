@@ -322,15 +322,16 @@ export type Post_Doc_Input = {
   _body?: Maybe<Scalars['String']>;
 };
 
-export type Pages_Data = Page_Doc_Data;
+export type Pages_Data = Page_Doc_Data | TrainingPage_Doc_Data;
 
 export type Pages_Input = {
   page?: Maybe<Page_Doc_Input>;
+  trainingPage?: Maybe<TrainingPage_Doc_Input>;
 };
 
-export type Pages_Values = Page_Doc_Values;
+export type Pages_Values = Page_Doc_Values | TrainingPage_Doc_Values;
 
-export type Pages_Form = Page_Doc_Form;
+export type Pages_Form = Page_Doc_Form | TrainingPage_Doc_Form;
 
 export type Pages_Document = Node & Document & {
   __typename?: 'Pages_Document';
@@ -700,6 +701,60 @@ export type Page_Doc_Input = {
   title?: Maybe<Scalars['String']>;
   seo?: Maybe<Page_Seo_Input>;
   layers?: Maybe<Array<Maybe<Layers_Input>>>;
+  _body?: Maybe<Scalars['String']>;
+};
+
+export type TrainingPage_Faq_Data = {
+  __typename?: 'TrainingPage_Faq_Data';
+  question?: Maybe<Scalars['String']>;
+  answer?: Maybe<Scalars['String']>;
+};
+
+export type TrainingPage_Doc_Data = {
+  __typename?: 'TrainingPage_Doc_Data';
+  faq?: Maybe<Array<Maybe<TrainingPage_Faq_Data>>>;
+  _body?: Maybe<Scalars['String']>;
+};
+
+export type TrainingPage_Faq_Values = {
+  __typename?: 'TrainingPage_Faq_Values';
+  question?: Maybe<Scalars['String']>;
+  answer?: Maybe<Scalars['String']>;
+};
+
+export type TrainingPage_Doc_Values = {
+  __typename?: 'TrainingPage_Doc_Values';
+  faq?: Maybe<Array<Maybe<TrainingPage_Faq_Values>>>;
+  _body?: Maybe<Scalars['String']>;
+  _template?: Maybe<Scalars['String']>;
+};
+
+export type TrainingPage_Faq_FormFieldsUnion = TextField;
+
+export type TrainingPage_Faq_GroupListField = FormField & {
+  __typename?: 'TrainingPage_Faq_GroupListField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<TrainingPage_Faq_FormFieldsUnion>>>;
+};
+
+export type TrainingPage_Doc_FormFieldsUnion = TrainingPage_Faq_GroupListField | TextareaField;
+
+export type TrainingPage_Doc_Form = {
+  __typename?: 'TrainingPage_Doc_Form';
+  label?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<TrainingPage_Doc_FormFieldsUnion>>>;
+};
+
+export type TrainingPage_Faq_Input = {
+  question?: Maybe<Scalars['String']>;
+  answer?: Maybe<Scalars['String']>;
+};
+
+export type TrainingPage_Doc_Input = {
+  faq?: Maybe<Array<Maybe<TrainingPage_Faq_Input>>>;
   _body?: Maybe<Scalars['String']>;
 };
 

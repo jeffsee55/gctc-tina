@@ -186,3 +186,27 @@ export const Page: TinaCloudTemplate = {
     },
   ],
 };
+
+export const TrainingPage: TinaCloudTemplate = {
+  name: "trainingPage",
+  label: "Training Page",
+  fields: [
+    {
+      type: "group-list",
+      name: "faq",
+      label: "FAQ",
+      fields: [
+        {
+          type: "text",
+          name: "question",
+          label: "Question",
+        },
+        {
+          type: "text",
+          name: "answer",
+          label: "Answer",
+        },
+      ],
+    },
+  ],
+};

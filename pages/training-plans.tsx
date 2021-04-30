@@ -13,17 +13,17 @@ const localSdk = sdk(createLocalClient());
 export const getStaticProps = async (props) => {
   return {
     props: {
-      data: await localSdk.getNav({
-        variables: { relativePath: "site-nav.md" },
+      data: await localSdk.TrainingPlanPage({
+        variables: {},
       }),
-      ...localSdk.getNavString({ variables: { relativePath: "site-nav.md" } }),
+      ...localSdk.TrainingPlanPageString({ variables: {} }),
       preview: !!props.preview,
     },
   };
 };
 
 export const Static = (props: {
-  data: AsyncReturnType<typeof localSdk.getNav>;
+  data: AsyncReturnType<typeof localSdk.TrainingPlanPage>;
 }) => {
   const items = [fiveK, tenK, halfMarathon, marathon];
 
@@ -92,75 +92,51 @@ export const Static = (props: {
             )}
           </div>
         </div>
-
-        {/* FAQ offset */}
-        <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
-          <div className="lg:grid lg:grid-cols-3 lg:gap-8">
-            <div className="space-y-4">
-              <h2 className="text-3xl font-extrabold text-gray-900">
-                Frequently asked questions
-              </h2>
-              <p className="text-lg text-gray-500">
-                Can’t find the answer you’re looking for? Reach out to our{" "}
-                <a
-                  href="#"
-                  className="font-medium text-steel-xdark hover:text-steel-dark"
-                >
-                  customer support
-                </a>{" "}
-                team.
-              </p>
-            </div>
-            <div className="mt-12 lg:mt-0 lg:col-span-2">
-              <dl className="space-y-12">
-                <div>
-                  <dt className="text-lg leading-6 font-medium text-gray-900">
-                    How do you make holy water?
-                  </dt>
-                  <dd className="mt-2 text-base text-gray-500">
-                    You boil the hell out of it. Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Quas cupiditate laboriosam
-                    fugiat.
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-lg leading-6 font-medium text-gray-900">
-                    What's the best thing about Switzerland?
-                  </dt>
-                  <dd className="mt-2 text-base text-gray-500">
-                    I don't know, but the flag is a big plus. Lorem ipsum dolor
-                    sit amet consectetur adipisicing elit. Quas cupiditate
-                    laboriosam fugiat.
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-lg leading-6 font-medium text-gray-900">
-                    What do you call someone with no body and no nose?
-                  </dt>
-                  <dd className="mt-2 text-base text-gray-500">
-                    Nobody knows. Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Quas cupiditate laboriosam fugiat.
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-lg leading-6 font-medium text-gray-900">
-                    Why do you never see elephants hiding in trees?
-                  </dt>
-                  <dd className="mt-2 text-base text-gray-500">
-                    Because they're so good at it. Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Quas cupiditate laboriosam
-                    fugiat.
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-        </div>
+        <Faq faqs={props.data.getPagesDocument.data.faq} />
       </div>
     </>
   );
 };
 export default Static;
+
+export const Faq = (props: {
+  faqs: { question?: string; answer?: string }[];
+}) => {
+  return (
+    <div className="bg-white">
+      <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
+        <div className="lg:grid lg:grid-cols-3 lg:gap-8">
+          <div>
+            <h2 className="text-3xl font-extrabold text-gray-900">
+              Frequently asked questions
+            </h2>
+            <p className="mt-4 text-lg text-gray-500">
+              Can’t find the answer you’re looking for? Reach out to us{" "}
+              <a
+                href="#"
+                className="font-medium text-steel-medium hover:text-indigo-500"
+              >
+                info@goldencoasttrackclub.com
+              </a>{" "}
+            </p>
+          </div>
+          <div className="mt-12 lg:mt-0 lg:col-span-2">
+            <dl className="space-y-12">
+              {props.faqs.map((faq) => (
+                <div key={faq.question}>
+                  <dt className="text-lg leading-6 font-medium text-gray-900">
+                    {faq.question}
+                  </dt>
+                  <dd className="mt-2 text-base text-gray-500">{faq.answer}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Portal = (
   props: {
@@ -578,8 +554,7 @@ const onSubmit = async (
   setServerError: (message: string) => void
 ) => {
   try {
-    // var stripe = Stripe(config.stripePublicKey);
-    var stripe = Stripe("pk_test_EsayUWGIOM0f3PzoYcNM7J2V00f3RTpkpG");
+    var stripe = Stripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
     const response = await fetch(
       `https://api.staging.goldencoasttrackclub.com/checkout`,
@@ -608,7 +583,7 @@ const onSubmit = async (
           // using `result.error.message`.
         });
     } else {
-      window.location.assign("/");
+      window.location.assign("/success");
     }
   } catch (e) {
     actions.setSubmitting(false);

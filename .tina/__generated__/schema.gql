@@ -196,15 +196,16 @@ input Post_Doc_Input {
   _body: String
 }
 
-union Pages_Data = Page_Doc_Data
+union Pages_Data = Page_Doc_Data | TrainingPage_Doc_Data
 
 input Pages_Input {
   page: Page_Doc_Input
+  trainingPage: TrainingPage_Doc_Input
 }
 
-union Pages_Values = Page_Doc_Values
+union Pages_Values = Page_Doc_Values | TrainingPage_Doc_Values
 
-union Pages_Form = Page_Doc_Form
+union Pages_Form = Page_Doc_Form | TrainingPage_Doc_Form
 
 type Pages_Document implements Node & Document {
   id: ID!
@@ -537,6 +538,54 @@ input Page_Doc_Input {
   title: String
   seo: Page_Seo_Input
   layers: [Layers_Input]
+  _body: String
+}
+
+type TrainingPage_Faq_Data {
+  question: String
+  answer: String
+}
+
+type TrainingPage_Doc_Data {
+  faq: [TrainingPage_Faq_Data]
+  _body: String
+}
+
+type TrainingPage_Faq_Values {
+  question: String
+  answer: String
+}
+
+type TrainingPage_Doc_Values {
+  faq: [TrainingPage_Faq_Values]
+  _body: String
+  _template: String
+}
+
+union TrainingPage_Faq_FormFieldsUnion = TextField
+
+type TrainingPage_Faq_GroupListField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [TrainingPage_Faq_FormFieldsUnion]
+}
+
+union TrainingPage_Doc_FormFieldsUnion = TrainingPage_Faq_GroupListField | TextareaField
+
+type TrainingPage_Doc_Form {
+  label: String
+  name: String
+  fields: [TrainingPage_Doc_FormFieldsUnion]
+}
+
+input TrainingPage_Faq_Input {
+  question: String
+  answer: String
+}
+
+input TrainingPage_Doc_Input {
+  faq: [TrainingPage_Faq_Input]
   _body: String
 }
 

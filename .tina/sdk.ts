@@ -322,15 +322,16 @@ type Post_Doc_Input = {
   _body?: Maybe<Scalars['String']>;
 };
 
-type Pages_Data = Page_Doc_Data;
+type Pages_Data = Page_Doc_Data | TrainingPage_Doc_Data;
 
 type Pages_Input = {
   page?: Maybe<Page_Doc_Input>;
+  trainingPage?: Maybe<TrainingPage_Doc_Input>;
 };
 
-type Pages_Values = Page_Doc_Values;
+type Pages_Values = Page_Doc_Values | TrainingPage_Doc_Values;
 
-type Pages_Form = Page_Doc_Form;
+type Pages_Form = Page_Doc_Form | TrainingPage_Doc_Form;
 
 type Pages_Document = Node & Document & {
   __typename?: 'Pages_Document';
@@ -700,6 +701,60 @@ type Page_Doc_Input = {
   title?: Maybe<Scalars['String']>;
   seo?: Maybe<Page_Seo_Input>;
   layers?: Maybe<Array<Maybe<Layers_Input>>>;
+  _body?: Maybe<Scalars['String']>;
+};
+
+type TrainingPage_Faq_Data = {
+  __typename?: 'TrainingPage_Faq_Data';
+  question?: Maybe<Scalars['String']>;
+  answer?: Maybe<Scalars['String']>;
+};
+
+type TrainingPage_Doc_Data = {
+  __typename?: 'TrainingPage_Doc_Data';
+  faq?: Maybe<Array<Maybe<TrainingPage_Faq_Data>>>;
+  _body?: Maybe<Scalars['String']>;
+};
+
+type TrainingPage_Faq_Values = {
+  __typename?: 'TrainingPage_Faq_Values';
+  question?: Maybe<Scalars['String']>;
+  answer?: Maybe<Scalars['String']>;
+};
+
+type TrainingPage_Doc_Values = {
+  __typename?: 'TrainingPage_Doc_Values';
+  faq?: Maybe<Array<Maybe<TrainingPage_Faq_Values>>>;
+  _body?: Maybe<Scalars['String']>;
+  _template?: Maybe<Scalars['String']>;
+};
+
+type TrainingPage_Faq_FormFieldsUnion = TextField;
+
+type TrainingPage_Faq_GroupListField = FormField & {
+  __typename?: 'TrainingPage_Faq_GroupListField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<TrainingPage_Faq_FormFieldsUnion>>>;
+};
+
+type TrainingPage_Doc_FormFieldsUnion = TrainingPage_Faq_GroupListField | TextareaField;
+
+type TrainingPage_Doc_Form = {
+  __typename?: 'TrainingPage_Doc_Form';
+  label?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<TrainingPage_Doc_FormFieldsUnion>>>;
+};
+
+type TrainingPage_Faq_Input = {
+  question?: Maybe<Scalars['String']>;
+  answer?: Maybe<Scalars['String']>;
+};
+
+type TrainingPage_Doc_Input = {
+  faq?: Maybe<Array<Maybe<TrainingPage_Faq_Input>>>;
   _body?: Maybe<Scalars['String']>;
 };
 
@@ -2007,6 +2062,11 @@ export type AuthorListQuery = { getNavDocument?: Maybe<NavFragment>, page?: Mayb
     )> }
   )>, terrence?: Maybe<AuthorFragmentFragment>, jen?: Maybe<AuthorFragmentFragment>, christian?: Maybe<AuthorFragmentFragment>, chris?: Maybe<AuthorFragmentFragment>, emily?: Maybe<AuthorFragmentFragment>, eric?: Maybe<AuthorFragmentFragment>, heidi?: Maybe<AuthorFragmentFragment>, nicole?: Maybe<AuthorFragmentFragment>, sarah?: Maybe<AuthorFragmentFragment> };
 
+export type TrainingPlanPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TrainingPlanPageQuery = { getNavDocument?: Maybe<NavFragment>, getPagesDocument?: Maybe<{ data?: Maybe<{ faq?: Maybe<Array<Maybe<Pick<TrainingPage_Faq_Data, 'question' | 'answer'>>>> }> }> };
+
 export const AuthorSnippetFragmentDoc = `
     fragment AuthorSnippet on Authors_Document {
   sys {
@@ -2866,6 +2926,34 @@ const AuthorList = (client: Client) =>  async ({variables }: {variables?: Author
       }
 
     
+export const TrainingPlanPageDocument = `
+    query TrainingPlanPage {
+  getNavDocument(relativePath: "site-nav.md") {
+    ...Nav
+  }
+  getPagesDocument(relativePath: "training-page.md") {
+    data {
+      ... on TrainingPage_Doc_Data {
+        faq {
+          question
+          answer
+        }
+      }
+    }
+  }
+}
+    ${NavFragmentDoc}`;
+const TrainingPlanPage = (client: Client) =>  async ({variables }: {variables?: TrainingPlanPageQueryVariables}) => {
+        return client.request<TrainingPlanPageQuery>(
+          `${TrainingPlanPageDocument}`,
+          { variables: variables }
+        );
+      }
+      const TrainingPlanPageString = (client: Client) =>  ({variables }: {variables?: TrainingPlanPageQueryVariables}) => {
+        return {query: TrainingPlanPageDocument, variables}
+      }
+
+    
 export type AsyncReturnType<T extends (...args: any) => Promise<any>> = T extends (
       ...args: any
     ) => Promise<infer R>
@@ -2891,5 +2979,7 @@ CuratedPostsString: CuratedPostsString(client),
 StaticPostsPaths: StaticPostsPaths(client),
 StaticPostsPathsString: StaticPostsPathsString(client),
 AuthorList: AuthorList(client),
-AuthorListString: AuthorListString(client)
+AuthorListString: AuthorListString(client),
+TrainingPlanPage: TrainingPlanPage(client),
+TrainingPlanPageString: TrainingPlanPageString(client)
 });
