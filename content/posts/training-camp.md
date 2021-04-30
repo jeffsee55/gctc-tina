@@ -1,5 +1,7 @@
 ---
 title: Why Training Camp Matters
+tags:
+  - Training-camp
 image: >-
   https://images.unsplash.com/photo-1482203460252-be3456f7c8d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80
 image_small: >-
