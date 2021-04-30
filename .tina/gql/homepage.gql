@@ -1,0 +1,69 @@
+query Home {
+  getNavDocument(relativePath: "site-nav.md") {
+    ...Nav
+  }
+  page: getPagesDocument(relativePath: "our-team.md") {
+    id
+    data {
+      ... on Page_Doc_Data {
+        __typename
+        seo {
+          title
+          description
+          image
+        }
+        layers {
+          __typename
+          ... on CuratedCollection_Data {
+            ...CuratedCollection
+          }
+          ... on LayerSponsors_Data {
+            title
+            sponsors {
+              name
+              link
+            }
+          }
+          ... on LayerCta_Data {
+            description
+            cta_text
+            cta_link
+            cta_image
+          }
+          ... on LayerLeadership_Data {
+            title
+            leaders {
+              ...BaseAuthor
+            }
+          }
+          ... on LayerPostList_Data {
+            description
+            posts {
+              data {
+                ... on Post_Doc_Data {
+                  title
+                  tags
+                  preface
+                  image
+                  image_small
+                  author {
+                    ...BaseAuthor
+                  }
+                }
+              }
+            }
+          }
+          ... on LayerDarkFeature_Data {
+            hint
+            title
+            description
+            feature_list {
+              header
+              description
+            }
+          }
+        }
+      }
+    }
+  }
+}

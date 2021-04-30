@@ -7,6 +7,7 @@ import { Sponsors } from "../components/sponsors";
 import { Home } from "../components/hero/home";
 import { Img } from "../components/image";
 import {Loading} from '../components/loading'
+import {Form, GlobalFormPlugin, useCMS} from 'tinacms'
 
 import { useGraphqlForms } from "tina-graphql-gateway";
 import { createLocalClient } from "../util/create-client";
@@ -17,7 +18,7 @@ const localSdk = sdk(createLocalClient());
 
 export async function staticProps() {
   return {
-    props: {data: await localSdk.BaseAuthorList({variables: {}})},
+    props: {data: await localSdk.Home({variables: {}})},
   };
 }
 
@@ -97,12 +98,23 @@ type PitchLayer = Tina.FilterByTypename<LayerType, "LayerDarkFeature_Data">;
 type CtaLayer = Tina.FilterByTypename<LayerType, "LayerCta_Data">;
 type LeadershipLayer = Tina.FilterByTypename<LayerType, "LayerLeadership_Data">;
 
-export function Dynamic(props: {data: AsyncReturnType<typeof localSdk.BaseAuthorList>}) {
-  const { query, variables } = localSdk.BaseAuthorListString({
+export function Dynamic(props: {data: AsyncReturnType<typeof localSdk.Home>}) {
+  const { query, variables } = localSdk.HomeString({
     variables: {},
   });
-  const [data, isLoading] = useGraphqlForms<AsyncReturnType<typeof localSdk.BaseAuthorList>>({
+  const cms = useCMS()
+  const [data, isLoading] = useGraphqlForms<AsyncReturnType<typeof localSdk.Home>>({
     query,
+    formify: ({ formConfig, createForm, skip }) => {
+      if (formConfig.id === 'getNavDocument') {
+        const form = new Form(formConfig)
+        // The site nav will be a global plugin
+        cms.plugins.add(new GlobalFormPlugin(form))
+        return form
+      }
+
+      return createForm(formConfig)
+    },
     variables,
   });
 

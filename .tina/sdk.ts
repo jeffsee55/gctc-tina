@@ -1832,6 +1832,42 @@ export type BaseAuthorListQuery = { getNavDocument?: Maybe<NavFragment>, page?: 
     )> }
   )>, terrence?: Maybe<BaseAuthorFragment>, jen?: Maybe<BaseAuthorFragment>, christian?: Maybe<BaseAuthorFragment>, chris?: Maybe<BaseAuthorFragment>, emily?: Maybe<BaseAuthorFragment>, eric?: Maybe<BaseAuthorFragment>, heidi?: Maybe<BaseAuthorFragment>, nicole?: Maybe<BaseAuthorFragment>, sarah?: Maybe<BaseAuthorFragment> };
 
+export type HomeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type HomeQuery = { getNavDocument?: Maybe<NavFragment>, page?: Maybe<(
+    Pick<Pages_Document, 'id'>
+    & { data?: Maybe<(
+      { __typename: 'Page_Doc_Data' }
+      & { seo?: Maybe<Pick<Page_Seo_Data, 'title' | 'description' | 'image'>>, layers?: Maybe<Array<Maybe<{ __typename: 'LayerTeam_Data' } | (
+        { __typename: 'LayerPostList_Data' }
+        & Pick<LayerPostList_Data, 'description'>
+        & { posts?: Maybe<Array<Maybe<{ data?: Maybe<(
+            Pick<Post_Doc_Data, 'title' | 'tags' | 'preface' | 'image' | 'image_small'>
+            & { author?: Maybe<BaseAuthorFragment> }
+          )> }>>> }
+      ) | (
+        { __typename: 'LayerDarkFeature_Data' }
+        & Pick<LayerDarkFeature_Data, 'hint' | 'title' | 'description'>
+        & { feature_list?: Maybe<Array<Maybe<Pick<LayerDarkFeature_FeatureList_Data, 'header' | 'description'>>>> }
+      ) | (
+        { __typename: 'LayerLeadership_Data' }
+        & Pick<LayerLeadership_Data, 'title'>
+        & { leaders?: Maybe<Array<Maybe<BaseAuthorFragment>>> }
+      ) | (
+        { __typename: 'LayerSponsors_Data' }
+        & Pick<LayerSponsors_Data, 'title'>
+        & { sponsors?: Maybe<Array<Maybe<Pick<LayerSponsors_Sponsors_Data, 'name' | 'link'>>>> }
+      ) | (
+        { __typename: 'CuratedCollection_Data' }
+        & CuratedCollectionFragment
+      ) | (
+        { __typename: 'LayerCta_Data' }
+        & Pick<LayerCta_Data, 'description' | 'cta_text' | 'cta_link' | 'cta_image'>
+      )>>> }
+    )> }
+  )> };
+
 export type NavItemFragment = Pick<NavItemLink_Data, 'label' | 'value'>;
 
 export type NavPopoutFragment = (
@@ -2551,6 +2587,90 @@ const BaseAuthorList = (client: Client) =>  async ({variables }: {variables?: Ba
       }
 
     
+export const HomeDocument = `
+    query Home {
+  getNavDocument(relativePath: "site-nav.md") {
+    ...Nav
+  }
+  page: getPagesDocument(relativePath: "our-team.md") {
+    id
+    data {
+      ... on Page_Doc_Data {
+        __typename
+        seo {
+          title
+          description
+          image
+        }
+        layers {
+          __typename
+          ... on CuratedCollection_Data {
+            ...CuratedCollection
+          }
+          ... on LayerSponsors_Data {
+            title
+            sponsors {
+              name
+              link
+            }
+          }
+          ... on LayerCta_Data {
+            description
+            cta_text
+            cta_link
+            cta_image
+          }
+          ... on LayerLeadership_Data {
+            title
+            leaders {
+              ...BaseAuthor
+            }
+          }
+          ... on LayerPostList_Data {
+            description
+            posts {
+              data {
+                ... on Post_Doc_Data {
+                  title
+                  tags
+                  preface
+                  image
+                  image_small
+                  author {
+                    ...BaseAuthor
+                  }
+                }
+              }
+            }
+          }
+          ... on LayerDarkFeature_Data {
+            hint
+            title
+            description
+            feature_list {
+              header
+              description
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    ${NavFragmentDoc}
+${CuratedCollectionFragmentDoc}
+${BaseAuthorFragmentDoc}`;
+const Home = (client: Client) =>  async ({variables }: {variables?: HomeQueryVariables}) => {
+        return client.request<HomeQuery>(
+          `${HomeDocument}`,
+          { variables: variables }
+        );
+      }
+      const HomeString = (client: Client) =>  ({variables }: {variables?: HomeQueryVariables}) => {
+        return {query: gql => gql(HomeDocument), variables}
+      }
+
+    
 export const GetNavDocument = `
     query getNav($relativePath: String!) {
   getNavDocument(relativePath: $relativePath) {
@@ -2760,6 +2880,8 @@ Member: Member(client),
 MemberString: MemberString(client),
 BaseAuthorList: BaseAuthorList(client),
 BaseAuthorListString: BaseAuthorListString(client),
+Home: Home(client),
+HomeString: HomeString(client),
 getNav: getNav(client),
 getNavString: getNavString(client),
 PostQuery: PostQuery(client),
