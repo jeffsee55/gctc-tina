@@ -28,6 +28,11 @@ layers:
     cta_link: /training-plans
     cta_image: >-
       https://res.cloudinary.com/deuzrsg3m/image/upload/v1612736830/uploads/Screen_Shot_2021-02-07_at_2.27.00_PM_ptwqab.png
+  - template: layerLeadership
+    title: Meet our Leadership
+    leaders:
+      - content/authors/terrence.md
+      - content/authors/jen.md
   - template: layerDarkFeature
     hint: Golden Coast Track Club
     title: Our Vision
@@ -50,11 +55,6 @@ layers:
       and helps our runners to stay committed to their athletic endeavors. By
       joining our team you are taking the first step in breaking down barriers
       and achieving your goals.
-  - template: layerLeadership
-    title: Meet our Leadership
-    leaders:
-      - content/authors/terrence.md
-      - content/authors/jen.md
   - template: layerSponsors
     title: Thanks to our sponsors
     sponsors:
