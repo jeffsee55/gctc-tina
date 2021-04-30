@@ -10,20 +10,12 @@ function InnerApp({ Component, pageProps }) {
   if (edit) {
     const TinaWrapper = dynamic(() => import("../components/tina-wrapper"));
     return (
-      <>
-        <TinaWrapper {...pageProps}>
-          {(props) => <Component {...props} />}
-        </TinaWrapper>
-        <EditToggle />
-      </>
+      <TinaWrapper {...pageProps}>
+        {(props) => <Component {...props} />}
+      </TinaWrapper>
     );
   }
-  return (
-    <>
-      <Component {...pageProps} />
-      <EditToggle />
-    </>
-  );
+  return <Component {...pageProps} />;
 }
 
 function App(props) {
@@ -39,18 +31,5 @@ function App(props) {
     </EditProvider>
   );
 }
-export default App;
 
-const EditToggle = () => {
-  const { edit, setEdit } = useEditState();
-  return (
-    <div className="absolute top-6 right-4 z-50">
-      <button
-        onClick={() => setEdit(!edit)}
-        className="cursor-pointer relative bg-steel-medium text-white rounded-lg shadow-md p-4"
-      >
-        {edit ? "Exit edit mode" : "Enter edit mode"}
-      </button>
-    </div>
-  );
-};
+export default App;

@@ -1,7 +1,10 @@
 import React from "react";
 import { NavFragment } from "../../.tina/sdk";
+import { useEditState } from "../../util/edit-state";
 
 export const Footer = (props: NavFragment) => {
+  const { edit, setEdit } = useEditState();
+
   return (
     <footer className="bg-steel-xdark" aria-labelledby="footerHeading">
       <h2 id="footerHeading" className="sr-only">
@@ -71,6 +74,14 @@ export const Footer = (props: NavFragment) => {
                     >
                       Instagram
                     </a>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => setEdit(!edit)}
+                      className="text-base text-gray-300 hover:text-white"
+                    >
+                      {edit ? "Exit edit mode" : "Edit this page"}
+                    </button>
                   </li>
                 </ul>
               </div>
