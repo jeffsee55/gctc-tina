@@ -43,9 +43,9 @@ export const Static = (props: {
             return <FeatureList {...curation} />;
         }
       })}
-      <div>
+      {/* <div>
         <NewsletterCta />
-      </div>
+      </div> */}
       <Footer {...getNavDocument} />
     </>
   );

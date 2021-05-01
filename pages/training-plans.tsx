@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { Markdown } from "../components/markdown";
 import { Form2, Toggle, Text } from "../components/form";
 import { Header2 } from "../components/header";
+import { Footer } from "../components/footer";
 import { tenK, fiveK, halfMarathon, marathon } from "../data/paces";
 
 import { sdk, AsyncReturnType } from "../.tina/sdk";
@@ -90,6 +91,7 @@ export const Static = (props: {
           </div>
         </div>
         <Faq faqs={props.data.getPagesDocument.data.faq} />
+        <Footer {...props.data.getNavDocument} />
       </div>
     </>
   );
