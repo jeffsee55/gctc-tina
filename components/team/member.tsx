@@ -1,7 +1,5 @@
 import React from "react";
 import { Markdown } from "../../components/markdown";
-import { Header2 } from "../../components/header";
-import { ThumbnailList } from "../../components/post/list";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import {
   Form2,

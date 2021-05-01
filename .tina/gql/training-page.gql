@@ -9,6 +9,7 @@ query TrainingPlanPage {
           question
           answer
         }
+        _body
       }
     }
   }

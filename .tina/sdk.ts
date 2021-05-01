@@ -2065,7 +2065,10 @@ export type AuthorListQuery = { getNavDocument?: Maybe<NavFragment>, page?: Mayb
 export type TrainingPlanPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type TrainingPlanPageQuery = { getNavDocument?: Maybe<NavFragment>, getPagesDocument?: Maybe<{ data?: Maybe<{ faq?: Maybe<Array<Maybe<Pick<TrainingPage_Faq_Data, 'question' | 'answer'>>>> }> }> };
+export type TrainingPlanPageQuery = { getNavDocument?: Maybe<NavFragment>, getPagesDocument?: Maybe<{ data?: Maybe<(
+      Pick<TrainingPage_Doc_Data, '_body'>
+      & { faq?: Maybe<Array<Maybe<Pick<TrainingPage_Faq_Data, 'question' | 'answer'>>>> }
+    )> }> };
 
 export const AuthorSnippetFragmentDoc = `
     fragment AuthorSnippet on Authors_Document {
@@ -2938,6 +2941,7 @@ export const TrainingPlanPageDocument = `
           question
           answer
         }
+        _body
       }
     }
   }

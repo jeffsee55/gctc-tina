@@ -12,3 +12,6 @@ faq:
 _template: trainingPage
 ---
 
+## Training Plans
+
+We offer training plans for 5k, 10k, half marathon & marathon as well as summer training programs. For our main events we offer 2 types of plans, but no matter what you choose you'll be part of Golden Coast Track Club community. That means you'll have access to exclusive discounts on gear and you'll benefit from the community.

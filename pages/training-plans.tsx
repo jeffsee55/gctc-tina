@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import * as yup from "yup";
+import { Markdown } from "../components/markdown";
 import { Form2, Toggle, Text } from "../components/form";
 import { Header2 } from "../components/header";
 import { tenK, fiveK, halfMarathon, marathon } from "../data/paces";
@@ -41,17 +42,13 @@ export const Static = (props: {
         <div className="bg-gradient-to-b from-white to-gray-50 pb-24">
           <div className="max-w-7xl mx-auto pt-24 px-4 sm:px-6 lg:px-8">
             <div className="sm:flex sm:flex-col sm:align-center">
-              <h1 className="text-5xl font-extrabold text-gray-900 sm:text-center">
-                Training Plans
-              </h1>
-              <p className="mt-5 text-xl text-gray-500 sm:text-center">
-                We offer training plans for 5k, 10k, half marathon & marathon as
-                well as summer training programs. For our main events we offer 2
-                types of plans, but no matter what you choose you'll be part of
-                Golden Coast Track Club community. That means you'll have access
-                to exclusive discounts on gear and you'll benefit from the
-                community
-              </p>
+              <Markdown
+                content={props.data.getPagesDocument.data._body}
+                classNames={{
+                  h2: "text-5xl font-extrabold text-gray-900 sm:text-center",
+                  p: "mt-5 text-xl text-gray-500 sm:text-center",
+                }}
+              />
               <div className="relative mt-6 bg-gray-100 rounded-lg p-0.5 flex self-center sm:mt-8">
                 <button
                   type="button"
