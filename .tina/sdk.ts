@@ -64,9 +64,10 @@ type Section = {
   documents?: Maybe<Array<Maybe<Document>>>;
 };
 
-type SectionDocumentUnion = Posts_Document | Pages_Document | Forms_Document | Curated_Document | Authors_Document | Nav_Document;
+type SectionDocumentUnion = Training_Document | Posts_Document | Pages_Document | Forms_Document | Curated_Document | Authors_Document | Nav_Document;
 
 type SectionParams = {
+  training?: Maybe<Training_Input>;
   posts?: Maybe<Posts_Input>;
   pages?: Maybe<Pages_Input>;
   forms?: Maybe<Forms_Input>;
@@ -79,6 +80,7 @@ type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument?: Maybe<Document>;
   updateDocument?: Maybe<SectionDocumentUnion>;
+  updateTrainingDocument?: Maybe<Training_Document>;
   updatePostsDocument?: Maybe<Posts_Document>;
   updatePagesDocument?: Maybe<Pages_Document>;
   updateFormsDocument?: Maybe<Forms_Document>;
@@ -98,6 +100,12 @@ type MutationAddPendingDocumentArgs = {
 type MutationUpdateDocumentArgs = {
   relativePath?: Maybe<Scalars['String']>;
   params?: Maybe<SectionParams>;
+};
+
+
+type MutationUpdateTrainingDocumentArgs = {
+  relativePath?: Maybe<Scalars['String']>;
+  params?: Maybe<Training_Input>;
 };
 
 
@@ -142,6 +150,8 @@ type Query = {
   getDocument?: Maybe<SectionDocumentUnion>;
   getCollections?: Maybe<Array<Maybe<Section>>>;
   getCollection?: Maybe<Section>;
+  getTrainingDocument?: Maybe<Training_Document>;
+  getTrainingList?: Maybe<Array<Maybe<Training_Document>>>;
   getPostsDocument?: Maybe<Posts_Document>;
   getPostsList?: Maybe<Array<Maybe<Posts_Document>>>;
   getPagesDocument?: Maybe<Pages_Document>;
@@ -173,6 +183,11 @@ type QueryGetCollectionArgs = {
 };
 
 
+type QueryGetTrainingDocumentArgs = {
+  relativePath?: Maybe<Scalars['String']>;
+};
+
+
 type QueryGetPostsDocumentArgs = {
   relativePath?: Maybe<Scalars['String']>;
 };
@@ -200,6 +215,129 @@ type QueryGetAuthorsDocumentArgs = {
 
 type QueryGetNavDocumentArgs = {
   relativePath?: Maybe<Scalars['String']>;
+};
+
+type Training_Data = Training_Doc_Data;
+
+type Training_Input = {
+  training?: Maybe<Training_Doc_Input>;
+};
+
+type Training_Values = Training_Doc_Values;
+
+type Training_Form = Training_Doc_Form;
+
+type Training_Document = Node & Document & {
+  __typename?: 'Training_Document';
+  id: Scalars['ID'];
+  sys?: Maybe<SystemInfo>;
+  data?: Maybe<Training_Data>;
+  values?: Maybe<Training_Values>;
+  form?: Maybe<Training_Form>;
+};
+
+type Training_Workouts_Data = {
+  __typename?: 'Training_Workouts_Data';
+  Day?: Maybe<Scalars['Int']>;
+  Title?: Maybe<Scalars['String']>;
+  Description?: Maybe<Scalars['String']>;
+  Category?: Maybe<Scalars['String']>;
+};
+
+type Training_Doc_Data = {
+  __typename?: 'Training_Doc_Data';
+  name?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  event?: Maybe<Scalars['String']>;
+  category?: Maybe<Scalars['String']>;
+  time?: Maybe<Scalars['String']>;
+  workouts?: Maybe<Array<Maybe<Training_Workouts_Data>>>;
+  _body?: Maybe<Scalars['String']>;
+};
+
+type Training_Workouts_Values = {
+  __typename?: 'Training_Workouts_Values';
+  Day?: Maybe<Scalars['Int']>;
+  Title?: Maybe<Scalars['String']>;
+  Description?: Maybe<Scalars['String']>;
+  Category?: Maybe<Scalars['Reference']>;
+};
+
+type Training_Doc_Values = {
+  __typename?: 'Training_Doc_Values';
+  name?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  event?: Maybe<Scalars['Reference']>;
+  category?: Maybe<Scalars['Reference']>;
+  time?: Maybe<Scalars['String']>;
+  workouts?: Maybe<Array<Maybe<Training_Workouts_Values>>>;
+  _body?: Maybe<Scalars['String']>;
+  _template?: Maybe<Scalars['String']>;
+};
+
+type TextField = FormField & {
+  __typename?: 'TextField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+};
+
+type TextareaField = FormField & {
+  __typename?: 'TextareaField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+};
+
+type SelectField = FormField & {
+  __typename?: 'SelectField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+  options?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+type NumberField = FormField & {
+  __typename?: 'NumberField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+};
+
+type Training_Workouts_FormFieldsUnion = NumberField | TextField | TextareaField | SelectField;
+
+type Training_Workouts_GroupListField = FormField & {
+  __typename?: 'Training_Workouts_GroupListField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<Training_Workouts_FormFieldsUnion>>>;
+};
+
+type Training_Doc_FormFieldsUnion = TextField | TextareaField | SelectField | Training_Workouts_GroupListField;
+
+type Training_Doc_Form = {
+  __typename?: 'Training_Doc_Form';
+  label?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<Training_Doc_FormFieldsUnion>>>;
+};
+
+type Training_Workouts_Input = {
+  Day?: Maybe<Scalars['Int']>;
+  Title?: Maybe<Scalars['String']>;
+  Description?: Maybe<Scalars['String']>;
+  Category?: Maybe<Scalars['String']>;
+};
+
+type Training_Doc_Input = {
+  name?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  event?: Maybe<Scalars['String']>;
+  category?: Maybe<Scalars['String']>;
+  time?: Maybe<Scalars['String']>;
+  workouts?: Maybe<Array<Maybe<Training_Workouts_Input>>>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 type Posts_Data = Post_Doc_Data;
@@ -258,13 +396,6 @@ type Post_Doc_Values = {
   _template?: Maybe<Scalars['String']>;
 };
 
-type TextField = FormField & {
-  __typename?: 'TextField';
-  name?: Maybe<Scalars['String']>;
-  label?: Maybe<Scalars['String']>;
-  component?: Maybe<Scalars['String']>;
-};
-
 type TagListField = FormField & {
   __typename?: 'TagListField';
   name?: Maybe<Scalars['String']>;
@@ -280,21 +411,6 @@ type Post_Accolades_GroupField = FormField & {
   label?: Maybe<Scalars['String']>;
   component?: Maybe<Scalars['String']>;
   fields?: Maybe<Array<Maybe<Post_Accolades_FormFieldsUnion>>>;
-};
-
-type SelectField = FormField & {
-  __typename?: 'SelectField';
-  name?: Maybe<Scalars['String']>;
-  label?: Maybe<Scalars['String']>;
-  component?: Maybe<Scalars['String']>;
-  options?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-type TextareaField = FormField & {
-  __typename?: 'TextareaField';
-  name?: Maybe<Scalars['String']>;
-  label?: Maybe<Scalars['String']>;
-  component?: Maybe<Scalars['String']>;
 };
 
 type Post_Doc_FormFieldsUnion = TextField | TagListField | Post_Accolades_GroupField | SelectField | TextareaField;
@@ -2070,6 +2186,32 @@ export type TrainingPlanPageQuery = { getNavDocument?: Maybe<NavFragment>, getPa
       & { faq?: Maybe<Array<Maybe<Pick<TrainingPage_Faq_Data, 'question' | 'answer'>>>> }
     )> }> };
 
+export type TrainingWorkoutsQueryVariables = Exact<{
+  relativePath: Scalars['String'];
+}>;
+
+
+export type TrainingWorkoutsQuery = { getTrainingDocument?: Maybe<(
+    Pick<Training_Document, 'id'>
+    & { data?: Maybe<(
+      { __typename: 'Training_Doc_Data' }
+      & Pick<Training_Doc_Data, 'name' | 'description'>
+      & { workouts?: Maybe<Array<Maybe<Pick<Training_Workouts_Data, 'Day' | 'Title' | 'Description' | 'Category'>>>> }
+    )> }
+  )> };
+
+export type TrainingListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TrainingListQuery = { getTrainingList?: Maybe<Array<Maybe<(
+    Pick<Training_Document, 'id'>
+    & { data?: Maybe<(
+      { __typename: 'Training_Doc_Data' }
+      & Pick<Training_Doc_Data, 'name' | 'description' | 'event' | 'category' | 'time'>
+      & { workouts?: Maybe<Array<Maybe<Pick<Training_Workouts_Data, 'Day'>>>> }
+    )> }
+  )>>> };
+
 export const AuthorSnippetFragmentDoc = `
     fragment AuthorSnippet on Authors_Document {
   sys {
@@ -2958,6 +3100,68 @@ const TrainingPlanPage = (client: Client) =>  async ({variables }: {variables?: 
       }
 
     
+export const TrainingWorkoutsDocument = `
+    query TrainingWorkouts($relativePath: String!) {
+  getTrainingDocument(relativePath: $relativePath) {
+    id
+    data {
+      __typename
+      ... on Training_Doc_Data {
+        name
+        description
+        workouts {
+          Day
+          Title
+          Description
+          Category
+        }
+      }
+    }
+  }
+}
+    `;
+const TrainingWorkouts = (client: Client) =>  async ({variables }: {variables: TrainingWorkoutsQueryVariables}) => {
+        return client.request<TrainingWorkoutsQuery>(
+          `${TrainingWorkoutsDocument}`,
+          { variables: variables }
+        );
+      }
+      const TrainingWorkoutsString = (client: Client) =>  ({variables }: {variables: TrainingWorkoutsQueryVariables}) => {
+        return {query: TrainingWorkoutsDocument, variables}
+      }
+
+    
+export const TrainingListDocument = `
+    query TrainingList {
+  getTrainingList {
+    id
+    data {
+      __typename
+      ... on Training_Doc_Data {
+        name
+        description
+        event
+        category
+        time
+        workouts {
+          Day
+        }
+      }
+    }
+  }
+}
+    `;
+const TrainingList = (client: Client) =>  async ({variables }: {variables?: TrainingListQueryVariables}) => {
+        return client.request<TrainingListQuery>(
+          `${TrainingListDocument}`,
+          { variables: variables }
+        );
+      }
+      const TrainingListString = (client: Client) =>  ({variables }: {variables?: TrainingListQueryVariables}) => {
+        return {query: TrainingListDocument, variables}
+      }
+
+    
 export type AsyncReturnType<T extends (...args: any) => Promise<any>> = T extends (
       ...args: any
     ) => Promise<infer R>
@@ -2985,5 +3189,9 @@ StaticPostsPathsString: StaticPostsPathsString(client),
 AuthorList: AuthorList(client),
 AuthorListString: AuthorListString(client),
 TrainingPlanPage: TrainingPlanPage(client),
-TrainingPlanPageString: TrainingPlanPageString(client)
+TrainingPlanPageString: TrainingPlanPageString(client),
+TrainingWorkouts: TrainingWorkouts(client),
+TrainingWorkoutsString: TrainingWorkoutsString(client),
+TrainingList: TrainingList(client),
+TrainingListString: TrainingListString(client)
 });

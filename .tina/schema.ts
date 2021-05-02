@@ -2,11 +2,18 @@ import { defineSchema } from "tina-graphql-gateway-cli";
 import { Athlete, Author } from "./schema/author";
 import { Form } from "./schema/form";
 import { Nav } from "./schema/nav";
+import { Training } from "./schema/training";
 import { Page, TrainingPage } from "./schema/pages";
 import { Post, Curated } from "./schema/post";
 
 export default defineSchema({
   collections: [
+    {
+      label: "Training",
+      name: "training",
+      path: "content/training",
+      templates: [Training],
+    },
     {
       label: "Posts",
       name: "posts",

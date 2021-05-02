@@ -1,0 +1,37 @@
+query TrainingWorkouts($relativePath: String!) {
+  getTrainingDocument(relativePath: $relativePath) {
+    id
+    data {
+      __typename
+      ... on Training_Doc_Data {
+        name
+        description
+        workouts {
+          Day
+          Title
+          Description
+          Category
+        }
+      }
+    }
+  }
+}
+
+query TrainingList {
+  getTrainingList {
+    id
+    data {
+      __typename
+      ... on Training_Doc_Data {
+        name
+        description
+        event
+        category
+        time
+        workouts {
+          Day
+        }
+      }
+    }
+  }
+}

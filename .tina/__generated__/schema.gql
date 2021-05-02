@@ -46,9 +46,10 @@ type Section {
   documents: [Document]
 }
 
-union SectionDocumentUnion = Posts_Document | Pages_Document | Forms_Document | Curated_Document | Authors_Document | Nav_Document
+union SectionDocumentUnion = Training_Document | Posts_Document | Pages_Document | Forms_Document | Curated_Document | Authors_Document | Nav_Document
 
 input SectionParams {
+  training: Training_Input
   posts: Posts_Input
   pages: Pages_Input
   forms: Forms_Input
@@ -60,6 +61,7 @@ input SectionParams {
 type Mutation {
   addPendingDocument(relativePath: String, collection: String, template: String): Document
   updateDocument(relativePath: String, params: SectionParams): SectionDocumentUnion
+  updateTrainingDocument(relativePath: String, params: Training_Input): Training_Document
   updatePostsDocument(relativePath: String, params: Posts_Input): Posts_Document
   updatePagesDocument(relativePath: String, params: Pages_Input): Pages_Document
   updateFormsDocument(relativePath: String, params: Forms_Input): Forms_Document
@@ -73,6 +75,8 @@ type Query {
   getDocument(collection: String, relativePath: String): SectionDocumentUnion
   getCollections: [Section]
   getCollection(collection: String): Section
+  getTrainingDocument(relativePath: String): Training_Document
+  getTrainingList: [Training_Document]
   getPostsDocument(relativePath: String): Posts_Document
   getPostsList: [Posts_Document]
   getPagesDocument(relativePath: String): Pages_Document
@@ -85,6 +89,118 @@ type Query {
   getAuthorsList: [Authors_Document]
   getNavDocument(relativePath: String): Nav_Document
   getNavList: [Nav_Document]
+}
+
+union Training_Data = Training_Doc_Data
+
+input Training_Input {
+  training: Training_Doc_Input
+}
+
+union Training_Values = Training_Doc_Values
+
+union Training_Form = Training_Doc_Form
+
+type Training_Document implements Node & Document {
+  id: ID!
+  sys: SystemInfo
+  data: Training_Data
+  values: Training_Values
+  form: Training_Form
+}
+
+type Training_Workouts_Data {
+  Day: Int
+  Title: String
+  Description: String
+  Category: String
+}
+
+type Training_Doc_Data {
+  name: String
+  description: String
+  event: String
+  category: String
+  time: String
+  workouts: [Training_Workouts_Data]
+  _body: String
+}
+
+type Training_Workouts_Values {
+  Day: Int
+  Title: String
+  Description: String
+  Category: Reference
+}
+
+type Training_Doc_Values {
+  name: String
+  description: String
+  event: Reference
+  category: Reference
+  time: String
+  workouts: [Training_Workouts_Values]
+  _body: String
+  _template: String
+}
+
+type TextField implements FormField {
+  name: String
+  label: String
+  component: String
+}
+
+type TextareaField implements FormField {
+  name: String
+  label: String
+  component: String
+}
+
+type SelectField implements FormField {
+  name: String
+  label: String
+  component: String
+  options: [String]
+}
+
+type NumberField implements FormField {
+  name: String
+  label: String
+  component: String
+}
+
+union Training_Workouts_FormFieldsUnion = NumberField | TextField | TextareaField | SelectField
+
+type Training_Workouts_GroupListField implements FormField {
+  name: String
+  label: String
+  component: String
+  fields: [Training_Workouts_FormFieldsUnion]
+}
+
+union Training_Doc_FormFieldsUnion = TextField | TextareaField | SelectField | Training_Workouts_GroupListField
+
+type Training_Doc_Form {
+  label: String
+  name: String
+  fields: [Training_Doc_FormFieldsUnion]
+}
+
+input Training_Workouts_Input {
+  Day: Int
+  Title: String
+  Description: String
+  Category: String
+}
+
+input Training_Doc_Input {
+  name: String
+  description: String
+  event: String
+  category: String
+  time: String
+  workouts: [Training_Workouts_Input]
+  _body: String
 }
 
 union Posts_Data = Post_Doc_Data
@@ -138,12 +254,6 @@ type Post_Doc_Values {
   _template: String
 }
 
-type TextField implements FormField {
-  name: String
-  label: String
-  component: String
-}
-
 type TagListField implements FormField {
   name: String
   label: String
@@ -157,19 +267,6 @@ type Post_Accolades_GroupField implements FormField {
   label: String
   component: String
   fields: [Post_Accolades_FormFieldsUnion]
-}
-
-type SelectField implements FormField {
-  name: String
-  label: String
-  component: String
-  options: [String]
-}
-
-type TextareaField implements FormField {
-  name: String
-  label: String
-  component: String
 }
 
 union Post_Doc_FormFieldsUnion = TextField | TagListField | Post_Accolades_GroupField | SelectField | TextareaField

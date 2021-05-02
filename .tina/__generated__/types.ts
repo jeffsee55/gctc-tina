@@ -64,9 +64,10 @@ export type Section = {
   documents?: Maybe<Array<Maybe<Document>>>;
 };
 
-export type SectionDocumentUnion = Posts_Document | Pages_Document | Forms_Document | Curated_Document | Authors_Document | Nav_Document;
+export type SectionDocumentUnion = Training_Document | Posts_Document | Pages_Document | Forms_Document | Curated_Document | Authors_Document | Nav_Document;
 
 export type SectionParams = {
+  training?: Maybe<Training_Input>;
   posts?: Maybe<Posts_Input>;
   pages?: Maybe<Pages_Input>;
   forms?: Maybe<Forms_Input>;
@@ -79,6 +80,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument?: Maybe<Document>;
   updateDocument?: Maybe<SectionDocumentUnion>;
+  updateTrainingDocument?: Maybe<Training_Document>;
   updatePostsDocument?: Maybe<Posts_Document>;
   updatePagesDocument?: Maybe<Pages_Document>;
   updateFormsDocument?: Maybe<Forms_Document>;
@@ -98,6 +100,12 @@ export type MutationAddPendingDocumentArgs = {
 export type MutationUpdateDocumentArgs = {
   relativePath?: Maybe<Scalars['String']>;
   params?: Maybe<SectionParams>;
+};
+
+
+export type MutationUpdateTrainingDocumentArgs = {
+  relativePath?: Maybe<Scalars['String']>;
+  params?: Maybe<Training_Input>;
 };
 
 
@@ -142,6 +150,8 @@ export type Query = {
   getDocument?: Maybe<SectionDocumentUnion>;
   getCollections?: Maybe<Array<Maybe<Section>>>;
   getCollection?: Maybe<Section>;
+  getTrainingDocument?: Maybe<Training_Document>;
+  getTrainingList?: Maybe<Array<Maybe<Training_Document>>>;
   getPostsDocument?: Maybe<Posts_Document>;
   getPostsList?: Maybe<Array<Maybe<Posts_Document>>>;
   getPagesDocument?: Maybe<Pages_Document>;
@@ -173,6 +183,11 @@ export type QueryGetCollectionArgs = {
 };
 
 
+export type QueryGetTrainingDocumentArgs = {
+  relativePath?: Maybe<Scalars['String']>;
+};
+
+
 export type QueryGetPostsDocumentArgs = {
   relativePath?: Maybe<Scalars['String']>;
 };
@@ -200,6 +215,129 @@ export type QueryGetAuthorsDocumentArgs = {
 
 export type QueryGetNavDocumentArgs = {
   relativePath?: Maybe<Scalars['String']>;
+};
+
+export type Training_Data = Training_Doc_Data;
+
+export type Training_Input = {
+  training?: Maybe<Training_Doc_Input>;
+};
+
+export type Training_Values = Training_Doc_Values;
+
+export type Training_Form = Training_Doc_Form;
+
+export type Training_Document = Node & Document & {
+  __typename?: 'Training_Document';
+  id: Scalars['ID'];
+  sys?: Maybe<SystemInfo>;
+  data?: Maybe<Training_Data>;
+  values?: Maybe<Training_Values>;
+  form?: Maybe<Training_Form>;
+};
+
+export type Training_Workouts_Data = {
+  __typename?: 'Training_Workouts_Data';
+  Day?: Maybe<Scalars['Int']>;
+  Title?: Maybe<Scalars['String']>;
+  Description?: Maybe<Scalars['String']>;
+  Category?: Maybe<Scalars['String']>;
+};
+
+export type Training_Doc_Data = {
+  __typename?: 'Training_Doc_Data';
+  name?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  event?: Maybe<Scalars['String']>;
+  category?: Maybe<Scalars['String']>;
+  time?: Maybe<Scalars['String']>;
+  workouts?: Maybe<Array<Maybe<Training_Workouts_Data>>>;
+  _body?: Maybe<Scalars['String']>;
+};
+
+export type Training_Workouts_Values = {
+  __typename?: 'Training_Workouts_Values';
+  Day?: Maybe<Scalars['Int']>;
+  Title?: Maybe<Scalars['String']>;
+  Description?: Maybe<Scalars['String']>;
+  Category?: Maybe<Scalars['Reference']>;
+};
+
+export type Training_Doc_Values = {
+  __typename?: 'Training_Doc_Values';
+  name?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  event?: Maybe<Scalars['Reference']>;
+  category?: Maybe<Scalars['Reference']>;
+  time?: Maybe<Scalars['String']>;
+  workouts?: Maybe<Array<Maybe<Training_Workouts_Values>>>;
+  _body?: Maybe<Scalars['String']>;
+  _template?: Maybe<Scalars['String']>;
+};
+
+export type TextField = FormField & {
+  __typename?: 'TextField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+};
+
+export type TextareaField = FormField & {
+  __typename?: 'TextareaField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+};
+
+export type SelectField = FormField & {
+  __typename?: 'SelectField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+  options?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type NumberField = FormField & {
+  __typename?: 'NumberField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+};
+
+export type Training_Workouts_FormFieldsUnion = NumberField | TextField | TextareaField | SelectField;
+
+export type Training_Workouts_GroupListField = FormField & {
+  __typename?: 'Training_Workouts_GroupListField';
+  name?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  component?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<Training_Workouts_FormFieldsUnion>>>;
+};
+
+export type Training_Doc_FormFieldsUnion = TextField | TextareaField | SelectField | Training_Workouts_GroupListField;
+
+export type Training_Doc_Form = {
+  __typename?: 'Training_Doc_Form';
+  label?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  fields?: Maybe<Array<Maybe<Training_Doc_FormFieldsUnion>>>;
+};
+
+export type Training_Workouts_Input = {
+  Day?: Maybe<Scalars['Int']>;
+  Title?: Maybe<Scalars['String']>;
+  Description?: Maybe<Scalars['String']>;
+  Category?: Maybe<Scalars['String']>;
+};
+
+export type Training_Doc_Input = {
+  name?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  event?: Maybe<Scalars['String']>;
+  category?: Maybe<Scalars['String']>;
+  time?: Maybe<Scalars['String']>;
+  workouts?: Maybe<Array<Maybe<Training_Workouts_Input>>>;
+  _body?: Maybe<Scalars['String']>;
 };
 
 export type Posts_Data = Post_Doc_Data;
@@ -258,13 +396,6 @@ export type Post_Doc_Values = {
   _template?: Maybe<Scalars['String']>;
 };
 
-export type TextField = FormField & {
-  __typename?: 'TextField';
-  name?: Maybe<Scalars['String']>;
-  label?: Maybe<Scalars['String']>;
-  component?: Maybe<Scalars['String']>;
-};
-
 export type TagListField = FormField & {
   __typename?: 'TagListField';
   name?: Maybe<Scalars['String']>;
@@ -280,21 +411,6 @@ export type Post_Accolades_GroupField = FormField & {
   label?: Maybe<Scalars['String']>;
   component?: Maybe<Scalars['String']>;
   fields?: Maybe<Array<Maybe<Post_Accolades_FormFieldsUnion>>>;
-};
-
-export type SelectField = FormField & {
-  __typename?: 'SelectField';
-  name?: Maybe<Scalars['String']>;
-  label?: Maybe<Scalars['String']>;
-  component?: Maybe<Scalars['String']>;
-  options?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type TextareaField = FormField & {
-  __typename?: 'TextareaField';
-  name?: Maybe<Scalars['String']>;
-  label?: Maybe<Scalars['String']>;
-  component?: Maybe<Scalars['String']>;
 };
 
 export type Post_Doc_FormFieldsUnion = TextField | TagListField | Post_Accolades_GroupField | SelectField | TextareaField;
