@@ -1,5 +1,8 @@
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
+import * as Strava from "../../lib/strava/types";
 import { useRouter } from "next/router";
+import { ActivitiesApi } from "../../lib/strava/types";
+import { Label, Textarea, Text } from "../form";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
   ArchiveIcon as ArchiveIconSolid,
@@ -195,15 +198,34 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+import addDays from "date-fns/addDays";
+import subDays from "date-fns/subDays";
+import differenceInDays from "date-fns/differenceInDays";
+
 export const Dashboard = (props) => {
-  const { query } = useRouter();
-  const [open, setOpen] = useState(false);
-  const activeDay = props.data.getTrainingDocument.data.workouts.find(
-    (data) => {
-      console.log(data.Day.toString());
-      return data.Day.toString() === props.day;
+  const startDate = new Date(2021, 2, 24);
+  const router = useRouter();
+  const now = new Date();
+  const today = differenceInDays(now, startDate);
+  const { query } = router;
+  const [activeDay, setActiveDay] = React.useState({});
+  const activeWorkoutRef = React.useRef(null);
+  React.useEffect(() => {
+    if (activeWorkoutRef.current) {
+      activeWorkoutRef.current.scrollIntoView();
     }
-  );
+  }, [activeWorkoutRef.current]);
+  React.useEffect(() => {
+    if (query.day) {
+      const activeDay = props.data.getTrainingDocument.data.workouts.find(
+        (data) => {
+          return data.Day.toString() === query.day;
+        }
+      );
+      setActiveDay(activeDay);
+    }
+  }, [query.day]);
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="h-screen overflow-hidden bg-gray-100 flex flex-col">
@@ -597,50 +619,24 @@ export const Dashboard = (props) => {
                               className="mr-2.5 h-5 w-5 text-gray-400"
                               aria-hidden="true"
                             />
-                            <span>Reply</span>
-                          </button>
-                          <button
-                            type="button"
-                            className="hidden sm:inline-flex -ml-px relative items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
-                          >
-                            <PencilIcon
-                              className="mr-2.5 h-5 w-5 text-gray-400"
-                              aria-hidden="true"
-                            />
-                            <span>Note</span>
+                            <span>View Full Week</span>
                           </button>
                           <button
                             type="button"
                             className="hidden sm:inline-flex -ml-px relative items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                            onClick={() => {
+                              router.push(
+                                `/app/${query.event}/${query.category}/${query.time}?day=${today}`,
+                                undefined,
+                                { shallow: true }
+                              );
+                            }}
                           >
                             <UserAddIcon
                               className="mr-2.5 h-5 w-5 text-gray-400"
                               aria-hidden="true"
                             />
-                            <span>Assign</span>
-                          </button>
-                        </span>
-
-                        <span className="hidden lg:flex space-x-3">
-                          <button
-                            type="button"
-                            className="hidden sm:inline-flex -ml-px relative items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
-                          >
-                            <ArchiveIconSolid
-                              className="mr-2.5 h-5 w-5 text-gray-400"
-                              aria-hidden="true"
-                            />
-                            <span>Archive</span>
-                          </button>
-                          <button
-                            type="button"
-                            className="hidden sm:inline-flex -ml-px relative items-center px-4 py-2 rounded-md border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
-                          >
-                            <FolderDownloadIcon
-                              className="mr-2.5 h-5 w-5 text-gray-400"
-                              aria-hidden="true"
-                            />
-                            <span>Move</span>
+                            <span>Jump to today</span>
                           </button>
                         </span>
 
@@ -750,8 +746,16 @@ export const Dashboard = (props) => {
                     {/* Right buttons */}
                     <nav aria-label="Pagination">
                       <span className="relative z-0 inline-flex shadow-sm rounded-md">
-                        <a
-                          href="#"
+                        <button
+                          onClick={() => {
+                            router.push(
+                              `/app/${query.event}/${query.category}/${
+                                query.time
+                              }?day=${parseInt(query.day) - 1}`,
+                              undefined,
+                              { shallow: true }
+                            );
+                          }}
                           className="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                         >
                           <span className="sr-only">Next</span>
@@ -759,9 +763,17 @@ export const Dashboard = (props) => {
                             className="h-5 w-5"
                             aria-hidden="true"
                           />
-                        </a>
-                        <a
-                          href="#"
+                        </button>
+                        <button
+                          onClick={() => {
+                            router.push(
+                              `/app/${query.event}/${query.category}/${
+                                query.time
+                              }?day=${parseInt(query.day) + 1}`,
+                              undefined,
+                              { shallow: true }
+                            );
+                          }}
                           className="-ml-px relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                         >
                           <span className="sr-only">Previous</span>
@@ -769,7 +781,7 @@ export const Dashboard = (props) => {
                             className="h-5 w-5"
                             aria-hidden="true"
                           />
-                        </a>
+                        </button>
                       </span>
                     </nav>
                   </div>
@@ -795,7 +807,7 @@ export const Dashboard = (props) => {
 
                   <div className="mt-4 flex items-center justify-between sm:mt-0 sm:ml-6 sm:flex-shrink-0 sm:justify-start">
                     <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-cyan-100 text-cyan-800">
-                      {message.status}
+                      {activeDay.Category}
                     </span>
                     <Menu
                       as="div"
@@ -882,29 +894,9 @@ export const Dashboard = (props) => {
                   </div>
                 </div>
               </div>
-              {/* Thread section*/}
-              <ul className="py-4 space-y-2 sm:px-6 sm:space-y-4 lg:px-8">
-                {message.items.map((item) => (
-                  <li
-                    key={item.id}
-                    className="bg-white px-4 py-6 shadow sm:rounded-lg sm:px-6"
-                  >
-                    <div className="sm:flex sm:justify-between sm:items-baseline">
-                      <h3 className="text-base font-medium">
-                        <span className="text-gray-900">{item.author}</span>{" "}
-                        <span className="text-gray-600">wrote</span>
-                      </h3>
-                      <p className="mt-1 text-sm text-gray-600 whitespace-nowrap sm:mt-0 sm:ml-3">
-                        <time dateTime={item.datetime}>{item.date}</time>
-                      </p>
-                    </div>
-                    <div
-                      className="mt-4 space-y-6 text-sm text-gray-800"
-                      dangerouslySetInnerHTML={{ __html: item.body }}
-                    />
-                  </li>
-                ))}
-              </ul>
+              {activeDay.Title && (
+                <Training startDate={startDate} activeDay={activeDay} />
+              )}
             </div>
           </section>
 
@@ -913,11 +905,23 @@ export const Dashboard = (props) => {
             <div className="h-full relative flex flex-col w-96 border-r border-gray-200 bg-gray-100">
               <div className="flex-shrink-0">
                 <div className="h-16 bg-white px-6 flex flex-col justify-center ">
-                  <div className="flex items-baseline space-x-3">
-                    <h2 className="text-lg font-medium text-gray-900">Inbox</h2>
-                    <p className="text-sm font-medium text-gray-500">
-                      {messages.length} messages
-                    </p>
+                  <div className="flex justify-between w-full">
+                    <div className="flex items-baseline space-x-3">
+                      <h2 className="text-lg font-medium text-gray-900">
+                        Start:
+                      </h2>
+                      <p className="text-sm font-medium text-gray-500">
+                        {startDate.toLocaleDateString()}
+                      </p>
+                    </div>
+                    <div>
+                      <a
+                        href="#"
+                        className="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50"
+                      >
+                        Reset
+                      </a>
+                    </div>
                   </div>
                 </div>
                 <div className="border-t border-gray-200 bg-gray-50 " />
@@ -936,7 +940,14 @@ export const Dashboard = (props) => {
                         <div className="flex justify-between space-x-3">
                           <div className="min-w-0 flex-1">
                             <a
-                              href={`/app/${query.event}/${query.category}/${query.time}/${workout.Day}`}
+                              // href={`?day=${workout.Day}`}
+                              onClick={() =>
+                                router.push(
+                                  `/app/${query.event}/${query.category}/${query.time}?day=${workout.Day}`,
+                                  undefined,
+                                  { shallow: true }
+                                )
+                              }
                               className="block focus:outline-none"
                             >
                               <span
@@ -953,7 +964,7 @@ export const Dashboard = (props) => {
                           </div>
                         </div>
                         <div className="mt-1">
-                          <p className="line-clamp-2 text-sm text-gray-600">
+                          <p className="line-clamp-2 text-sm text-gray-600 whitespace-pre-wrap">
                             {workout.Description}
                           </p>
                         </div>
@@ -969,3 +980,480 @@ export const Dashboard = (props) => {
     </div>
   );
 };
+
+/* This example requires Tailwind CSS v2.0+ */
+import { CheckIcon, ThumbUpIcon, UserIcon } from "@heroicons/react/solid";
+
+const timeline = [
+  {
+    id: 1,
+    content: "Applied to",
+    target: "Front End Developer",
+    href: "#",
+    date: "Sep 20",
+    datetime: "2020-09-20",
+    icon: UserIcon,
+    iconBackground: "bg-gray-400",
+  },
+  {
+    id: 2,
+    content: "Advanced to phone screening by",
+    target: "Bethany Blake",
+    href: "#",
+    date: "Sep 22",
+    datetime: "2020-09-22",
+    icon: ThumbUpIcon,
+    iconBackground: "bg-blue-500",
+  },
+  {
+    id: 3,
+    content: "Completed phone screening with",
+    target: "Martha Gardner",
+    href: "#",
+    date: "Sep 28",
+    datetime: "2020-09-28",
+    icon: CheckIcon,
+    iconBackground: "bg-green-500",
+  },
+  {
+    id: 4,
+    content: "Advanced to interview by",
+    target: "Bethany Blake",
+    href: "#",
+    date: "Sep 30",
+    datetime: "2020-09-30",
+    icon: ThumbUpIcon,
+    iconBackground: "bg-blue-500",
+  },
+  {
+    id: 5,
+    content: "Completed interview with",
+    target: "Katherine Snyder",
+    href: "#",
+    date: "Oct 4",
+    datetime: "2020-10-04",
+    icon: CheckIcon,
+    iconBackground: "bg-green-500",
+  },
+];
+
+export default function StravaActivity() {
+  return (
+    <div className="flow-root">
+      <ul className="-mb-8">
+        {timeline.map((event, eventIdx) => (
+          <li key={event.id}>
+            <div className="relative pb-8">
+              {eventIdx !== timeline.length - 1 ? (
+                <span
+                  className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"
+                  aria-hidden="true"
+                />
+              ) : null}
+              <div className="relative flex space-x-3">
+                <div>
+                  <span
+                    className={classNames(
+                      event.iconBackground,
+                      "h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white"
+                    )}
+                  >
+                    <event.icon
+                      className="h-5 w-5 text-white"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </div>
+                <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                  <div>
+                    <p className="text-sm text-gray-500">
+                      {event.content}{" "}
+                      <a
+                        href={event.href}
+                        className="font-medium text-gray-900"
+                      >
+                        {event.target}
+                      </a>
+                    </p>
+                  </div>
+                  <div className="text-right text-sm whitespace-nowrap text-gray-500">
+                    <time dateTime={event.datetime}>{event.date}</time>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/* This example requires Tailwind CSS v2.0+ */
+const people = [
+  {
+    name: "Easy Run",
+    handle: "May 3rd, 2021",
+    imageUrl:
+      "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+  {
+    name: "Floyd Miles",
+    handle: "floydmiles",
+    imageUrl:
+      "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+  {
+    name: "Emily Selman",
+    handle: "emilyselman",
+    imageUrl:
+      "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+  {
+    name: "Kristin Watson",
+    handle: "kristinwatson",
+    imageUrl:
+      "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  },
+];
+
+export function StravaActivity2(props) {
+  // console.log("strava", props.startDate.getTime());
+  const [activities, setActivities] = React.useState<Strava.SummaryActivity[]>(
+    []
+  );
+  const [shouldSync, setShouldSync] = React.useState(false);
+  React.useEffect(() => {
+    const run = async () => {
+      const res = await fetch(
+        `/api/strava/recentActivities/${props.startDate.getTime()}`
+      );
+      setActivities(await res.json());
+    };
+    if (shouldSync) {
+      run();
+    }
+  }, [shouldSync]);
+
+  return (
+    <div>
+      {activities.length === 0 ? (
+        <button
+          type="button"
+          onClick={() => setShouldSync(true)}
+          className={`w-full items-center justify-center mb-8 py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-steel-medium hover:bg-steel-light focus:outline-none focus:border-steel-dark focus:shadow-outline-indigo active:bg-steel-dark transition duration-150 ease-in-out`}
+        >
+          {shouldSync && activities.length === 0 ? (
+            <div className="w-full flex justify-center items-center">
+              <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+            </div>
+          ) : (
+            "View recent Strava activity"
+          )}
+        </button>
+      ) : (
+        <span />
+      )}
+      <ul className="-my-5 divide-y divide-gray-200">
+        {activities.map((activity) => (
+          <li key={activity.id} className="py-4">
+            <div className="flex items-center space-x-4">
+              <div className="flex-shrink-0">
+                <div className="h-8 w-8 rounded-full bg-gray-500" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-gray-900 truncate">
+                  {activity.name}
+                </p>
+                <p className="text-sm text-gray-500 truncate">
+                  {activity.distance}
+                </p>
+              </div>
+              <div>
+                <button
+                  onClick={() => props.onSync(activity)}
+                  className="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50"
+                >
+                  Sync
+                </button>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+import {
+  useField,
+  Form,
+  FormikProps,
+  Formik,
+  validateYupSchema,
+  yupToFormErrors,
+  FormikHelpers,
+} from "formik";
+import * as yup from "yup";
+
+const Training = (props: { activeDay: object }) => {
+  const { activeDay } = props;
+  const [stravaActivity, setStravaActivity] = React.useState(null);
+  console.log(stravaActivity);
+  const notes: {
+    day: string;
+    title: string;
+    description: string;
+    time: string;
+    distance: string;
+  } = stravaActivity
+    ? {
+        day: activeDay.Day,
+        title: stravaActivity?.name,
+        description: "",
+        time: stravaActivity?.moving_time,
+        distance: "",
+      }
+    : {
+        day: activeDay.Day,
+        title: activeDay.Title,
+        description: activeDay.Description,
+        time: "",
+        distance: "",
+      };
+
+  return (
+    <div className="py-4 sm:px-6 space-y-2 lg:space-y-0 lg:px-8 grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
+      {/* Left column */}
+      <div className="grid grid-cols-1 gap-4 lg:col-span-2">
+        {/* Welcome panel */}
+        <section aria-labelledby="profile-overview-title">
+          <div className="rounded-lg bg-white overflow-hidden shadow">
+            <Formik
+              key={stravaActivity?.id || activeDay.Day}
+              initialValues={notes}
+              // validationSchema={schema}
+              onSubmit={(values, actions) => {
+                console.log("get it", values);
+              }}
+            >
+              {(props: FormikProps<T>) => (
+                <Form>
+                  <div className="shadow sm:rounded-md sm:overflow-hidden">
+                    <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
+                      <div className="grid grid-cols-9 gap-6">
+                        <div className="col-span-9 md:col-span-5">
+                          <Text
+                            label="Title"
+                            name="title"
+                            placeholder="What did you do today?"
+                          />
+                        </div>
+                        <div className="col-span-4 md:col-span-2">
+                          <Text
+                            label="Distance"
+                            name="distance"
+                            placeholder="10k"
+                          />
+                        </div>
+
+                        <div className="col-span-5 md:col-span-2">
+                          <Text label="Time" name="time" placeholder="40:00" />
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="mt-1">
+                          <Textarea label="Notes" name="description" />
+                        </div>
+                        <p className="mt-2 text-sm text-gray-500">
+                          Brief description for your profile. URLs are
+                          hyperlinked.
+                        </p>
+                      </div>
+                      <Effort />
+                    </div>
+                    <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                      <button
+                        type="submit"
+                        className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      >
+                        Save to Strava
+                      </button>
+                    </div>
+                  </div>
+                </Form>
+              )}
+            </Formik>
+          </div>
+        </section>
+
+        {/* Actions panel */}
+        <section aria-labelledby="quick-links-title">
+          <div className="rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px">
+            <h2 className="sr-only" id="quick-links-title">
+              Quick links
+            </h2>
+          </div>
+        </section>
+      </div>
+
+      {/* Right column */}
+      <div className="grid grid-cols-1 gap-4">
+        {/* Announcements */}
+        <section aria-labelledby="announcements-title">
+          <div className="rounded-lg bg-white overflow-hidden shadow">
+            <div className="p-6">
+              <div className="flex items-center justify-start">
+                <svg
+                  width="94"
+                  height="20"
+                  viewBox="0 0 94 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0.446999 15.846L3.42 12.288C5.24 13.674 7.312 14.258 9.266 14.258C10.268 14.258 10.703 13.991 10.703 13.54V13.49C10.703 13.006 10.185 12.755 8.398 12.388C4.656 11.62 1.366 10.551 1.366 7.026V6.976C1.366 3.802 3.838 1.346 8.448 1.346C11.672 1.346 14.044 2.114 15.981 3.634L13.241 7.409C11.7808 6.35704 10.0296 5.78499 8.23 5.772C7.395 5.772 7.01 6.056 7.01 6.457V6.507C7.01 6.957 7.46 7.242 9.232 7.577C13.508 8.362 16.364 9.597 16.364 12.972V13.005C16.364 16.513 13.464 18.651 8.998 18.651C5.608 18.668 2.568 17.716 0.445999 15.845L0.446999 15.846ZM21.927 6.392H17.017V1.665H32.417V6.392H27.507V18.352H21.927V6.392ZM46.264 12.672C48.284 11.686 49.554 9.999 49.554 7.577V7.527C49.554 5.807 49.036 4.57 48.034 3.567C46.864 2.397 44.977 1.663 42.021 1.663H33.871V18.35H39.451V13.59H40.637L43.777 18.35H50.141L46.264 12.672ZM43.992 7.978C43.992 8.998 43.174 9.598 41.854 9.598H39.45V6.341H41.89C43.176 6.341 44.01 6.859 44.01 7.945V7.978H43.992ZM58.09 0.962L49.087 18.352H55.067L58.09 12.272L61.113 18.352H67.093L58.09 0.962ZM84.55 0.962L75.547 18.352H81.527L84.55 12.272L87.573 18.352H93.553L84.55 0.962ZM71.32 19.037L80.34 1.647H74.36L71.337 7.727L68.297 1.647H62.317L71.32 19.037Z"
+                    fill="#FC6100"
+                  />
+                </svg>
+              </div>
+              <p className="mt-4 text-sm text-gray-500">
+                If you've already recorded your workout in Strava, you can sync
+                it here.
+              </p>
+              <div className="flow-root mt-6">
+                <StravaActivity2
+                  startDate={props.startDate}
+                  onSync={(data) => setStravaActivity(data)}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+};
+
+/*
+  This example requires Tailwind CSS v2.0+
+
+  This example requires some changes to your config:
+
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ]
+  }
+  ```
+*/
+import { RadioGroup } from "@headlessui/react";
+
+const settings = [
+  {
+    name: "Disaster",
+    description:
+      "At no point were you even remotely close to doing anything that resembled the designed workout",
+  },
+  {
+    name: "Not too hot",
+    description: "You struggled to complete the session as designed",
+  },
+  {
+    name: "Good",
+    description: "Not showing off, just getting it done",
+  },
+  {
+    name: "Excellent",
+    description: "When's the next Olympics?",
+  },
+];
+
+export function Effort() {
+  const [selected, setSelected] = useState(settings[2]);
+
+  return (
+    <>
+      <RadioGroup value={selected} onChange={setSelected}>
+        <Label label="How'd you feel?" />
+        <RadioGroup.Label className="sr-only">Privacy setting</RadioGroup.Label>
+        <div className="bg-white rounded-md -space-y-px">
+          {settings.map((setting, settingIdx) => (
+            <RadioGroup.Option
+              key={setting.name}
+              value={setting}
+              className={({ checked }) =>
+                classNames(
+                  settingIdx === 0 ? "rounded-tl-md rounded-tr-md" : "",
+                  settingIdx === settings.length - 1
+                    ? "rounded-bl-md rounded-br-md"
+                    : "",
+                  checked
+                    ? "bg-indigo-50 border-indigo-200 z-10"
+                    : "border-gray-200",
+                  "relative border p-4 flex cursor-pointer focus:outline-none"
+                )
+              }
+            >
+              {({ active, checked }) => (
+                <>
+                  <span
+                    className={classNames(
+                      checked
+                        ? "bg-indigo-600 border-transparent"
+                        : "bg-white border-gray-300",
+                      active ? "ring-2 ring-offset-2 ring-indigo-500" : "",
+                      "h-4 w-4 mt-0.5 cursor-pointer rounded-full border flex items-center justify-center"
+                    )}
+                    aria-hidden="true"
+                  >
+                    <span className="rounded-full bg-white w-1.5 h-1.5" />
+                  </span>
+                  <div className="ml-3 flex flex-col">
+                    <RadioGroup.Label
+                      as="span"
+                      className={classNames(
+                        checked ? "text-indigo-900" : "text-gray-900",
+                        "block text-sm font-medium"
+                      )}
+                    >
+                      {setting.name}
+                    </RadioGroup.Label>
+                    <RadioGroup.Description
+                      as="span"
+                      className={classNames(
+                        checked ? "text-indigo-700" : "text-gray-500",
+                        "block text-sm"
+                      )}
+                    >
+                      {setting.description}
+                    </RadioGroup.Description>
+                  </div>
+                </>
+              )}
+            </RadioGroup.Option>
+          ))}
+        </div>
+      </RadioGroup>
+    </>
+  );
+}

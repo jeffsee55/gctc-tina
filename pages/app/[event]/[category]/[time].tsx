@@ -1,6 +1,6 @@
-import { Dashboard } from "../../../../../components/dashboard";
-import { sdk, AsyncReturnType } from "../../../../../.tina/sdk";
-import { createLocalClient } from "../../../../../util/create-client";
+import { Dashboard } from "../../../../components/dashboard";
+import { sdk, AsyncReturnType } from "../../../../.tina/sdk";
+import { createLocalClient } from "../../../../util/create-client";
 
 const localSdk = sdk(createLocalClient());
 
@@ -14,7 +14,6 @@ export const getStaticProps = async (props) => {
       data: await localSdk.TrainingWorkouts({
         variables,
       }),
-      day: params.day,
       ...localSdk.TrainingWorkoutsString({ variables }),
     },
   };
@@ -30,9 +29,7 @@ export const getStaticPaths = async () => {
       category: data.category,
       time: data.time,
     };
-    return data.workouts.map((workout) => {
-      paths.push({ params: { ...params, day: workout.Day.toString() } });
-    });
+    paths.push({ params });
   });
   return { paths, fallback: false };
 };

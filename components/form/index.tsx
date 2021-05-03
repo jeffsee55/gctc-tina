@@ -405,7 +405,7 @@ export const WeekCheckbox = ({
   );
 };
 
-const Label = ({ label, subLabel }: Label) => {
+export const Label = ({ label, subLabel }: Label) => {
   return (
     <label className={`flex flex-col mb-3`}>
       <span className={`block text-sm leading-5 font-medium text-gray-900`}>
