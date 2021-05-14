@@ -90,7 +90,7 @@ export const ThumbnailList = (props: {
                       />
                       <div className="mt-6 text-base font-medium">
                         <a
-                          href={`/posts${post.sys.filename}`}
+                          href={`/posts/${post.sys.filename}`}
                           className="text-steel-medium hover:text-steel-light"
                         >
                           Read
