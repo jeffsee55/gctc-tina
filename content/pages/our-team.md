@@ -24,7 +24,7 @@ layers:
 
       We offer expert training plans designed by world-class coaches and
       athletes.
-    cta_text: Join Now
+    cta_text: Join Today
     cta_link: /training-plans
     cta_image: >-
       https://res.cloudinary.com/deuzrsg3m/image/upload/v1612736830/uploads/Screen_Shot_2021-02-07_at_2.27.00_PM_ptwqab.png
