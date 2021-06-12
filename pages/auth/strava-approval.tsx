@@ -15,7 +15,7 @@ export const getServerSideProps = async (params) => {
 
   return {
     redirect: {
-      destination: `/auth/strava`,
+      destination: `/app/5k/gold/free?day=1`,
       permanent: false,
     },
   };
