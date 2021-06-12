@@ -22,8 +22,6 @@ const scopes = [
   // Access to create manual activities and uploads, and access to edit any activities that are visible to the app, based on activity read access level
   "activity:write",
 ];
-const oauthPage =
-  "https://www.strava.com/oauth/authorize?client_id=51600&response_type=code&redirect_uri=http://localhost:2999/auth/strava-approval&approval_prompt=force&scope=profile:read_all,activity:read";
 
 export const handleStrava = async (params) => {
   const cookies = new Cookies(params.req, params.res);

@@ -3,10 +3,6 @@ import Cookies from "cookies";
 
 const client_secret = "c59cb40de83f45ab7624369122b86857e900ee28";
 const client_id = "51600";
-const api_url = "https://www.strava.com/api/v3";
-const redirect_uri = "localhost:3000";
-const oauthPage =
-  "https://www.strava.com/oauth/authorize?client_id=51600&response_type=code&redirect_uri=http://localhost:2999/auth/strava-approval&approval_prompt=force&scope=profile:read_all";
 
 export const getServerSideProps = async (params) => {
   const {

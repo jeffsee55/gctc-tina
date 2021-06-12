@@ -1,6 +1,8 @@
 import { access } from "fs";
 import React from "react";
 
+const redirectURL = `https://goldencoasttrackclub.com/auth/strava-approval`;
+
 const scopes = [
   // Read public segments, public routes, public profile data, public posts, public events, club feeds, and leaderboards
   "read",
@@ -17,7 +19,7 @@ const scopes = [
   // Access to create manual activities and uploads, and access to edit any activities that are visible to the app, based on activity read access level
   "activity:write",
 ];
-const oauthPage = `https://www.strava.com/oauth/authorize?client_id=51600&response_type=code&redirect_uri=http://localhost:3000/auth/strava-approval&approval_prompt=force&scope=${scopes.join(
+const oauthPage = `https://www.strava.com/oauth/authorize?client_id=51600&response_type=code&redirect_uri=${redirectURL}&approval_prompt=force&scope=${scopes.join(
   ","
 )}`;
 
