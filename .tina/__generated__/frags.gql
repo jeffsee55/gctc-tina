@@ -1,0 +1,329 @@
+fragment TrainingParts on Training {
+  ... on TrainingTraining {
+    name
+    description
+    event
+    category
+    time
+    workouts {
+      __typename
+      Day
+      Title
+      Description
+      Category
+    }
+  }
+}
+
+fragment PostsParts on Posts {
+  ... on PostsPost {
+    title
+    tags
+    image
+    image_small
+    accolades {
+      __typename
+      figure
+      description
+    }
+    author {
+      ... on Document {
+        id
+      }
+    }
+    preface
+  }
+}
+
+fragment PagesParts on Pages {
+  ... on PagesPage {
+    title
+    seo {
+      __typename
+      title
+      description
+      image
+    }
+    layers {
+      __typename
+      ... on PagesPageLayersLayerTeam {
+        description
+        members {
+          __typename
+          reference {
+            ... on Document {
+              id
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerPostList {
+        description
+        posts {
+          __typename
+          reference {
+            ... on Document {
+              id
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerDarkFeature {
+        hint
+        title
+        description
+        feature_list {
+          __typename
+          header
+          description
+        }
+      }
+      ... on PagesPageLayersLayerLeadership {
+        title
+        leaders {
+          __typename
+          reference {
+            ... on Document {
+              id
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerSponsors {
+        title
+        sponsors {
+          __typename
+          name
+          link
+        }
+      }
+      ... on PagesPageLayersCuratedCollection {
+        description
+        posts_collection {
+          __typename
+          reference {
+            ... on Document {
+              id
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerCta {
+        description
+        cta_text
+        cta_link
+        cta_image
+      }
+    }
+  }
+  ... on PagesTrainingPage {
+    faq {
+      __typename
+      question
+      answer
+    }
+  }
+}
+
+fragment FormsParts on Forms {
+  ... on FormsJenCcoaching {
+    title
+    description
+    fields {
+      __typename
+      ... on FormsJenCcoachingFieldsFieldBoolean {
+        label
+        subLabel
+        name
+      }
+      ... on FormsJenCcoachingFieldsFieldText {
+        label
+        subLabel
+        placeholder
+        prefix
+        suffix
+        name
+      }
+      ... on FormsJenCcoachingFieldsFieldTextarea {
+        label
+        subLabel
+        placeholder
+        name
+      }
+      ... on FormsJenCcoachingFieldsFieldCheckbox {
+        label
+        subLabel
+        placeholder
+        name
+        options {
+          __typename
+          label
+          value
+        }
+      }
+      ... on FormsJenCcoachingFieldsFieldRadio {
+        label
+        subLabel
+        placeholder
+        name
+        options {
+          __typename
+          label
+          value
+        }
+      }
+      ... on FormsJenCcoachingFieldsFieldGroupText {
+        label
+        subLabel
+        fields {
+          __typename
+          ... on FormsJenCcoachingFieldsFieldGroupTextFieldsFieldText {
+            label
+            subLabel
+            name
+          }
+        }
+        prefix_class
+      }
+      ... on FormsJenCcoachingFieldsFieldWeekCheckbox {
+        label
+        subLabel
+        placeholder
+        name
+      }
+    }
+  }
+}
+
+fragment CuratedParts on Curated {
+  ... on CuratedCurated {
+    title
+    curations {
+      __typename
+      ... on CuratedCuratedCurationsCuratedHero {
+        description
+        hero_post {
+          ... on Document {
+            id
+          }
+        }
+      }
+      ... on CuratedCuratedCurationsCuratedCollection {
+        description
+        posts_collection {
+          __typename
+          reference {
+            ... on Document {
+              id
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment AuthorsParts on Authors {
+  ... on AuthorsAuthor {
+    name
+    description
+    role
+    accolades {
+      __typename
+      figure
+      description
+    }
+    image
+    bio_image
+    story_image
+    form {
+      ... on Document {
+        id
+      }
+    }
+    posts_collection {
+      __typename
+      reference {
+        ... on Document {
+          id
+        }
+      }
+    }
+    ebook {
+      __typename
+      title
+      description
+      link
+      link_text
+      image
+    }
+  }
+  ... on AuthorsAthlete {
+    name
+    description
+    country
+    personal_bests {
+      __typename
+      event
+      time
+    }
+    accolades {
+      __typename
+      figure
+      description
+    }
+    social_media {
+      __typename
+      source
+      handle
+    }
+    image
+  }
+}
+
+fragment NavParts on Nav {
+  ... on NavNav {
+    items {
+      __typename
+      ... on NavNavItemsNavItemPopout {
+        label
+        children {
+          __typename
+          label
+          description
+          value
+          icon
+        }
+        extra {
+          __typename
+          label
+          value
+          icon
+        }
+      }
+      ... on NavNavItemsNavItemMore {
+        label
+        featured_post {
+          ... on Document {
+            id
+          }
+        }
+        from_the_blog {
+          ... on Document {
+            id
+          }
+        }
+        read_more {
+          __typename
+          label
+          value
+        }
+      }
+      ... on NavNavItemsNavItemLink {
+        label
+        value
+      }
+    }
+    show_auth
+  }
+}

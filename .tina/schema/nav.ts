@@ -1,39 +1,40 @@
-import type { TinaCloudTemplate } from "tina-graphql-gateway-cli";
+import type { TinaTemplate } from "@tinacms/cli";
 
-export const Athlete: TinaCloudTemplate = {
+export const Athlete: TinaTemplate = {
   name: "athlete",
   label: "Athlete",
   fields: [
     {
       name: "name",
       label: "Name",
-      type: "text",
+      type: "string",
       description: "Your first name & last name",
     },
     {
       name: "description",
       label: "Description",
-      type: "textarea",
+      type: "string",
       description: "Your first name & last name",
     },
     {
       name: "country",
       label: "Country",
-      type: "text",
+      type: "string",
     },
     {
       name: "personal_bests",
-      type: "group-list",
+      list: true,
+      type: "object",
       fields: [
         {
           name: "event",
-          type: "text",
+          type: "string",
           label: "Event",
           description: "A single number or word to emphasize",
         },
         {
           name: "time",
-          type: "text",
+          type: "string",
           label: "Time",
         },
       ],
@@ -42,17 +43,18 @@ export const Athlete: TinaCloudTemplate = {
     },
     {
       name: "accolades",
-      type: "group-list",
+      list: true,
+      type: "object",
       fields: [
         {
           name: "figure",
-          type: "text",
+          type: "string",
           label: "Figure",
           description: "A single number or word to emphasize",
         },
         {
           name: "description",
-          type: "text",
+          type: "string",
           label: "Description",
         },
       ],
@@ -62,17 +64,18 @@ export const Athlete: TinaCloudTemplate = {
     {
       name: "social_media",
       label: "Social Media",
-      type: "group-list",
+      list: true,
+      type: "object",
       fields: [
         {
           name: "source",
           label: "Source",
-          type: "select",
+          type: "string",
           options: ["twitter", "instagram"],
         },
         {
           name: "handle",
-          type: "text",
+          type: "string",
           label: "Hanlde",
         },
       ],
@@ -80,18 +83,19 @@ export const Athlete: TinaCloudTemplate = {
     {
       name: "image",
       label: "Image URL",
-      type: "text",
+      type: "string",
       description: "The external image URL",
     },
   ],
 };
 
-export const Nav: TinaCloudTemplate = {
+export const Nav: TinaTemplate = {
   label: "Site Nav",
   name: "nav",
   fields: [
     {
-      type: "blocks",
+      type: "object",
+      list: true,
       label: "Items",
       name: "items",
       templates: [
@@ -102,30 +106,31 @@ export const Nav: TinaCloudTemplate = {
             {
               label: "Label",
               name: "label",
-              type: "text",
+              type: "string",
             },
             {
               label: "Children",
               name: "children",
-              type: "group-list",
+              list: true,
+              type: "object",
               fields: [
                 {
-                  type: "text",
+                  type: "string",
                   name: "label",
                   label: "Label",
                 },
                 {
-                  type: "text",
+                  type: "string",
                   name: "description",
                   label: "Description",
                 },
                 {
-                  type: "text",
+                  type: "string",
                   name: "value",
                   label: "Value",
                 },
                 {
-                  type: "text",
+                  type: "string",
                   name: "icon",
                   label: "Icon",
                 },
@@ -134,20 +139,21 @@ export const Nav: TinaCloudTemplate = {
             {
               label: "Extra",
               name: "extra",
-              type: "group-list",
+              list: true,
+              type: "object",
               fields: [
                 {
-                  type: "text",
+                  type: "string",
                   name: "label",
                   label: "Label",
                 },
                 {
-                  type: "text",
+                  type: "string",
                   name: "value",
                   label: "Value",
                 },
                 {
-                  type: "text",
+                  type: "string",
                   name: "icon",
                   label: "Icon",
                 },
@@ -162,32 +168,32 @@ export const Nav: TinaCloudTemplate = {
             {
               label: "Label",
               name: "label",
-              type: "text",
+              type: "string",
             },
             {
               label: "Featured Post",
               name: "featured_post",
               type: "reference",
-              collection: "posts",
+              collections: ["posts"],
             },
             {
               label: "From The Blog",
               name: "from_the_blog",
-              type: "reference-list",
-              collection: "posts",
+              type: "reference",
+              collections: ["posts"],
             },
             {
               label: "Read More",
               name: "read_more",
-              type: "group",
+              type: "object",
               fields: [
                 {
-                  type: "text",
+                  type: "string",
                   name: "label",
                   label: "Label",
                 },
                 {
-                  type: "text",
+                  type: "string",
                   name: "value",
                   label: "Value",
                 },
@@ -202,14 +208,14 @@ export const Nav: TinaCloudTemplate = {
             {
               name: "label",
               label: "Label",
-              type: "text",
+              type: "string",
             },
             {
               name: "value",
               description:
                 "A URL-friendly version, ensure no spaces or special characters are included.",
               label: "Value",
-              type: "text",
+              type: "string",
             },
           ],
         },
@@ -218,7 +224,7 @@ export const Nav: TinaCloudTemplate = {
     {
       label: "Show Auth",
       name: "show_auth",
-      type: "toggle",
+      type: "boolean",
     },
   ],
 };

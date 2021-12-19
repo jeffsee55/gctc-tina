@@ -1,7 +1,7 @@
 ---
 title: Hom
 layers:
-  - template: layerPostList
+  - _template: layerPostList
     description: >-
       ## Latest from the blog
 
@@ -12,10 +12,10 @@ layers:
 
       [View all posts](/posts)
     posts:
-      - content/posts/dreams-on-hold.md
-      - content/posts/love-more-than-ever.md
-      - content/posts/welcome.md
-  - template: layerTeam
+      - reference: content/posts/dreams-on-hold.md
+      - reference: content/posts/love-more-than-ever.md
+      - reference: content/posts/welcome.md
+  - _template: layerTeam
     description: >-
       ## About Us
 
@@ -24,7 +24,7 @@ layers:
       ultrices sed arcu condimentum vestibulum suspendisse. Volutpat eu faucibus
       vivamus eget bibendum cras.
     members:
-      - content/authors/terrence.md
-      - content/authors/jen.md
+      - reference: content/authors/terrence.md
+      - reference: content/authors/jen.md
 _template: page
 ---

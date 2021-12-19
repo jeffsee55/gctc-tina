@@ -1,4 +1,4 @@
-import { defineSchema } from "tina-graphql-gateway-cli";
+import { defineSchema } from "@tinacms/cli";
 import { Athlete, Author } from "./schema/author";
 import { Form } from "./schema/form";
 import { Nav } from "./schema/nav";

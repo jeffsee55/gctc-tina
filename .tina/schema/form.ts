@@ -1,23 +1,24 @@
-import type { TinaCloudTemplate } from "tina-graphql-gateway-cli";
+import type { TinaTemplate } from "@tinacms/cli";
 
-export const Form: TinaCloudTemplate = {
+export const Form: TinaTemplate = {
   name: "jenCcoaching",
   label: "Jen Coaching",
   fields: [
     {
       label: "Title",
       name: "title",
-      type: "text",
+      type: "string",
     },
     {
       label: "Description",
       name: "description",
-      type: "textarea",
+      type: "string",
     },
     {
       name: "fields",
       label: "Fields",
-      type: "blocks",
+      type: "object",
+      list: true,
       templates: [
         {
           name: "fieldBoolean",
@@ -26,19 +27,19 @@ export const Form: TinaCloudTemplate = {
             {
               label: "Label",
               name: "label",
-              type: "text",
+              type: "string",
             },
             {
               label: "Sub Label",
               name: "subLabel",
-              type: "text",
+              type: "string",
             },
             {
               label: "Name",
               name: "name",
               description:
                 "This will be the identifier in the form submission, make sure it doesn't have any spaces or special characters.",
-              type: "text",
+              type: "string",
             },
           ],
         },
@@ -49,34 +50,34 @@ export const Form: TinaCloudTemplate = {
             {
               label: "Label",
               name: "label",
-              type: "text",
+              type: "string",
             },
             {
               label: "Sub Label",
               name: "subLabel",
-              type: "text",
+              type: "string",
             },
             {
               label: "Placeholder",
               name: "placeholder",
-              type: "text",
+              type: "string",
             },
             {
               label: "Prefix",
               name: "prefix",
-              type: "text",
+              type: "string",
             },
             {
               label: "Suffix",
               name: "suffix",
-              type: "text",
+              type: "string",
             },
             {
               label: "Name",
               name: "name",
               description:
                 "This will be the identifier in the form submission, make sure it doesn't have any spaces or special characters.",
-              type: "text",
+              type: "string",
             },
           ],
         },
@@ -87,24 +88,24 @@ export const Form: TinaCloudTemplate = {
             {
               label: "Label",
               name: "label",
-              type: "text",
+              type: "string",
             },
             {
               label: "Sub Label",
               name: "subLabel",
-              type: "text",
+              type: "string",
             },
             {
               label: "Placeholder",
               name: "placeholder",
-              type: "text",
+              type: "string",
             },
             {
               label: "Name",
               name: "name",
               description:
                 "This will be the identifier in the form submission, make sure it doesn't have any spaces or special characters.",
-              type: "text",
+              type: "string",
             },
           ],
         },
@@ -115,41 +116,42 @@ export const Form: TinaCloudTemplate = {
             {
               label: "Label",
               name: "label",
-              type: "text",
+              type: "string",
             },
             {
               label: "Sub Label",
               name: "subLabel",
-              type: "text",
+              type: "string",
             },
             {
               label: "Placeholder",
               name: "placeholder",
-              type: "text",
+              type: "string",
             },
             {
               label: "Name",
               name: "name",
               description:
                 "This will be the identifier in the form submission, make sure it doesn't have any spaces or special characters.",
-              type: "text",
+              type: "string",
             },
             {
               label: "Options",
               name: "options",
-              type: "group-list",
+              type: "object",
+              list: true,
               fields: [
                 {
                   name: "label",
                   label: "Label",
-                  type: "text",
+                  type: "string",
                 },
                 {
                   name: "value",
                   description:
                     "A URL-friendly version, ensure no spaces or special characters are included.",
                   label: "Value",
-                  type: "text",
+                  type: "string",
                 },
               ],
             },
@@ -162,41 +164,42 @@ export const Form: TinaCloudTemplate = {
             {
               label: "Label",
               name: "label",
-              type: "text",
+              type: "string",
             },
             {
               label: "Sub Label",
               name: "subLabel",
-              type: "text",
+              type: "string",
             },
             {
               label: "Placeholder",
               name: "placeholder",
-              type: "text",
+              type: "string",
             },
             {
               label: "Name",
               name: "name",
               description:
                 "This will be the identifier in the form submission, make sure it doesn't have any spaces or special characters.",
-              type: "text",
+              type: "string",
             },
             {
               label: "Options",
               name: "options",
-              type: "group-list",
+              list: true,
+              type: "object",
               fields: [
                 {
                   name: "label",
                   label: "Label",
-                  type: "text",
+                  type: "string",
                 },
                 {
                   name: "value",
                   description:
                     "A URL-friendly version, ensure no spaces or special characters are included.",
                   label: "Value",
-                  type: "text",
+                  type: "string",
                 },
               ],
             },
@@ -209,16 +212,17 @@ export const Form: TinaCloudTemplate = {
             {
               label: "Label",
               name: "label",
-              type: "text",
+              type: "string",
             },
             {
               label: "Sub Label",
               name: "subLabel",
-              type: "text",
+              type: "string",
             },
             {
               name: "fields",
-              type: "blocks",
+              type: "object",
+              list: true,
               label: "Fields",
               templates: [
                 {
@@ -228,19 +232,19 @@ export const Form: TinaCloudTemplate = {
                     {
                       label: "Label",
                       name: "label",
-                      type: "text",
+                      type: "string",
                     },
                     {
                       label: "Sub Label",
                       name: "subLabel",
-                      type: "text",
+                      type: "string",
                     },
                     {
                       label: "Name",
                       name: "name",
                       description:
                         "This will be the identifier in the form submission, make sure it doesn't have any spaces or special characters.",
-                      type: "text",
+                      type: "string",
                     },
                   ],
                 },
@@ -249,7 +253,7 @@ export const Form: TinaCloudTemplate = {
             {
               label: "Prefix Class",
               name: "prefix_class",
-              type: "text",
+              type: "string",
             },
           ],
         },
@@ -260,24 +264,24 @@ export const Form: TinaCloudTemplate = {
             {
               label: "Label",
               name: "label",
-              type: "text",
+              type: "string",
             },
             {
               label: "Sub Label",
               name: "subLabel",
-              type: "text",
+              type: "string",
             },
             {
               label: "Placeholder",
               name: "placeholder",
-              type: "text",
+              type: "string",
             },
             {
               label: "Name",
               name: "name",
               description:
                 "This will be the identifier in the form submission, make sure it doesn't have any spaces or special characters.",
-              type: "text",
+              type: "string",
             },
           ],
         },

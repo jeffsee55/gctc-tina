@@ -13,9 +13,9 @@ bio_image: >-
 story_image: >-
   https://res.cloudinary.com/deuzrsg3m/image/upload/v1612730087/uploads/IMG_9472_z1ovo4.jpg
 posts_collection:
-  - content/posts/fall-training-1.md
-  - content/posts/training-camp.md
-  - content/posts/welcome.md
+  - reference: content/posts/fall-training-1.md
+  - reference: content/posts/training-camp.md
+  - reference: content/posts/welcome.md
 _template: author
 ---
 

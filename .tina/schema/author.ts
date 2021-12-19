@@ -1,39 +1,40 @@
-import type { TinaCloudTemplate } from "tina-graphql-gateway-cli";
+import type { TinaTemplate} from "@tinacms/cli";
 
-export const Athlete: TinaCloudTemplate = {
+export const Athlete: TinaTemplate= {
   name: "athlete",
   label: "Athlete",
   fields: [
     {
       name: "name",
       label: "Name",
-      type: "text",
+      type: "string",
       description: "Your first name & last name",
     },
     {
       name: "description",
       label: "Description",
-      type: "textarea",
+      type: "string",
       description: "Your first name & last name",
     },
     {
       name: "country",
       label: "Country",
-      type: "text",
+      type: "string",
     },
     {
       name: "personal_bests",
-      type: "group-list",
+      list: true,
+      type: "object",
       fields: [
         {
           name: "event",
-          type: "text",
+          type: "string",
           label: "Event",
           description: "A single number or word to emphasize",
         },
         {
           name: "time",
-          type: "text",
+          type: "string",
           label: "Time",
         },
       ],
@@ -42,17 +43,18 @@ export const Athlete: TinaCloudTemplate = {
     },
     {
       name: "accolades",
-      type: "group-list",
+      list: true,
+      type: "object",
       fields: [
         {
           name: "figure",
-          type: "text",
+          type: "string",
           label: "Figure",
           description: "A single number or word to emphasize",
         },
         {
           name: "description",
-          type: "text",
+          type: "string",
           label: "Description",
         },
       ],
@@ -62,17 +64,18 @@ export const Athlete: TinaCloudTemplate = {
     {
       name: "social_media",
       label: "Social Media",
-      type: "group-list",
+      type: "object",
+      list: true,
       fields: [
         {
           name: "source",
           label: "Source",
-          type: "select",
+          type: "string",
           options: ["twitter", "instagram"],
         },
         {
           name: "handle",
-          type: "text",
+          type: "string",
           label: "Hanlde",
         },
       ],
@@ -80,48 +83,49 @@ export const Athlete: TinaCloudTemplate = {
     {
       name: "image",
       label: "Image URL",
-      type: "text",
+      type: "string",
       description: "The external image URL",
     },
   ],
 };
 
-export const Author: TinaCloudTemplate = {
+export const Author: TinaTemplate= {
   name: "author",
   label: "Author",
   fields: [
     {
       name: "name",
       label: "Name",
-      type: "text",
+      type: "string",
       description: "Your first name & last name",
     },
     {
       name: "description",
       label: "Description",
-      type: "textarea",
+      type: "string",
       description: "Your first name & last name",
     },
     {
       name: "role",
       label: "role",
-      type: "select",
+      type: "string",
       description: "What's your job?",
       options: ["Head Coach & Founder", "Wellness Coach & Founder", "Athlete"],
     },
     {
       name: "accolades",
-      type: "group-list",
+      type: "object",
+      list: true,
       fields: [
         {
           name: "figure",
-          type: "text",
+          type: "string",
           label: "Figure",
           description: "A single number or word to emphasize",
         },
         {
           name: "description",
-          type: "text",
+          type: "string",
           label: "Description",
         },
       ],
@@ -131,62 +135,68 @@ export const Author: TinaCloudTemplate = {
     {
       name: "image",
       label: "Image URL",
-      type: "text",
+      type: "string",
       description: "The external image URL",
     },
     {
       name: "bio_image",
       label: "Bio Image URL",
-      type: "text",
+      type: "string",
       description: "The external image URL",
     },
     {
       name: "story_image",
       label: "Story Image URL",
-      type: "text",
+      type: "string",
       description: "The external image URL",
     },
     {
       name: "form",
       label: "Form",
       type: "reference",
-      collection: "forms",
+      collections: ["forms"],
     },
     {
       label: "Post Collection",
       name: "posts_collection",
-      type: "reference-list",
-      collection: "posts",
+      type: 'object',
+      list: true,
+      fields: [{
+        name: 'reference',
+        label: "Reference",
+        type: "reference",
+        collections: ["posts"],
+      }]
     },
     {
       name: "ebook",
       label: "Ebook",
-      type: "group",
+      type: "object",
       fields: [
         {
           name: "title",
           label: "Title",
-          type: "text",
+          type: "string",
         },
         {
           name: "description",
           label: "Description",
-          type: "textarea",
+          type: "string",
         },
         {
           name: "link",
           label: "Link",
-          type: "text",
+          type: "string",
         },
         {
           name: "link_text",
           label: "Link text",
-          type: "text",
+          type: "string",
         },
         {
           name: "image",
           label: "Image",
-          type: "text",
+          type: "string",
         },
       ],
     },

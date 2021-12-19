@@ -1,41 +1,42 @@
-import { TinaCloudTemplate } from "tina-graphql-gateway-cli";
+import { TinaTemplate } from "@tinacms/cli";
 
-export const Training: TinaCloudTemplate = {
+export const Training: TinaTemplate = {
   name: "training",
   label: "Training Plan",
   fields: [
     {
       name: "name",
       label: "Name",
-      type: "text",
+      type: "string",
       description: "Your first name & last name",
     },
     {
       name: "description",
       label: "Description",
-      type: "textarea",
+      type: "string",
       description: "Your first name & last name",
     },
     {
       name: "event",
       label: "Event",
-      type: "select",
+      type: "string",
       options: ["5k", "10k", "half-marathon", "marathon"],
     },
     {
       name: "category",
       label: "Category",
-      type: "select",
+      type: "string",
       options: ["silver", "gold", "platinum"],
     },
     {
       name: "time",
       label: "Time",
-      type: "text",
+      type: "string",
     },
     {
       name: "workouts",
-      type: "group-list",
+      list: true,
+      type: "object",
       label: "Workouts",
       fields: [
         {
@@ -45,19 +46,19 @@ export const Training: TinaCloudTemplate = {
           description: "",
         },
         {
-          type: "text",
+          type: "string",
           label: "Title",
           name: "Title",
           description: "",
         },
         {
-          type: "textarea",
+          type: "string",
           label: "Description",
           name: "Description",
           description: "",
         },
         {
-          type: "select",
+          type: "string",
           label: "Category",
           name: "Category",
           description: "",

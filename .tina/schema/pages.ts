@@ -1,39 +1,40 @@
-import type { TinaCloudTemplate } from "tina-graphql-gateway-cli";
+import type { TinaTemplate } from "@tinacms/cli";
 import { CuratedCollection } from "./post";
 
-export const Page: TinaCloudTemplate = {
+export const Page: TinaTemplate = {
   name: "page",
   label: "Page",
   fields: [
     {
-      type: "text",
+      type: "string",
       name: "title",
       label: "Title",
     },
     {
-      type: "group",
+      type: "object",
       name: "seo",
       label: "SEO",
       fields: [
         {
-          type: "text",
+          type: "string",
           name: "title",
           label: "Title",
         },
         {
-          type: "text",
+          type: "string",
           name: "description",
           label: "Description",
         },
         {
-          type: "text",
+          type: "string",
           name: "image",
           label: "Image",
         },
       ],
     },
     {
-      type: "blocks",
+      type: "object",
+      list: true,
       label: "Layers",
       name: "layers",
       templates: [
@@ -44,13 +45,19 @@ export const Page: TinaCloudTemplate = {
             {
               label: "Description",
               name: "description",
-              type: "textarea",
+              type: "string",
             },
             {
               label: "Members",
               name: "members",
-              type: "reference-list",
-              collection: "authors",
+              type: "object",
+              list: true,
+              fields: [{
+                name: "reference",
+                label: "Reference",
+                type: "reference",
+                collections: ["authors"],
+              }]
             },
           ],
         },
@@ -61,13 +68,19 @@ export const Page: TinaCloudTemplate = {
             {
               label: "Description",
               name: "description",
-              type: "textarea",
+              type: "string",
             },
             {
               label: "Posts",
               name: "posts",
-              type: "reference-list",
-              collection: "posts",
+              type: "object",
+              list: true,
+              fields: [{
+                name: 'reference',
+                label: "Reference",
+                type: 'reference',
+                collections: ["posts"],
+              }]
             },
           ],
         },
@@ -78,31 +91,32 @@ export const Page: TinaCloudTemplate = {
             {
               label: "Hint",
               name: "hint",
-              type: "text",
+              type: "string",
             },
             {
               label: "Title",
               name: "title",
-              type: "text",
+              type: "string",
             },
             {
               label: "Description",
               name: "description",
-              type: "textarea",
+              type: "string",
             },
             {
               name: "feature_list",
               label: "Feature List",
-              type: "group-list",
+              list: true,
+              type: "object",
               fields: [
                 {
                   name: "header",
                   label: "Header",
-                  type: "text",
+                  type: "string",
                 },
                 {
                   name: "description",
-                  type: "text",
+                  type: "string",
                   label: "Description",
                 },
               ],
@@ -116,13 +130,19 @@ export const Page: TinaCloudTemplate = {
             {
               label: "Title",
               name: "title",
-              type: "text",
+              type: "string",
             },
             {
               label: "Posts",
               name: "leaders",
-              type: "reference-list",
-              collection: "authors",
+              type: "object",
+              list: true,
+              fields: [{
+                name: 'reference',
+                label: "Reference",
+                type: 'reference',
+                collections: ["authors"],
+              }]
             },
           ],
         },
@@ -133,23 +153,24 @@ export const Page: TinaCloudTemplate = {
             {
               label: "Title",
               name: "title",
-              type: "text",
+              type: "string",
             },
             {
               label: "Sponsors List",
               name: "sponsors",
-              type: "group-list",
+              list: true,
+              type: "object",
               fields: [
                 {
                   label: "Name",
                   name: "name",
-                  type: "select",
+                  type: "string",
                   options: ["kinetik", "adidas", "hyperice"],
                 },
                 {
                   name: "link",
                   label: "Link",
-                  type: "text",
+                  type: "string",
                 },
               ],
             },
@@ -163,22 +184,22 @@ export const Page: TinaCloudTemplate = {
             {
               label: "Description",
               name: "description",
-              type: "textarea",
+              type: "string",
             },
             {
               label: "CTA Text",
               name: "cta_text",
-              type: "text",
+              type: "string",
             },
             {
               label: "CTA Link",
               name: "cta_link",
-              type: "text",
+              type: "string",
             },
             {
               label: "CTA Image",
               name: "cta_image",
-              type: "text",
+              type: "string",
             },
           ],
         },
@@ -187,22 +208,23 @@ export const Page: TinaCloudTemplate = {
   ],
 };
 
-export const TrainingPage: TinaCloudTemplate = {
+export const TrainingPage: TinaTemplate = {
   name: "trainingPage",
   label: "Training Page",
   fields: [
     {
-      type: "group-list",
+      list: true,
+      type: "object",
       name: "faq",
       label: "FAQ",
       fields: [
         {
-          type: "text",
+          type: "string",
           name: "question",
           label: "Question",
         },
         {
-          type: "text",
+          type: "string",
           name: "answer",
           label: "Answer",
         },

@@ -1,10 +1,10 @@
 ---
 items:
-  - template: navItemPopout
+  - _template: navItemPopout
     label: Services
     children:
       - label: Training Plans
-        description: 'Choose from 5k, 10k, 1/2 Marathon, and Marathon'
+        description: "Choose from 5k, 10k, 1/2 Marathon, and Marathon"
         value: /training-plans
         icon: chart
       - label: 1-on-1 Coaching
@@ -19,7 +19,7 @@ items:
         icon: chart
       - label: Nutrition Guide
         description: Download Jen's e-book for tons of recipes that taste great!
-        value: 'https://asset.goldencoasttrackclub.com/sports-nutrition-guide.pdf'
+        value: "https://asset.goldencoasttrackclub.com/sports-nutrition-guide.pdf"
         icon: chart
     extra:
       - label: Training Plans
@@ -34,7 +34,7 @@ items:
       - label: Work with Jen
         value: /team/jen
         icon: play
-  - template: navItemMore
+  - _template: navItemMore
     label: Blog
     featured_post: training-camp.md
     from_the_blog:
@@ -43,15 +43,14 @@ items:
     read_more:
       label: View all posts
       value: /posts
-  - template: navItemLink
+  - _template: navItemLink
     label: Our Team
     value: /team
-  - template: navItemLink
+  - _template: navItemLink
     label: Training Plans
     value: /training-plans
-  - template: navItemLink
+  - _template: navItemLink
     label: Merch
-    value: 'https://shop.goldencoasttrackclub.com'
+    value: "https://shop.goldencoasttrackclub.com"
 _template: nav
 ---
-

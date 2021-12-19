@@ -22,7 +22,7 @@ ebook:
   description: >-
     Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada
     adipiscing sagittis vel nulla nec.
-  link: 'https://asset.goldencoasttrackclub.com/sports-nutrition-guide.pdf'
+  link: "https://asset.goldencoasttrackclub.com/sports-nutrition-guide.pdf"
   link_text: Download the free e-book
   image: >-
     https://res.cloudinary.com/deuzrsg3m/image/upload/v1604704629/jen-photos/jen-ebook_nghoag.png

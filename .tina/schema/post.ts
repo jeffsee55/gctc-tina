@@ -1,65 +1,72 @@
-import type { TinaCloudTemplate } from "tina-graphql-gateway-cli";
+import type { TinaTemplate } from "@tinacms/cli";
 
-export const CuratedCollection: TinaCloudTemplate = {
+export const CuratedCollection: TinaTemplate = {
   name: "curatedCollection",
   label: "Curated Collection",
   fields: [
     {
       label: "Description",
       name: "description",
-      type: "textarea",
+      type: "string",
     },
     {
       label: "Collection Curations",
       name: "posts_collection",
-      type: "reference-list",
-      collection: "posts",
+      type: "object",
+      list: true,
+      fields: [{
+        label: "Reference",
+        name: "reference",
+        type: 'reference',
+        collections: ["posts"],
+      }]
     },
   ],
 };
 
-export const Post: TinaCloudTemplate = {
+export const Post: TinaTemplate = {
   name: "post",
   label: "Post",
   fields: [
     {
       name: "title",
       label: "Title",
-      type: "text",
+      type: "string",
       description: "The name of your post, keep it short!",
     },
     {
       name: "tags",
       label: "Tags",
-      type: "tags",
+      list: true,
+      type: "string",
     },
     {
       name: "image",
       label: "Image URL",
-      type: "text",
+      type: "string",
       description: "The external image URL",
     },
     {
       name: "image_small",
       label: "Small Image URL",
-      type: "text",
+      type: "string",
       description: "The external image URL for smaller rendering",
     },
     {
       name: "accolades",
       label: "Accolades",
       description: "Key accomplishments which make this person stand out",
-      type: "group",
+      type: "object",
       fields: [
         {
           name: "figure",
-          type: "text",
+          type: "string",
           label: "Figure",
           description: "A single number or word to emphasize",
         },
         {
           name: "description",
-          type: "text",
+          type: "string",
           label: "Description",
         },
       ],
@@ -67,28 +74,29 @@ export const Post: TinaCloudTemplate = {
     {
       name: "author",
       type: "reference",
-      collection: "authors",
+      collections: ["authors"],
       label: "Author",
     },
     {
       name: "preface",
       label: "Preface",
-      type: "textarea",
+      type: "string",
     },
   ],
 };
 
-export const Curated: TinaCloudTemplate = {
+export const Curated: TinaTemplate = {
   name: "curated",
   label: "Curated",
   fields: [
     {
-      type: "text",
+      type: "string",
       name: "title",
       label: "Title",
     },
     {
-      type: "blocks",
+      type: "object",
+      list: true,
       name: "curations",
       label: "Curations",
       templates: [
@@ -99,13 +107,13 @@ export const Curated: TinaCloudTemplate = {
             {
               label: "Description",
               name: "description",
-              type: "textarea",
+              type: "string",
             },
             {
               label: "Hero Post",
               name: "hero_post",
               type: "reference",
-              collection: "posts",
+              collections: ["posts"],
             },
           ],
         },
