@@ -33,14 +33,16 @@ export const getStaticPaths = async () => {
   };
 };
 
+export type NavData = Res["data"]["getNavDocument"];
+
 export const Static = (props: Res) => {
-  const { getPostsDocument } = props.data;
+  const { getPostsDocument, getNavDocument } = props.data;
 
   const { data } = getPostsDocument;
 
   return (
     <>
-      {/* <Header2 {...getNavDocument} /> */}
+      <Header2 {...getNavDocument} />
       <div className="h-12 md:h-32" />
       <div className="relative px-4 sm:px-6 lg:px-8">
         <div className="text-lg max-w-prose mx-auto mb-6 md:mb-24">

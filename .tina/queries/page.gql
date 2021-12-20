@@ -39,15 +39,72 @@ fragment NavParts2 on Nav {
         featured_post {
           ... on Document {
             id
+            sys {
+              filename
+              breadcrumbs
+            }
+          }
+          ... on PostsDocument {
+            data {
+              ... on PostsPost {
+                image
+                title
+                preface
+                author {
+                  ... on Document {
+                    sys {
+                      filename
+                    }
+                  }
+                  __typename
+                  ... on AuthorsDocument {
+                    data {
+                      __typename
+                      ... on AuthorsAuthor {
+                        name
+                        image
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
         from_the_blog {
           __typename
           reference {
+            ... on Document {
+              id
+              sys {
+                filename
+                breadcrumbs
+              }
+            }
             ... on PostsDocument {
-              __typename
-              ... on PostsDocument {
-                id
+              data {
+                ... on PostsPost {
+                  image
+                  title
+                  preface
+                  author {
+                    ... on Document {
+                      sys {
+                        filename
+                      }
+                    }
+                    __typename
+                    ... on AuthorsDocument {
+                      data {
+                        __typename
+                        ... on AuthorsAuthor {
+                          name
+                          image
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
