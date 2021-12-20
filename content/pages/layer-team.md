@@ -2,7 +2,6 @@
 title: Our Team
 layers:
   - members:
-      - reference: content/authors/nicole.md
       - reference: content/authors/heidi.md
       - reference: content/authors/sarah.md
       - reference: content/authors/eric.md
@@ -12,4 +11,3 @@ layers:
     _template: layerTeam
 _template: page
 ---
-
