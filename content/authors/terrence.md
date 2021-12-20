@@ -1,6 +1,6 @@
 ---
 name: Terrence Mahon
-description: >-
+bioDescription: >-
   **Co-Founder of Golden Coast Track Club**, Terrence Mahon is an expert coach
   for both male and female endurance runners. He has coached athletes to
   national titles/records and Olympic/World finals from 800-meters up to the

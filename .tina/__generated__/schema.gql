@@ -142,7 +142,7 @@ type PostsPost {
   accolades: PostsPostAccolades
   author: PostsPostAuthorDocument
   preface: String
-  _body: String
+  _body: JSON
 }
 
 union Posts = PostsPost
@@ -195,7 +195,7 @@ type PagesPageLayersLayerPostListPosts {
 }
 
 type PagesPageLayersLayerPostList {
-  description: String
+  postListDescription: JSON
   posts: [PagesPageLayersLayerPostListPosts]
 }
 
@@ -239,12 +239,12 @@ type PagesPageLayersCuratedCollectionPosts_collection {
 }
 
 type PagesPageLayersCuratedCollection {
-  description: String
+  curatedDescription: JSON
   posts_collection: [PagesPageLayersCuratedCollectionPosts_collection]
 }
 
 type PagesPageLayersLayerCta {
-  description: String
+  ctaDescription: JSON
   cta_text: String
   cta_link: String
   cta_image: String
@@ -393,7 +393,7 @@ type FormsConnection implements Connection {
 union CuratedCuratedCurationsCuratedHeroHero_postDocument = PostsDocument
 
 type CuratedCuratedCurationsCuratedHero {
-  description: String
+  curatedDescription: JSON
   hero_post: CuratedCuratedCurationsCuratedHeroHero_postDocument
 }
 
@@ -404,7 +404,7 @@ type CuratedCuratedCurationsCuratedCollectionPosts_collection {
 }
 
 type CuratedCuratedCurationsCuratedCollection {
-  description: String
+  curatedDescription: JSON
   posts_collection: [CuratedCuratedCurationsCuratedCollectionPosts_collection]
 }
 
@@ -460,8 +460,8 @@ type AuthorsAuthorEbook {
 
 type AuthorsAuthor {
   name: String
-  description: String
-  _body: String
+  bioDescription: JSON
+  _body: JSON
   role: String
   accolades: [AuthorsAuthorAccolades]
   image: String
@@ -490,7 +490,7 @@ type AuthorsAthleteSocial_media {
 type AuthorsAthlete {
   name: String
   description: String
-  _body: String
+  _body: JSON
   country: String
   personal_bests: [AuthorsAthletePersonal_bests]
   accolades: [AuthorsAthleteAccolades]
@@ -656,7 +656,7 @@ input PostsPostMutation {
   accolades: PostsPostAccoladesMutation
   author: String
   preface: String
-  _body: String
+  _body: JSON
 }
 
 input PostsMutation {
@@ -687,7 +687,7 @@ input PagesPageLayersLayerPostListPostsMutation {
 }
 
 input PagesPageLayersLayerPostListMutation {
-  description: String
+  postListDescription: JSON
   posts: [PagesPageLayersLayerPostListPostsMutation]
 }
 
@@ -727,12 +727,12 @@ input PagesPageLayersCuratedCollectionPosts_collectionMutation {
 }
 
 input PagesPageLayersCuratedCollectionMutation {
-  description: String
+  curatedDescription: JSON
   posts_collection: [PagesPageLayersCuratedCollectionPosts_collectionMutation]
 }
 
 input PagesPageLayersLayerCtaMutation {
-  description: String
+  ctaDescription: JSON
   cta_text: String
   cta_link: String
   cta_image: String
@@ -863,7 +863,7 @@ input FormsMutation {
 }
 
 input CuratedCuratedCurationsCuratedHeroMutation {
-  description: String
+  curatedDescription: JSON
   hero_post: String
 }
 
@@ -872,7 +872,7 @@ input CuratedCuratedCurationsCuratedCollectionPosts_collectionMutation {
 }
 
 input CuratedCuratedCurationsCuratedCollectionMutation {
-  description: String
+  curatedDescription: JSON
   posts_collection: [CuratedCuratedCurationsCuratedCollectionPosts_collectionMutation]
 }
 
@@ -909,8 +909,8 @@ input AuthorsAuthorEbookMutation {
 
 input AuthorsAuthorMutation {
   name: String
-  description: String
-  _body: String
+  bioDescription: JSON
+  _body: JSON
   role: String
   accolades: [AuthorsAuthorAccoladesMutation]
   image: String
@@ -939,7 +939,7 @@ input AuthorsAthleteSocial_mediaMutation {
 input AuthorsAthleteMutation {
   name: String
   description: String
-  _body: String
+  _body: JSON
   country: String
   personal_bests: [AuthorsAthletePersonal_bestsMutation]
   accolades: [AuthorsAthleteAccoladesMutation]

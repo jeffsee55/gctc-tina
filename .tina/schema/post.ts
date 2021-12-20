@@ -6,8 +6,8 @@ export const CuratedCollection: TinaTemplate = {
   fields: [
     {
       label: "Description",
-      name: "description",
-      type: "string",
+      name: "curatedDescription",
+      type: "rich-text",
     },
     {
       label: "Collection Curations",
@@ -86,7 +86,7 @@ export const Post: TinaTemplate = {
       name: "_body",
       label: "Body",
       isBody: true,
-      type: "string",
+      type: "rich-text",
     },
   ],
 };
@@ -112,8 +112,8 @@ export const Curated: TinaTemplate = {
           fields: [
             {
               label: "Description",
-              name: "description",
-              type: "string",
+              name: "curatedDescription",
+              type: "rich-text",
             },
             {
               label: "Hero Post",

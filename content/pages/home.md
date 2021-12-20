@@ -13,9 +13,8 @@ layers:
       https://res.cloudinary.com/deuzrsg3m/image/upload/v1639967733/uploads/DSC05486_kin8du.jpg
     _template: layerHero
   - _template: layerCta
-    description: >-
+    ctaDescription: >-
       ## Training Plans for every skill-level
-
 
       We offer expert training plans designed by world-class coaches and
       athletes.
@@ -23,13 +22,11 @@ layers:
     cta_link: /training-plans
     cta_image: >-
       https://res.cloudinary.com/deuzrsg3m/image/upload/v1612736830/uploads/Screen_Shot_2021-02-07_at_2.27.00_PM_ptwqab.png
-  - description: >-
+  - postListDescription: >-
       ## Latest from the blog
-
 
       Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
       cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
-
 
       [View all posts](/posts)
     posts:

@@ -30,7 +30,7 @@ query getCuratedPostAndNavDocument($relativePath: String!) {
         curations {
           __typename
           ... on CuratedCuratedCurationsCuratedHero {
-            description
+            curatedDescription
             hero_post {
               __typename
               ... on PostsDocument {
@@ -65,7 +65,7 @@ query getCuratedPostAndNavDocument($relativePath: String!) {
             }
           }
           ... on CuratedCuratedCurationsCuratedCollection {
-            description
+            curatedDescription
             posts_collection {
               __typename
               reference {

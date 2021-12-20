@@ -1,8 +1,7 @@
 ---
 name: Jen Rhines
-description: |+
+bioDescription: |+
   3-time Olympian & Adidas Endurance Coach and Brand Ambassador
-
 role: Wellness Coach & Founder
 accolades:
   - figure: 2x

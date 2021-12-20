@@ -1,5 +1,6 @@
 import React from "react";
-import type { LayerPostListProps } from "../../pages";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import type { LayerPostListProps } from "../page";
 import { Markdown } from "../markdown";
 
 export const ThumbnailList = (props: LayerPostListProps) => {
@@ -48,11 +49,8 @@ export const ThumbnailList = (props: LayerPostListProps) => {
       </div>
       <div className="relative max-w-7xl mx-auto">
         <div className="text-center">
-          {/* <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-            {props}
-          </h2> */}
-          <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-            {props.description}
+          <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4 prose">
+            <TinaMarkdown content={props.postListDescription} />
           </p>
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
@@ -81,12 +79,9 @@ export const ThumbnailList = (props: LayerPostListProps) => {
                       <p className="text-xl font-semibold text-gray-900">
                         {post.data.title}
                       </p>
-                      <Markdown
-                        content={post.data.preface}
-                        classNames={{
-                          p: "mt-3 text-base text-gray-500 line-clamp-3",
-                        }}
-                      />
+                      <p className="mt-3 text-base text-gray-500 line-clamp-3">
+                        {post.data.preface}
+                      </p>
                       <div className="mt-6 text-base font-medium">
                         <a
                           href={`/posts/${post.sys.filename}`}

@@ -241,13 +241,11 @@ export const Hero = (props: MemberHero) => {
               {props.name}
             </h1>
 
-            <Markdown
-              content={props.description}
-              classNames={{
-                p:
-                  "mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl",
-              }}
-            />
+            <div className="prose">
+              <Markdown
+                content={props.bioDescription}
+              />
+            </div>
             {props.form && (
               <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
                 <a
@@ -352,16 +350,11 @@ export const Story = (props: AuthorDataType) => {
           </div>
           <div>
             {props._body && (
+              <div className="prose">
               <Markdown
                 content={props._body}
-                classNames={{
-                  h2:
-                    "mt-2 mb-8 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10",
-                  h3:
-                    "my-3 text-base leading-6 text-steel-medium font-semibold tracking-wide uppercase",
-                  p: "mt-4 text-md leading-7 text-gray-500",
-                }}
               />
+              </div>
             )}
           </div>
         </div>

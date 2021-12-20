@@ -423,14 +423,9 @@ const Screenshot = (props: LayerCtaProps) => {
             <div className="lg:grid lg:grid-cols-2 lg:gap-4">
               <div className="lg:flex lg:justify-end">
                 <div className="mx-auto lg:self-center max-w-xl relative z-10">
-                  <Markdown
-                    content={props.description}
-                    classNames={{
-                      h2:
-                        "text-3xl font-extrabold text-white tracking-tight sm:text-4xl",
-                      p: "mt-6 mx-auto max-w-2xl text-lg text-amber-50",
-                    }}
-                  />
+                  <div className="prose text-white prose-headings:text-white">
+                    <Markdown content={props.ctaDescription} />
+                  </div>
                   <a
                     href={props.cta_link}
                     className={`inline-block

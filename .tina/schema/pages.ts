@@ -84,8 +84,8 @@ export const Page: TinaTemplate = {
           fields: [
             {
               label: "Description",
-              name: "description",
-              type: "string",
+              name: "postListDescription",
+              type: "rich-text",
             },
             {
               label: "Posts",
@@ -103,7 +103,7 @@ export const Page: TinaTemplate = {
         },
         {
           name: "layerDarkFeature",
-          label: "Post List Layer",
+          label: "Feature List Layer",
           fields: [
             {
               label: "Hint",
@@ -165,7 +165,7 @@ export const Page: TinaTemplate = {
         },
         {
           name: "layerSponsors",
-          label: "Post List Layer",
+          label: "Sponsors Layer",
           fields: [
             {
               label: "Title",
@@ -196,12 +196,12 @@ export const Page: TinaTemplate = {
         CuratedCollection,
         {
           name: "layerCta",
-          label: "Post List Layer",
+          label: "Call to Action",
           fields: [
             {
               label: "Description",
-              name: "description",
-              type: "string",
+              name: "ctaDescription",
+              type: "rich-text",
             },
             {
               label: "CTA Text",

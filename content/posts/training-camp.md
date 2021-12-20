@@ -13,11 +13,9 @@ preface: >-
   a coach, I head to somewhere remote, often at a high altitude, and spend 4-6
   weeks in a place where time operates on an entirely different wavelength. This
   is the life of the professional endurance athlete, coaching staff and support
-  crew
+  crew.
 _template: post
 ---
-
-For the better part of the past 20 years I have spent a significant amount of the fall at my home away from home: Training Camp. First as an athlete and now a coach, I head to somewhere remote, often at a high altitude, and spend 4-6 weeks in a place where time operates on an entirely different wavelength. This is the life of the professional endurance athlete, coaching staff and support crew. Mammoth Lakes, Flagstaff, Albuquerque, Font Romeu, Iten - they all possess the same basic characteristics - lots of hills, lack of air and many more trees than people. It's often what distance athletes need to return to the center.
 
 I arrive at these places and immediately realize how small I am and how big the world is around me. Is it the size of the mountains or the volume of visible stars at night? Or perhaps it's just the quiet. The silence that screams out is greater than the cacophony of taxis on a busy Manhattan day. It demands my presence. It demands all of our presence. It is the only here and now that exists at camp. It is a symbol of the origin of it all.
 

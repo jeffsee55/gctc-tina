@@ -18,9 +18,8 @@ layers:
       - reference: content/posts/dreams-on-hold.md
       - reference: content/posts/training-camp.md
   - _template: layerCta
-    description: >-
+    ctaDescription: >-
       ## Training Plans for every skill-level
-
 
       We offer expert training plans designed by world-class coaches and
       athletes.

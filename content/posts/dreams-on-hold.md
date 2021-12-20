@@ -5,8 +5,6 @@ image: >-
 author: content/authors/jen.md
 preface: >-
   So far the year 2020 has been and will continue to be a year unlike any that we have ever seen before. I [think](https://example.com) that aside from the obvious of everything being turned upside down, cancelled, or postponed - there are some __great__ opportunities ahead for us if only we take a moment to think it through and look at it with the right perspective.
-
-  <Image src="https://placehold.it/200x200" />
 _template: post
 ---
 

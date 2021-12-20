@@ -168,7 +168,7 @@ fragment PagesPartsWithReferences on Pages {
                   image
                   name
                   role
-                  description
+                  bioDescription
                 }
               }
             }
@@ -179,7 +179,7 @@ fragment PagesPartsWithReferences on Pages {
         }
       }
       ... on PagesPageLayersLayerPostList {
-        description
+        postListDescription
         posts {
           __typename
           reference {
@@ -221,7 +221,7 @@ fragment PagesPartsWithReferences on Pages {
                 ... on AuthorsAuthor {
                   __typename
                   name
-                  description
+                  bioDescription
                   role
                   accolades {
                     figure
@@ -243,7 +243,7 @@ fragment PagesPartsWithReferences on Pages {
         }
       }
       ... on PagesPageLayersCuratedCollection {
-        description
+        curatedDescription
         posts_collection {
           __typename
           reference {
@@ -259,7 +259,7 @@ fragment PagesPartsWithReferences on Pages {
         }
       }
       ... on PagesPageLayersLayerCta {
-        description
+        ctaDescription
         cta_text
         cta_link
         cta_image

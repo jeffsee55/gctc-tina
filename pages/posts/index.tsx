@@ -7,6 +7,7 @@ import { Footer } from "../../components/footer";
 import { Img } from "../../components/image";
 
 import { ExperimentalGetTinaClient } from "../../.tina/__generated__/types";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
 const client = ExperimentalGetTinaClient();
 
 type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
@@ -83,13 +84,9 @@ export const HeroPost = (props: HeroPostProps) => {
           <div className="max-w-3xl mx-auto">
             <div className="relative transform -translate-y-24">
               <div className="bg-white p-8 rounded shadow-xl">
-                <Markdown
-                  content={post.data?.preface}
-                  classNames={{
-                    p:
-                      "line-clamp-3 text-base leading-6 text-gray-500 undefined",
-                  }}
-                />
+                <p className="line-clamp-3 text-base leading-6 text-gray-500 undefined">
+                  {post.data.preface}
+                </p>
                 <div className="flex justify-between items-center mt-8">
                   <Snippet className="" {...post.data?.author} />
                   <a
@@ -132,16 +129,11 @@ export const FeatureList = (props: FeatureListProps) => {
   return (
     <div className="bg-white pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
       <div className="relative max-w-lg mx-auto lg:max-w-7xl">
-        <div>
-          <Markdown
-            content={props.description}
-            classNames={{
-              h2:
-                "text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10",
-              p: "mt-3 text-xl leading-7 text-gray-500 sm:mt-4",
-            }}
-          />
-        </div>
+        {props.curatedDescription && (
+          <p className="mt-3 text-lg leading-6 text-gray-500 prose">
+            <TinaMarkdown content={props.curatedDescription} />
+          </p>
+        )}
         <div className="mt-12 grid gap-16 border-t-2 border-gray-100 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
           {props.posts_collection?.map((p) => {
             const post = p.reference;
@@ -167,10 +159,9 @@ export const FeatureList = (props: FeatureListProps) => {
                   <h3 className="mt-4 text-xl leading-7 font-semibold text-gray-900">
                     {post?.data?.title}
                   </h3>
-                  <Markdown
-                    content={post?.data?.preface}
-                    classNames={{ p: "mt-3 text-base leading-6 text-gray-500" }}
-                  />
+                  <p className="mt-3 text-base leading-6 text-gray-500 line-clamp-3">
+                    {post.data.preface}
+                  </p>
                 </a>
                 <Snippet className="mt-6" {...post?.data?.author} />
               </div>

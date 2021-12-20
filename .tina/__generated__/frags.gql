@@ -63,7 +63,7 @@ fragment PagesParts on Pages {
         }
       }
       ... on PagesPageLayersLayerPostList {
-        description
+        postListDescription
         posts {
           __typename
           reference {
@@ -103,7 +103,7 @@ fragment PagesParts on Pages {
         }
       }
       ... on PagesPageLayersCuratedCollection {
-        description
+        curatedDescription
         posts_collection {
           __typename
           reference {
@@ -114,7 +114,7 @@ fragment PagesParts on Pages {
         }
       }
       ... on PagesPageLayersLayerCta {
-        description
+        ctaDescription
         cta_text
         cta_link
         cta_image
@@ -206,7 +206,7 @@ fragment CuratedParts on Curated {
     curations {
       __typename
       ... on CuratedCuratedCurationsCuratedHero {
-        description
+        curatedDescription
         hero_post {
           ... on Document {
             id
@@ -214,7 +214,7 @@ fragment CuratedParts on Curated {
         }
       }
       ... on CuratedCuratedCurationsCuratedCollection {
-        description
+        curatedDescription
         posts_collection {
           __typename
           reference {
@@ -231,7 +231,7 @@ fragment CuratedParts on Curated {
 fragment AuthorsParts on Authors {
   ... on AuthorsAuthor {
     name
-    description
+    bioDescription
     _body
     role
     accolades {

@@ -272,7 +272,7 @@
               "name": "_body",
               "label": "Body",
               "isBody": true,
-              "type": "string",
+              "type": "rich-text",
               "namespace": [
                 "posts",
                 "post",
@@ -456,14 +456,14 @@
                   "fields": [
                     {
                       "label": "Description",
-                      "name": "description",
-                      "type": "string",
+                      "name": "postListDescription",
+                      "type": "rich-text",
                       "namespace": [
                         "pages",
                         "page",
                         "layers",
                         "layerPostList",
-                        "description"
+                        "postListDescription"
                       ]
                     },
                     {
@@ -507,7 +507,7 @@
                 },
                 {
                   "name": "layerDarkFeature",
-                  "label": "Post List Layer",
+                  "label": "Feature List Layer",
                   "fields": [
                     {
                       "label": "Hint",
@@ -651,7 +651,7 @@
                 },
                 {
                   "name": "layerSponsors",
-                  "label": "Post List Layer",
+                  "label": "Sponsors Layer",
                   "fields": [
                     {
                       "label": "Title",
@@ -725,14 +725,14 @@
                   "fields": [
                     {
                       "label": "Description",
-                      "name": "description",
-                      "type": "string",
+                      "name": "curatedDescription",
+                      "type": "rich-text",
                       "namespace": [
                         "pages",
                         "page",
                         "layers",
                         "curatedCollection",
-                        "description"
+                        "curatedDescription"
                       ]
                     },
                     {
@@ -776,18 +776,18 @@
                 },
                 {
                   "name": "layerCta",
-                  "label": "Post List Layer",
+                  "label": "Call to Action",
                   "fields": [
                     {
                       "label": "Description",
-                      "name": "description",
-                      "type": "string",
+                      "name": "ctaDescription",
+                      "type": "rich-text",
                       "namespace": [
                         "pages",
                         "page",
                         "layers",
                         "layerCta",
-                        "description"
+                        "ctaDescription"
                       ]
                     },
                     {
@@ -1563,14 +1563,14 @@
                   "fields": [
                     {
                       "label": "Description",
-                      "name": "description",
-                      "type": "string",
+                      "name": "curatedDescription",
+                      "type": "rich-text",
                       "namespace": [
                         "curated",
                         "curated",
                         "curations",
                         "curatedHero",
-                        "description"
+                        "curatedDescription"
                       ]
                     },
                     {
@@ -1602,14 +1602,14 @@
                   "fields": [
                     {
                       "label": "Description",
-                      "name": "description",
-                      "type": "string",
+                      "name": "curatedDescription",
+                      "type": "rich-text",
                       "namespace": [
                         "curated",
                         "curated",
                         "curations",
                         "curatedCollection",
-                        "description"
+                        "curatedDescription"
                       ]
                     },
                     {
@@ -1690,18 +1690,18 @@
               ]
             },
             {
-              "name": "description",
+              "name": "bioDescription",
               "label": "Description",
-              "type": "string",
+              "type": "rich-text",
               "description": "Your first name & last name",
               "namespace": [
                 "authors",
                 "author",
-                "description"
+                "bioDescription"
               ]
             },
             {
-              "type": "string",
+              "type": "rich-text",
               "name": "_body",
               "isBody": true,
               "label": "Body",
@@ -1929,7 +1929,7 @@
               "name": "description",
               "label": "Description",
               "type": "string",
-              "description": "Your first name & last name",
+              "description": "A bit about the author",
               "namespace": [
                 "authors",
                 "athlete",
@@ -1937,7 +1937,7 @@
               ]
             },
             {
-              "type": "string",
+              "type": "rich-text",
               "name": "_body",
               "isBody": true,
               "label": "Body",

@@ -57,19 +57,18 @@ export const Static = (props: Res) => {
               {data.title}
             </h1>
           </div>
-          <Markdown content={data?.preface} classNames={{ root: "prose" }} />
+          <p className="mt-1 text-md text-gray-500 line-clamp-3">
+            {data.preface}
+          </p>
           <div>
             <Snippet center={true} className="my-8" {...data?.author} />
           </div>
         </div>
         <Img className={"mx-auto"} width={2000} quality={80} src={data.image} />
         <div className="my-12">
-          <Markdown
-            content={data?._body}
-            classNames={{
-              root: "max-w-prose prose mx-auto text-gray-500 ",
-            }}
-          />
+          <div className="max-w-prose prose mx-auto text-gray-500">
+            <Markdown content={data?._body} />
+          </div>
         </div>
       </div>
       <Footer {...getNavDocument} />
