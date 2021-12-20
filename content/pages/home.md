@@ -12,16 +12,6 @@ layers:
   - image: >-
       https://res.cloudinary.com/deuzrsg3m/image/upload/v1639967733/uploads/DSC05486_kin8du.jpg
     _template: layerHero
-  - ctaDescription: >
-      ## Training Plans for every skill-level
-
-      We offer expert training plans designed by world-class coaches and
-      athletes.
-    cta_text: Join Today
-    cta_link: /training-plans
-    cta_image: >-
-      https://res.cloudinary.com/deuzrsg3m/image/upload/v1612736830/uploads/Screen_Shot_2021-02-07_at_2.27.00_PM_ptwqab.png
-    _template: layerCta
   - postListDescription: >
       ## Latest from the blog
 
