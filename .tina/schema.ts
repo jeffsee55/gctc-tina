@@ -84,12 +84,12 @@ export default defineSchema({
             },
             {
               label: "Title",
-              name: "title",
+              name: "Title",
               type: "string",
             },
             {
               label: "Description",
-              name: "description",
+              name: "Description",
               type: "string",
             },
           ],

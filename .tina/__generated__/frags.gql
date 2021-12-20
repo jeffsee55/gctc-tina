@@ -279,8 +279,8 @@ fragment TrainingPlansParts on TrainingPlans {
     __typename
     Day
     Notes
-    title
-    description
+    Title
+    Description
   }
 }
 

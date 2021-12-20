@@ -2009,22 +2009,22 @@
             },
             {
               "label": "Title",
-              "name": "title",
+              "name": "Title",
               "type": "string",
               "namespace": [
                 "trainingPlans",
                 "workouts",
-                "title"
+                "Title"
               ]
             },
             {
               "label": "Description",
-              "name": "description",
+              "name": "Description",
               "type": "string",
               "namespace": [
                 "trainingPlans",
                 "workouts",
-                "description"
+                "Description"
               ]
             }
           ],

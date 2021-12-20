@@ -5964,7 +5964,7 @@
           "kind": "FieldDefinition",
           "name": {
             "kind": "Name",
-            "value": "title"
+            "value": "Title"
           },
           "arguments": [],
           "type": {
@@ -5979,7 +5979,7 @@
           "kind": "FieldDefinition",
           "name": {
             "kind": "Name",
-            "value": "description"
+            "value": "Description"
           },
           "arguments": [],
           "type": {
@@ -10823,7 +10823,7 @@
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "title"
+            "value": "Title"
           },
           "type": {
             "kind": "NamedType",
@@ -10837,7 +10837,7 @@
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
-            "value": "description"
+            "value": "Description"
           },
           "type": {
             "kind": "NamedType",

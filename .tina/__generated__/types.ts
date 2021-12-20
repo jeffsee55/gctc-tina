@@ -689,8 +689,8 @@ export type TrainingPlansWorkouts = {
   __typename?: 'TrainingPlansWorkouts';
   Day?: Maybe<Scalars['Int']>;
   Notes?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
+  Title?: Maybe<Scalars['String']>;
+  Description?: Maybe<Scalars['String']>;
 };
 
 export type TrainingPlans = {
@@ -1256,8 +1256,8 @@ export type AuthorsMutation = {
 export type TrainingPlansWorkoutsMutation = {
   Day?: InputMaybe<Scalars['Int']>;
   Notes?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
-  description?: InputMaybe<Scalars['String']>;
+  Title?: InputMaybe<Scalars['String']>;
+  Description?: InputMaybe<Scalars['String']>;
 };
 
 export type TrainingPlansMutation = {
@@ -1381,7 +1381,7 @@ type AuthorsParts_AuthorsAthlete_Fragment = { __typename?: 'AuthorsAthlete', nam
 
 export type AuthorsPartsFragment = AuthorsParts_AuthorsAuthor_Fragment | AuthorsParts_AuthorsAthlete_Fragment;
 
-export type TrainingPlansPartsFragment = { __typename?: 'TrainingPlans', event?: string | null | undefined, category?: string | null | undefined, time?: string | null | undefined, workouts?: Array<{ __typename: 'TrainingPlansWorkouts', Day?: number | null | undefined, Notes?: string | null | undefined, title?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined };
+export type TrainingPlansPartsFragment = { __typename?: 'TrainingPlans', event?: string | null | undefined, category?: string | null | undefined, time?: string | null | undefined, workouts?: Array<{ __typename: 'TrainingPlansWorkouts', Day?: number | null | undefined, Notes?: string | null | undefined, Title?: string | null | undefined, Description?: string | null | undefined } | null | undefined> | null | undefined };
 
 export type NavPartsFragment = { __typename?: 'NavNav', show_auth?: boolean | null | undefined, items?: Array<{ __typename: 'NavNavItemsNavItemPopout', label?: string | null | undefined, children?: Array<{ __typename: 'NavNavItemsNavItemPopoutChildren', label?: string | null | undefined, description?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined, extra?: Array<{ __typename: 'NavNavItemsNavItemPopoutExtra', label?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'NavNavItemsNavItemMore', label?: string | null | undefined, featured_post?: { __typename?: 'PostsDocument', id: string } | null | undefined, from_the_blog?: Array<{ __typename: 'NavNavItemsNavItemMoreFrom_the_blog', reference?: { __typename?: 'PostsDocument', id: string } | null | undefined } | null | undefined> | null | undefined, read_more?: { __typename: 'NavNavItemsNavItemMoreRead_more', label?: string | null | undefined, value?: string | null | undefined } | null | undefined } | { __typename: 'NavNavItemsNavItemLink', label?: string | null | undefined, value?: string | null | undefined } | null | undefined> | null | undefined };
 
@@ -1450,12 +1450,12 @@ export type GetTrainingPlansDocumentQueryVariables = Exact<{
 }>;
 
 
-export type GetTrainingPlansDocumentQuery = { __typename?: 'Query', getTrainingPlansDocument: { __typename?: 'TrainingPlansDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'TrainingPlans', event?: string | null | undefined, category?: string | null | undefined, time?: string | null | undefined, workouts?: Array<{ __typename: 'TrainingPlansWorkouts', Day?: number | null | undefined, Notes?: string | null | undefined, title?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined } } };
+export type GetTrainingPlansDocumentQuery = { __typename?: 'Query', getTrainingPlansDocument: { __typename?: 'TrainingPlansDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'TrainingPlans', event?: string | null | undefined, category?: string | null | undefined, time?: string | null | undefined, workouts?: Array<{ __typename: 'TrainingPlansWorkouts', Day?: number | null | undefined, Notes?: string | null | undefined, Title?: string | null | undefined, Description?: string | null | undefined } | null | undefined> | null | undefined } } };
 
 export type GetTrainingPlansListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTrainingPlansListQuery = { __typename?: 'Query', getTrainingPlansList: { __typename?: 'TrainingPlansConnection', totalCount: number, edges?: Array<{ __typename?: 'TrainingPlansConnectionEdges', node?: { __typename?: 'TrainingPlansDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'TrainingPlans', event?: string | null | undefined, category?: string | null | undefined, time?: string | null | undefined, workouts?: Array<{ __typename: 'TrainingPlansWorkouts', Day?: number | null | undefined, Notes?: string | null | undefined, title?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined } } | null | undefined } | null | undefined> | null | undefined } };
+export type GetTrainingPlansListQuery = { __typename?: 'Query', getTrainingPlansList: { __typename?: 'TrainingPlansConnection', totalCount: number, edges?: Array<{ __typename?: 'TrainingPlansConnectionEdges', node?: { __typename?: 'TrainingPlansDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'TrainingPlans', event?: string | null | undefined, category?: string | null | undefined, time?: string | null | undefined, workouts?: Array<{ __typename: 'TrainingPlansWorkouts', Day?: number | null | undefined, Notes?: string | null | undefined, Title?: string | null | undefined, Description?: string | null | undefined } | null | undefined> | null | undefined } } | null | undefined } | null | undefined> | null | undefined } };
 
 export type GetNavDocumentQueryVariables = Exact<{
   relativePath: Scalars['String'];
@@ -2019,8 +2019,8 @@ export const TrainingPlansPartsFragmentDoc = gql`
     __typename
     Day
     Notes
-    title
-    description
+    Title
+    Description
   }
 }
     `;
