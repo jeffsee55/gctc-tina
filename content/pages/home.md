@@ -12,8 +12,7 @@ layers:
   - image: >-
       https://res.cloudinary.com/deuzrsg3m/image/upload/v1639967733/uploads/DSC05486_kin8du.jpg
     _template: layerHero
-  - _template: layerCta
-    ctaDescription: >-
+  - ctaDescription: >
       ## Training Plans for every skill-level
 
       We offer expert training plans designed by world-class coaches and
@@ -22,7 +21,8 @@ layers:
     cta_link: /training-plans
     cta_image: >-
       https://res.cloudinary.com/deuzrsg3m/image/upload/v1612736830/uploads/Screen_Shot_2021-02-07_at_2.27.00_PM_ptwqab.png
-  - postListDescription: >-
+    _template: layerCta
+  - postListDescription: >
       ## Latest from the blog
 
       Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
@@ -30,12 +30,11 @@ layers:
 
       [View all posts](/posts)
     posts:
+      - reference: content/posts/fall-training-1.md
       - reference: content/posts/dreams-on-hold.md
-      - reference: content/posts/love-more-than-ever.md
       - reference: content/posts/welcome.md
     _template: layerPostList
-  - _template: layerSponsors
-    title: Thanks to our sponsors
+  - title: Thanks to our sponsors
     sponsors:
       - name: kinetik
         link: "https://kinetikperformanceco.com/"
@@ -43,6 +42,7 @@ layers:
         link: "https://adidas.com/"
       - name: hyperice
         link: "https://hyperice.com/"
+    _template: layerSponsors
   - title: Meet our Leadership
     leaders:
       - reference: content/authors/terrence.md

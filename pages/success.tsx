@@ -1,29 +1,6 @@
 import React from "react";
-import { Header2 } from "../components/header";
-import { createLocalClient } from "../util/create-client";
-import { sdk, AsyncReturnType } from "../.tina/sdk";
-
-const localSdk = sdk(createLocalClient());
-export async function getStaticProps(props) {
-  return {
-    props: {
-      preview: !!props.preview,
-      data: await localSdk.BaseAuthorList({}),
-      ...localSdk.BaseAuthorListString({ variables: {} }),
-    },
-  };
-}
-
-export const Static = (props: {
-  data: AsyncReturnType<typeof localSdk.BaseAuthorList>;
-}) => {
-  const { getNavDocument } = props.data;
-  return (
-    <div>
-      <Header2 {...getNavDocument} />
-      <Hero />
-    </div>
-  );
+export const Static = (props: {}) => {
+  return <Hero />;
 };
 export default Static;
 
