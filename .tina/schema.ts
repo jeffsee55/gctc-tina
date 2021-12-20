@@ -8,12 +8,12 @@ import { Post, Curated } from "./schema/post";
 
 export default defineSchema({
   collections: [
-    {
-      label: "Training",
-      name: "training",
-      path: "content/training",
-      templates: [Training],
-    },
+    // {
+    //   label: "Training",
+    //   name: "training",
+    //   path: "content/training",
+    //   templates: [Training],
+    // },
     {
       label: "Posts",
       name: "posts",
@@ -43,6 +43,58 @@ export default defineSchema({
       name: "authors",
       path: "content/authors",
       templates: [Author, Athlete],
+    },
+    {
+      label: "Training Plans",
+      name: "trainingPlans",
+      format: "json",
+      path: "content/training-2",
+      fields: [
+        {
+          label: "Event",
+          name: "event",
+          type: "string",
+        },
+        {
+          label: "Category",
+          name: "category",
+          type: "string",
+        },
+        {
+          label: "Time",
+          name: "time",
+          type: "string",
+        },
+        {
+          label: "Workouts",
+          name: "workouts",
+          type: "object",
+          list: true,
+          fields: [
+            {
+              label: "Day",
+              name: "Day",
+              type: "number",
+            },
+            {
+              label: "Notes",
+              name: "Notes",
+              type: "string",
+              options: ["easy", "medium", "hard"],
+            },
+            {
+              label: "Title",
+              name: "title",
+              type: "string",
+            },
+            {
+              label: "Description",
+              name: "description",
+              type: "string",
+            },
+          ],
+        },
+      ],
     },
     {
       label: "Nav",

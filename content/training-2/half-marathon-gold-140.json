@@ -1,0 +1,617 @@
+{
+  "event": "half-marathon",
+  "category": "gold",
+  "time": "1:40",
+  "workouts": [
+    {
+      "Day": 1,
+      "Title": "Easy Run or Off Day",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace or\nOff Day\n\n"
+    },
+    {
+      "Day": 2,
+      "Title": "Anaerobic Threshold Intervals",
+      "Notes": "hard",
+      "Description": "2 mile warm up, \n8 x 800m @3:42-3:46 w/ 200m jog,\n2 mile cool down\n"
+    },
+    {
+      "Day": 3,
+      "Title": "Easy Run ",
+      "Notes": "easy",
+      "Description": "6-7 miles @9:00-9:30 pace \n\n"
+    },
+    {
+      "Day": 4,
+      "Title": "Easy Run with Sprints",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace\nFinish w/ 6 x 20 sec sprints \nw/ 90 sec recovery jog, \n1 mile cool down \n\n"
+    },
+    {
+      "Day": 5,
+      "Title": "Aerobic Tempo Run",
+      "Notes": "hard",
+      "Description": "2 mile warm up\n5 miles @7:47-7:57 pace, \n2 mile cool down\n\n"
+    },
+    {
+      "Day": 6,
+      "Title": "Easy Run or Cross Training",
+      "Notes": "easy",
+      "Description": "4-5 miles @9:00-9:30 pace or\n40 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 7,
+      "Title": "Long Run",
+      "Notes": "medium",
+      "Description": "8-10 miles @9:00-9:30 pace\nFinish w/ 8 x 100m @6:15 pace \nw/ 45 sec rest\n\n"
+    },
+    {
+      "Day": 8,
+      "Title": "Easy Run or Off Day",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace or\nOff Day\n\n"
+    },
+    {
+      "Day": 9,
+      "Title": "Half Marathon Pace Intervals",
+      "Notes": "hard",
+      "Description": "2 mile warm up,\n5 x 1 mile @7:36-7:40 w/ 90 sec rest, \n2 mile cool down\n\n"
+    },
+    {
+      "Day": 10,
+      "Title": "Easy Run ",
+      "Notes": "easy",
+      "Description": "7-8 miles @9:00-9:30 pace \n\n"
+    },
+    {
+      "Day": 11,
+      "Title": "Aerobic Run",
+      "Notes": "medium",
+      "Description": "6-7 miles @8:35-8:50 pace\n\n"
+    },
+    {
+      "Day": 12,
+      "Title": "Hill Circuit or Track Workout",
+      "Notes": "hard",
+      "Description": "3 miles @9:00-9:30 pace,\n4 sets (300m @1:18, 200m @52, 100m @26),\n1 min rest between reps, 3 min rest between sets,\n2 miles @9:00-9:30 pace\n"
+    },
+    {
+      "Day": 13,
+      "Title": "Easy Run or Cross Training",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace or\n40 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 14,
+      "Title": "Long Run",
+      "Notes": "medium",
+      "Description": "9-11 miles @9:00-9:30 pace\nFinish w/ 8 x 100m @6:15 pace \nw/ 45 sec rest\n\n"
+    },
+    {
+      "Day": 15,
+      "Title": "Easy Run or Off Day",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace or\nOff Day\n\n"
+    },
+    {
+      "Day": 16,
+      "Title": "Anaerobic Threshold Intervals",
+      "Notes": "hard",
+      "Description": "2 mile warm up, \n7-8 x 1k @4:39-4:43 w/ 200m jog,\n2 mile cool down \n\n"
+    },
+    {
+      "Day": 17,
+      "Title": "Easy Run",
+      "Notes": "easy",
+      "Description": "8-9 miles @9:00-9:30 pace \n\n"
+    },
+    {
+      "Day": 18,
+      "Title": "Easy Run with Sprints",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace\nFinish w/ 8 x 20 sec sprints \nw/ 90 sec recovery jog, \n1 mile cool down \n\n"
+    },
+    {
+      "Day": 19,
+      "Title": "Aerobic Tempo Run",
+      "Notes": "hard",
+      "Description": "2 mile warm up\n6 miles @7:47-7:57 pace, \n1-2 mile cool down\n\n"
+    },
+    {
+      "Day": 20,
+      "Title": "Easy Run or Cross Training",
+      "Notes": "easy",
+      "Description": "6-7 miles @9:00-9:30 pace or\n45-50 min Cross Training Session\n"
+    },
+    {
+      "Day": 21,
+      "Title": "Long Run",
+      "Notes": "medium",
+      "Description": "10-12 miles @9:00-9:30 pace\nFinish w/ 8 x 100m @6:15 pace \nw/ 45 sec rest\n\n"
+    },
+    {
+      "Day": 22,
+      "Title": "Easy Run or Off Day",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace or\nOff Day\n\n"
+    },
+    {
+      "Day": 23,
+      "Title": "Half Marathon Test Workout",
+      "Notes": "hard",
+      "Description": "2 mile warm up, \n4 x 1.5 miles @7:36-7:40 pace w/ 2 min rest,\n2 mile cool down \n\n"
+    },
+    {
+      "Day": 24,
+      "Title": "Easy Run ",
+      "Notes": "easy",
+      "Description": "8-9 miles @9:00-9:30 pace \n\n"
+    },
+    {
+      "Day": 25,
+      "Title": "Aerobic Run",
+      "Notes": "medium",
+      "Description": "6-7 miles @8:35-8:50 pace\n"
+    },
+    {
+      "Day": 26,
+      "Title": "Hill Circuit or Track Workout",
+      "Notes": "hard",
+      "Description": "3 miles @9:00-9:30 pace,\n5 sets (300m @1:18, 200m @52, 100m @26),\n1 min rest between reps, 3 min rest between sets,\n2 miles @9:00-9:30 pace\n"
+    },
+    {
+      "Day": 27,
+      "Title": "Easy Run or Cross Training",
+      "Notes": "easy",
+      "Description": "6-7 miles @9:00-9:30 pace or\n45-50 min Cross Training Session\n"
+    },
+    {
+      "Day": 28,
+      "Title": "Long Run",
+      "Notes": "medium",
+      "Description": "11-13 miles @9:00-9:30 pace\nFinish w/ 8 x 100m @6:15 pace \nw/ 45 sec rest\n\n\n"
+    },
+    {
+      "Day": 29,
+      "Title": "Easy Run or Off Day",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace or\nOff Day\n\n"
+    },
+    {
+      "Day": 30,
+      "Title": "Anaerobic Threshold Intervals",
+      "Notes": "hard",
+      "Description": "2 mile warm up, \n5 x 1 mile @7:26-7:30 pace w/ 400m jog,\n2 mile cool down\n\n"
+    },
+    {
+      "Day": 31,
+      "Title": "Easy Run ",
+      "Notes": "easy",
+      "Description": "8-9 miles @9:00-9:30 pace \n\n"
+    },
+    {
+      "Day": 32,
+      "Title": "Easy Run with Sprints",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace\nFinish w/ 8 x 30 sec sprints \nw/ 90 sec recovery jog, \n1 mile cool down \n\n"
+    },
+    {
+      "Day": 33,
+      "Title": "Aerobic Tempo Run",
+      "Notes": "hard",
+      "Description": "2 mile warm up\n7 miles @7:47-7:57 pace, \n1-2 mile cool down\n\n"
+    },
+    {
+      "Day": 34,
+      "Title": "Easy Run or Cross Training",
+      "Notes": "easy",
+      "Description": "6-7 miles @9:00-9:30 pace or\n45-50 min Cross Training Session\n"
+    },
+    {
+      "Day": 35,
+      "Title": "Long Run with Intervals",
+      "Notes": "hard",
+      "Description": "6 miles @9:00-9:30 pace\n5 miles of alternating (1/4 mile @7:20-7:25 pace, 1/4 mile @9:00-9:15 pace),\n1-2 miles @9:00-9:30 pace\n\n"
+    },
+    {
+      "Day": 36,
+      "Title": "Easy Run or Off Day",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace or\nOff Day\n\n"
+    },
+    {
+      "Day": 37,
+      "Title": "Half Marathon Pace Intervals",
+      "Notes": "hard",
+      "Description": "2 mile warm up,\n6-7 x 1 mile @7:36-7:40 w/ 90 sec rest\n2 mile cool down \n\n"
+    },
+    {
+      "Day": 38,
+      "Title": "Easy Run",
+      "Notes": "easy",
+      "Description": "8-9 miles @9:00-9:30 pace \n\n"
+    },
+    {
+      "Day": 39,
+      "Title": "Aerobic Run",
+      "Notes": "medium",
+      "Description": "6-7 miles @8:35-8:50 pace\n"
+    },
+    {
+      "Day": 40,
+      "Title": "Hill Circuit or Track Workout",
+      "Notes": "hard",
+      "Description": "3 miles @9:00-9:30 pace,\n5 sets (300m @1:18, 200m @52, 100m @26),\n1 min rest between reps, 3 min rest between sets,\n2 miles @9:00-9:30 pace\n"
+    },
+    {
+      "Day": 41,
+      "Title": "Easy Run or Cross Training",
+      "Notes": "easy",
+      "Description": "6-7 miles @9:00-9:30 pace or\n45-50 min Cross Training Session\n"
+    },
+    {
+      "Day": 42,
+      "Title": "Long Run",
+      "Notes": "medium",
+      "Description": "11-13 miles @9:00-9:30 pace\nFinish w/ 8 x 100m @6:15 pace \nw/ 45 sec rest\n\n"
+    },
+    {
+      "Day": 43,
+      "Title": "Easy Run or Off Day",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace or\nOff Day\n\n"
+    },
+    {
+      "Day": 44,
+      "Title": "Mixed Pace Intervals",
+      "Notes": "hard",
+      "Description": "2 mile warm up,\n2 x 800m @3:36-3:40 w/ 2 min rest,\n6 x 1k @4:39-4:43 w/ 90 sec rest,\n4 x 400m @1:43-1:45 w/ 1 min rest,\n3 min rest between sets\n2 mile cool down \n\n"
+    },
+    {
+      "Day": 45,
+      "Title": "Easy Run ",
+      "Notes": "easy",
+      "Description": "8-9 miles @9:00-9:30 pace \n\n"
+    },
+    {
+      "Day": 46,
+      "Title": "Easy Run with Sprints",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace\nFinish w/ 8 x 30 sec sprints \nw/ 90 sec recovery jog, \n1 mile cool down \n\n"
+    },
+    {
+      "Day": 47,
+      "Title": "Aerobic Tempo Run",
+      "Notes": "hard",
+      "Description": "2 mile warm up\n7 miles @7:47-7:57 pace, \n1-2 mile cool down\n\n"
+    },
+    {
+      "Day": 48,
+      "Title": "Easy Run or Cross Training",
+      "Notes": "easy",
+      "Description": "6-7 miles @9:00-9:30 pace or\n45-50 min Cross Training Session\n"
+    },
+    {
+      "Day": 49,
+      "Title": "Long Run with Intervals",
+      "Notes": "hard",
+      "Description": "6 miles @9:00-9:30 pace\n5 miles of alternating (1/4 mile @7:20-7:25 pace, 1/4 mile @9:00-9:15 pace),\n1-2 miles @9:00-9:30 pace\n\n"
+    },
+    {
+      "Day": 50,
+      "Title": "Easy Run or Off Day",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace or\nOff Day\n\n"
+    },
+    {
+      "Day": 51,
+      "Title": "Half Marathon Test Workout",
+      "Notes": "hard",
+      "Description": "2 mile warm up, \n3 x 2 miles @7:36-7:40 pace w/ 2:30 rest,\n2 mile cool down \n\n"
+    },
+    {
+      "Day": 52,
+      "Title": "Easy Run",
+      "Notes": "easy",
+      "Description": "8-9 miles @9:00-9:30 pace \n\n"
+    },
+    {
+      "Day": 53,
+      "Title": "Aerobic Run",
+      "Notes": "medium",
+      "Description": "6-7 miles @8:35-8:50 pace\n"
+    },
+    {
+      "Day": 54,
+      "Title": "Hill Circuit or Track Workout",
+      "Notes": "hard",
+      "Description": "3 miles @9:00-9:30 pace,\n5 sets (300m @1:18, 200m @52, 100m @26),\n1 min rest between reps, 3 min rest between sets,\n2 miles @9:00-9:30 pace\n"
+    },
+    {
+      "Day": 55,
+      "Title": "Easy Run or Cross Training",
+      "Notes": "easy",
+      "Description": "6-7 miles @9:00-9:30 pace or\n45-50 min Cross Training Session\n"
+    },
+    {
+      "Day": 56,
+      "Title": "Long Run",
+      "Notes": "medium",
+      "Description": "12-14 miles @9:00-9:30 pace\nFinish w/ 8 x 100m @6:15 pace \nw/ 45 sec rest\n\n"
+    },
+    {
+      "Day": 57,
+      "Title": "Easy Run or Off Day",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace or\nOff Day\n\n"
+    },
+    {
+      "Day": 58,
+      "Title": "Mixed Pace Intervals",
+      "Notes": "hard",
+      "Description": "2 mile warm up,\n2 x 800m @3:36-3:40 w/ 2 min rest, then 3 min rest,\n4 miles @7:36-7:40 pace, then 4-5 min rest,\n2 x 800m @3:36-3:40 w/ 2 min rest,\n2 mile cool down \n\n"
+    },
+    {
+      "Day": 59,
+      "Title": "Easy Run ",
+      "Notes": "easy",
+      "Description": "8-9 miles @9:00-9:30 pace \n\n"
+    },
+    {
+      "Day": 60,
+      "Title": "Easy Run with Sprints",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace\nFinish w/ 8 x 30 sec sprints \nw/ 90 sec recovery jog, \n1 mile cool down \n\n"
+    },
+    {
+      "Day": 61,
+      "Title": "Aerobic Tempo Run",
+      "Notes": "hard",
+      "Description": "2 mile warm up\n7 miles @7:47-7:57 pace, \n1-2 mile cool down\n\n"
+    },
+    {
+      "Day": 62,
+      "Title": "Easy Run or Cross Training",
+      "Notes": "easy",
+      "Description": "6-7 miles @9:00-9:30 pace or\n45-50 min Cross Training Session\n"
+    },
+    {
+      "Day": 63,
+      "Title": "Long Run with Intervals",
+      "Notes": "hard",
+      "Description": "6 miles @9:00-9:30 pace\n5 miles of alternating (1/4 mile @7:20-7:25 pace, 1/4 mile @9:00-9:15 pace),\n1-2 miles @9:00-9:30 pace\n\n"
+    },
+    {
+      "Day": 64,
+      "Title": "Easy Run or Off Day",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace or\nOff Day\n\n"
+    },
+    {
+      "Day": 65,
+      "Title": "Half Marathon Pace Intervals",
+      "Notes": "hard",
+      "Description": "2 mile warm up, \n6-7 x 1 mile @7:36-7:40 pace w/ 90 sec rest\n2 mile cool down \n\n"
+    },
+    {
+      "Day": 66,
+      "Title": "Easy Run",
+      "Notes": "easy",
+      "Description": "8-9 miles @9:00-9:30 pace \n\n"
+    },
+    {
+      "Day": 67,
+      "Title": "Aerobic Run",
+      "Notes": "medium",
+      "Description": "6-7 miles @8:35-8:50 pace\n"
+    },
+    {
+      "Day": 68,
+      "Title": "Hill Circuit or Track Workout",
+      "Notes": "hard",
+      "Description": "3 miles @9:00-9:30 pace,\n5 sets (300m @1:18, 200m @52, 100m @26),\n1 min rest between reps, 3 min rest between sets,\n2 miles @9:00-9:30 pace\n"
+    },
+    {
+      "Day": 69,
+      "Title": "Easy Run or Cross Training",
+      "Notes": "easy",
+      "Description": "6-7 miles @9:00-9:30 pace or\n45-50 min Cross Training Session\n"
+    },
+    {
+      "Day": 70,
+      "Title": "Long Run",
+      "Notes": "medium",
+      "Description": "12-14 miles @9:00-9:30 pace\nFinish w/ 8 x 100m @6:15 pace \nw/ 45 sec rest\n\n"
+    },
+    {
+      "Day": 71,
+      "Title": "Easy Run or Off Day",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace or\nOff Day\n\n"
+    },
+    {
+      "Day": 72,
+      "Title": "Mixed Pace Intervals",
+      "Notes": "hard",
+      "Description": "2 mile warm up,\n4 x 400m @1:43-1:45 w/ 1 min rest,\n6 x 1k @4:39-4:43 w/ 90 sec rest, \n4 x 400m @1:43-1:45 w/ 1 min rest,\n3 min rest between sets\n2 mile cool down \n\n"
+    },
+    {
+      "Day": 73,
+      "Title": "Easy Run ",
+      "Notes": "easy",
+      "Description": "8-9 miles @9:00-9:30 pace \n\n"
+    },
+    {
+      "Day": 74,
+      "Title": "Easy Run with Sprints",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace\nFinish w/ 8 x 30 sec sprints \nw/ 90 sec recovery jog, \n1 mile cool down \n\n"
+    },
+    {
+      "Day": 75,
+      "Title": "Aerobic Tempo Run",
+      "Notes": "hard",
+      "Description": "2 mile warm up\n6 miles @7:47-7:57 pace, \n1-2 mile cool down\n\n"
+    },
+    {
+      "Day": 76,
+      "Title": "Easy Run or Cross Training",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace or\n40 min Cross Training Session\n"
+    },
+    {
+      "Day": 77,
+      "Title": "Long Run with Intervals ",
+      "Notes": "hard",
+      "Description": "5 miles @9:00-9:30 pace\n5 miles of alternating (1/4 mile @7:20-7:25 pace, 1/4 mile @9:00-9:15 pace),\n1-2 miles @9:00-9:30 pace\n\n"
+    },
+    {
+      "Day": 78,
+      "Title": "Easy Run or Off Day",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace or\nOff Day\n\n"
+    },
+    {
+      "Day": 79,
+      "Title": "Half Marathon Test Workout",
+      "Notes": "hard",
+      "Description": "2 mile warm up, \n3 x 2 miles @7:36-7:40 pace w/ 2:30 rest,\n1 mile @7:14-7:18,\n2 mile cool down \n\n"
+    },
+    {
+      "Day": 80,
+      "Title": "Easy Run",
+      "Notes": "easy",
+      "Description": "7-8 miles @9:00-9:30 pace\n"
+    },
+    {
+      "Day": 81,
+      "Title": "Aerobic Run",
+      "Notes": "medium",
+      "Description": "5-6 miles @8:35-8:50 pace\n"
+    },
+    {
+      "Day": 82,
+      "Title": "Hill Circuit or Track Workout",
+      "Notes": "hard",
+      "Description": "3 miles @9:00-9:30 pace,\n4 sets (300m @1:18, 200m @52, 100m @26),\n1 min rest between reps, 3 min rest between sets,\n2 miles @9:00-9:30 pace\n"
+    },
+    {
+      "Day": 83,
+      "Title": "Easy Run or Cross Training",
+      "Notes": "easy",
+      "Description": "4-5 miles @9:00-9:30 pace or\n40 min Cross Training Session\n"
+    },
+    {
+      "Day": 84,
+      "Title": "Long Run",
+      "Notes": "medium",
+      "Description": "8-10 miles @9:00-9:30 pace\nFinish w/ 8 x 100m @6:15 pace \nw/ 45 sec rest\n\n"
+    },
+    {
+      "Day": 85,
+      "Title": "Easy Run or Off Day",
+      "Notes": "easy",
+      "Description": "4-5 miles @9:00-9:30 pace or\nOff Day\n\n"
+    },
+    {
+      "Day": 86,
+      "Title": "Mixed Pace Intervals",
+      "Notes": "hard",
+      "Description": "2 mile warm up,\n2 miles @7:26-7:30 pace,\n3-4 min rest,\n8 x 400m @1:48-1:50 w/ 200m jog,\n2 mile cool down \n\n"
+    },
+    {
+      "Day": 87,
+      "Title": "Easy Run ",
+      "Notes": "easy",
+      "Description": "6-7 miles @9:00-9:30 pace \n"
+    },
+    {
+      "Day": 88,
+      "Title": "Easy Run",
+      "Notes": "easy",
+      "Description": "5-6 miles @9:00-9:30 pace\n"
+    },
+    {
+      "Day": 89,
+      "Title": "Easy Run with Sprints",
+      "Notes": "easy",
+      "Description": "4 miles @9:00-9:30 pace\nFinish w/ 6 x 30 sec sprints \nw/ 90 sec recovery jog, \n1 mile cool down \n\n"
+    },
+    {
+      "Day": 90,
+      "Title": "Easy Run or Off Day",
+      "Notes": "easy",
+      "Description": "2-3 miles @9:00-9:30 pace or\nOff Day\n\n"
+    },
+    {
+      "Day": 91,
+      "Title": "Race Day",
+      "Notes": "hard",
+      "Description": "Half Marathon Race\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {}
+  ]
+}

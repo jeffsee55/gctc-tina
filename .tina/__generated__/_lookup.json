@@ -3,12 +3,12 @@
     "type": "DocumentConnection",
     "resolveType": "multiCollectionDocumentList",
     "collections": [
-      "training",
       "posts",
       "pages",
       "forms",
       "curated",
       "authors",
+      "trainingPlans",
       "nav"
     ]
   },
@@ -21,25 +21,6 @@
     "resolveType": "multiCollectionDocument",
     "createDocument": "create",
     "updateDocument": "update"
-  },
-  "Training": {
-    "type": "Training",
-    "resolveType": "unionData",
-    "typeMap": {
-      "training": "TrainingTraining"
-    }
-  },
-  "TrainingDocument": {
-    "type": "TrainingDocument",
-    "resolveType": "collectionDocument",
-    "collection": "training",
-    "createTrainingDocument": "create",
-    "updateTrainingDocument": "update"
-  },
-  "TrainingConnection": {
-    "type": "TrainingConnection",
-    "resolveType": "collectionDocumentList",
-    "collection": "training"
   },
   "PostsPostAuthorDocument": {
     "type": "PostsPostAuthorDocument",
@@ -233,6 +214,18 @@
     "type": "AuthorsConnection",
     "resolveType": "collectionDocumentList",
     "collection": "authors"
+  },
+  "TrainingPlansDocument": {
+    "type": "TrainingPlansDocument",
+    "resolveType": "collectionDocument",
+    "collection": "trainingPlans",
+    "createTrainingPlansDocument": "create",
+    "updateTrainingPlansDocument": "update"
+  },
+  "TrainingPlansConnection": {
+    "type": "TrainingPlansConnection",
+    "resolveType": "collectionDocumentList",
+    "collection": "trainingPlans"
   },
   "NavNavItemsNavItemMoreFeatured_postDocument": {
     "type": "NavNavItemsNavItemMoreFeatured_postDocument",

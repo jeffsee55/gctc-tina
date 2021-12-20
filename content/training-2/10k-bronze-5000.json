@@ -1,0 +1,553 @@
+{
+  "event": "10k",
+  "category": "bronze",
+  "time": "50:00",
+  "workouts": [
+    {
+      "Day": 1,
+      "Title": "Recovery Day",
+      "Notes": "easy",
+      "Description": "Off Day\n"
+    },
+    {
+      "Day": 2,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n6 x (3 min run @8:10-8:20 pace/ 1 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 3,
+      "Title": "Run/ Walk or Cross Training",
+      "Notes": "easy",
+      "Description": "3 mile run/ walk combo @9:30-10:00 pace or\n30 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 4,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 5,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "10 min walk,\n3 x (2 min run @9:30-10:00 pace, 2 min run @8:00-8:10 pace, 2 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 6,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 7,
+      "Title": "Aerobic Endurance",
+      "Notes": "medium",
+      "Description": "15 min walk,\n15 min run @8:35-9:05 pace, 5 min walk,\n10 min run @8:35-9:05 pace, 5 min walk\n\n"
+    },
+    {
+      "Day": 8,
+      "Title": "Recovery Day",
+      "Notes": "easy",
+      "Description": "Off Day\n"
+    },
+    {
+      "Day": 9,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n8 x (3 min run @8:10-8:20 pace/ 1 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 10,
+      "Title": "Run/ Walk or Cross Training",
+      "Notes": "easy",
+      "Description": "3 mile run/ walk combo @9:30-10:00 pace or\n30 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 11,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 12,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "10 min walk,\n4 x (2 min run @9:30-10:00 pace, 2 min run @8:00-8:10 pace, 2 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 13,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 14,
+      "Title": "Aerobic Endurance",
+      "Notes": "medium",
+      "Description": "15 min walk,\n25 min run @8:35-9:05 pace, \n5 min walk\n\n"
+    },
+    {
+      "Day": 15,
+      "Title": "Recovery Day",
+      "Notes": "easy",
+      "Description": "Off Day\n"
+    },
+    {
+      "Day": 16,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n8 x (3 min run @8:10-8:20 pace/ 1 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 17,
+      "Title": "Run/ Walk or Cross Training",
+      "Notes": "easy",
+      "Description": "3-4 mile run/ walk combo @9:30-10:00 pace or\n30-35 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 18,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 19,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "10 min walk,\n4 x (2 min run @9:30-10:00 pace, 2 min run @8:00-8:10 pace, 2 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 20,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "40 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 21,
+      "Title": "Aerobic Endurance",
+      "Notes": "medium",
+      "Description": "15 min walk,\n15 min run @8:35-9:05 pace, 5 min walk, \n15 min run @8:35-9:05 pace\n\n\n"
+    },
+    {
+      "Day": 22,
+      "Title": "Recovery Day",
+      "Notes": "easy",
+      "Description": "Off Day\n"
+    },
+    {
+      "Day": 23,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n6 x (3 min run @8:00-8:10/ 90 sec walk),\n5 min walk\n"
+    },
+    {
+      "Day": 24,
+      "Title": "Run/ Walk or Cross Training",
+      "Notes": "easy",
+      "Description": "3-4 mile run/ walk combo @9:30-10:00 pace or\n30-35 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 25,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 26,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "10 min walk,\n4 x (3 min run @9:30-10:00 pace, 2 min run @8:00-8:10 pace, 2 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 27,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "40 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 28,
+      "Title": "Aerobic Endurance",
+      "Notes": "medium",
+      "Description": "10 min walk,\n30 min run @8:35-9:05 pace, \n10 min walk\n\n"
+    },
+    {
+      "Day": 29,
+      "Title": "Recovery Day",
+      "Notes": "easy",
+      "Description": "Off Day\n"
+    },
+    {
+      "Day": 30,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n8 x (3 min run @8:00-8:10 pace/ 90 sec walk),\n5 min walk\n"
+    },
+    {
+      "Day": 31,
+      "Title": "Run/ Walk or Cross Training",
+      "Notes": "easy",
+      "Description": "3-4 mile run/ walk combo @9:30-10:00 pace or\n30-35 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 32,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 33,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "10 min walk,\n4 x (3 min run @9:30-10:00 pace, 2 min run @8:00-8:10 pace, 2 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 34,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "40 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 35,
+      "Title": "Aerobic Endurance",
+      "Notes": "medium",
+      "Description": "10 min walk,\n20 min run @8:35-9:05 pace, 5 min walk, \n20 min run @8:35-9:05 pace\n\n"
+    },
+    {
+      "Day": 36,
+      "Title": "Recovery Day",
+      "Notes": "easy",
+      "Description": "Off Day\n"
+    },
+    {
+      "Day": 37,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n6 x (4 min run @8:00-8:10 pace/ 2 min walk),\n5 min walk\n"
+    },
+    {
+      "Day": 38,
+      "Title": "Run/ Walk or Cross Training",
+      "Notes": "easy",
+      "Description": "3-4 mile run/ walk combo @9:30-10:00 pace or\n30-35 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 39,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 40,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "10 min walk,\n4 x (3 min run @9:30-10:00 pace, 3 min run @8:00-8:10 pace, 2 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 41,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "40 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 42,
+      "Title": "Aerobic Endurance",
+      "Notes": "medium",
+      "Description": "10 min walk,\n35 min run @8:35-9:05 pace, \n10 min walk\n\n"
+    },
+    {
+      "Day": 43,
+      "Title": "Recovery Day",
+      "Notes": "easy",
+      "Description": "Off Day\n"
+    },
+    {
+      "Day": 44,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n5 x (5 min run @8:00-8:10 pace/ 2 min walk),\n5 min walk\n"
+    },
+    {
+      "Day": 45,
+      "Title": "Run/ Walk or Cross Training",
+      "Notes": "easy",
+      "Description": "3-4 mile run/ walk combo @9:30-10:00 pace or\n30-35 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 46,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 47,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "10 min walk,\n4 x (3 min run @9:30-10:00 pace, 3 min run @8:00-8:10 pace, 2 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 48,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "40 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 49,
+      "Title": "Aerobic Endurance",
+      "Notes": "medium",
+      "Description": "10 min walk,\n25 min run @8:35-9:05 pace, 5 min walk, \n25 min run @8:35-9:05 pace\n\n\n"
+    },
+    {
+      "Day": 50,
+      "Title": "Recovery Day",
+      "Notes": "easy",
+      "Description": "Off Day\n"
+    },
+    {
+      "Day": 51,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n5 x (5 min run @8:00-8:10 pace/ 2 min walk),\n5 min walk\n"
+    },
+    {
+      "Day": 52,
+      "Title": "Run/ Walk or Cross Training",
+      "Notes": "easy",
+      "Description": "3-4 mile run/ walk combo @9:30-10:00 pace or\n30-35 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 53,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 54,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "10 min walk,\n4 x (4 min run @9:30-10:00 pace, 3 min run @8:00-8:10 pace, 2 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 55,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "40 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 56,
+      "Title": "Aerobic Endurance",
+      "Notes": "medium",
+      "Description": "10 min walk,\n40 min run @8:35-9:05 pace, \n10 min walk\n\n\n"
+    },
+    {
+      "Day": 57,
+      "Title": "Recovery Day",
+      "Notes": "easy",
+      "Description": "Off Day\n"
+    },
+    {
+      "Day": 58,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n10 x (2 min run @7:35-7:45 pace/ 2 min walk),\n5 min walk\n"
+    },
+    {
+      "Day": 59,
+      "Title": "Run/ Walk or Cross Training",
+      "Notes": "easy",
+      "Description": "3-4 mile run/ walk combo @9:30-10:00 pace or\n30-35 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 60,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 61,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "10 min walk,\n4 x (4 min run @9:30-10:00 pace, 3 min run @8:00-8:10 pace, 2 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 62,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "40 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 63,
+      "Title": "Aerobic Endurance",
+      "Notes": "medium",
+      "Description": "10 min walk,\n25 min run @8:35-9:05 pace, 5 min walk, \n25 min run @8:35-9:05 pace\n\n\n"
+    },
+    {
+      "Day": 64,
+      "Title": "Recovery Day",
+      "Notes": "easy",
+      "Description": "Off Day\n"
+    },
+    {
+      "Day": 65,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n10 x (2 min run @7:35-7:45 pace/ 2 min walk),\n5 min walk\n"
+    },
+    {
+      "Day": 66,
+      "Title": "Run/ Walk or Cross Training",
+      "Notes": "easy",
+      "Description": "3-4 mile run/ walk combo @9:30-10:00 pace or\n30-35 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 67,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 68,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n4 x (4 min run @9:30-10:00 pace, 4 min run @8:00-8:10 pace, 2 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 69,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "40 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 70,
+      "Title": "Aerobic Endurance",
+      "Notes": "medium",
+      "Description": "10 min walk,\n45 min run @8:35-9:05 pace, \n10 min walk\n\n\n"
+    },
+    {
+      "Day": 71,
+      "Title": "Recovery Day",
+      "Notes": "easy",
+      "Description": "Off Day\n"
+    },
+    {
+      "Day": 72,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n8 x (3 min run @7:35-7:45 pace/ 2 min walk),\n5 min walk\n"
+    },
+    {
+      "Day": 73,
+      "Title": "Run/ Walk or Cross Training",
+      "Notes": "easy",
+      "Description": "3-4 mile run/ walk combo @9:30-10:00 pace or\n30-35 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 74,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 75,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n4 x (4 min run @9:30-10:00 pace, 4 min run @8:00-8:10 pace, 2 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 76,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 77,
+      "Title": "Aerobic Endurance",
+      "Notes": "medium",
+      "Description": "5 min walk,\n30 min run @8:35-9:05 pace, 5 min walk, \n30 min run @8:35-9:05 pace\n\n\n"
+    },
+    {
+      "Day": 78,
+      "Title": "Recovery Day",
+      "Notes": "easy",
+      "Description": "Off Day\n"
+    },
+    {
+      "Day": 79,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n8 x (3 min run @7:35-7:45 pace/ 2 min walk),\n5 min walk\n"
+    },
+    {
+      "Day": 80,
+      "Title": "Run/ Walk or Cross Training",
+      "Notes": "easy",
+      "Description": "3 mile run/ walk combo @9:30-10:00 pace or\n30 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 81,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "30 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 82,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "10 min walk,\n4 x (3 min run @9:30-10:00 pace, 2 min run @8:00-8:10 pace, 2 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 83,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "20 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 84,
+      "Title": "Aerobic Endurance",
+      "Notes": "medium",
+      "Description": "10 min walk,\n30 min run @8:35-9:05 pace, \n10 min walk\n\n\n"
+    },
+    {
+      "Day": 85,
+      "Title": "Recovery Day",
+      "Notes": "easy",
+      "Description": "Off Day\n"
+    },
+    {
+      "Day": 86,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "hard",
+      "Description": "5 min walk,\n4 x (4 min run @8:00-8:10 pace/ 2 min walk),\n5 min walk\n"
+    },
+    {
+      "Day": 87,
+      "Title": "Run/ Walk or Cross Training",
+      "Notes": "easy",
+      "Description": "3 mile run/ walk combo @10:00-10:30 pace or\n30 min Cross Training Session\n\n"
+    },
+    {
+      "Day": 88,
+      "Title": "Ancillary Training",
+      "Notes": "easy",
+      "Description": "20 min Cross Training Session or \nGym Class \n\n"
+    },
+    {
+      "Day": 89,
+      "Title": "Run/ Walk Intervals",
+      "Notes": "medium",
+      "Description": "10 min walk,\n3 x (2 min run @9:30-10:00 pace, 2 min run @8:00-8:10 pace, 2 min walk),\n5 min walk\n\n"
+    },
+    {
+      "Day": 90,
+      "Title": "Recovery Day",
+      "Notes": "easy",
+      "Description": "Off Day\n"
+    },
+    {
+      "Day": 91,
+      "Title": "Race Day",
+      "Notes": "hard",
+      "Description": "10k Race\n"
+    }
+  ]
+}

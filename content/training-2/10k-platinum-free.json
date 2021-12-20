@@ -1,0 +1,617 @@
+{
+  "event": "10k",
+  "category": "platinum",
+  "time": "Free",
+  "workouts": [
+    {
+      "Description": "6-7 miles easy pace \n\n",
+      "Title": "Easy Run ",
+      "Day": 1,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up, \n8 x 1k @AnT pace w/ 200m jog,\n2 mile cool down\n",
+      "Title": "Anaerobic Threshold Intervals",
+      "Day": 2,
+      "Category": "hard"
+    },
+    {
+      "Description": "7-8 miles easy pace \n\n\n",
+      "Title": "Easy Run",
+      "Day": 3,
+      "Category": "easy"
+    },
+    {
+      "Description": "6-7 miles easy pace\nFinish w/ 6 x 20 sec sprints \nw/ 90 sec recovery jog, \n1 mile cool down \n\n",
+      "Title": "Easy Run with Sprints",
+      "Day": 4,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up\n5 miles @AeT pace, \n2 mile cool down\n\n",
+      "Title": "Aerobic Tempo Run",
+      "Day": 5,
+      "Category": "hard"
+    },
+    {
+      "Description": "5-6 miles easy pace or\nOff Day\n\n",
+      "Title": "Easy Run or Off Day",
+      "Day": 6,
+      "Category": "easy"
+    },
+    {
+      "Description": "9-10 miles steady pace\nFinish w/ 8 x 100m @Mile pace \nw/ 45 sec rest\n\n",
+      "Title": "Long Run",
+      "Day": 7,
+      "Category": "medium"
+    },
+    {
+      "Description": "6-7 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 8,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up, \n2 sets (10 x 400m @10k pace w/ 100m jog),\n400m jog between sets\n2 mile cool down \n\n\n",
+      "Title": "10k Pace Intervals",
+      "Day": 9,
+      "Category": "hard"
+    },
+    {
+      "Description": "8-9 miles easy pace \n\n",
+      "Title": "Easy Run",
+      "Day": 10,
+      "Category": "easy"
+    },
+    {
+      "Description": "6-7 miles steady pace\nFinish w/ 6 x 10 sec hill sprints \nw/ walk back to start for recovery, \n1 mile cool down \n\n\n",
+      "Title": "Aerobic Run with Sprints",
+      "Day": 11,
+      "Category": "medium"
+    },
+    {
+      "Description": "2 mile warm up\n6 miles @AeT pace, \n2 mile cool down\n",
+      "Title": "Aerobic Tempo Run",
+      "Day": 12,
+      "Category": "hard"
+    },
+    {
+      "Description": "6-7 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 13,
+      "Category": "easy"
+    },
+    {
+      "Description": "10-11 miles steady pace\nFinish w/ 8 x 100m @Mile pace \nw/ 45 sec rest\n\n",
+      "Title": "Long Run",
+      "Day": 14,
+      "Category": "medium"
+    },
+    {
+      "Description": "7-8 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 15,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up, \n5 x 1 mile @AnT pace w/ 400m jog,\n2 mile cool down \n\n",
+      "Title": "Anaerobic Threshold Intervals",
+      "Day": 16,
+      "Category": "hard"
+    },
+    {
+      "Description": "9-10 miles easy pace \n\n\n",
+      "Title": "Easy Run",
+      "Day": 17,
+      "Category": "easy"
+    },
+    {
+      "Description": "7-8 miles easy pace\nFinish w/ 8 x 20 sec sprints \nw/ 90 sec recovery jog, \n1 mile cool down \n\n",
+      "Title": "Easy Run with Sprints",
+      "Day": 18,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up\n7 miles @AeT pace, \n2 mile cool down\n\n",
+      "Title": "Aerobic Tempo Run",
+      "Day": 19,
+      "Category": "hard"
+    },
+    {
+      "Description": "7-8 miles easy pace or\nOff Day\n",
+      "Title": "Easy Run or Off Day",
+      "Day": 20,
+      "Category": "easy"
+    },
+    {
+      "Description": "11-13 miles steady pace\nFinish w/ 8 x 100m @Mile pace \nw/ 45 sec rest\n\n",
+      "Title": "Long Run",
+      "Day": 21,
+      "Category": "medium"
+    },
+    {
+      "Description": "7-8 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 22,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up, \n8 x 1k @AnT-10k pace w/ 2 min rest,\n2 mile cool down \n\n",
+      "Title": "10k Test Workout",
+      "Day": 23,
+      "Category": "hard"
+    },
+    {
+      "Description": "9-10 miles easy pace \n\n\n",
+      "Title": "Easy Run ",
+      "Day": 24,
+      "Category": "easy"
+    },
+    {
+      "Description": "7 miles steady pace,\nFinish w/ 6-8 x 10 sec hill sprints \nw/ walk back to start for recovery, \n1 mile cool down \n\n",
+      "Title": "Aerobic Run with Sprints",
+      "Day": 25,
+      "Category": "medium"
+    },
+    {
+      "Description": "2 mile warm up, \n5 miles @AeT pace, 3 min rest,\n2 x 1 mile @AnT pace w/ 2 min rest,\n2 mile cool down \n\n",
+      "Title": "Aerobic Tempo & Intervals",
+      "Day": 26,
+      "Category": "hard"
+    },
+    {
+      "Description": "7-8 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 27,
+      "Category": "easy"
+    },
+    {
+      "Description": "12-14 miles steady pace\nFinish w/ 8 x 100m @Mile pace \nw/ 45 sec rest\n\n",
+      "Title": "Long Run",
+      "Day": 28,
+      "Category": "medium"
+    },
+    {
+      "Description": "7-8 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 29,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up, \n6 x 1 mile @AnT pace w/ 2 min rest,\n2 mile cool down\n\n",
+      "Title": "Anaerobic Threshold Intervals",
+      "Day": 30,
+      "Category": "hard"
+    },
+    {
+      "Description": "9-10 miles easy pace \n\n\n",
+      "Title": "Easy Run ",
+      "Day": 31,
+      "Category": "easy"
+    },
+    {
+      "Description": "7-8 miles easy pace\nFinish w/ 8 x 30 sec sprints \nw/ 90 sec recovery jog, \n1 mile cool down \n\n",
+      "Title": "Easy Run with Sprints",
+      "Day": 32,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up\n8 miles @AeT pace, \n2 mile cool down\n\n",
+      "Title": "Aerobic Tempo Run",
+      "Day": 33,
+      "Category": "hard"
+    },
+    {
+      "Description": "7-8 miles easy pace or\nOff Day\n",
+      "Title": "Easy Run or Off Day",
+      "Day": 34,
+      "Category": "easy"
+    },
+    {
+      "Description": "11-13 miles steady pace\nFinish w/ 8 x 100m @Mile pace \nw/ 45 sec rest\n\n",
+      "Title": "Long Run ",
+      "Day": 35,
+      "Category": "medium"
+    },
+    {
+      "Description": "7-8 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 36,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up, \n2 sets (10 x 400m @10k pace w/ 100m jog),\n400m jog between sets\n2 mile cool down \n\n\n",
+      "Title": "10k Pace Intervals",
+      "Day": 37,
+      "Category": "hard"
+    },
+    {
+      "Description": "9-10 miles easy pace \n\n",
+      "Title": "Easy Run ",
+      "Day": 38,
+      "Category": "easy"
+    },
+    {
+      "Description": "7 miles steady pace,\nFinish w/ 8 x 10 sec hill sprints \nw/ walk back to start for recovery, \n1 mile cool down \n\n",
+      "Title": "Aerobic Run with Sprints",
+      "Day": 39,
+      "Category": "medium"
+    },
+    {
+      "Description": "2 mile warm up, \n3 miles @AnT pace, 3 min rest,\n3 x 1 mile @AnT pace w/ 2 min rest,\n2 mile cool down\n\n",
+      "Title": "Anaerobic Threshold Intervals",
+      "Day": 40,
+      "Category": "hard"
+    },
+    {
+      "Description": "7-8 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 41,
+      "Category": "easy"
+    },
+    {
+      "Description": "13-15 miles steady pace\nFinish w/ 8 x 100m @Mile pace \nw/ 45 sec rest\n\n",
+      "Title": "Long Run",
+      "Day": 42,
+      "Category": "medium"
+    },
+    {
+      "Description": "7-8 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 43,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up,\n5 x 400m @5k pace w/ 1 min rest,\n6 x 1k @AnT pace w/ 90 sec rest,\n5 x 400m @5k pace w/ 1 min rest,\n3 min rest between sets\n2 mile cool down \n\n",
+      "Title": "Mixed Pace Intervals",
+      "Day": 44,
+      "Category": "hard"
+    },
+    {
+      "Description": "9-10 miles easy pace \n\n\n",
+      "Title": "Easy Run ",
+      "Day": 45,
+      "Category": "easy"
+    },
+    {
+      "Description": "7-8 miles easy pace\nFinish w/ 8 x 30 sec sprints \nw/ 90 sec recovery jog, \n1 mile cool down \n\n",
+      "Title": "Easy Run with Sprints",
+      "Day": 46,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up\n8 miles @AeT pace, \n2 mile cool down\n\n",
+      "Title": "Aerobic Tempo Run",
+      "Day": 47,
+      "Category": "hard"
+    },
+    {
+      "Description": "7-8 miles easy pace or\nOff Day\n",
+      "Title": "Easy Run or Off Day",
+      "Day": 48,
+      "Category": "easy"
+    },
+    {
+      "Description": "11-13 miles steady pace\nFinish w/ 8 x 100m @Mile pace \nw/ 45 sec rest\n\n",
+      "Title": "Long Run ",
+      "Day": 49,
+      "Category": "medium"
+    },
+    {
+      "Description": "7-8 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 50,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up, \n5 x 1 mile @10k pace w/ 3 min rest,\n2 mile cool down \n\n",
+      "Title": "10k Test Workout",
+      "Day": 51,
+      "Category": "hard"
+    },
+    {
+      "Description": "9-10 miles easy pace \n\n\n",
+      "Title": "Easy Run",
+      "Day": 52,
+      "Category": "easy"
+    },
+    {
+      "Description": "7 miles steady pace,\nFinish w/ 8 x 15 sec hill sprints \nw/ walk back to start for recovery, \n1 mile cool down \n\n",
+      "Title": "Aerobic Run with Sprints",
+      "Day": 53,
+      "Category": "medium"
+    },
+    {
+      "Description": "2 mile warm up, \n4 miles @AnT pace, 3 min rest,\n2 miles @AnT pace,\n2 mile cool down \n\n",
+      "Title": "Anaerobic Threshold Intervals",
+      "Day": 54,
+      "Category": "hard"
+    },
+    {
+      "Description": "7-8 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 55,
+      "Category": "easy"
+    },
+    {
+      "Description": "13-15 miles steady pace\nFinish w/ 8 x 100m @Mile pace \nw/ 45 sec rest\n\n",
+      "Title": "Long Run",
+      "Day": 56,
+      "Category": "medium"
+    },
+    {
+      "Description": "7-8 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 57,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up,\n3 x 800m @5k pace w/ 2 min rest, then 3 min rest,\n3 miles @AnT pace, then 4-5 min rest,\n3 x 800m @5k pace w/ 2 min rest,\n2 mile cool down \n\n",
+      "Title": "Mixed Pace Intervals",
+      "Day": 58,
+      "Category": "hard"
+    },
+    {
+      "Description": "9-10 miles easy pace \n\n\n",
+      "Title": "Easy Run ",
+      "Day": 59,
+      "Category": "easy"
+    },
+    {
+      "Description": "7-8 miles easy pace\nFinish w/ 8 x 30 sec sprints \nw/ 90 sec recovery jog, \n1 mile cool down \n\n",
+      "Title": "Easy Run with Sprints",
+      "Day": 60,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up,\n8 mile tempo (5 miles @AeT pace, 3 miles @AnT pace),\n2 mile cool down \n\n\n",
+      "Title": "Progressive Tempo Run",
+      "Day": 61,
+      "Category": "hard"
+    },
+    {
+      "Description": "7-8 miles easy pace or\nOff Day\n",
+      "Title": "Easy Run or Off Day",
+      "Day": 62,
+      "Category": "easy"
+    },
+    {
+      "Description": "11-13 miles steady pace\nFinish w/ 8 x 100m @Mile pace \nw/ 45 sec rest\n\n",
+      "Title": "Long Run ",
+      "Day": 63,
+      "Category": "medium"
+    },
+    {
+      "Description": "7-8 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 64,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up, \n2 sets (5 x 800m @10k pace w/ 200m jog),\n400m jog between sets\n2 mile cool down \n\n",
+      "Title": "10k Pace Intervals",
+      "Day": 65,
+      "Category": "hard"
+    },
+    {
+      "Description": "9-10 miles easy pace \n\n\n",
+      "Title": "Easy Run ",
+      "Day": 66,
+      "Category": "easy"
+    },
+    {
+      "Description": "7 miles steady pace,\nFinish w/ 8 x 15 sec hill sprints \nw/ walk back to start for recovery, \n1 mile cool down \n\n",
+      "Title": "Aerobic Run with Sprints",
+      "Day": 67,
+      "Category": "medium"
+    },
+    {
+      "Description": "2 mile warm up, \n6 miles @AnT pace,\n2 mile cool down \n\n",
+      "Title": "Anaerobic Tempo Run",
+      "Day": 68,
+      "Category": "hard"
+    },
+    {
+      "Description": "7-8 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 69,
+      "Category": "easy"
+    },
+    {
+      "Description": "13-15 miles steady pace\nFinish w/ 8 x 100m @Mile pace \nw/ 45 sec rest\n\n",
+      "Title": "Long Run",
+      "Day": 70,
+      "Category": "medium"
+    },
+    {
+      "Description": "7-8 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 71,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up,\n5 x 400m @5k pace w/ 1 min rest,\n5 x 1k @AnT pace w/ 90 sec rest, \n5 x 200m @Mile pace w/ 1 min rest,\n3 min rest between sets\n2 mile cool down \n\n",
+      "Title": "Mixed Pace Intervals",
+      "Day": 72,
+      "Category": "hard"
+    },
+    {
+      "Description": "9-10 miles easy pace \n\n\n",
+      "Title": "Easy Run ",
+      "Day": 73,
+      "Category": "easy"
+    },
+    {
+      "Description": "7-8 miles easy pace\nFinish w/ 8 x 30 sec sprints \nw/ 90 sec recovery jog, \n1 mile cool down \n\n",
+      "Title": "Easy Run with Sprints",
+      "Day": 74,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up,\n7 mile tempo (4 miles @AeT pace, 3 miles @AnT pace),\n2 mile cool down \n\n",
+      "Title": "Progressive Tempo Run",
+      "Day": 75,
+      "Category": "hard"
+    },
+    {
+      "Description": "7-8 miles easy pace or\nOff Day\n",
+      "Title": "Easy Run or Off Day",
+      "Day": 76,
+      "Category": "easy"
+    },
+    {
+      "Description": "11-13 miles steady pace\nFinish w/ 8 x 100m @Mile pace \nw/ 45 sec rest\n\n",
+      "Title": "Long Run ",
+      "Day": 77,
+      "Category": "medium"
+    },
+    {
+      "Description": "6-7 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 78,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up, \n2 miles @AnT pace, 3 min rest\n2 miles @10k pace, 3 min rest\n1 mile @10k pace \n2 mile cool down \n\n",
+      "Title": "10k Test Workout",
+      "Day": 79,
+      "Category": "hard"
+    },
+    {
+      "Description": "7-8 miles easy pace \n\n\n\n",
+      "Title": "Easy Run ",
+      "Day": 80,
+      "Category": "easy"
+    },
+    {
+      "Description": "6 miles steady pace,\nFinish w/ 6 x 10 sec hill sprints \nw/ walk back to start for recovery, \n1 mile cool down \n\n",
+      "Title": "Aerobic Run with Sprints",
+      "Day": 81,
+      "Category": "medium"
+    },
+    {
+      "Description": "2 mile warm up,\n5 mile tempo (3 miles @AeT pace, 2 miles @AnT pace),\n2 mile cool down \n\n",
+      "Title": "Progressive Tempo Run",
+      "Day": 82,
+      "Category": "hard"
+    },
+    {
+      "Description": "6-7 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 83,
+      "Category": "easy"
+    },
+    {
+      "Description": "9-10 miles steady pace\nFinish w/ 8 x 100m @Mile pace \nw/ 45 sec rest\n\n",
+      "Title": "Long Run",
+      "Day": 84,
+      "Category": "medium"
+    },
+    {
+      "Description": "5-6 miles easy pace, \nOptional Secondary:\n3 miles easy pace or\n20 min Cross Training Session\n",
+      "Title": "Easy Run(s)",
+      "Day": 85,
+      "Category": "easy"
+    },
+    {
+      "Description": "2 mile warm up,\n2 miles @AnT pace,\n3-4 min rest,\n8 x 400m @5k pace w/ 200m jog,\n2 mile cool down \n\n",
+      "Title": "Mixed Pace Intervals",
+      "Day": 86,
+      "Category": "hard"
+    },
+    {
+      "Description": "6-7 miles easy pace \n\n\n",
+      "Title": "Easy Run ",
+      "Day": 87,
+      "Category": "easy"
+    },
+    {
+      "Description": "5 miles steady pace,\nFinish w/ 6 x 30 sec sprints \nw/ 90 sec recovery jog, \n1 mile cool down \n\n",
+      "Title": "Aerobic Run with Sprints",
+      "Day": 88,
+      "Category": "medium"
+    },
+    {
+      "Description": "5 miles easy pace or\nOff Day\n\n",
+      "Title": "Easy Run or Off Day",
+      "Day": 89,
+      "Category": "easy"
+    },
+    {
+      "Description": "4 miles easy pace\nFinish w/ 8 x 100m @Mile pace \nw/ 1 min rest\n\n",
+      "Title": "Easy Run with Strides",
+      "Day": 90,
+      "Category": "easy"
+    },
+    {
+      "Description": "10k Race\n",
+      "Title": "Race Day",
+      "Day": 91,
+      "Category": "hard"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {
+      "Description": "\n"
+    },
+    {}
+  ]
+}

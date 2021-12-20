@@ -8,155 +8,6 @@
   "meta": {},
   "collections": [
     {
-      "label": "Training",
-      "name": "training",
-      "path": "content/training",
-      "templates": [
-        {
-          "name": "training",
-          "label": "Training Plan",
-          "fields": [
-            {
-              "name": "name",
-              "label": "Name",
-              "type": "string",
-              "description": "Your first name & last name",
-              "namespace": [
-                "training",
-                "training",
-                "name"
-              ]
-            },
-            {
-              "name": "description",
-              "label": "Description",
-              "type": "string",
-              "description": "Your first name & last name",
-              "namespace": [
-                "training",
-                "training",
-                "description"
-              ]
-            },
-            {
-              "name": "event",
-              "label": "Event",
-              "type": "string",
-              "options": [
-                "5k",
-                "10k",
-                "half-marathon",
-                "marathon"
-              ],
-              "namespace": [
-                "training",
-                "training",
-                "event"
-              ]
-            },
-            {
-              "name": "category",
-              "label": "Category",
-              "type": "string",
-              "options": [
-                "silver",
-                "gold",
-                "platinum"
-              ],
-              "namespace": [
-                "training",
-                "training",
-                "category"
-              ]
-            },
-            {
-              "name": "time",
-              "label": "Time",
-              "type": "string",
-              "namespace": [
-                "training",
-                "training",
-                "time"
-              ]
-            },
-            {
-              "name": "workouts",
-              "list": true,
-              "type": "object",
-              "label": "Workouts",
-              "fields": [
-                {
-                  "type": "number",
-                  "label": "Day",
-                  "name": "Day",
-                  "description": "",
-                  "namespace": [
-                    "training",
-                    "training",
-                    "workouts",
-                    "Day"
-                  ]
-                },
-                {
-                  "type": "string",
-                  "label": "Title",
-                  "name": "Title",
-                  "description": "",
-                  "namespace": [
-                    "training",
-                    "training",
-                    "workouts",
-                    "Title"
-                  ]
-                },
-                {
-                  "type": "string",
-                  "label": "Description",
-                  "name": "Description",
-                  "description": "",
-                  "namespace": [
-                    "training",
-                    "training",
-                    "workouts",
-                    "Description"
-                  ]
-                },
-                {
-                  "type": "string",
-                  "label": "Category",
-                  "name": "Category",
-                  "description": "",
-                  "options": [
-                    "easy",
-                    "medium",
-                    "hard"
-                  ],
-                  "namespace": [
-                    "training",
-                    "training",
-                    "workouts",
-                    "Category"
-                  ]
-                }
-              ],
-              "namespace": [
-                "training",
-                "training",
-                "workouts"
-              ]
-            }
-          ],
-          "namespace": [
-            "training",
-            "training"
-          ]
-        }
-      ],
-      "namespace": [
-        "training"
-      ]
-    },
-    {
       "label": "Posts",
       "name": "posts",
       "path": "content/posts",
@@ -2090,6 +1941,101 @@
       ],
       "namespace": [
         "authors"
+      ]
+    },
+    {
+      "label": "Training Plans",
+      "name": "trainingPlans",
+      "format": "json",
+      "path": "content/training-2",
+      "fields": [
+        {
+          "label": "Event",
+          "name": "event",
+          "type": "string",
+          "namespace": [
+            "trainingPlans",
+            "event"
+          ]
+        },
+        {
+          "label": "Category",
+          "name": "category",
+          "type": "string",
+          "namespace": [
+            "trainingPlans",
+            "category"
+          ]
+        },
+        {
+          "label": "Time",
+          "name": "time",
+          "type": "string",
+          "namespace": [
+            "trainingPlans",
+            "time"
+          ]
+        },
+        {
+          "label": "Workouts",
+          "name": "workouts",
+          "type": "object",
+          "list": true,
+          "fields": [
+            {
+              "label": "Day",
+              "name": "Day",
+              "type": "number",
+              "namespace": [
+                "trainingPlans",
+                "workouts",
+                "Day"
+              ]
+            },
+            {
+              "label": "Notes",
+              "name": "Notes",
+              "type": "string",
+              "options": [
+                "easy",
+                "medium",
+                "hard"
+              ],
+              "namespace": [
+                "trainingPlans",
+                "workouts",
+                "Notes"
+              ]
+            },
+            {
+              "label": "Title",
+              "name": "title",
+              "type": "string",
+              "namespace": [
+                "trainingPlans",
+                "workouts",
+                "title"
+              ]
+            },
+            {
+              "label": "Description",
+              "name": "description",
+              "type": "string",
+              "namespace": [
+                "trainingPlans",
+                "workouts",
+                "description"
+              ]
+            }
+          ],
+          "namespace": [
+            "trainingPlans",
+            "workouts"
+          ]
+        }
+      ],
+      "namespace": [
+        "trainingPlans"
       ]
     },
     {

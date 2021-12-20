@@ -67,8 +67,6 @@ export type Query = {
   getDocument: DocumentNode;
   getDocumentList: DocumentConnection;
   getDocumentFields: Scalars['JSON'];
-  getTrainingDocument: TrainingDocument;
-  getTrainingList: TrainingConnection;
   getPostsDocument: PostsDocument;
   getPostsList: PostsConnection;
   getPagesDocument: PagesDocument;
@@ -79,6 +77,8 @@ export type Query = {
   getCuratedList: CuratedConnection;
   getAuthorsDocument: AuthorsDocument;
   getAuthorsList: AuthorsConnection;
+  getTrainingPlansDocument: TrainingPlansDocument;
+  getTrainingPlansList: TrainingPlansConnection;
   getNavDocument: NavDocument;
   getNavList: NavConnection;
 };
@@ -101,19 +101,6 @@ export type QueryGetDocumentArgs = {
 
 
 export type QueryGetDocumentListArgs = {
-  before?: InputMaybe<Scalars['String']>;
-  after?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-
-export type QueryGetTrainingDocumentArgs = {
-  relativePath?: InputMaybe<Scalars['String']>;
-};
-
-
-export type QueryGetTrainingListArgs = {
   before?: InputMaybe<Scalars['String']>;
   after?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
@@ -186,6 +173,19 @@ export type QueryGetAuthorsListArgs = {
 };
 
 
+export type QueryGetTrainingPlansDocumentArgs = {
+  relativePath?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryGetTrainingPlansListArgs = {
+  before?: InputMaybe<Scalars['String']>;
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
 export type QueryGetNavDocumentArgs = {
   relativePath?: InputMaybe<Scalars['String']>;
 };
@@ -232,50 +232,7 @@ export type CollectionDocumentsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-export type DocumentNode = TrainingDocument | PostsDocument | PagesDocument | FormsDocument | CuratedDocument | AuthorsDocument | NavDocument;
-
-export type TrainingTrainingWorkouts = {
-  __typename?: 'TrainingTrainingWorkouts';
-  Day?: Maybe<Scalars['Int']>;
-  Title?: Maybe<Scalars['String']>;
-  Description?: Maybe<Scalars['String']>;
-  Category?: Maybe<Scalars['String']>;
-};
-
-export type TrainingTraining = {
-  __typename?: 'TrainingTraining';
-  name?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-  event?: Maybe<Scalars['String']>;
-  category?: Maybe<Scalars['String']>;
-  time?: Maybe<Scalars['String']>;
-  workouts?: Maybe<Array<Maybe<TrainingTrainingWorkouts>>>;
-};
-
-export type Training = TrainingTraining;
-
-export type TrainingDocument = Node & Document & {
-  __typename?: 'TrainingDocument';
-  id: Scalars['ID'];
-  sys: SystemInfo;
-  data: Training;
-  form: Scalars['JSON'];
-  values: Scalars['JSON'];
-  dataJSON: Scalars['JSON'];
-};
-
-export type TrainingConnectionEdges = {
-  __typename?: 'TrainingConnectionEdges';
-  cursor?: Maybe<Scalars['String']>;
-  node?: Maybe<TrainingDocument>;
-};
-
-export type TrainingConnection = Connection & {
-  __typename?: 'TrainingConnection';
-  pageInfo?: Maybe<PageInfo>;
-  totalCount: Scalars['Int'];
-  edges?: Maybe<Array<Maybe<TrainingConnectionEdges>>>;
-};
+export type DocumentNode = PostsDocument | PagesDocument | FormsDocument | CuratedDocument | AuthorsDocument | TrainingPlansDocument | NavDocument;
 
 export type PostsPostAccolades = {
   __typename?: 'PostsPostAccolades';
@@ -728,6 +685,45 @@ export type AuthorsConnection = Connection & {
   edges?: Maybe<Array<Maybe<AuthorsConnectionEdges>>>;
 };
 
+export type TrainingPlansWorkouts = {
+  __typename?: 'TrainingPlansWorkouts';
+  Day?: Maybe<Scalars['Int']>;
+  Notes?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+};
+
+export type TrainingPlans = {
+  __typename?: 'TrainingPlans';
+  event?: Maybe<Scalars['String']>;
+  category?: Maybe<Scalars['String']>;
+  time?: Maybe<Scalars['String']>;
+  workouts?: Maybe<Array<Maybe<TrainingPlansWorkouts>>>;
+};
+
+export type TrainingPlansDocument = Node & Document & {
+  __typename?: 'TrainingPlansDocument';
+  id: Scalars['ID'];
+  sys: SystemInfo;
+  data: TrainingPlans;
+  form: Scalars['JSON'];
+  values: Scalars['JSON'];
+  dataJSON: Scalars['JSON'];
+};
+
+export type TrainingPlansConnectionEdges = {
+  __typename?: 'TrainingPlansConnectionEdges';
+  cursor?: Maybe<Scalars['String']>;
+  node?: Maybe<TrainingPlansDocument>;
+};
+
+export type TrainingPlansConnection = Connection & {
+  __typename?: 'TrainingPlansConnection';
+  pageInfo?: Maybe<PageInfo>;
+  totalCount: Scalars['Int'];
+  edges?: Maybe<Array<Maybe<TrainingPlansConnectionEdges>>>;
+};
+
 export type NavNavItemsNavItemPopoutChildren = {
   __typename?: 'NavNavItemsNavItemPopoutChildren';
   label?: Maybe<Scalars['String']>;
@@ -817,8 +813,6 @@ export type Mutation = {
   addPendingDocument: DocumentNode;
   updateDocument: DocumentNode;
   createDocument: DocumentNode;
-  updateTrainingDocument: TrainingDocument;
-  createTrainingDocument: TrainingDocument;
   updatePostsDocument: PostsDocument;
   createPostsDocument: PostsDocument;
   updatePagesDocument: PagesDocument;
@@ -829,6 +823,8 @@ export type Mutation = {
   createCuratedDocument: CuratedDocument;
   updateAuthorsDocument: AuthorsDocument;
   createAuthorsDocument: AuthorsDocument;
+  updateTrainingPlansDocument: TrainingPlansDocument;
+  createTrainingPlansDocument: TrainingPlansDocument;
   updateNavDocument: NavDocument;
   createNavDocument: NavDocument;
 };
@@ -852,18 +848,6 @@ export type MutationCreateDocumentArgs = {
   collection?: InputMaybe<Scalars['String']>;
   relativePath: Scalars['String'];
   params: DocumentMutation;
-};
-
-
-export type MutationUpdateTrainingDocumentArgs = {
-  relativePath: Scalars['String'];
-  params: TrainingMutation;
-};
-
-
-export type MutationCreateTrainingDocumentArgs = {
-  relativePath: Scalars['String'];
-  params: TrainingMutation;
 };
 
 
@@ -927,6 +911,18 @@ export type MutationCreateAuthorsDocumentArgs = {
 };
 
 
+export type MutationUpdateTrainingPlansDocumentArgs = {
+  relativePath: Scalars['String'];
+  params: TrainingPlansMutation;
+};
+
+
+export type MutationCreateTrainingPlansDocumentArgs = {
+  relativePath: Scalars['String'];
+  params: TrainingPlansMutation;
+};
+
+
 export type MutationUpdateNavDocumentArgs = {
   relativePath: Scalars['String'];
   params: NavMutation;
@@ -939,33 +935,13 @@ export type MutationCreateNavDocumentArgs = {
 };
 
 export type DocumentMutation = {
-  training?: InputMaybe<TrainingMutation>;
   posts?: InputMaybe<PostsMutation>;
   pages?: InputMaybe<PagesMutation>;
   forms?: InputMaybe<FormsMutation>;
   curated?: InputMaybe<CuratedMutation>;
   authors?: InputMaybe<AuthorsMutation>;
+  trainingPlans?: InputMaybe<TrainingPlansMutation>;
   nav?: InputMaybe<NavMutation>;
-};
-
-export type TrainingTrainingWorkoutsMutation = {
-  Day?: InputMaybe<Scalars['Int']>;
-  Title?: InputMaybe<Scalars['String']>;
-  Description?: InputMaybe<Scalars['String']>;
-  Category?: InputMaybe<Scalars['String']>;
-};
-
-export type TrainingTrainingMutation = {
-  name?: InputMaybe<Scalars['String']>;
-  description?: InputMaybe<Scalars['String']>;
-  event?: InputMaybe<Scalars['String']>;
-  category?: InputMaybe<Scalars['String']>;
-  time?: InputMaybe<Scalars['String']>;
-  workouts?: InputMaybe<Array<InputMaybe<TrainingTrainingWorkoutsMutation>>>;
-};
-
-export type TrainingMutation = {
-  training?: InputMaybe<TrainingTrainingMutation>;
 };
 
 export type PostsPostAccoladesMutation = {
@@ -1277,6 +1253,20 @@ export type AuthorsMutation = {
   athlete?: InputMaybe<AuthorsAthleteMutation>;
 };
 
+export type TrainingPlansWorkoutsMutation = {
+  Day?: InputMaybe<Scalars['Int']>;
+  Notes?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
+};
+
+export type TrainingPlansMutation = {
+  event?: InputMaybe<Scalars['String']>;
+  category?: InputMaybe<Scalars['String']>;
+  time?: InputMaybe<Scalars['String']>;
+  workouts?: InputMaybe<Array<InputMaybe<TrainingPlansWorkoutsMutation>>>;
+};
+
 export type NavNavItemsNavItemPopoutChildrenMutation = {
   label?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
@@ -1373,8 +1363,6 @@ export type GetPostAndNavQueryVariables = Exact<{
 
 export type GetPostAndNavQuery = { __typename?: 'Query', getNavDocument: { __typename?: 'NavDocument', data: { __typename?: 'NavNav', show_auth?: boolean | null | undefined, items?: Array<{ __typename: 'NavNavItemsNavItemPopout', label?: string | null | undefined, children?: Array<{ __typename: 'NavNavItemsNavItemPopoutChildren', label?: string | null | undefined, description?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined, extra?: Array<{ __typename: 'NavNavItemsNavItemPopoutExtra', label?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'NavNavItemsNavItemMore', label?: string | null | undefined, featured_post?: { __typename?: 'PostsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, breadcrumbs: Array<string> }, data: { __typename?: 'PostsPost', image?: string | null | undefined, title?: string | null | undefined, preface?: string | null | undefined, author?: { __typename: 'AuthorsDocument', sys: { __typename?: 'SystemInfo', filename: string }, data: { __typename: 'AuthorsAuthor', name?: string | null | undefined, image?: string | null | undefined } | { __typename: 'AuthorsAthlete' } } | null | undefined } } | null | undefined, from_the_blog?: Array<{ __typename: 'NavNavItemsNavItemMoreFrom_the_blog', reference?: { __typename?: 'PostsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, breadcrumbs: Array<string> }, data: { __typename?: 'PostsPost', image?: string | null | undefined, title?: string | null | undefined, preface?: string | null | undefined, author?: { __typename: 'AuthorsDocument', sys: { __typename?: 'SystemInfo', filename: string }, data: { __typename: 'AuthorsAuthor', name?: string | null | undefined, image?: string | null | undefined } | { __typename: 'AuthorsAthlete' } } | null | undefined } } | null | undefined } | null | undefined> | null | undefined, read_more?: { __typename: 'NavNavItemsNavItemMoreRead_more', label?: string | null | undefined, value?: string | null | undefined } | null | undefined } | { __typename: 'NavNavItemsNavItemLink', label?: string | null | undefined, value?: string | null | undefined } | null | undefined> | null | undefined } }, getPostsDocument: { __typename?: 'PostsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, collection: { __typename?: 'Collection', slug: string } }, data: { __typename?: 'PostsPost', title?: string | null | undefined, tags?: Array<string | null | undefined> | null | undefined, image?: string | null | undefined, image_small?: string | null | undefined, preface?: string | null | undefined, _body?: any | null | undefined, author?: { __typename?: 'AuthorsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, collection: { __typename?: 'Collection', slug: string } }, data: { __typename?: 'AuthorsAuthor', name?: string | null | undefined, bioDescription?: any | null | undefined, _body?: any | null | undefined, role?: string | null | undefined, image?: string | null | undefined, bio_image?: string | null | undefined, story_image?: string | null | undefined, accolades?: Array<{ __typename: 'AuthorsAuthorAccolades', figure?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined, form?: { __typename?: 'FormsDocument', id: string } | null | undefined, posts_collection?: Array<{ __typename: 'AuthorsAuthorPosts_collection', reference?: { __typename?: 'PostsDocument', id: string } | null | undefined } | null | undefined> | null | undefined, ebook?: { __typename: 'AuthorsAuthorEbook', title?: string | null | undefined, description?: string | null | undefined, link?: string | null | undefined, link_text?: string | null | undefined, image?: string | null | undefined } | null | undefined } | { __typename?: 'AuthorsAthlete' } } | null | undefined, accolades?: { __typename: 'PostsPostAccolades', figure?: string | null | undefined, description?: string | null | undefined } | null | undefined } } };
 
-export type TrainingPartsFragment = { __typename?: 'TrainingTraining', name?: string | null | undefined, description?: string | null | undefined, event?: string | null | undefined, category?: string | null | undefined, time?: string | null | undefined, workouts?: Array<{ __typename: 'TrainingTrainingWorkouts', Day?: number | null | undefined, Title?: string | null | undefined, Description?: string | null | undefined, Category?: string | null | undefined } | null | undefined> | null | undefined };
-
 export type PostsPartsFragment = { __typename?: 'PostsPost', title?: string | null | undefined, tags?: Array<string | null | undefined> | null | undefined, image?: string | null | undefined, image_small?: string | null | undefined, preface?: string | null | undefined, _body?: any | null | undefined, accolades?: { __typename: 'PostsPostAccolades', figure?: string | null | undefined, description?: string | null | undefined } | null | undefined, author?: { __typename?: 'AuthorsDocument', id: string } | null | undefined };
 
 type PagesParts_PagesPage_Fragment = { __typename?: 'PagesPage', title?: string | null | undefined, _body?: string | null | undefined, seo?: { __typename: 'PagesPageSeo', title?: string | null | undefined, description?: string | null | undefined, image?: string | null | undefined } | null | undefined, layers?: Array<{ __typename: 'PagesPageLayersLayerHero', image?: string | null | undefined } | { __typename: 'PagesPageLayersLayerTeam', description?: string | null | undefined, members?: Array<{ __typename: 'PagesPageLayersLayerTeamMembers', reference?: { __typename?: 'AuthorsDocument', id: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerPostList', postListDescription?: any | null | undefined, posts?: Array<{ __typename: 'PagesPageLayersLayerPostListPosts', reference?: { __typename?: 'PostsDocument', id: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerDarkFeature', hint?: string | null | undefined, title?: string | null | undefined, description?: string | null | undefined, feature_list?: Array<{ __typename: 'PagesPageLayersLayerDarkFeatureFeature_list', header?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerLeadership', title?: string | null | undefined, leaders?: Array<{ __typename: 'PagesPageLayersLayerLeadershipLeaders', reference?: { __typename?: 'AuthorsDocument', id: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerSponsors', title?: string | null | undefined, sponsors?: Array<{ __typename: 'PagesPageLayersLayerSponsorsSponsors', name?: string | null | undefined, link?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersCuratedCollection', curatedDescription?: any | null | undefined, posts_collection?: Array<{ __typename: 'PagesPageLayersCuratedCollectionPosts_collection', reference?: { __typename?: 'PostsDocument', id: string } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerCta', ctaDescription?: any | null | undefined, cta_text?: string | null | undefined, cta_link?: string | null | undefined, cta_image?: string | null | undefined } | null | undefined> | null | undefined };
@@ -1393,19 +1381,9 @@ type AuthorsParts_AuthorsAthlete_Fragment = { __typename?: 'AuthorsAthlete', nam
 
 export type AuthorsPartsFragment = AuthorsParts_AuthorsAuthor_Fragment | AuthorsParts_AuthorsAthlete_Fragment;
 
+export type TrainingPlansPartsFragment = { __typename?: 'TrainingPlans', event?: string | null | undefined, category?: string | null | undefined, time?: string | null | undefined, workouts?: Array<{ __typename: 'TrainingPlansWorkouts', Day?: number | null | undefined, Notes?: string | null | undefined, title?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined };
+
 export type NavPartsFragment = { __typename?: 'NavNav', show_auth?: boolean | null | undefined, items?: Array<{ __typename: 'NavNavItemsNavItemPopout', label?: string | null | undefined, children?: Array<{ __typename: 'NavNavItemsNavItemPopoutChildren', label?: string | null | undefined, description?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined, extra?: Array<{ __typename: 'NavNavItemsNavItemPopoutExtra', label?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'NavNavItemsNavItemMore', label?: string | null | undefined, featured_post?: { __typename?: 'PostsDocument', id: string } | null | undefined, from_the_blog?: Array<{ __typename: 'NavNavItemsNavItemMoreFrom_the_blog', reference?: { __typename?: 'PostsDocument', id: string } | null | undefined } | null | undefined> | null | undefined, read_more?: { __typename: 'NavNavItemsNavItemMoreRead_more', label?: string | null | undefined, value?: string | null | undefined } | null | undefined } | { __typename: 'NavNavItemsNavItemLink', label?: string | null | undefined, value?: string | null | undefined } | null | undefined> | null | undefined };
-
-export type GetTrainingDocumentQueryVariables = Exact<{
-  relativePath: Scalars['String'];
-}>;
-
-
-export type GetTrainingDocumentQuery = { __typename?: 'Query', getTrainingDocument: { __typename?: 'TrainingDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'TrainingTraining', name?: string | null | undefined, description?: string | null | undefined, event?: string | null | undefined, category?: string | null | undefined, time?: string | null | undefined, workouts?: Array<{ __typename: 'TrainingTrainingWorkouts', Day?: number | null | undefined, Title?: string | null | undefined, Description?: string | null | undefined, Category?: string | null | undefined } | null | undefined> | null | undefined } } };
-
-export type GetTrainingListQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetTrainingListQuery = { __typename?: 'Query', getTrainingList: { __typename?: 'TrainingConnection', totalCount: number, edges?: Array<{ __typename?: 'TrainingConnectionEdges', node?: { __typename?: 'TrainingDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'TrainingTraining', name?: string | null | undefined, description?: string | null | undefined, event?: string | null | undefined, category?: string | null | undefined, time?: string | null | undefined, workouts?: Array<{ __typename: 'TrainingTrainingWorkouts', Day?: number | null | undefined, Title?: string | null | undefined, Description?: string | null | undefined, Category?: string | null | undefined } | null | undefined> | null | undefined } } | null | undefined } | null | undefined> | null | undefined } };
 
 export type GetPostsDocumentQueryVariables = Exact<{
   relativePath: Scalars['String'];
@@ -1466,6 +1444,18 @@ export type GetAuthorsListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetAuthorsListQuery = { __typename?: 'Query', getAuthorsList: { __typename?: 'AuthorsConnection', totalCount: number, edges?: Array<{ __typename?: 'AuthorsConnectionEdges', node?: { __typename?: 'AuthorsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'AuthorsAuthor', name?: string | null | undefined, bioDescription?: any | null | undefined, _body?: any | null | undefined, role?: string | null | undefined, image?: string | null | undefined, bio_image?: string | null | undefined, story_image?: string | null | undefined, accolades?: Array<{ __typename: 'AuthorsAuthorAccolades', figure?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined, form?: { __typename?: 'FormsDocument', id: string } | null | undefined, posts_collection?: Array<{ __typename: 'AuthorsAuthorPosts_collection', reference?: { __typename?: 'PostsDocument', id: string } | null | undefined } | null | undefined> | null | undefined, ebook?: { __typename: 'AuthorsAuthorEbook', title?: string | null | undefined, description?: string | null | undefined, link?: string | null | undefined, link_text?: string | null | undefined, image?: string | null | undefined } | null | undefined } | { __typename?: 'AuthorsAthlete', name?: string | null | undefined, description?: string | null | undefined, _body?: any | null | undefined, country?: string | null | undefined, image?: string | null | undefined, personal_bests?: Array<{ __typename: 'AuthorsAthletePersonal_bests', event?: string | null | undefined, time?: string | null | undefined } | null | undefined> | null | undefined, accolades?: Array<{ __typename: 'AuthorsAthleteAccolades', figure?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined, social_media?: Array<{ __typename: 'AuthorsAthleteSocial_media', source?: string | null | undefined, handle?: string | null | undefined } | null | undefined> | null | undefined } } | null | undefined } | null | undefined> | null | undefined } };
+
+export type GetTrainingPlansDocumentQueryVariables = Exact<{
+  relativePath: Scalars['String'];
+}>;
+
+
+export type GetTrainingPlansDocumentQuery = { __typename?: 'Query', getTrainingPlansDocument: { __typename?: 'TrainingPlansDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'TrainingPlans', event?: string | null | undefined, category?: string | null | undefined, time?: string | null | undefined, workouts?: Array<{ __typename: 'TrainingPlansWorkouts', Day?: number | null | undefined, Notes?: string | null | undefined, title?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined } } };
+
+export type GetTrainingPlansListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetTrainingPlansListQuery = { __typename?: 'Query', getTrainingPlansList: { __typename?: 'TrainingPlansConnection', totalCount: number, edges?: Array<{ __typename?: 'TrainingPlansConnectionEdges', node?: { __typename?: 'TrainingPlansDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'TrainingPlans', event?: string | null | undefined, category?: string | null | undefined, time?: string | null | undefined, workouts?: Array<{ __typename: 'TrainingPlansWorkouts', Day?: number | null | undefined, Notes?: string | null | undefined, title?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined } } | null | undefined } | null | undefined> | null | undefined } };
 
 export type GetNavDocumentQueryVariables = Exact<{
   relativePath: Scalars['String'];
@@ -1764,24 +1754,6 @@ export const PagesPartsWithReferencesFragmentDoc = gql`
   }
 }
     ${PostsPartsFragmentDoc}`;
-export const TrainingPartsFragmentDoc = gql`
-    fragment TrainingParts on Training {
-  ... on TrainingTraining {
-    name
-    description
-    event
-    category
-    time
-    workouts {
-      __typename
-      Day
-      Title
-      Description
-      Category
-    }
-  }
-}
-    `;
 export const PagesPartsFragmentDoc = gql`
     fragment PagesParts on Pages {
   ... on PagesPage {
@@ -2035,6 +2007,20 @@ export const AuthorsPartsFragmentDoc = gql`
       handle
     }
     image
+  }
+}
+    `;
+export const TrainingPlansPartsFragmentDoc = gql`
+    fragment TrainingPlansParts on TrainingPlans {
+  event
+  category
+  time
+  workouts {
+    __typename
+    Day
+    Notes
+    title
+    description
   }
 }
     `;
@@ -2302,47 +2288,6 @@ export const GetPostAndNavDocument = gql`
     ${NavParts2FragmentDoc}
 ${PostsPartsFragmentDoc}
 ${AuthorsPartsFragmentDoc}`;
-export const GetTrainingDocumentDocument = gql`
-    query getTrainingDocument($relativePath: String!) {
-  getTrainingDocument(relativePath: $relativePath) {
-    sys {
-      filename
-      basename
-      breadcrumbs
-      path
-      relativePath
-      extension
-    }
-    id
-    data {
-      ...TrainingParts
-    }
-  }
-}
-    ${TrainingPartsFragmentDoc}`;
-export const GetTrainingListDocument = gql`
-    query getTrainingList {
-  getTrainingList {
-    totalCount
-    edges {
-      node {
-        id
-        sys {
-          filename
-          basename
-          breadcrumbs
-          path
-          relativePath
-          extension
-        }
-        data {
-          ...TrainingParts
-        }
-      }
-    }
-  }
-}
-    ${TrainingPartsFragmentDoc}`;
 export const GetPostsDocumentDocument = gql`
     query getPostsDocument($relativePath: String!) {
   getPostsDocument(relativePath: $relativePath) {
@@ -2548,6 +2493,47 @@ export const GetAuthorsListDocument = gql`
   }
 }
     ${AuthorsPartsFragmentDoc}`;
+export const GetTrainingPlansDocumentDocument = gql`
+    query getTrainingPlansDocument($relativePath: String!) {
+  getTrainingPlansDocument(relativePath: $relativePath) {
+    sys {
+      filename
+      basename
+      breadcrumbs
+      path
+      relativePath
+      extension
+    }
+    id
+    data {
+      ...TrainingPlansParts
+    }
+  }
+}
+    ${TrainingPlansPartsFragmentDoc}`;
+export const GetTrainingPlansListDocument = gql`
+    query getTrainingPlansList {
+  getTrainingPlansList {
+    totalCount
+    edges {
+      node {
+        id
+        sys {
+          filename
+          basename
+          breadcrumbs
+          path
+          relativePath
+          extension
+        }
+        data {
+          ...TrainingPlansParts
+        }
+      }
+    }
+  }
+}
+    ${TrainingPlansPartsFragmentDoc}`;
 export const GetNavDocumentDocument = gql`
     query getNavDocument($relativePath: String!) {
   getNavDocument(relativePath: $relativePath) {
@@ -2607,12 +2593,6 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
     getPostAndNav(variables: GetPostAndNavQueryVariables, options?: C): Promise<{data: GetPostAndNavQuery, variables: GetPostAndNavQueryVariables, query: string}> {
         return requester<{data: GetPostAndNavQuery, variables: GetPostAndNavQueryVariables, query: string}, GetPostAndNavQueryVariables>(GetPostAndNavDocument, variables, options);
       },
-    getTrainingDocument(variables: GetTrainingDocumentQueryVariables, options?: C): Promise<{data: GetTrainingDocumentQuery, variables: GetTrainingDocumentQueryVariables, query: string}> {
-        return requester<{data: GetTrainingDocumentQuery, variables: GetTrainingDocumentQueryVariables, query: string}, GetTrainingDocumentQueryVariables>(GetTrainingDocumentDocument, variables, options);
-      },
-    getTrainingList(variables?: GetTrainingListQueryVariables, options?: C): Promise<{data: GetTrainingListQuery, variables: GetTrainingListQueryVariables, query: string}> {
-        return requester<{data: GetTrainingListQuery, variables: GetTrainingListQueryVariables, query: string}, GetTrainingListQueryVariables>(GetTrainingListDocument, variables, options);
-      },
     getPostsDocument(variables: GetPostsDocumentQueryVariables, options?: C): Promise<{data: GetPostsDocumentQuery, variables: GetPostsDocumentQueryVariables, query: string}> {
         return requester<{data: GetPostsDocumentQuery, variables: GetPostsDocumentQueryVariables, query: string}, GetPostsDocumentQueryVariables>(GetPostsDocumentDocument, variables, options);
       },
@@ -2642,6 +2622,12 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     getAuthorsList(variables?: GetAuthorsListQueryVariables, options?: C): Promise<{data: GetAuthorsListQuery, variables: GetAuthorsListQueryVariables, query: string}> {
         return requester<{data: GetAuthorsListQuery, variables: GetAuthorsListQueryVariables, query: string}, GetAuthorsListQueryVariables>(GetAuthorsListDocument, variables, options);
+      },
+    getTrainingPlansDocument(variables: GetTrainingPlansDocumentQueryVariables, options?: C): Promise<{data: GetTrainingPlansDocumentQuery, variables: GetTrainingPlansDocumentQueryVariables, query: string}> {
+        return requester<{data: GetTrainingPlansDocumentQuery, variables: GetTrainingPlansDocumentQueryVariables, query: string}, GetTrainingPlansDocumentQueryVariables>(GetTrainingPlansDocumentDocument, variables, options);
+      },
+    getTrainingPlansList(variables?: GetTrainingPlansListQueryVariables, options?: C): Promise<{data: GetTrainingPlansListQuery, variables: GetTrainingPlansListQueryVariables, query: string}> {
+        return requester<{data: GetTrainingPlansListQuery, variables: GetTrainingPlansListQueryVariables, query: string}, GetTrainingPlansListQueryVariables>(GetTrainingPlansListDocument, variables, options);
       },
     getNavDocument(variables: GetNavDocumentQueryVariables, options?: C): Promise<{data: GetNavDocumentQuery, variables: GetNavDocumentQueryVariables, query: string}> {
         return requester<{data: GetNavDocumentQuery, variables: GetNavDocumentQueryVariables, query: string}, GetNavDocumentQueryVariables>(GetNavDocumentDocument, variables, options);

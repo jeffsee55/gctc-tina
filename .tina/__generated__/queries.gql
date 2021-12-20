@@ -1,42 +1,3 @@
-query getTrainingDocument($relativePath: String!) {
-  getTrainingDocument(relativePath: $relativePath) {
-    sys {
-      filename
-      basename
-      breadcrumbs
-      path
-      relativePath
-      extension
-    }
-    id
-    data {
-      ...TrainingParts
-    }
-  }
-}
-
-query getTrainingList {
-  getTrainingList {
-    totalCount
-    edges {
-      node {
-        id
-        sys {
-          filename
-          basename
-          breadcrumbs
-          path
-          relativePath
-          extension
-        }
-        data {
-          ...TrainingParts
-        }
-      }
-    }
-  }
-}
-
 query getPostsDocument($relativePath: String!) {
   getPostsDocument(relativePath: $relativePath) {
     sys {
@@ -226,6 +187,45 @@ query getAuthorsList {
         }
         data {
           ...AuthorsParts
+        }
+      }
+    }
+  }
+}
+
+query getTrainingPlansDocument($relativePath: String!) {
+  getTrainingPlansDocument(relativePath: $relativePath) {
+    sys {
+      filename
+      basename
+      breadcrumbs
+      path
+      relativePath
+      extension
+    }
+    id
+    data {
+      ...TrainingPlansParts
+    }
+  }
+}
+
+query getTrainingPlansList {
+  getTrainingPlansList {
+    totalCount
+    edges {
+      node {
+        id
+        sys {
+          filename
+          basename
+          breadcrumbs
+          path
+          relativePath
+          extension
+        }
+        data {
+          ...TrainingPlansParts
         }
       }
     }

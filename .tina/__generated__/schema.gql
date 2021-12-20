@@ -48,8 +48,6 @@ type Query {
   getDocument(collection: String, relativePath: String): DocumentNode!
   getDocumentList(before: String, after: String, first: Int, last: Int): DocumentConnection!
   getDocumentFields: JSON!
-  getTrainingDocument(relativePath: String): TrainingDocument!
-  getTrainingList(before: String, after: String, first: Int, last: Int): TrainingConnection!
   getPostsDocument(relativePath: String): PostsDocument!
   getPostsList(before: String, after: String, first: Int, last: Int): PostsConnection!
   getPagesDocument(relativePath: String): PagesDocument!
@@ -60,6 +58,8 @@ type Query {
   getCuratedList(before: String, after: String, first: Int, last: Int): CuratedConnection!
   getAuthorsDocument(relativePath: String): AuthorsDocument!
   getAuthorsList(before: String, after: String, first: Int, last: Int): AuthorsConnection!
+  getTrainingPlansDocument(relativePath: String): TrainingPlansDocument!
+  getTrainingPlansList(before: String, after: String, first: Int, last: Int): TrainingPlansConnection!
   getNavDocument(relativePath: String): NavDocument!
   getNavList(before: String, after: String, first: Int, last: Int): NavConnection!
 }
@@ -87,45 +87,7 @@ type Collection {
   documents(before: String, after: String, first: Int, last: Int): DocumentConnection!
 }
 
-union DocumentNode = TrainingDocument | PostsDocument | PagesDocument | FormsDocument | CuratedDocument | AuthorsDocument | NavDocument
-
-type TrainingTrainingWorkouts {
-  Day: Int
-  Title: String
-  Description: String
-  Category: String
-}
-
-type TrainingTraining {
-  name: String
-  description: String
-  event: String
-  category: String
-  time: String
-  workouts: [TrainingTrainingWorkouts]
-}
-
-union Training = TrainingTraining
-
-type TrainingDocument implements Node & Document {
-  id: ID!
-  sys: SystemInfo!
-  data: Training!
-  form: JSON!
-  values: JSON!
-  dataJSON: JSON!
-}
-
-type TrainingConnectionEdges {
-  cursor: String
-  node: TrainingDocument
-}
-
-type TrainingConnection implements Connection {
-  pageInfo: PageInfo
-  totalCount: Int!
-  edges: [TrainingConnectionEdges]
-}
+union DocumentNode = PostsDocument | PagesDocument | FormsDocument | CuratedDocument | AuthorsDocument | TrainingPlansDocument | NavDocument
 
 type PostsPostAccolades {
   figure: String
@@ -520,6 +482,40 @@ type AuthorsConnection implements Connection {
   edges: [AuthorsConnectionEdges]
 }
 
+type TrainingPlansWorkouts {
+  Day: Int
+  Notes: String
+  title: String
+  description: String
+}
+
+type TrainingPlans {
+  event: String
+  category: String
+  time: String
+  workouts: [TrainingPlansWorkouts]
+}
+
+type TrainingPlansDocument implements Node & Document {
+  id: ID!
+  sys: SystemInfo!
+  data: TrainingPlans!
+  form: JSON!
+  values: JSON!
+  dataJSON: JSON!
+}
+
+type TrainingPlansConnectionEdges {
+  cursor: String
+  node: TrainingPlansDocument
+}
+
+type TrainingPlansConnection implements Connection {
+  pageInfo: PageInfo
+  totalCount: Int!
+  edges: [TrainingPlansConnectionEdges]
+}
+
 type NavNavItemsNavItemPopoutChildren {
   label: String
   description: String
@@ -597,8 +593,6 @@ type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
-  updateTrainingDocument(relativePath: String!, params: TrainingMutation!): TrainingDocument!
-  createTrainingDocument(relativePath: String!, params: TrainingMutation!): TrainingDocument!
   updatePostsDocument(relativePath: String!, params: PostsMutation!): PostsDocument!
   createPostsDocument(relativePath: String!, params: PostsMutation!): PostsDocument!
   updatePagesDocument(relativePath: String!, params: PagesMutation!): PagesDocument!
@@ -609,38 +603,20 @@ type Mutation {
   createCuratedDocument(relativePath: String!, params: CuratedMutation!): CuratedDocument!
   updateAuthorsDocument(relativePath: String!, params: AuthorsMutation!): AuthorsDocument!
   createAuthorsDocument(relativePath: String!, params: AuthorsMutation!): AuthorsDocument!
+  updateTrainingPlansDocument(relativePath: String!, params: TrainingPlansMutation!): TrainingPlansDocument!
+  createTrainingPlansDocument(relativePath: String!, params: TrainingPlansMutation!): TrainingPlansDocument!
   updateNavDocument(relativePath: String!, params: NavMutation!): NavDocument!
   createNavDocument(relativePath: String!, params: NavMutation!): NavDocument!
 }
 
 input DocumentMutation {
-  training: TrainingMutation
   posts: PostsMutation
   pages: PagesMutation
   forms: FormsMutation
   curated: CuratedMutation
   authors: AuthorsMutation
+  trainingPlans: TrainingPlansMutation
   nav: NavMutation
-}
-
-input TrainingTrainingWorkoutsMutation {
-  Day: Int
-  Title: String
-  Description: String
-  Category: String
-}
-
-input TrainingTrainingMutation {
-  name: String
-  description: String
-  event: String
-  category: String
-  time: String
-  workouts: [TrainingTrainingWorkoutsMutation]
-}
-
-input TrainingMutation {
-  training: TrainingTrainingMutation
 }
 
 input PostsPostAccoladesMutation {
@@ -950,6 +926,20 @@ input AuthorsAthleteMutation {
 input AuthorsMutation {
   author: AuthorsAuthorMutation
   athlete: AuthorsAthleteMutation
+}
+
+input TrainingPlansWorkoutsMutation {
+  Day: Int
+  Notes: String
+  title: String
+  description: String
+}
+
+input TrainingPlansMutation {
+  event: String
+  category: String
+  time: String
+  workouts: [TrainingPlansWorkoutsMutation]
 }
 
 input NavNavItemsNavItemPopoutChildrenMutation {

@@ -1,0 +1,554 @@
+{
+  "event": "5k",
+  "category": "silver",
+  "time": "19:00",
+  "workouts": [
+    {
+      "Notes": "easy",
+      "Description": "20 min of Yoga or Stretching\n",
+      "Day": 1,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "2-3 miles @8:15-8:45 pace\n\n",
+      "Day": 2,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "7-10 min warm up, \n5 x 800m @3:28-3:32 w/ 2 min recovery jog,\n7-10 min cool down \n\n",
+      "Day": 3,
+      "Title": "Aerobic Threshold Intervals"
+    },
+    {
+      "Notes": "medium",
+      "Description": "3-4 miles @8:15-8:45 pace\n\n",
+      "Day": 4,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "Off Day or \n3 miles @8:15-8:45 pace or \n25 min Cross Training Session\n\n",
+      "Day": 5,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "3 miles @8:15-8:45 pace\n\n",
+      "Day": 6,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n",
+      "Day": 7,
+      "Title": "Long Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "20 min of Yoga or Stretching\n",
+      "Day": 8,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "3-4 miles @8:15-8:45 pace\n\n",
+      "Day": 9,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "7-10 min warm up, \n8 x 400m @1:29-1:31 w/ 2 min recovery jog,\n7-10 min cool down \n\n\n",
+      "Day": 10,
+      "Title": "5k Pace Intervals"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n",
+      "Day": 11,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "Off Day or \n3 miles @8:15-8:45 pace or \n25 min Cross Training Session\n",
+      "Day": 12,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4 miles @8:15-8:45 pace\n\n",
+      "Day": 13,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "2 miles @8:15-8:45 pace, \n2 miles @7:00-7:05 pace,\n1 mile @8:15-8:45 pace\n\n\n",
+      "Day": 14,
+      "Title": "Long Run with Aerobic Tempo"
+    },
+    {
+      "Notes": "easy",
+      "Description": "20 min of Yoga or Stretching\n",
+      "Day": 15,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n",
+      "Day": 16,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "7-10 min warm up, \n6 x 800m @3:28-3:32 w/ 2 min recovery jog,\n7-10 min cool down \n\n",
+      "Day": 17,
+      "Title": "Aerobic Threshold Intervals"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 18,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "Off Day or \n3 miles @8:15-8:45 pace or \n25 min Cross Training Session\n",
+      "Day": 19,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4 miles @8:15-8:45 pace\n\n",
+      "Day": 20,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "medium",
+      "Description": "5-6 miles @8:15-8:45 pace\n",
+      "Day": 21,
+      "Title": "Long Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "20 min of Yoga or Stretching\n",
+      "Day": 22,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 23,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "7-10 min warm up, \n6 x 600m @2:14-2:16 w/ 2 min recovery jog,\n7-10 min cool down \n\n",
+      "Day": 24,
+      "Title": "5k Test Workout"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 25,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "Off Day or \n3 miles @8:15-8:45 pace or \n25 min Cross Training Session\n",
+      "Day": 26,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4 miles @8:15-8:45 pace\n",
+      "Day": 27,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "2 miles @8:15-8:45 pace, \n3 miles @7:00-7:05 pace,\n1 mile @8:15-8:45 pace\n\n",
+      "Day": 28,
+      "Title": "Long Run with Aerobic Tempo"
+    },
+    {
+      "Notes": "easy",
+      "Description": "20 min of Yoga or Stretching\n",
+      "Day": 29,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 30,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "7-10 min warm up, \n8 x 800m @3:28-3:32 w/ 2 min recovery jog,\n7-10 min cool down \n\n",
+      "Day": 31,
+      "Title": "Aerobic Threshold Intervals"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 32,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "Off Day or \n3 miles @8:15-8:45 pace or \n25 min Cross Training Session\n",
+      "Day": 33,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4 miles @8:15-8:45 pace\n",
+      "Day": 34,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "medium",
+      "Description": "5-7 miles @8:15-8:45 pace\n",
+      "Day": 35,
+      "Title": "Long Run "
+    },
+    {
+      "Notes": "easy",
+      "Description": "20 min of Yoga or Stretching\n",
+      "Day": 36,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 37,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "7-10 min warm up, \n10 x 400m @1:29-1:31 w/ 2 min recovery jog,\n7-10 min cool down \n",
+      "Day": 38,
+      "Title": "5k Pace Intervals"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 39,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "Off Day or \n3 miles @8:15-8:45 pace or \n25 min Cross Training Session\n",
+      "Day": 40,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4 miles @8:15-8:45 pace\n",
+      "Day": 41,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "2 miles @8:15-8:45 pace, \n3 miles @7:00-7:05 pace,\n1 mile @8:15-8:45 pace\n\n",
+      "Day": 42,
+      "Title": "Long Run with Aerobic Tempo"
+    },
+    {
+      "Notes": "easy",
+      "Description": "20 min of Yoga or Stretching\n",
+      "Day": 43,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 44,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "7-10 min warm up,\n4 x 400m @1:29-1:31 w/ 90 sec rest, then 3-4 min rest,\n2 x 1 mile @7:00-7:05 w/ 2 min recovery jog, then 3-4 min rest,\n4 x 400m @1:29-1:31 w/ 90 sec rest,\n10-15 min cool down \n\n",
+      "Day": 45,
+      "Title": "Mixed Pace Intervals"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 46,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "Off Day or \n3 miles @8:15-8:45 pace or \n25 min Cross Training Session\n",
+      "Day": 47,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4 miles @8:15-8:45 pace\n",
+      "Day": 48,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "medium",
+      "Description": "5-7 miles @8:15-8:45 pace\n",
+      "Day": 49,
+      "Title": "Long Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "20 min of Yoga or Stretching\n\n",
+      "Day": 50,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 51,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "7-10 min warm up, \n4 x 800m @2:58-3:02 w/ 3 min recovery jog,\n7-10 min cool down \n\n",
+      "Day": 52,
+      "Title": "5k Test Workout"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 53,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "Off Day or \n3 miles @8:15-8:45 pace or \n25 min Cross Training Session\n",
+      "Day": 54,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "easy",
+      "Description": "4 miles @8:15-8:45 pace\n",
+      "Day": 55,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "2 miles @8:15-8:45 pace, \n4 miles @7:00-7:05 pace,\n1 mile @8:15-8:45 pace\n\n",
+      "Day": 56,
+      "Title": "Long Run with Aerobic Tempo"
+    },
+    {
+      "Notes": "easy",
+      "Description": "20 min of Yoga or Stretching\n\n",
+      "Day": 57,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 58,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "7-10 min warm up,\n4 x 400m @1:29-1:31 w/ 90 sec rest, then 3-4 min rest,\n2 miles @7:00-7:05 pace, then 3-4 min rest,\n4 x 400m @1:29-1:31 w/ 90 sec rest,\n10-15 min cool down \n\n",
+      "Day": 59,
+      "Title": "Mixed Pace Intervals"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 60,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "Off Day or \n3 miles @8:15-8:45 pace or \n25 min Cross Training Session\n",
+      "Day": 61,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4 miles @8:15-8:45 pace\n",
+      "Day": 62,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "medium",
+      "Description": "6-8 miles @8:15-8:45 pace\n",
+      "Day": 63,
+      "Title": "Long Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "20 min of Yoga or Stretching\n\n",
+      "Day": 64,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 65,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "7-10 min warm up, \n6 x 800m @2:58-3:02 w/ 3 min recovery jog,\n7-10 min cool down \n\n",
+      "Day": 66,
+      "Title": "5k Test Workout"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 67,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "Off Day or \n3 miles @8:15-8:45 pace or \n25 min Cross Training Session\n",
+      "Day": 68,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4 miles @8:15-8:45 pace\n",
+      "Day": 69,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "2 miles @8:15-8:45 pace, \n4 miles @7:00-7:05 pace,\n1 mile @8:15-8:45 pace\n\n",
+      "Day": 70,
+      "Title": "Long Run with Aerobic Tempo"
+    },
+    {
+      "Notes": "easy",
+      "Description": "20 min of Yoga or Stretching\n\n",
+      "Day": 71,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 72,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "7-10 min warm up,\n4 x 400m @1:29-1:31 w/ 90 sec rest, then 3-4 min rest,\n2 miles @7:00-7:05 pace, then 3-4 min rest,\n4 x 400m @1:29-1:31 w/ 90 sec rest,\n10-15 min cool down\n\n",
+      "Day": 73,
+      "Title": "Mixed Pace Intervals"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 74,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "Off Day or \n3 miles @8:15-8:45 pace or \n25 min Cross Training Session\n",
+      "Day": 75,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4 miles @8:15-8:45 pace\n",
+      "Day": 76,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "medium",
+      "Description": "6-8 miles @8:15-8:45 pace\n",
+      "Day": 77,
+      "Title": "Long Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "20 min of Yoga or Stretching\n\n",
+      "Day": 78,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "3-4 miles @8:15-8:45 pace\n",
+      "Day": 79,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "7-10 min warm up, \n4 x 1200m @4:28-4:32 w/ 4 min recovery jog,\n7-10 min cool down\n\n",
+      "Day": 80,
+      "Title": "5k Test Workout"
+    },
+    {
+      "Notes": "medium",
+      "Description": "3-4 miles @8:15-8:45 pace\n",
+      "Day": 81,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "Off Day or \n3 miles @8:15-8:45 pace or \n25 min Cross Training Session\n",
+      "Day": 82,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "3 miles @8:15-8:45 pace\n",
+      "Day": 83,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "medium",
+      "Description": "4-5 miles @8:15-8:45 pace\n\n",
+      "Day": 84,
+      "Title": "Long Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "20 min of Yoga or Stretching\n\n",
+      "Day": 85,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "medium",
+      "Description": "3-4 miles @8:15-8:45 pace\n",
+      "Day": 86,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "hard",
+      "Description": "7-10 min warm up,\n3 x 800m @3:28-3:32 w/ 2 min recovery jog, then 3-4 min rest,\n4 x 400m @1:29-1:31 w/ 2 min recovery jog,\n7-10 min cool down \n\n",
+      "Day": 87,
+      "Title": "Mixed Pace Intervals"
+    },
+    {
+      "Notes": "medium",
+      "Description": "3-4 miles @8:15-8:45 pace\n",
+      "Day": 88,
+      "Title": "Easy Run"
+    },
+    {
+      "Notes": "easy",
+      "Description": "Off Day or \n2 miles @8:15-8:45 pace or \n20 min Cross Training Session\n",
+      "Day": 89,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "easy",
+      "Description": "Off Day\n",
+      "Day": 90,
+      "Title": "Recovery Day"
+    },
+    {
+      "Notes": "hard",
+      "Description": "5k Race\n",
+      "Day": 91,
+      "Title": "Race Day"
+    },
+    {}
+  ]
+}
