@@ -135,6 +135,9 @@ fragment PagesPartsWithReferences on Pages {
     }
     layers {
       __typename
+      ... on PagesPageLayersLayerHero {
+        image
+      }
       ... on PagesPageLayersLayerTeam {
         description
         members {

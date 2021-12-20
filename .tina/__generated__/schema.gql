@@ -173,6 +173,10 @@ type PagesPageSeo {
   image: String
 }
 
+type PagesPageLayersLayerHero {
+  image: String
+}
+
 union PagesPageLayersLayerTeamMembersReferenceDocument = AuthorsDocument
 
 type PagesPageLayersLayerTeamMembers {
@@ -246,7 +250,7 @@ type PagesPageLayersLayerCta {
   cta_image: String
 }
 
-union PagesPageLayers = PagesPageLayersLayerTeam | PagesPageLayersLayerPostList | PagesPageLayersLayerDarkFeature | PagesPageLayersLayerLeadership | PagesPageLayersLayerSponsors | PagesPageLayersCuratedCollection | PagesPageLayersLayerCta
+union PagesPageLayers = PagesPageLayersLayerHero | PagesPageLayersLayerTeam | PagesPageLayersLayerPostList | PagesPageLayersLayerDarkFeature | PagesPageLayersLayerLeadership | PagesPageLayersLayerSponsors | PagesPageLayersCuratedCollection | PagesPageLayersLayerCta
 
 type PagesPage {
   title: String
@@ -665,6 +669,10 @@ input PagesPageSeoMutation {
   image: String
 }
 
+input PagesPageLayersLayerHeroMutation {
+  image: String
+}
+
 input PagesPageLayersLayerTeamMembersMutation {
   reference: String
 }
@@ -731,6 +739,7 @@ input PagesPageLayersLayerCtaMutation {
 }
 
 input PagesPageLayersMutation {
+  layerHero: PagesPageLayersLayerHeroMutation
   layerTeam: PagesPageLayersLayerTeamMutation
   layerPostList: PagesPageLayersLayerPostListMutation
   layerDarkFeature: PagesPageLayersLayerDarkFeatureMutation

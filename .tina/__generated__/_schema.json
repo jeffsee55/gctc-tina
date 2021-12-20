@@ -372,6 +372,30 @@
               "name": "layers",
               "templates": [
                 {
+                  "name": "layerHero",
+                  "label": "Hero Layer",
+                  "fields": [
+                    {
+                      "label": "Image",
+                      "name": "image",
+                      "type": "string",
+                      "namespace": [
+                        "pages",
+                        "page",
+                        "layers",
+                        "layerHero",
+                        "image"
+                      ]
+                    }
+                  ],
+                  "namespace": [
+                    "pages",
+                    "page",
+                    "layers",
+                    "layerHero"
+                  ]
+                },
+                {
                   "name": "layerTeam",
                   "label": "Team Layer",
                   "fields": [

@@ -45,6 +45,17 @@ export const Page: TinaTemplate = {
       name: "layers",
       templates: [
         {
+          name: "layerHero",
+          label: "Hero Layer",
+          fields: [
+            {
+              label: "Image",
+              name: "image",
+              type: "string",
+            },
+          ],
+        },
+        {
           name: "layerTeam",
           label: "Team Layer",
           fields: [

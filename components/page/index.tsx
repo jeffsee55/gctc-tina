@@ -71,6 +71,8 @@ const PagesPage = (props: PagesPageProps) => {
     <>
       {props.layers.map((layer) => {
         switch (layer.__typename) {
+          case "PagesPageLayersLayerHero":
+            return <Home {...layer} />;
           case "PagesPageLayersLayerCta":
             return <LayerCta {...layer} />;
           case "PagesPageLayersLayerDarkFeature":

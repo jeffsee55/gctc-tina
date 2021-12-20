@@ -94,6 +94,7 @@
     "type": "PagesPageLayers",
     "resolveType": "unionData",
     "typeMap": {
+      "layerHero": "PagesPageLayersLayerHero",
       "layerTeam": "PagesPageLayersLayerTeam",
       "layerPostList": "PagesPageLayersLayerPostList",
       "layerDarkFeature": "PagesPageLayersLayerDarkFeature",
