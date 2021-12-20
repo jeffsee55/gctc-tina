@@ -23,12 +23,12 @@ export async function getStaticProps() {
 }
 
 export const Static = (props: Res) => {
-  const { getCuratedDocument } = props.data;
+  const { getCuratedDocument, getNavDocument } = props.data;
   const rest = getCuratedDocument;
 
   return (
     <>
-      {/* <Header2 {...getNavDocument} /> */}
+      <Header2 {...getNavDocument} />
       {rest.data.curations?.map((curation) => {
         switch (curation?.__typename) {
           case "CuratedCuratedCurationsCuratedHero":
@@ -55,10 +55,7 @@ export const HeroPost = (props: HeroPostProps) => {
   return (
     <div className="relative mb-24">
       <div className="relative overflow-hidden">
-        <div
-          // style={{ filter: "blur(40px)" }}
-          className="form absolute -top-24 -bottom-24 -right-24 -left-24 pointer-events-none"
-        >
+        <div className="form absolute -top-24 -bottom-24 -right-24 -left-24 pointer-events-none">
           <div className="relative transform -translate-y-1/2 top-1/2 scale-">
             <Img src={post.data?.image || ""} width={2000} />
           </div>

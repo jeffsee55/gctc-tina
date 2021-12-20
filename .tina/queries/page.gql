@@ -148,6 +148,19 @@ fragment PagesPartsWithReferences on Pages {
               }
               data {
                 __typename
+                ... on AuthorsAthlete {
+                  name
+                  image
+                  country
+                  personal_bests {
+                    event
+                    time
+                  }
+                  social_media {
+                    source
+                    handle
+                  }
+                }
                 ... on AuthorsAuthor {
                   image
                   name

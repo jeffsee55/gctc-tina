@@ -3478,6 +3478,21 @@
           "kind": "FieldDefinition",
           "name": {
             "kind": "Name",
+            "value": "_body"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
             "value": "seo"
           },
           "arguments": [],
@@ -5639,6 +5654,21 @@
           "kind": "FieldDefinition",
           "name": {
             "kind": "Name",
+            "value": "_body"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
             "value": "role"
           },
           "arguments": [],
@@ -5915,6 +5945,21 @@
           "name": {
             "kind": "Name",
             "value": "description"
+          },
+          "arguments": [],
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "FieldDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "_body"
           },
           "arguments": [],
           "type": {
@@ -9133,6 +9178,20 @@
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "_body"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "seo"
           },
           "type": {
@@ -10478,6 +10537,20 @@
           "kind": "InputValueDefinition",
           "name": {
             "kind": "Name",
+            "value": "_body"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
             "value": "role"
           },
           "type": {
@@ -10731,6 +10804,20 @@
           "name": {
             "kind": "Name",
             "value": "description"
+          },
+          "type": {
+            "kind": "NamedType",
+            "name": {
+              "kind": "Name",
+              "value": "String"
+            }
+          }
+        },
+        {
+          "kind": "InputValueDefinition",
+          "name": {
+            "kind": "Name",
+            "value": "_body"
           },
           "type": {
             "kind": "NamedType",

@@ -1,3 +1,17 @@
+query getPostListWithSys {
+  getPostsList {
+    edges {
+      node {
+        ... on Document {
+          sys {
+            filename
+          }
+        }
+      }
+    }
+  }
+}
+
 query getCuratedPostAndNavDocument($relativePath: String!) {
   getNavDocument(relativePath: "site-nav.md") {
     data {

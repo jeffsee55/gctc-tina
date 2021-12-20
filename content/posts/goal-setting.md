@@ -1,6 +1,6 @@
 ---
 title: Goal Setting In Uncertain Times
-image: https://res.cloudinary.com/deuzrsg3m/image/upload/v1613613908/ACtC-3fPQ55l3DAr-Ypz0dmxE86eKrnWV22BIAEVUDkvUK5QOHuj8rYg-nx4-s61PYceBvA-LP7lBh6J8SwKJA7IpK5sdSRnbXQlbx6K6eooh1GR5fVe7tA8HXAVPyAPOs15KC_KiBvPADKGgNbBqNmqzlFM_w2976-h1972-no_morjm9.jpg
+image: https://images.unsplash.com/photo-1508430769587-99af194269f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80
 author: content/authors/jen.md
 preface: >-
   Following my passion and being open minded served me well over the years, and I think having a similar mindset can benefit many people right now!

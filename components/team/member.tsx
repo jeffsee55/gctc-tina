@@ -13,9 +13,7 @@ import {
   WeekCheckbox,
   CheckboxButtonGroup,
 } from "../../components/form";
-import type * as Tina from "../../.tina/sdk";
-type MemberDataType = Tina.MemberQuery["getAuthorsDocument"]["data"];
-type AuthorDataType = Tina.FilterByTypename<MemberDataType, "Author_Doc_Data">;
+import type { MemberHero } from "../../pages/team/[member]";
 
 export const CoachingForm = (props: AuthorDataType["form"]["data"]) => {
   const initialValues: { [key: string]: "" | [] | boolean } = {};
@@ -225,7 +223,10 @@ const AfterSignup = () => {
   );
 };
 
-export const Hero = (props: AuthorDataType) => {
+export const Hero = (props: MemberHero) => {
+  if (props.__typename === "AuthorsAthlete") {
+    return null;
+  }
   return (
     <div className="relative bg-gray-50">
       <main className="lg:relative">
@@ -247,30 +248,32 @@ export const Hero = (props: AuthorDataType) => {
                   "mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl",
               }}
             />
-            {props.form && <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-              <a
-                href="#questionnaire"
-                // className="w-76 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-steel-medium hover:bg-steel-light focus:outline-none focus:border-steel-dark focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
-                style={{ backgroundColor: "#437598" }}
-                className="w-76 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white focus:outline-none transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
-              >
-                <span className="">Work with {props.name.split(" ")[0]}</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="ml-4 h-8 w-8"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+            {props.form && (
+              <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
+                <a
+                  href="#questionnaire"
+                  // className="w-76 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-steel-medium hover:bg-steel-light focus:outline-none focus:border-steel-dark focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+                  style={{ backgroundColor: "#437598" }}
+                  className="w-76 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white focus:outline-none transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
-            </div>}
+                  <span className="">Work with {props.name.split(" ")[0]}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="ml-4 h-8 w-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              </div>
+            )}
           </div>
         </div>
         <div

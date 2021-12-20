@@ -8,7 +8,8 @@ export const Home = () => {
         width={2560}
         quality={90}
         className="absolute inset-0 h-full w-full object-cover object-center"
-        src="https://res.cloudinary.com/deuzrsg3m/image/upload/v1613613891/ACtC-3fdr81NYXHLd7g26j_VuMPN17azl76HuNPgcBhMcIPPpYUrPTopWjrWRqRZK5f3KnHDhOdcHoF7YHahU1h3M8akE-n0lUpqUCFYeDbOV2SijIenL4nizPv1F7zja81T5iNMX-SNBAAVc3SBteBsyYjP_w2560-h1708-no_hieao0.jpg"
+        // src="https://res.cloudinary.com/deuzrsg3m/image/upload/v1613613891/ACtC-3fdr81NYXHLd7g26j_VuMPN17azl76HuNPgcBhMcIPPpYUrPTopWjrWRqRZK5f3KnHDhOdcHoF7YHahU1h3M8akE-n0lUpqUCFYeDbOV2SijIenL4nizPv1F7zja81T5iNMX-SNBAAVc3SBteBsyYjP_w2560-h1708-no_hieao0.jpg"
+        src="https://res.cloudinary.com/deuzrsg3m/image/upload/v1639967733/uploads/DSC05486_kin8du.jpg"
       />
       <div aria-hidden="true" className="absolute inset-0 z-10">
         <svg

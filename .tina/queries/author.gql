@@ -1,0 +1,36 @@
+query getAuthorWithNav($relativePath: String!) {
+  getNavDocument(relativePath: "site-nav.md") {
+    data {
+      ...NavParts2
+      __typename
+    }
+  }
+  getAuthorsDocument(relativePath: $relativePath) {
+    id
+    data {
+      __typename
+      ...AuthorsParts
+      ... on AuthorsAuthor {
+        posts_collection {
+          __typename
+          reference {
+            ... on Document {
+              sys {
+                filename
+                collection {
+                  slug
+                }
+              }
+            }
+            ... on PostsDocument {
+              __typename
+              data {
+                ...PostsParts
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

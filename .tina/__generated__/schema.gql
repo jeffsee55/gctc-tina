@@ -250,6 +250,7 @@ union PagesPageLayers = PagesPageLayersLayerTeam | PagesPageLayersLayerPostList 
 
 type PagesPage {
   title: String
+  _body: String
   seo: PagesPageSeo
   layers: [PagesPageLayers]
 }
@@ -456,6 +457,7 @@ type AuthorsAuthorEbook {
 type AuthorsAuthor {
   name: String
   description: String
+  _body: String
   role: String
   accolades: [AuthorsAuthorAccolades]
   image: String
@@ -484,6 +486,7 @@ type AuthorsAthleteSocial_media {
 type AuthorsAthlete {
   name: String
   description: String
+  _body: String
   country: String
   personal_bests: [AuthorsAthletePersonal_bests]
   accolades: [AuthorsAthleteAccolades]
@@ -739,6 +742,7 @@ input PagesPageLayersMutation {
 
 input PagesPageMutation {
   title: String
+  _body: String
   seo: PagesPageSeoMutation
   layers: [PagesPageLayersMutation]
 }
@@ -897,6 +901,7 @@ input AuthorsAuthorEbookMutation {
 input AuthorsAuthorMutation {
   name: String
   description: String
+  _body: String
   role: String
   accolades: [AuthorsAuthorAccoladesMutation]
   image: String
@@ -925,6 +930,7 @@ input AuthorsAthleteSocial_mediaMutation {
 input AuthorsAthleteMutation {
   name: String
   description: String
+  _body: String
   country: String
   personal_bests: [AuthorsAthletePersonal_bestsMutation]
   accolades: [AuthorsAthleteAccoladesMutation]

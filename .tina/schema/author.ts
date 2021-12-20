@@ -17,6 +17,12 @@ export const Athlete: TinaTemplate= {
       description: "Your first name & last name",
     },
     {
+      type: "string",
+      name: "_body",
+      isBody: true,
+      label: "Body",
+    },
+    {
       name: "country",
       label: "Country",
       type: "string",
@@ -104,6 +110,12 @@ export const Author: TinaTemplate= {
       label: "Description",
       type: "string",
       description: "Your first name & last name",
+    },
+    {
+      type: "string",
+      name: "_body",
+      isBody: true,
+      label: "Body",
     },
     {
       name: "role",

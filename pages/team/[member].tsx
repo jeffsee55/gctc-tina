@@ -9,21 +9,17 @@ import {
   CoachingForm,
   Stats,
 } from "../../components/team/member";
-import { createLocalClient } from "../../util/create-client";
 
-import { sdk, AsyncReturnType } from "../../.tina/sdk";
+import { ExperimentalGetTinaClient } from "../../.tina/__generated__/types";
+const client = ExperimentalGetTinaClient();
 
-const localSdk = sdk(createLocalClient());
-
+type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
 export const getStaticProps = async ({ params, preview }) => {
-  const localSdk = sdk(createLocalClient());
   const variables = { relativePath: `${params.member}.md` };
-
+  const tinaProps = await client.getAuthorWithNav(variables);
   return {
     props: {
-      preview: !!preview,
-      data: await localSdk.Member({ variables }),
-      ...localSdk.MemberString({ variables }),
+      ...tinaProps,
     },
   };
 };
@@ -42,16 +38,15 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const Static = (props: {
-  data: AsyncReturnType<typeof localSdk.Member>;
-}) => {
+export type MemberHero = Res["data"]["getAuthorsDocument"]["data"];
+export const Static = (props: Res) => {
   const { getAuthorsDocument, getNavDocument } = props.data;
   const { data } = getAuthorsDocument;
 
   switch (data.__typename) {
-    case "Athlete_Doc_Data":
+    case "AuthorsAthlete":
       return <pre>{JSON.stringify(data)}</pre>;
-    case "Author_Doc_Data":
+    case "AuthorsAuthor":
       return (
         <div>
           <Header2 {...getNavDocument} />
@@ -65,7 +60,7 @@ export const Static = (props: {
             />
           )}
           <Story {...data} />
-          {data.form && <CoachingForm {...data?.form?.data} />}
+          {/* {data.form && <CoachingForm {...data?.form?.data} />} */}
           {data.ebook && <Ebook {...data.ebook} />}
           <Footer {...getNavDocument} />
         </div>

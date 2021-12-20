@@ -1,8 +1,8 @@
 import React from "react";
-import { NavFragment } from "../../.tina/sdk";
 import { useEditState } from "../../util/edit-state";
+import { NavData } from "../../pages/posts/[slug]";
 
-export const Footer = (props: NavFragment) => {
+export const Footer = (props: NavData) => {
   const { edit, setEdit } = useEditState();
 
   return (
@@ -17,7 +17,7 @@ export const Footer = (props: NavFragment) => {
               <div>
                 {props.data.items.map((item) => {
                   switch (item.__typename) {
-                    case "NavItemPopout_Data":
+                    case "NavNavItemsNavItemPopout":
                       return (
                         <>
                           <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">

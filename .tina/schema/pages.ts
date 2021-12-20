@@ -11,6 +11,12 @@ export const Page: TinaTemplate = {
       label: "Title",
     },
     {
+      type: "string",
+      name: "_body",
+      isBody: true,
+      label: "Body",
+    },
+    {
       type: "object",
       name: "seo",
       label: "SEO",

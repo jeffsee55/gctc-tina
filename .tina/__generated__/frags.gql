@@ -39,6 +39,7 @@ fragment PostsParts on Posts {
 fragment PagesParts on Pages {
   ... on PagesPage {
     title
+    _body
     seo {
       __typename
       title
@@ -228,6 +229,7 @@ fragment AuthorsParts on Authors {
   ... on AuthorsAuthor {
     name
     description
+    _body
     role
     accolades {
       __typename
@@ -262,6 +264,7 @@ fragment AuthorsParts on Authors {
   ... on AuthorsAthlete {
     name
     description
+    _body
     country
     personal_bests {
       __typename

@@ -310,6 +310,17 @@
               ]
             },
             {
+              "type": "string",
+              "name": "_body",
+              "isBody": true,
+              "label": "Body",
+              "namespace": [
+                "pages",
+                "page",
+                "_body"
+              ]
+            },
+            {
               "type": "object",
               "name": "seo",
               "label": "SEO",
@@ -1666,6 +1677,17 @@
               ]
             },
             {
+              "type": "string",
+              "name": "_body",
+              "isBody": true,
+              "label": "Body",
+              "namespace": [
+                "authors",
+                "author",
+                "_body"
+              ]
+            },
+            {
               "name": "role",
               "label": "role",
               "type": "string",
@@ -1888,6 +1910,17 @@
                 "authors",
                 "athlete",
                 "description"
+              ]
+            },
+            {
+              "type": "string",
+              "name": "_body",
+              "isBody": true,
+              "label": "Body",
+              "namespace": [
+                "authors",
+                "athlete",
+                "_body"
               ]
             },
             {
