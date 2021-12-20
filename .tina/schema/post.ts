@@ -82,6 +82,12 @@ export const Post: TinaTemplate = {
       label: "Preface",
       type: "string",
     },
+    {
+      name: "_body",
+      label: "Body",
+      isBody: true,
+      type: "string",
+    },
   ],
 };
 

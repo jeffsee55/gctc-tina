@@ -6,44 +6,41 @@ import { Header2 } from "../../components/header";
 import { Img } from "../../components/image";
 import { Footer } from "../../components/footer";
 
-import { sdk, AsyncReturnType } from "../../.tina/sdk";
+import { ExperimentalGetTinaClient } from "../../.tina/__generated__/types";
+const client = ExperimentalGetTinaClient();
 
-const localSdk = sdk(createLocalClient());
+type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
 
 export async function getStaticProps({ params, preview }) {
   const relativePath = `${params.slug}.md`;
+  const tinaProps = await client.getPostAndNav({
+    relativePath,
+  });
 
   return {
     props: {
-      preview: !!preview,
-      data: await localSdk.PostQuery({
-        variables: { relativePath },
-      }),
-      ...localSdk.PostQueryString({ variables: { relativePath } }),
+      ...tinaProps,
     },
   };
 }
 
 export const getStaticPaths = async () => {
-  const result = await localSdk.StaticPostsPaths({});
   return {
-    paths: result.getCollection.documents.map((doc) => ({
+    paths: [{ sys: { filename: "fall-training-1" } }].map((doc) => ({
       params: { slug: doc.sys.filename },
     })),
     fallback: false,
   };
 };
 
-export const Static = (props: {
-  data: AsyncReturnType<typeof localSdk.PostQuery>;
-}) => {
-  const { getNavDocument, getPostsDocument } = props.data;
+export const Static = (props: Res) => {
+  const { getPostsDocument } = props.data;
 
   const { data } = getPostsDocument;
 
   return (
     <>
-      <Header2 {...getNavDocument} />
+      {/* <Header2 {...getNavDocument} /> */}
       <div className="h-12 md:h-32" />
       <div className="relative px-4 sm:px-6 lg:px-8">
         <div className="text-lg max-w-prose mx-auto mb-6 md:mb-24">
@@ -72,7 +69,7 @@ export const Static = (props: {
           />
         </div>
       </div>
-      <Footer {...getNavDocument} />
+      {/* <Footer {...getNavDocument} /> */}
     </>
   );
 };

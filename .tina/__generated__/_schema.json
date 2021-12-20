@@ -267,6 +267,17 @@
                 "post",
                 "preface"
               ]
+            },
+            {
+              "name": "_body",
+              "label": "Body",
+              "isBody": true,
+              "type": "string",
+              "namespace": [
+                "posts",
+                "post",
+                "_body"
+              ]
             }
           ],
           "namespace": [

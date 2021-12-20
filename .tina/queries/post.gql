@@ -94,3 +94,41 @@ query getCuratedPostAndNavDocument($relativePath: String!) {
     }
   }
 }
+
+query getPostAndNav($relativePath: String!) {
+  getNavDocument(relativePath: "site-nav.md") {
+    data {
+      ...NavParts2
+    }
+  }
+  getPostsDocument(relativePath: $relativePath) {
+    id
+    sys {
+      filename
+      collection {
+        slug
+      }
+    }
+    data {
+      ...PostsParts
+      ... on PostsPost {
+        author {
+          ... on AuthorsDocument {
+            id
+            sys {
+              filename
+              collection {
+                slug
+              }
+            }
+            data {
+              ... on AuthorsAuthor {
+                ...AuthorsParts
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

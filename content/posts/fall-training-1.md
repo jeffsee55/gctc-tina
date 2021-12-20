@@ -1,6 +1,6 @@
 ---
 title: The Fall Foundation - Part 1
-image: https://res.cloudinary.com/deuzrsg3m/image/upload/v1613613891/ACtC-3fdr81NYXHLd7g26j_VuMPN17azl76HuNPgcBhMcIPPpYUrPTopWjrWRqRZK5f3KnHDhOdcHoF7YHahU1h3M8akE-n0lUpqUCFYeDbOV2SijIenL4nizPv1F7zja81T5iNMX-SNBAAVc3SBteBsyYjP_w2560-h1708-no_hieao0.jpg
+image: https://images.unsplash.com/photo-1523321826514-fcd51dbe0c2e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80
 author: content/authors/terrence.md
 preface: >-
   So far the year 2020 has been and will continue to be a year unlike any that
