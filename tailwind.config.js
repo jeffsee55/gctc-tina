@@ -2,7 +2,8 @@ const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  purge: [
+  mode: "jit",
+  content: [
     "./pages/**/*.tsx",
     "./components/**/*.tsx",
     "./pages_components/**/*.tsx",
@@ -63,8 +64,4 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("@tailwindcss/aspect-ratio"),
   ],
-  // variants: {
-  //   extend: {},
-  // },
-  // plugins: [],
 };
