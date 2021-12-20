@@ -36,10 +36,10 @@ items:
         icon: play
   - _template: navItemMore
     label: Blog
-    featured_post: training-camp.md
-    from_the_blog:
-      - goal-setting.md
-      - fall-training-3.md
+    featured_post: content/posts/training-camp.md
+    # from_the_blog:
+    #   - reference: content/posts/goal-setting.md
+    #   - reference: content/posts/fall-training-3.md
     read_more:
       label: View all posts
       value: /posts

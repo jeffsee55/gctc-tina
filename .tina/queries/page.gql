@@ -1,0 +1,203 @@
+query getPagesAndNavDocument($relativePath: String!) {
+  getNavDocument(relativePath: "site-nav.md") {
+    data {
+      ...NavParts2
+    }
+  }
+  getPagesDocument(relativePath: $relativePath) {
+    id
+    __typename
+    data {
+      __typename
+      ...PagesPartsWithReferences
+    }
+  }
+}
+
+fragment NavParts2 on Nav {
+  ... on NavNav {
+    items {
+      __typename
+      ... on NavNavItemsNavItemPopout {
+        label
+        children {
+          __typename
+          label
+          description
+          value
+          icon
+        }
+        extra {
+          __typename
+          label
+          value
+          icon
+        }
+      }
+      ... on NavNavItemsNavItemMore {
+        label
+        featured_post {
+          ... on Document {
+            id
+          }
+        }
+        from_the_blog {
+          __typename
+          reference {
+            ... on PostsDocument {
+              __typename
+              ... on PostsDocument {
+                id
+              }
+            }
+          }
+        }
+        read_more {
+          __typename
+          label
+          value
+        }
+      }
+      ... on NavNavItemsNavItemLink {
+        label
+        value
+      }
+    }
+    show_auth
+  }
+}
+
+fragment PagesPartsWithReferences on Pages {
+  ... on PagesPage {
+    title
+    seo {
+      __typename
+      title
+      description
+      image
+    }
+    layers {
+      __typename
+      ... on PagesPageLayersLayerTeam {
+        description
+        members {
+          __typename
+          reference {
+            ... on AuthorsDocument {
+              __typename
+              id
+              sys {
+                filename
+              }
+              data {
+                __typename
+                ... on AuthorsAuthor {
+                  image
+                  name
+                  role
+                  description
+                }
+              }
+            }
+            ... on Document {
+              id
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerPostList {
+        description
+        posts {
+          __typename
+          reference {
+            ... on PostsDocument {
+              __typename
+              sys {
+                filename
+              }
+              data {
+                ... on PostsPost {
+                  ...PostsParts
+                }
+              }
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerDarkFeature {
+        hint
+        title
+        description
+        feature_list {
+          __typename
+          header
+          description
+        }
+      }
+      ... on PagesPageLayersLayerLeadership {
+        title
+        leaders {
+          __typename
+          reference {
+            ... on AuthorsDocument {
+              __typename
+              sys {
+                filename
+              }
+              data {
+                ... on AuthorsAuthor {
+                  __typename
+                  name
+                  description
+                  role
+                  accolades {
+                    figure
+                    description
+                  }
+                  image
+                }
+              }
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerSponsors {
+        title
+        sponsors {
+          __typename
+          name
+          link
+        }
+      }
+      ... on PagesPageLayersCuratedCollection {
+        description
+        posts_collection {
+          __typename
+          reference {
+            __typename
+            ... on PostsDocument {
+              data {
+                ... on PostsPost {
+                  title
+                }
+              }
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerCta {
+        description
+        cta_text
+        cta_link
+        cta_image
+      }
+    }
+  }
+  ... on PagesTrainingPage {
+    faq {
+      __typename
+      question
+      answer
+    }
+  }
+}

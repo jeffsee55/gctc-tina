@@ -533,7 +533,11 @@ type NavNavItemsNavItemPopout {
 
 union NavNavItemsNavItemMoreFeatured_postDocument = PostsDocument
 
-union NavNavItemsNavItemMoreFrom_the_blogDocument = PostsDocument
+union NavNavItemsNavItemMoreFrom_the_blogReferenceDocument = PostsDocument
+
+type NavNavItemsNavItemMoreFrom_the_blog {
+  reference: NavNavItemsNavItemMoreFrom_the_blogReferenceDocument
+}
 
 type NavNavItemsNavItemMoreRead_more {
   label: String
@@ -543,7 +547,7 @@ type NavNavItemsNavItemMoreRead_more {
 type NavNavItemsNavItemMore {
   label: String
   featured_post: NavNavItemsNavItemMoreFeatured_postDocument
-  from_the_blog: NavNavItemsNavItemMoreFrom_the_blogDocument
+  from_the_blog: [NavNavItemsNavItemMoreFrom_the_blog]
   read_more: NavNavItemsNavItemMoreRead_more
 }
 
@@ -950,6 +954,10 @@ input NavNavItemsNavItemPopoutMutation {
   extra: [NavNavItemsNavItemPopoutExtraMutation]
 }
 
+input NavNavItemsNavItemMoreFrom_the_blogMutation {
+  reference: String
+}
+
 input NavNavItemsNavItemMoreRead_moreMutation {
   label: String
   value: String
@@ -958,7 +966,7 @@ input NavNavItemsNavItemMoreRead_moreMutation {
 input NavNavItemsNavItemMoreMutation {
   label: String
   featured_post: String
-  from_the_blog: String
+  from_the_blog: [NavNavItemsNavItemMoreFrom_the_blogMutation]
   read_more: NavNavItemsNavItemMoreRead_moreMutation
 }
 

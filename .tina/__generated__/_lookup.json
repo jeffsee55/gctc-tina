@@ -239,8 +239,8 @@
     "createDocument": "create",
     "updateDocument": "update"
   },
-  "NavNavItemsNavItemMoreFrom_the_blogDocument": {
-    "type": "NavNavItemsNavItemMoreFrom_the_blogDocument",
+  "NavNavItemsNavItemMoreFrom_the_blogReferenceDocument": {
+    "type": "NavNavItemsNavItemMoreFrom_the_blogReferenceDocument",
     "resolveType": "multiCollectionDocument",
     "createDocument": "create",
     "updateDocument": "update"

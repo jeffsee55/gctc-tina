@@ -6,57 +6,52 @@ import { Header2 } from "../../components/header";
 import { Footer } from "../../components/footer";
 import { Img } from "../../components/image";
 
-import { sdk, AsyncReturnType } from "../../.tina/sdk";
-import { CuratedPostsQuery, FilterByTypename } from "../../.tina/sdk";
+import { ExperimentalGetTinaClient } from "../../.tina/__generated__/types";
+const client = ExperimentalGetTinaClient();
 
-const localSdk = sdk(createLocalClient());
-
-export async function getStaticProps({ preview }) {
-  const relativePath = `posts.md`;
-  const variables = { relativePath };
+type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
+export async function getStaticProps() {
+  const tinaProps = await client.getCuratedPostAndNavDocument({
+    relativePath: "posts.md",
+  });
 
   return {
     props: {
-      data: await localSdk.CuratedPosts({
-        variables,
-      }),
-      preview: !!preview,
-      ...localSdk.CuratedPostsString({ variables }),
+      ...tinaProps,
     },
   };
 }
 
-export const Static = (props: {
-  data: AsyncReturnType<typeof localSdk.CuratedPosts>;
-}) => {
-  const { getCuratedDocument, getNavDocument } = props.data;
+export const Static = (props: Res) => {
+  const { getCuratedDocument } = props.data;
   const rest = getCuratedDocument;
 
   return (
     <>
-      <Header2 {...getNavDocument} />
+      {/* <Header2 {...getNavDocument} /> */}
       {rest.data.curations?.map((curation) => {
         switch (curation?.__typename) {
-          case "CuratedHero_Data":
-            return <HeroPost {...curation.hero_post} />;
-          case "CuratedCollection_Data":
+          case "CuratedCuratedCurationsCuratedHero":
+            return <HeroPost {...curation} />;
+          case "CuratedCuratedCurationsCuratedCollection":
             return <FeatureList {...curation} />;
         }
       })}
       {/* <div>
         <NewsletterCta />
       </div> */}
-      <Footer {...getNavDocument} />
+      {/* <Footer {...getNavDocument} /> */}
     </>
   );
 };
 export default Static;
 
-type CurationsType = CuratedPostsQuery["getCuratedDocument"]["data"]["curations"][0];
-
-export const HeroPost = (
-  props: FilterByTypename<CurationsType, "CuratedHero_Data">["hero_post"]
-) => {
+type HeroPostProps = Extract<
+  Res["data"]["getCuratedDocument"]["data"]["curations"][number],
+  { __typename: "CuratedCuratedCurationsCuratedHero" }
+>;
+export const HeroPost = (props: HeroPostProps) => {
+  const post = props.hero_post;
   return (
     <div className="relative mb-24">
       <div className="relative overflow-hidden">
@@ -65,7 +60,7 @@ export const HeroPost = (
           className="form absolute -top-24 -bottom-24 -right-24 -left-24 pointer-events-none"
         >
           <div className="relative transform -translate-y-1/2 top-1/2 scale-">
-            <Img src={props.data?.image || ""} width={2000} />
+            <Img src={post.data?.image || ""} width={2000} />
           </div>
         </div>
         <div className="relative z-10 pointer-events-none">
@@ -78,7 +73,7 @@ export const HeroPost = (
                 </div>
               </div>
               <h1 className="text-4xl tracking-tight leading-10 font-extrabold text-white sm:text-5xl sm:leading-none md:text-6xl">
-                {props.data?.title}
+                {post.data?.title}
               </h1>
             </div>
           </div>
@@ -92,18 +87,18 @@ export const HeroPost = (
             <div className="relative transform -translate-y-24">
               <div className="bg-white p-8 rounded shadow-xl">
                 <Markdown
-                  content={props.data?.preface}
+                  content={post.data?.preface}
                   classNames={{
                     p:
                       "line-clamp-3 text-base leading-6 text-gray-500 undefined",
                   }}
                 />
                 <div className="flex justify-between items-center mt-8">
-                  <Snippet className="" {...props.data?.author} />
+                  <Snippet className="" {...post.data?.author} />
                   <a
                     href={`${
-                      props.sys?.collection?.slug
-                    }/${props.sys?.breadcrumbs?.join("/")}`}
+                      post.sys?.collection?.slug
+                    }/${post.sys?.breadcrumbs?.join("/")}`}
                     className="flex items-center justify-between text-base leading-6 font-semibold text-steel-medium hover:text-steel-light transition ease-in-out duration-150"
                   >
                     <span className="">Read full story</span>
@@ -132,9 +127,11 @@ export const HeroPost = (
   );
 };
 
-export const FeatureList = (
-  props: FilterByTypename<CurationsType, "CuratedCollection_Data">
-) => {
+type FeatureListProps = Extract<
+  Res["data"]["getCuratedDocument"]["data"]["curations"][number],
+  { __typename: "CuratedCuratedCurationsCuratedCollection" }
+>;
+export const FeatureList = (props: FeatureListProps) => {
   return (
     <div className="bg-white pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
       <div className="relative max-w-lg mx-auto lg:max-w-7xl">
@@ -149,7 +146,8 @@ export const FeatureList = (
           />
         </div>
         <div className="mt-12 grid gap-16 border-t-2 border-gray-100 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12">
-          {props.posts_collection?.map((post) => {
+          {props.posts_collection?.map((p) => {
+            const post = p.reference;
             if (!post) {
               // FIXME this shouldn't be optional
               return <span />;
@@ -181,50 +179,6 @@ export const FeatureList = (
               </div>
             );
           })}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const NewsletterCta = () => {
-  return (
-    <div className="bg-white">
-      <div className="max-w-screen-xl mx-auto px-4 py-12 md:px-6 lg:py-16 lg:px-6 xl:px-0">
-        <div className="px-6 py-6 bg-steel-dark rounded-lg md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
-          <div className="xl:w-0 xl:flex-1">
-            <h2 className="text-2xl leading-8 font-extrabold tracking-tight text-white sm:text-3xl sm:leading-9">
-              Want products news and updates?
-            </h2>
-            <p
-              className="mt-3 max-w-3xl text-lg leading-6 text-steel-xlight"
-              id="newsletter-headline"
-            >
-              Sign up for our newsletter to stay up to date.
-            </p>
-          </div>
-          <div className="mt-8 sm:w-full sm:max-w-md xl:mt-0 xl:ml-8">
-            <form className="sm:flex" aria-labelledby="newsletter-headline">
-              <input
-                aria-label="Email address"
-                type="email"
-                required
-                className="appearance-none w-full px-5 py-3 border border-transparent text-base leading-6 rounded-md text-gray-900 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 transition duration-150 ease-in-out"
-                placeholder="Enter your email"
-              />
-              <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-                <button className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-steel-light hover:bg-indigo-400 focus:outline-none focus:bg-indigo-400 transition duration-150 ease-in-out">
-                  Notify me
-                </button>
-              </div>
-            </form>
-            <p className="mt-3 text-sm leading-5 text-steel-xlight">
-              We care about the protection of your data. Read our
-              <a href="#" className="text-white font-medium underline">
-                Privacy Policy.
-              </a>
-            </p>
-          </div>
         </div>
       </div>
     </div>

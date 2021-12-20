@@ -1,5 +1,5 @@
 ---
-title: Hom
+title: Home
 layers:
   - _template: layerPostList
     description: >-
@@ -15,15 +15,9 @@ layers:
       - reference: content/posts/dreams-on-hold.md
       - reference: content/posts/love-more-than-ever.md
       - reference: content/posts/welcome.md
-  - _template: layerTeam
-    description: >-
-      ## About Us
-
-
-      Nulla quam felis, enim faucibus proin velit, ornare id pretium. Augue
-      ultrices sed arcu condimentum vestibulum suspendisse. Volutpat eu faucibus
-      vivamus eget bibendum cras.
-    members:
+  - _template: layerLeadership
+    title: Meet our Leadership
+    leaders:
       - reference: content/authors/terrence.md
       - reference: content/authors/jen.md
 _template: page

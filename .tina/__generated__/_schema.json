@@ -2218,9 +2218,25 @@
                     {
                       "label": "From The Blog",
                       "name": "from_the_blog",
-                      "type": "reference",
-                      "collections": [
-                        "posts"
+                      "type": "object",
+                      "list": true,
+                      "fields": [
+                        {
+                          "label": "Reference",
+                          "name": "reference",
+                          "type": "reference",
+                          "collections": [
+                            "posts"
+                          ],
+                          "namespace": [
+                            "nav",
+                            "nav",
+                            "items",
+                            "navItemMore",
+                            "from_the_blog",
+                            "reference"
+                          ]
+                        }
                       ],
                       "namespace": [
                         "nav",

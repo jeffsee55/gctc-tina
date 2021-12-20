@@ -1,27 +1,7 @@
 import React from "react";
-import { TinaCMS, Form, useCMS, GlobalFormPlugin } from "tinacms";
-import { TinaCloudAuthWall } from "tina-graphql-gateway";
+import { TinaCMS } from "tinacms";
 // import { SidebarPlaceholder } from "./helper-components";
 import { createClient } from "../../util/create-client";
-import { useGraphqlForms } from "tina-graphql-gateway";
-
-const TinaWrapper = (props) => {
-  const cms = React.useMemo(() => {
-    return new TinaCMS({
-      apis: {
-        tina: createClient(),
-      },
-      sidebar: true,
-      enabled: true,
-    });
-  }, []);
-
-  return (
-    <TinaCloudAuthWall cms={cms}>
-      <Inner {...props} />
-    </TinaCloudAuthWall>
-  );
-};
 
 const Inner = (props) => {
   const cms = useCMS();

@@ -3,7 +3,6 @@ import * as Tina from "../../.tina/types";
 import { Markdown } from "../markdown";
 
 export const Team = (props: Tina.LayerTeam_Data) => {
-  return <div>Team</div>;
   return (
     <div className="bg-white">
       <div className="mx-auto py-12 px-4 max-w-screen-xl sm:px-6 lg:px-8 lg:py-24">

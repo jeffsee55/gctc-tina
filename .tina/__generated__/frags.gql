@@ -309,8 +309,11 @@ fragment NavParts on Nav {
           }
         }
         from_the_blog {
-          ... on Document {
-            id
+          __typename
+          reference {
+            ... on Document {
+              id
+            }
           }
         }
         read_more {

@@ -743,7 +743,12 @@ export type NavNavItemsNavItemPopout = {
 
 export type NavNavItemsNavItemMoreFeatured_PostDocument = PostsDocument;
 
-export type NavNavItemsNavItemMoreFrom_The_BlogDocument = PostsDocument;
+export type NavNavItemsNavItemMoreFrom_The_BlogReferenceDocument = PostsDocument;
+
+export type NavNavItemsNavItemMoreFrom_The_Blog = {
+  __typename?: 'NavNavItemsNavItemMoreFrom_the_blog';
+  reference?: Maybe<NavNavItemsNavItemMoreFrom_The_BlogReferenceDocument>;
+};
 
 export type NavNavItemsNavItemMoreRead_More = {
   __typename?: 'NavNavItemsNavItemMoreRead_more';
@@ -755,7 +760,7 @@ export type NavNavItemsNavItemMore = {
   __typename?: 'NavNavItemsNavItemMore';
   label?: Maybe<Scalars['String']>;
   featured_post?: Maybe<NavNavItemsNavItemMoreFeatured_PostDocument>;
-  from_the_blog?: Maybe<NavNavItemsNavItemMoreFrom_The_BlogDocument>;
+  from_the_blog?: Maybe<Array<Maybe<NavNavItemsNavItemMoreFrom_The_Blog>>>;
   read_more?: Maybe<NavNavItemsNavItemMoreRead_More>;
 };
 
@@ -1273,6 +1278,10 @@ export type NavNavItemsNavItemPopoutMutation = {
   extra?: InputMaybe<Array<InputMaybe<NavNavItemsNavItemPopoutExtraMutation>>>;
 };
 
+export type NavNavItemsNavItemMoreFrom_The_BlogMutation = {
+  reference?: InputMaybe<Scalars['String']>;
+};
+
 export type NavNavItemsNavItemMoreRead_MoreMutation = {
   label?: InputMaybe<Scalars['String']>;
   value?: InputMaybe<Scalars['String']>;
@@ -1281,7 +1290,7 @@ export type NavNavItemsNavItemMoreRead_MoreMutation = {
 export type NavNavItemsNavItemMoreMutation = {
   label?: InputMaybe<Scalars['String']>;
   featured_post?: InputMaybe<Scalars['String']>;
-  from_the_blog?: InputMaybe<Scalars['String']>;
+  from_the_blog?: InputMaybe<Array<InputMaybe<NavNavItemsNavItemMoreFrom_The_BlogMutation>>>;
   read_more?: InputMaybe<NavNavItemsNavItemMoreRead_MoreMutation>;
 };
 
@@ -1305,6 +1314,28 @@ export type NavMutation = {
   nav?: InputMaybe<NavNavMutation>;
 };
 
+export type GetPagesAndNavDocumentQueryVariables = Exact<{
+  relativePath: Scalars['String'];
+}>;
+
+
+export type GetPagesAndNavDocumentQuery = { __typename?: 'Query', getNavDocument: { __typename?: 'NavDocument', data: { __typename?: 'NavNav', show_auth?: boolean | null | undefined, items?: Array<{ __typename: 'NavNavItemsNavItemPopout', label?: string | null | undefined, children?: Array<{ __typename: 'NavNavItemsNavItemPopoutChildren', label?: string | null | undefined, description?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined, extra?: Array<{ __typename: 'NavNavItemsNavItemPopoutExtra', label?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'NavNavItemsNavItemMore', label?: string | null | undefined, featured_post?: { __typename?: 'PostsDocument', id: string } | null | undefined, from_the_blog?: Array<{ __typename: 'NavNavItemsNavItemMoreFrom_the_blog', reference?: { __typename: 'PostsDocument', id: string } | null | undefined } | null | undefined> | null | undefined, read_more?: { __typename: 'NavNavItemsNavItemMoreRead_more', label?: string | null | undefined, value?: string | null | undefined } | null | undefined } | { __typename: 'NavNavItemsNavItemLink', label?: string | null | undefined, value?: string | null | undefined } | null | undefined> | null | undefined } }, getPagesDocument: { __typename: 'PagesDocument', id: string, data: { __typename: 'PagesPage', title?: string | null | undefined, seo?: { __typename: 'PagesPageSeo', title?: string | null | undefined, description?: string | null | undefined, image?: string | null | undefined } | null | undefined, layers?: Array<{ __typename: 'PagesPageLayersLayerTeam', description?: string | null | undefined, members?: Array<{ __typename: 'PagesPageLayersLayerTeamMembers', reference?: { __typename: 'AuthorsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string }, data: { __typename: 'AuthorsAuthor', image?: string | null | undefined, name?: string | null | undefined, role?: string | null | undefined, description?: string | null | undefined } | { __typename: 'AuthorsAthlete' } } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerPostList', description?: string | null | undefined, posts?: Array<{ __typename: 'PagesPageLayersLayerPostListPosts', reference?: { __typename: 'PostsDocument', sys: { __typename?: 'SystemInfo', filename: string }, data: { __typename?: 'PostsPost', title?: string | null | undefined, tags?: Array<string | null | undefined> | null | undefined, image?: string | null | undefined, image_small?: string | null | undefined, preface?: string | null | undefined, accolades?: { __typename: 'PostsPostAccolades', figure?: string | null | undefined, description?: string | null | undefined } | null | undefined, author?: { __typename?: 'AuthorsDocument', id: string } | null | undefined } } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerDarkFeature', hint?: string | null | undefined, title?: string | null | undefined, description?: string | null | undefined, feature_list?: Array<{ __typename: 'PagesPageLayersLayerDarkFeatureFeature_list', header?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerLeadership', title?: string | null | undefined, leaders?: Array<{ __typename: 'PagesPageLayersLayerLeadershipLeaders', reference?: { __typename: 'AuthorsDocument', sys: { __typename?: 'SystemInfo', filename: string }, data: { __typename: 'AuthorsAuthor', name?: string | null | undefined, description?: string | null | undefined, role?: string | null | undefined, image?: string | null | undefined, accolades?: Array<{ __typename?: 'AuthorsAuthorAccolades', figure?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined } | { __typename?: 'AuthorsAthlete' } } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerSponsors', title?: string | null | undefined, sponsors?: Array<{ __typename: 'PagesPageLayersLayerSponsorsSponsors', name?: string | null | undefined, link?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersCuratedCollection', description?: string | null | undefined, posts_collection?: Array<{ __typename: 'PagesPageLayersCuratedCollectionPosts_collection', reference?: { __typename: 'PostsDocument', data: { __typename?: 'PostsPost', title?: string | null | undefined } } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerCta', description?: string | null | undefined, cta_text?: string | null | undefined, cta_link?: string | null | undefined, cta_image?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesTrainingPage', faq?: Array<{ __typename: 'PagesTrainingPageFaq', question?: string | null | undefined, answer?: string | null | undefined } | null | undefined> | null | undefined } } };
+
+export type NavParts2Fragment = { __typename?: 'NavNav', show_auth?: boolean | null | undefined, items?: Array<{ __typename: 'NavNavItemsNavItemPopout', label?: string | null | undefined, children?: Array<{ __typename: 'NavNavItemsNavItemPopoutChildren', label?: string | null | undefined, description?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined, extra?: Array<{ __typename: 'NavNavItemsNavItemPopoutExtra', label?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'NavNavItemsNavItemMore', label?: string | null | undefined, featured_post?: { __typename?: 'PostsDocument', id: string } | null | undefined, from_the_blog?: Array<{ __typename: 'NavNavItemsNavItemMoreFrom_the_blog', reference?: { __typename: 'PostsDocument', id: string } | null | undefined } | null | undefined> | null | undefined, read_more?: { __typename: 'NavNavItemsNavItemMoreRead_more', label?: string | null | undefined, value?: string | null | undefined } | null | undefined } | { __typename: 'NavNavItemsNavItemLink', label?: string | null | undefined, value?: string | null | undefined } | null | undefined> | null | undefined };
+
+type PagesPartsWithReferences_PagesPage_Fragment = { __typename?: 'PagesPage', title?: string | null | undefined, seo?: { __typename: 'PagesPageSeo', title?: string | null | undefined, description?: string | null | undefined, image?: string | null | undefined } | null | undefined, layers?: Array<{ __typename: 'PagesPageLayersLayerTeam', description?: string | null | undefined, members?: Array<{ __typename: 'PagesPageLayersLayerTeamMembers', reference?: { __typename: 'AuthorsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string }, data: { __typename: 'AuthorsAuthor', image?: string | null | undefined, name?: string | null | undefined, role?: string | null | undefined, description?: string | null | undefined } | { __typename: 'AuthorsAthlete' } } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerPostList', description?: string | null | undefined, posts?: Array<{ __typename: 'PagesPageLayersLayerPostListPosts', reference?: { __typename: 'PostsDocument', sys: { __typename?: 'SystemInfo', filename: string }, data: { __typename?: 'PostsPost', title?: string | null | undefined, tags?: Array<string | null | undefined> | null | undefined, image?: string | null | undefined, image_small?: string | null | undefined, preface?: string | null | undefined, accolades?: { __typename: 'PostsPostAccolades', figure?: string | null | undefined, description?: string | null | undefined } | null | undefined, author?: { __typename?: 'AuthorsDocument', id: string } | null | undefined } } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerDarkFeature', hint?: string | null | undefined, title?: string | null | undefined, description?: string | null | undefined, feature_list?: Array<{ __typename: 'PagesPageLayersLayerDarkFeatureFeature_list', header?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerLeadership', title?: string | null | undefined, leaders?: Array<{ __typename: 'PagesPageLayersLayerLeadershipLeaders', reference?: { __typename: 'AuthorsDocument', sys: { __typename?: 'SystemInfo', filename: string }, data: { __typename: 'AuthorsAuthor', name?: string | null | undefined, description?: string | null | undefined, role?: string | null | undefined, image?: string | null | undefined, accolades?: Array<{ __typename?: 'AuthorsAuthorAccolades', figure?: string | null | undefined, description?: string | null | undefined } | null | undefined> | null | undefined } | { __typename?: 'AuthorsAthlete' } } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerSponsors', title?: string | null | undefined, sponsors?: Array<{ __typename: 'PagesPageLayersLayerSponsorsSponsors', name?: string | null | undefined, link?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersCuratedCollection', description?: string | null | undefined, posts_collection?: Array<{ __typename: 'PagesPageLayersCuratedCollectionPosts_collection', reference?: { __typename: 'PostsDocument', data: { __typename?: 'PostsPost', title?: string | null | undefined } } | null | undefined } | null | undefined> | null | undefined } | { __typename: 'PagesPageLayersLayerCta', description?: string | null | undefined, cta_text?: string | null | undefined, cta_link?: string | null | undefined, cta_image?: string | null | undefined } | null | undefined> | null | undefined };
+
+type PagesPartsWithReferences_PagesTrainingPage_Fragment = { __typename?: 'PagesTrainingPage', faq?: Array<{ __typename: 'PagesTrainingPageFaq', question?: string | null | undefined, answer?: string | null | undefined } | null | undefined> | null | undefined };
+
+export type PagesPartsWithReferencesFragment = PagesPartsWithReferences_PagesPage_Fragment | PagesPartsWithReferences_PagesTrainingPage_Fragment;
+
+export type GetCuratedPostAndNavDocumentQueryVariables = Exact<{
+  relativePath: Scalars['String'];
+}>;
+
+
+export type GetCuratedPostAndNavDocumentQuery = { __typename?: 'Query', getNavDocument: { __typename?: 'NavDocument', data: { __typename?: 'NavNav', show_auth?: boolean | null | undefined, items?: Array<{ __typename: 'NavNavItemsNavItemPopout', label?: string | null | undefined, children?: Array<{ __typename: 'NavNavItemsNavItemPopoutChildren', label?: string | null | undefined, description?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined, extra?: Array<{ __typename: 'NavNavItemsNavItemPopoutExtra', label?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'NavNavItemsNavItemMore', label?: string | null | undefined, featured_post?: { __typename?: 'PostsDocument', id: string } | null | undefined, from_the_blog?: Array<{ __typename: 'NavNavItemsNavItemMoreFrom_the_blog', reference?: { __typename: 'PostsDocument', id: string } | null | undefined } | null | undefined> | null | undefined, read_more?: { __typename: 'NavNavItemsNavItemMoreRead_more', label?: string | null | undefined, value?: string | null | undefined } | null | undefined } | { __typename: 'NavNavItemsNavItemLink', label?: string | null | undefined, value?: string | null | undefined } | null | undefined> | null | undefined } }, getCuratedDocument: { __typename?: 'CuratedDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string }, data: { __typename: 'CuratedCurated', title?: string | null | undefined, curations?: Array<{ __typename: 'CuratedCuratedCurationsCuratedHero', description?: string | null | undefined, hero_post?: { __typename: 'PostsDocument', sys: { __typename?: 'SystemInfo', filename: string, breadcrumbs: Array<string>, collection: { __typename?: 'Collection', slug: string } }, data: { __typename: 'PostsPost', title?: string | null | undefined, tags?: Array<string | null | undefined> | null | undefined, image?: string | null | undefined, image_small?: string | null | undefined, preface?: string | null | undefined, author?: { __typename: 'AuthorsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string }, data: { __typename?: 'AuthorsAuthor', name?: string | null | undefined, image?: string | null | undefined } | { __typename?: 'AuthorsAthlete' } } | null | undefined, accolades?: { __typename: 'PostsPostAccolades', figure?: string | null | undefined, description?: string | null | undefined } | null | undefined } } | null | undefined } | { __typename: 'CuratedCuratedCurationsCuratedCollection', description?: string | null | undefined, posts_collection?: Array<{ __typename: 'CuratedCuratedCurationsCuratedCollectionPosts_collection', reference?: { __typename: 'PostsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, breadcrumbs: Array<string>, collection: { __typename?: 'Collection', slug: string } }, data: { __typename: 'PostsPost', title?: string | null | undefined, tags?: Array<string | null | undefined> | null | undefined, image?: string | null | undefined, image_small?: string | null | undefined, preface?: string | null | undefined, author?: { __typename: 'AuthorsDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string }, data: { __typename?: 'AuthorsAuthor', name?: string | null | undefined, image?: string | null | undefined } | { __typename?: 'AuthorsAthlete' } } | null | undefined, accolades?: { __typename: 'PostsPostAccolades', figure?: string | null | undefined, description?: string | null | undefined } | null | undefined } } | null | undefined } | null | undefined> | null | undefined } | null | undefined> | null | undefined } } };
+
 export type TrainingPartsFragment = { __typename?: 'TrainingTraining', name?: string | null | undefined, description?: string | null | undefined, event?: string | null | undefined, category?: string | null | undefined, time?: string | null | undefined, workouts?: Array<{ __typename: 'TrainingTrainingWorkouts', Day?: number | null | undefined, Title?: string | null | undefined, Description?: string | null | undefined, Category?: string | null | undefined } | null | undefined> | null | undefined };
 
 export type PostsPartsFragment = { __typename?: 'PostsPost', title?: string | null | undefined, tags?: Array<string | null | undefined> | null | undefined, image?: string | null | undefined, image_small?: string | null | undefined, preface?: string | null | undefined, accolades?: { __typename: 'PostsPostAccolades', figure?: string | null | undefined, description?: string | null | undefined } | null | undefined, author?: { __typename?: 'AuthorsDocument', id: string } | null | undefined };
@@ -1325,7 +1356,7 @@ type AuthorsParts_AuthorsAthlete_Fragment = { __typename?: 'AuthorsAthlete', nam
 
 export type AuthorsPartsFragment = AuthorsParts_AuthorsAuthor_Fragment | AuthorsParts_AuthorsAthlete_Fragment;
 
-export type NavPartsFragment = { __typename?: 'NavNav', show_auth?: boolean | null | undefined, items?: Array<{ __typename: 'NavNavItemsNavItemPopout', label?: string | null | undefined, children?: Array<{ __typename: 'NavNavItemsNavItemPopoutChildren', label?: string | null | undefined, description?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined, extra?: Array<{ __typename: 'NavNavItemsNavItemPopoutExtra', label?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'NavNavItemsNavItemMore', label?: string | null | undefined, featured_post?: { __typename?: 'PostsDocument', id: string } | null | undefined, from_the_blog?: { __typename?: 'PostsDocument', id: string } | null | undefined, read_more?: { __typename: 'NavNavItemsNavItemMoreRead_more', label?: string | null | undefined, value?: string | null | undefined } | null | undefined } | { __typename: 'NavNavItemsNavItemLink', label?: string | null | undefined, value?: string | null | undefined } | null | undefined> | null | undefined };
+export type NavPartsFragment = { __typename?: 'NavNav', show_auth?: boolean | null | undefined, items?: Array<{ __typename: 'NavNavItemsNavItemPopout', label?: string | null | undefined, children?: Array<{ __typename: 'NavNavItemsNavItemPopoutChildren', label?: string | null | undefined, description?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined, extra?: Array<{ __typename: 'NavNavItemsNavItemPopoutExtra', label?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'NavNavItemsNavItemMore', label?: string | null | undefined, featured_post?: { __typename?: 'PostsDocument', id: string } | null | undefined, from_the_blog?: Array<{ __typename: 'NavNavItemsNavItemMoreFrom_the_blog', reference?: { __typename?: 'PostsDocument', id: string } | null | undefined } | null | undefined> | null | undefined, read_more?: { __typename: 'NavNavItemsNavItemMoreRead_more', label?: string | null | undefined, value?: string | null | undefined } | null | undefined } | { __typename: 'NavNavItemsNavItemLink', label?: string | null | undefined, value?: string | null | undefined } | null | undefined> | null | undefined };
 
 export type GetTrainingDocumentQueryVariables = Exact<{
   relativePath: Scalars['String'];
@@ -1404,28 +1435,64 @@ export type GetNavDocumentQueryVariables = Exact<{
 }>;
 
 
-export type GetNavDocumentQuery = { __typename?: 'Query', getNavDocument: { __typename?: 'NavDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'NavNav', show_auth?: boolean | null | undefined, items?: Array<{ __typename: 'NavNavItemsNavItemPopout', label?: string | null | undefined, children?: Array<{ __typename: 'NavNavItemsNavItemPopoutChildren', label?: string | null | undefined, description?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined, extra?: Array<{ __typename: 'NavNavItemsNavItemPopoutExtra', label?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'NavNavItemsNavItemMore', label?: string | null | undefined, featured_post?: { __typename?: 'PostsDocument', id: string } | null | undefined, from_the_blog?: { __typename?: 'PostsDocument', id: string } | null | undefined, read_more?: { __typename: 'NavNavItemsNavItemMoreRead_more', label?: string | null | undefined, value?: string | null | undefined } | null | undefined } | { __typename: 'NavNavItemsNavItemLink', label?: string | null | undefined, value?: string | null | undefined } | null | undefined> | null | undefined } } };
+export type GetNavDocumentQuery = { __typename?: 'Query', getNavDocument: { __typename?: 'NavDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'NavNav', show_auth?: boolean | null | undefined, items?: Array<{ __typename: 'NavNavItemsNavItemPopout', label?: string | null | undefined, children?: Array<{ __typename: 'NavNavItemsNavItemPopoutChildren', label?: string | null | undefined, description?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined, extra?: Array<{ __typename: 'NavNavItemsNavItemPopoutExtra', label?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'NavNavItemsNavItemMore', label?: string | null | undefined, featured_post?: { __typename?: 'PostsDocument', id: string } | null | undefined, from_the_blog?: Array<{ __typename: 'NavNavItemsNavItemMoreFrom_the_blog', reference?: { __typename?: 'PostsDocument', id: string } | null | undefined } | null | undefined> | null | undefined, read_more?: { __typename: 'NavNavItemsNavItemMoreRead_more', label?: string | null | undefined, value?: string | null | undefined } | null | undefined } | { __typename: 'NavNavItemsNavItemLink', label?: string | null | undefined, value?: string | null | undefined } | null | undefined> | null | undefined } } };
 
 export type GetNavListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetNavListQuery = { __typename?: 'Query', getNavList: { __typename?: 'NavConnection', totalCount: number, edges?: Array<{ __typename?: 'NavConnectionEdges', node?: { __typename?: 'NavDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'NavNav', show_auth?: boolean | null | undefined, items?: Array<{ __typename: 'NavNavItemsNavItemPopout', label?: string | null | undefined, children?: Array<{ __typename: 'NavNavItemsNavItemPopoutChildren', label?: string | null | undefined, description?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined, extra?: Array<{ __typename: 'NavNavItemsNavItemPopoutExtra', label?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'NavNavItemsNavItemMore', label?: string | null | undefined, featured_post?: { __typename?: 'PostsDocument', id: string } | null | undefined, from_the_blog?: { __typename?: 'PostsDocument', id: string } | null | undefined, read_more?: { __typename: 'NavNavItemsNavItemMoreRead_more', label?: string | null | undefined, value?: string | null | undefined } | null | undefined } | { __typename: 'NavNavItemsNavItemLink', label?: string | null | undefined, value?: string | null | undefined } | null | undefined> | null | undefined } } | null | undefined } | null | undefined> | null | undefined } };
+export type GetNavListQuery = { __typename?: 'Query', getNavList: { __typename?: 'NavConnection', totalCount: number, edges?: Array<{ __typename?: 'NavConnectionEdges', node?: { __typename?: 'NavDocument', id: string, sys: { __typename?: 'SystemInfo', filename: string, basename: string, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, data: { __typename?: 'NavNav', show_auth?: boolean | null | undefined, items?: Array<{ __typename: 'NavNavItemsNavItemPopout', label?: string | null | undefined, children?: Array<{ __typename: 'NavNavItemsNavItemPopoutChildren', label?: string | null | undefined, description?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined, extra?: Array<{ __typename: 'NavNavItemsNavItemPopoutExtra', label?: string | null | undefined, value?: string | null | undefined, icon?: string | null | undefined } | null | undefined> | null | undefined } | { __typename: 'NavNavItemsNavItemMore', label?: string | null | undefined, featured_post?: { __typename?: 'PostsDocument', id: string } | null | undefined, from_the_blog?: Array<{ __typename: 'NavNavItemsNavItemMoreFrom_the_blog', reference?: { __typename?: 'PostsDocument', id: string } | null | undefined } | null | undefined> | null | undefined, read_more?: { __typename: 'NavNavItemsNavItemMoreRead_more', label?: string | null | undefined, value?: string | null | undefined } | null | undefined } | { __typename: 'NavNavItemsNavItemLink', label?: string | null | undefined, value?: string | null | undefined } | null | undefined> | null | undefined } } | null | undefined } | null | undefined> | null | undefined } };
 
-export const TrainingPartsFragmentDoc = gql`
-    fragment TrainingParts on Training {
-  ... on TrainingTraining {
-    name
-    description
-    event
-    category
-    time
-    workouts {
+export const NavParts2FragmentDoc = gql`
+    fragment NavParts2 on Nav {
+  ... on NavNav {
+    items {
       __typename
-      Day
-      Title
-      Description
-      Category
+      ... on NavNavItemsNavItemPopout {
+        label
+        children {
+          __typename
+          label
+          description
+          value
+          icon
+        }
+        extra {
+          __typename
+          label
+          value
+          icon
+        }
+      }
+      ... on NavNavItemsNavItemMore {
+        label
+        featured_post {
+          ... on Document {
+            id
+          }
+        }
+        from_the_blog {
+          __typename
+          reference {
+            ... on PostsDocument {
+              __typename
+              ... on PostsDocument {
+                id
+              }
+            }
+          }
+        }
+        read_more {
+          __typename
+          label
+          value
+        }
+      }
+      ... on NavNavItemsNavItemLink {
+        label
+        value
+      }
     }
+    show_auth
   }
 }
     `;
@@ -1447,6 +1514,160 @@ export const PostsPartsFragmentDoc = gql`
       }
     }
     preface
+  }
+}
+    `;
+export const PagesPartsWithReferencesFragmentDoc = gql`
+    fragment PagesPartsWithReferences on Pages {
+  ... on PagesPage {
+    title
+    seo {
+      __typename
+      title
+      description
+      image
+    }
+    layers {
+      __typename
+      ... on PagesPageLayersLayerTeam {
+        description
+        members {
+          __typename
+          reference {
+            ... on AuthorsDocument {
+              __typename
+              id
+              sys {
+                filename
+              }
+              data {
+                __typename
+                ... on AuthorsAuthor {
+                  image
+                  name
+                  role
+                  description
+                }
+              }
+            }
+            ... on Document {
+              id
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerPostList {
+        description
+        posts {
+          __typename
+          reference {
+            ... on PostsDocument {
+              __typename
+              sys {
+                filename
+              }
+              data {
+                ... on PostsPost {
+                  ...PostsParts
+                }
+              }
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerDarkFeature {
+        hint
+        title
+        description
+        feature_list {
+          __typename
+          header
+          description
+        }
+      }
+      ... on PagesPageLayersLayerLeadership {
+        title
+        leaders {
+          __typename
+          reference {
+            ... on AuthorsDocument {
+              __typename
+              sys {
+                filename
+              }
+              data {
+                ... on AuthorsAuthor {
+                  __typename
+                  name
+                  description
+                  role
+                  accolades {
+                    figure
+                    description
+                  }
+                  image
+                }
+              }
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerSponsors {
+        title
+        sponsors {
+          __typename
+          name
+          link
+        }
+      }
+      ... on PagesPageLayersCuratedCollection {
+        description
+        posts_collection {
+          __typename
+          reference {
+            __typename
+            ... on PostsDocument {
+              data {
+                ... on PostsPost {
+                  title
+                }
+              }
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerCta {
+        description
+        cta_text
+        cta_link
+        cta_image
+      }
+    }
+  }
+  ... on PagesTrainingPage {
+    faq {
+      __typename
+      question
+      answer
+    }
+  }
+}
+    ${PostsPartsFragmentDoc}`;
+export const TrainingPartsFragmentDoc = gql`
+    fragment TrainingParts on Training {
+  ... on TrainingTraining {
+    name
+    description
+    event
+    category
+    time
+    workouts {
+      __typename
+      Day
+      Title
+      Description
+      Category
+    }
   }
 }
     `;
@@ -1729,8 +1950,11 @@ export const NavPartsFragmentDoc = gql`
           }
         }
         from_the_blog {
-          ... on Document {
-            id
+          __typename
+          reference {
+            ... on Document {
+              id
+            }
           }
         }
         read_more {
@@ -1748,6 +1972,123 @@ export const NavPartsFragmentDoc = gql`
   }
 }
     `;
+export const GetPagesAndNavDocumentDocument = gql`
+    query getPagesAndNavDocument($relativePath: String!) {
+  getNavDocument(relativePath: "site-nav.md") {
+    data {
+      ...NavParts2
+    }
+  }
+  getPagesDocument(relativePath: $relativePath) {
+    id
+    __typename
+    data {
+      __typename
+      ...PagesPartsWithReferences
+    }
+  }
+}
+    ${NavParts2FragmentDoc}
+${PagesPartsWithReferencesFragmentDoc}`;
+export const GetCuratedPostAndNavDocumentDocument = gql`
+    query getCuratedPostAndNavDocument($relativePath: String!) {
+  getNavDocument(relativePath: "site-nav.md") {
+    data {
+      ...NavParts2
+    }
+  }
+  getCuratedDocument(relativePath: $relativePath) {
+    id
+    sys {
+      filename
+    }
+    data {
+      __typename
+      ... on CuratedCurated {
+        title
+        curations {
+          __typename
+          ... on CuratedCuratedCurationsCuratedHero {
+            description
+            hero_post {
+              __typename
+              ... on PostsDocument {
+                sys {
+                  filename
+                  collection {
+                    slug
+                  }
+                  breadcrumbs
+                }
+                data {
+                  __typename
+                  ... on PostsPost {
+                    ...PostsParts
+                    author {
+                      __typename
+                      ... on AuthorsDocument {
+                        sys {
+                          filename
+                        }
+                        data {
+                          ... on AuthorsAuthor {
+                            name
+                            image
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          ... on CuratedCuratedCurationsCuratedCollection {
+            description
+            posts_collection {
+              __typename
+              reference {
+                __typename
+                ... on PostsDocument {
+                  id
+                  sys {
+                    filename
+                    collection {
+                      slug
+                    }
+                    breadcrumbs
+                  }
+                  data {
+                    __typename
+                    ... on PostsPost {
+                      ...PostsParts
+                      author {
+                        __typename
+                        ... on AuthorsDocument {
+                          sys {
+                            filename
+                          }
+                          data {
+                            ... on AuthorsAuthor {
+                              name
+                              image
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    ${NavParts2FragmentDoc}
+${PostsPartsFragmentDoc}`;
 export const GetTrainingDocumentDocument = gql`
     query getTrainingDocument($relativePath: String!) {
   getTrainingDocument(relativePath: $relativePath) {
@@ -2038,7 +2379,13 @@ export const GetNavListDocument = gql`
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
-      getTrainingDocument(variables: GetTrainingDocumentQueryVariables, options?: C): Promise<{data: GetTrainingDocumentQuery, variables: GetTrainingDocumentQueryVariables, query: string}> {
+      getPagesAndNavDocument(variables: GetPagesAndNavDocumentQueryVariables, options?: C): Promise<{data: GetPagesAndNavDocumentQuery, variables: GetPagesAndNavDocumentQueryVariables, query: string}> {
+        return requester<{data: GetPagesAndNavDocumentQuery, variables: GetPagesAndNavDocumentQueryVariables, query: string}, GetPagesAndNavDocumentQueryVariables>(GetPagesAndNavDocumentDocument, variables, options);
+      },
+    getCuratedPostAndNavDocument(variables: GetCuratedPostAndNavDocumentQueryVariables, options?: C): Promise<{data: GetCuratedPostAndNavDocumentQuery, variables: GetCuratedPostAndNavDocumentQueryVariables, query: string}> {
+        return requester<{data: GetCuratedPostAndNavDocumentQuery, variables: GetCuratedPostAndNavDocumentQueryVariables, query: string}, GetCuratedPostAndNavDocumentQueryVariables>(GetCuratedPostAndNavDocumentDocument, variables, options);
+      },
+    getTrainingDocument(variables: GetTrainingDocumentQueryVariables, options?: C): Promise<{data: GetTrainingDocumentQuery, variables: GetTrainingDocumentQueryVariables, query: string}> {
         return requester<{data: GetTrainingDocumentQuery, variables: GetTrainingDocumentQueryVariables, query: string}, GetTrainingDocumentQueryVariables>(GetTrainingDocumentDocument, variables, options);
       },
     getTrainingList(variables?: GetTrainingListQueryVariables, options?: C): Promise<{data: GetTrainingListQuery, variables: GetTrainingListQueryVariables, query: string}> {

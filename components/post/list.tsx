@@ -1,12 +1,8 @@
 import React from "react";
-import * as Tina from "../../.tina/sdk";
+import type { LayerPostListProps } from "../../pages";
 import { Markdown } from "../markdown";
 
-export const ThumbnailList = (props: {
-  title: string;
-  description: string;
-  posts: Tina.ThumbnailPostFragment[];
-}) => {
+export const ThumbnailList = (props: LayerPostListProps) => {
   const colors = {
     base: "#e1e1db",
     first: "#e3d6b9",
@@ -52,16 +48,19 @@ export const ThumbnailList = (props: {
       </div>
       <div className="relative max-w-7xl mx-auto">
         <div className="text-center">
-          <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-            {props.title}
-          </h2>
+          {/* <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
+            {props}
+          </h2> */}
           <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
             {props.description}
           </p>
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-          {props.posts.map((post) => {
-            return (
+          {props.posts.map((reference) => {
+            const post = reference.reference
+            switch (post.__typename) {
+              case "PostsDocument":
+                return (
               <div className="flex flex-col rounded-lg shadow-lg overflow-hidden">
                 <div className="flex-shrink-0">
                   <img
@@ -100,7 +99,12 @@ export const ThumbnailList = (props: {
                   </div>
                 </div>
               </div>
-            );
+
+                )
+              default:
+                throw new Error(`Unexpected post type ${post.__typename}`)
+                break;
+            }
           })}
         </div>
       </div>

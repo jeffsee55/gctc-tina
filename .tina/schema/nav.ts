@@ -179,8 +179,14 @@ export const Nav: TinaTemplate = {
             {
               label: "From The Blog",
               name: "from_the_blog",
-              type: "reference",
-              collections: ["posts"],
+              type: "object",
+              list: true,
+              fields: [{
+                label: "Reference",
+                name: "reference",
+                type: 'reference',
+                collections: ["posts"],
+              }]
             },
             {
               label: "Read More",

@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "yarn tina-gql server:start -c \"yarn next-dev\"",
+    "dev": "yarn tinacms server:start -c \"yarn next-dev\"",
     "next-dev": "next dev",
     "next-build": "next build",
     "build-sdk": "ts-node --project tsconfig.sdk-builder.json lib/sdk-builder/index.ts",
-    "build": "CI=true yarn tina-gql server:start -c \"yarn next-build\""
+    "build": "CI=true yarn tinacms server:start -c \"yarn next-build\""
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
