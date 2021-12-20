@@ -18,6 +18,12 @@ const App = ({ Component, pageProps }) => {
           <TinaCMS
             branch="main"
             clientId={NEXT_PUBLIC_TINA_CLIENT_ID}
+            formifyCallback={({ createForm, formConfig, createGlobalForm }) => {
+              if (formConfig.id === "getNavDocument") {
+                return createGlobalForm(formConfig);
+              }
+              return createForm(formConfig);
+            }}
             isLocalClient={Boolean(Number(NEXT_PUBLIC_USE_LOCAL_CLIENT))}
             // mediaStore={async () => {
             //   const pack = await import("next-tinacms-cloudinary");
