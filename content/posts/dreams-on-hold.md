@@ -4,17 +4,11 @@ image: >-
   https://images.unsplash.com/photo-1502904550040-7534597429ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3649&q=80
 author: content/authors/jen.md
 preface: >-
-  So far the year 2020 has been and will continue to be a year unlike any that we have ever seen before. I [think](https://example.com) that aside from the obvious of everything being turned upside down, cancelled, or postponed - there are some __great__ opportunities ahead for us if only we take a moment to think it through and look at it with the right perspective.
+  So far the year 2020 has been and will continue to be a year unlike any that we have ever seen before. I think that aside from the obvious of everything being turned upside down, cancelled, or postponed - there are some great opportunities ahead for us if only we take a moment to think it through and look at it with the right perspective.
 _template: post
 ---
 
 #### A New Twist on Base Training
-
-So far the year 2020 has been and will continue to be a year unlike any that
-we have ever seen before. I think that aside from the obvious of everything
-being turned upside down, cancelled, or postponed - there are some great
-opportunities ahead for us if only we take a moment to think it through and
-look at it with the right perspective.
 
 It is now almost October and the end of summer ushers in shorter days, crisper
 mornings and a season that many of us as runners hold dear. It is the season
