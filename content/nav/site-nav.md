@@ -3,10 +3,10 @@ items:
   - _template: navItemPopout
     label: Services
     children:
-      - label: Training Plans
-        description: "Choose from 5k, 10k, 1/2 Marathon, and Marathon"
-        value: /training-plans
-        icon: chart
+      # - label: Training Plans
+      #   description: "Choose from 5k, 10k, 1/2 Marathon, and Marathon"
+      #   value: /training-plans
+      #   icon: chart
       - label: 1-on-1 Coaching
         description: >-
           Work with 3-time Olympian Jen Rhines for everything from nutrition to

@@ -17,7 +17,7 @@ bio_image: >-
 story_image: >-
   https://images.squarespace-cdn.com/content/v1/5977b03febbd1a2b573c702b/1538704197061-DXUF0L530589ES4T2XM9/ke17ZwdGBToddI8pDm48kJ8LT1953EaD3hO1R8_ls6V7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UXAuXEpxi-J2-8awuUlLHT-oIKm0_yIhrBZfl3xWbfEKd-b3ia_Eh6COzPHYPjzSMA/Rhines_Jen-FV3-USOly04.JPG
 ebook:
-  title: Jen has provided of 100 recipes for athletes
+  title: Jen has provided over 100 recipes for athletes
   description: >-
     Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada
     adipiscing sagittis vel nulla nec.
@@ -62,7 +62,7 @@ in nutrition has played a huge role in my success as an older athlete. In
 2017 I became a certified Primal Health Coach and I continually educate myself
 in the ever changing world of nutrition.
 
-Earlier this year my husband, Terrence Mahon, and I co-founded the Golden
+In 2018 my husband, Terrence Mahon, and I co-founded the Golden
 Coast Track Club, a rebranding of our former team, the Mission AC. As
 Wellness Coach at GCTC my philosophy is that your overall fitness is the sum
 of your physical activity, nutrition and mindset. I’m excited to use my

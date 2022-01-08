@@ -46,7 +46,7 @@ const Logo = (props: { name: string }) => {
 const KineticLogo = () => {
   return (
     <svg
-      className="max-h-12 text-gray-400"
+      className="max-h-12 text-gray-400 w-full"
       viewBox="0 0 484 98"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +134,7 @@ const KineticLogo = () => {
 const AdidasLogo = () => {
   return (
     <svg
-      className="max-h-12 text-gray-400"
+      className="max-h-12 text-gray-400 w-full"
       style={{ maxWidth: "250px" }}
       viewBox="0 0 2187 307"
       fill="none"
@@ -151,7 +151,7 @@ const AdidasLogo = () => {
 const HyperIceLogo = () => {
   return (
     <svg
-      className="max-h-12 text-gray-400"
+      className="max-h-12 text-gray-400 w-full"
       viewBox="0 0 589 93"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

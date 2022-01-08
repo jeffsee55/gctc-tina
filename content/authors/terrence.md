@@ -27,7 +27,7 @@ _template: author
 
 **Head Coach and Founder, Golden Coast Track Club** — 2017-PRESENT
 
-**Adidas Endurance Coach and Brad Ambassador** — 2013-PRESENT
+**Adidas Endurance Coach and Brand Ambassador** — 2013-PRESENT
 
 **High Performance Coach, Boston Athletic Association** — 2013-2017
 

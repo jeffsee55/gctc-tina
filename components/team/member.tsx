@@ -246,6 +246,30 @@ export const Hero = (props: MemberHero) => {
                 content={props.bioDescription}
               />
             </div>
+              <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
+                <a
+                  href={`mailto:info@goldencoasttrackclub.com?subject=Work with Work with ${props.name.split(" ")[0]}`}
+                  target="_blank"
+                  style={{ backgroundColor: "#437598" }}
+                  className="w-76 flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white focus:outline-none transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+                >
+                  <span className="">Work with {props.name.split(" ")[0]}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="ml-4 h-8 w-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              </div>
             {props.form && (
               <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
                 <a
@@ -299,7 +323,7 @@ export const Stats = (props: AuthorDataType) => {
       <div className="relative z-20 max-w-screen-xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl leading-9 font-extrabold text-gray-800 sm:text-4xl sm:leading-10">
-            {props.name.split(" ")[0]}'s accomplishments througout their +20
+            {props.name.split(" ")[0]}'s accomplishments througout her +20
             year professional career
           </h2>
         </div>
