@@ -6,7 +6,7 @@ personal_bests:
   - event: 1500m
     time: "4:08.15"
   - event: 5k
-    time: "15:22.36"
+    time: "15:18.24"
 accolades:
   - figure: 4x
     description: Aussie Champ

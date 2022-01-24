@@ -6,11 +6,9 @@ seo:
     Founded by Terrence Mahon and Jennifer Rhines, and spurred on by our team of
     professional runners, Golden Coast Track Club is about teaching athletes the
     fundamentals of sport and life.
-  image: >-
-    https://res.cloudinary.com/deuzrsg3m/image/upload/f_auto,w_500,q_90/v1613613891/ACtC-3fdr81NYXHLd7g26j_VuMPN17azl76HuNPgcBhMcIPPpYUrPTopWjrWRqRZK5f3KnHDhOdcHoF7YHahU1h3M8akE-n0lUpqUCFYeDbOV2SijIenL4nizPv1F7zja81T5iNMX-SNBAAVc3SBteBsyYjP_w2560-h1708-no_hieao0.jpg
+  image: https://res.cloudinary.com/deuzrsg3m/image/upload/v1642982293/gctc/GCTC_Del_Mar_Easy_Run-48_zztmie.jpg
 layers:
-  - image: >-
-      https://res.cloudinary.com/deuzrsg3m/image/upload/v1639967733/uploads/DSC05486_kin8du.jpg
+  - image: https://res.cloudinary.com/deuzrsg3m/image/upload/v1642982293/gctc/GCTC_Del_Mar_Easy_Run-48_zztmie.jpg
     _template: layerHero
   - postListDescription: >
       ## Latest from the blog

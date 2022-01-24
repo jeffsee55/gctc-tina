@@ -18,7 +18,7 @@ social_media:
   - source: instagram
     handle: "https://instagram.com/ChristianCash"
 image: >-
-  https://res.cloudinary.com/deuzrsg3m/image/upload/v1581442238/uploads/_DSC2723_kdngno.jpg
+  https://res.cloudinary.com/deuzrsg3m/image/upload/v1642983613/gctc/portraits/Portraits-30_eemkg0.jpg
 _template: athlete
 ---
 

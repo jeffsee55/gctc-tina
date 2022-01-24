@@ -20,7 +20,7 @@ social_media:
   - source: instagram
     handle: "https://instagram.com/srpagano"
 image: >-
-  https://res.cloudinary.com/deuzrsg3m/image/upload/v1581442238/uploads/_DSC2704_cfccjc.jpg
+  https://res.cloudinary.com/deuzrsg3m/image/upload/v1642983811/gctc/portraits/Portraits-52_xgdpn8.jpg
 _template: athlete
 ---
 

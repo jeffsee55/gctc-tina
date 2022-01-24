@@ -19,7 +19,7 @@ social_media:
     handle: "https://twitter.com/avilaericc"
   - source: instagram
     handle: https://instagram.com/avilaericc
-image: https://res.cloudinary.com/deuzrsg3m/image/upload/v1581532251/uploads/5A505924-027B-4E4E-B2D3-8F852F5CBE89_f6m9bi.jpg
+image: https://res.cloudinary.com/deuzrsg3m/image/upload/v1642983868/gctc/portraits/Portraits-46_yo0hmi.jpg
 _template: athlete
 ---
 

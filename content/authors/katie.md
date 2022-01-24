@@ -1,12 +1,12 @@
 ---
-name: Emily Lipari
+name: Katie Izzo
 description: Some info
 country: USA
 personal_bests:
-  - event: 1500m
-    time: "4:05.68"
-  - event: 5k
-    time: "15:07.44"
+  - event: 5000m
+    time: "15:13.09"
+  - event: 3000m
+    time: "8:55.67"
 accolades:
   - figure: 2x
     description: US Champ
@@ -14,8 +14,8 @@ accolades:
     description: NCAA Champ
 social_media:
   - source: instagram
-    handle: https://instagram.com/classicemilyl
-image: https://res.cloudinary.com/deuzrsg3m/image/upload/v1642983145/gctc/portraits/Portraits-48_k9vywu.jpg
+    handle: https://instagram.com/katieizzo
+image: https://res.cloudinary.com/deuzrsg3m/image/upload/v1642983561/gctc/portraits/Portraits-39_ljezhe.jpg
 _template: athlete
 ---
 

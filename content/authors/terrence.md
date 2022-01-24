@@ -9,7 +9,7 @@ role: Head Coach & Founder
 image: >-
   https://res.cloudinary.com/deuzrsg3m/image/upload/v1604705863/jen-photos/_DSC2787_bqawhl.jpg
 bio_image: >-
-  https://res.cloudinary.com/deuzrsg3m/image/upload/v1612728233/uploads/terrence-1_ai3vza_zhntx4.jpg
+  https://res.cloudinary.com/deuzrsg3m/image/upload/v1642985390/gctc/1.jpg_vgtmhx.jpg
 story_image: >-
   https://res.cloudinary.com/deuzrsg3m/image/upload/v1612730087/uploads/IMG_9472_z1ovo4.jpg
 posts_collection:

@@ -13,7 +13,7 @@ accolades:
 image: >-
   https://res.cloudinary.com/deuzrsg3m/image/upload/v1604705859/jen-photos/_DSC2626_sem27a.jpg
 bio_image: >-
-  https://res.cloudinary.com/deuzrsg3m/image/upload/v1604705280/jen-photos/_DSC7671_fec232.jpg
+  https://res.cloudinary.com/deuzrsg3m/image/upload/v1642985531/gctc/1.jpg_ptpbmf.jpg
 story_image: >-
   https://images.squarespace-cdn.com/content/v1/5977b03febbd1a2b573c702b/1538704197061-DXUF0L530589ES4T2XM9/ke17ZwdGBToddI8pDm48kJ8LT1953EaD3hO1R8_ls6V7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UXAuXEpxi-J2-8awuUlLHT-oIKm0_yIhrBZfl3xWbfEKd-b3ia_Eh6COzPHYPjzSMA/Rhines_Jen-FV3-USOly04.JPG
 ebook:

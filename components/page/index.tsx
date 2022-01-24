@@ -490,11 +490,11 @@ const TeamMembers = (props: LayerTeamProps) => {
                     return (
                       <li key={item.id}>
                         <div className="space-y-4">
-                          <div className="aspect-w-3 aspect-h-2">
+                          <div className="aspect-w-2 aspect-h-2">
                             <Img
                               className="object-cover shadow-lg rounded-lg"
-                              width={300}
-                              quality={95}
+                              width={500}
+                              quality={90}
                               src={item.data.image}
                               alt=""
                             />

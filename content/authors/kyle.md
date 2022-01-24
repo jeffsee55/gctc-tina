@@ -1,12 +1,10 @@
 ---
-name: Emily Lipari
+name: Kyle Langford
 description: Some info
-country: USA
+country: Great Britain
 personal_bests:
-  - event: 1500m
-    time: "4:05.68"
-  - event: 5k
-    time: "15:07.44"
+  - event: 800m
+    time: "1:44.83"
 accolades:
   - figure: 2x
     description: US Champ
@@ -14,8 +12,8 @@ accolades:
     description: NCAA Champ
 social_media:
   - source: instagram
-    handle: https://instagram.com/classicemilyl
-image: https://res.cloudinary.com/deuzrsg3m/image/upload/v1642983145/gctc/portraits/Portraits-48_k9vywu.jpg
+    handle: https://instagram.com/kylelangford96
+image: https://res.cloudinary.com/deuzrsg3m/image/upload/v1642983727/gctc/portraits/Portraits-34_dcz19d.jpg
 _template: athlete
 ---
 

@@ -1,12 +1,10 @@
 ---
-name: Emily Lipari
+name: Emily Durgin
 description: Some info
 country: USA
 personal_bests:
-  - event: 1500m
-    time: "4:05.68"
-  - event: 5k
-    time: "15:07.44"
+  - event: 1/2 Marathon
+    time: "1:07:54"
 accolades:
   - figure: 2x
     description: US Champ
@@ -14,8 +12,8 @@ accolades:
     description: NCAA Champ
 social_media:
   - source: instagram
-    handle: https://instagram.com/classicemilyl
-image: https://res.cloudinary.com/deuzrsg3m/image/upload/v1642983145/gctc/portraits/Portraits-48_k9vywu.jpg
+    handle: https://instagram.com/em_durgin
+image: https://res.cloudinary.com/deuzrsg3m/image/upload/v1642983367/gctc/portraits/Portraits-3_rylrbk.jpg
 _template: athlete
 ---
 
