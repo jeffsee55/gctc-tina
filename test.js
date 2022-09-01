@@ -18,8 +18,11 @@ const run = async () => {
     branchName,
     branchName === "main"
   );
-  const info = await execShellCommand("git status");
-  console.log("git status: ", info.trim());
+  const info = await execShellCommand("ls -la .git");
+  console.log("ls -la .git: ", info.trim());
+
+  const info2 = await execShellCommand("cat .git/HEAD");
+  console.log("cat .git/HEAD: ", info2.trim());
 };
 
 run();
