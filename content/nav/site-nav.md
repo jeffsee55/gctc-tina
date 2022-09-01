@@ -49,8 +49,5 @@ items:
   # - _template: navItemLink
   #   label: Training Plans
   #   value: /training-plans
-  - _template: navItemLink
-    label: Merch
-    value: "https://shop.goldencoasttrackclub.com"
 _template: nav
 ---
