@@ -14,12 +14,12 @@ const run = async () => {
   const out = await execShellCommand("git rev-parse --abbrev-ref HEAD");
   const branchName = out.trim();
   console.log(
-    "git rev-parse --abbrev-ref HEAD",
+    "git rev-parse --abbrev-ref HEAD :",
     branchName,
     branchName === "main"
   );
-  const info = await execShellCommand("git remote -v");
-  console.log("git remote -v ", info.trim());
+  const info = await execShellCommand("git status");
+  console.log("git status: ", info.trim());
 };
 
 run();
