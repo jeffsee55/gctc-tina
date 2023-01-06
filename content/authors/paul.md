@@ -3,8 +3,14 @@ name: Paul Ryan
 description: Some info
 country: USA
 personal_bests:
+  - event: 800m
+    time: "1:47.80"
   - event: 1500m
-    time: "3:36.48"
+    time: "3:35.80"
+  - event: Mile
+    time: "3:52.40"
+  - event: 5K
+    time: "13:34.77"
 accolades:
   - figure: 2x
     description: US Champ

@@ -3,6 +3,8 @@ name: Emily Durgin
 description: Some info
 country: USA
 personal_bests:
+  - event: 10K
+    time: "31:33.80"
   - event: 1/2 Marathon
     time: "1:07:54"
 accolades:

@@ -3,10 +3,12 @@ name: Katie Izzo
 description: Some info
 country: USA
 personal_bests:
-  - event: 5000m
-    time: "15:13.09"
+  - event: 1500m
+    time: "4:13.40"
   - event: 3000m
-    time: "8:55.67"
+    time: "8:46.54"
+  - event: 5000m
+    time: "15:13.90"
 accolades:
   - figure: 2x
     description: US Champ

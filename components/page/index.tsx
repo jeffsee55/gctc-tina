@@ -495,7 +495,10 @@ const TeamMembers = (props: LayerTeamProps) => {
                               className="object-cover shadow-lg rounded-lg"
                               width={500}
                               quality={90}
-                              src={item.data.image}
+                              src={
+                                item.data.image ||
+                                "https://res.cloudinary.com/deuzrsg3m/image/upload/v1672974402/gctc/portraits/Group_10_yum940.jpg"
+                              }
                               alt=""
                             />
                           </div>

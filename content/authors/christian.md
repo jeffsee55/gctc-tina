@@ -5,6 +5,8 @@ country: USA
 personal_bests:
   - event: 800m
     time: "1:46.69"
+  - event: Mile
+    time: "4:06.78"
 accolades:
   - figure: 4x
     description: Aussie Champ

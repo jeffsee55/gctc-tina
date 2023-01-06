@@ -3,6 +3,8 @@ title: Our Team
 layers:
   - members:
       - reference: content/authors/christian.md
+      - reference: content/authors/clare.md
+      - reference: content/authors/elaina.md
       - reference: content/authors/emily.md
       - reference: content/authors/em.md
       - reference: content/authors/heidi.md

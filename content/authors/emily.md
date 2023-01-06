@@ -6,7 +6,9 @@ personal_bests:
   - event: 1500m
     time: "4:05.68"
   - event: 5k
-    time: "15:07.44"
+    time: "15:07.20"
+  - event: 10k
+    time: "31:24.80"
 accolades:
   - figure: 2x
     description: US Champ

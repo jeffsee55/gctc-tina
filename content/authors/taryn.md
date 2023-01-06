@@ -3,10 +3,14 @@ name: Taryn Rawlings
 description: Some info
 country: USA
 personal_bests:
+  - event: 800m
+    time: "1:59.83"
   - event: 1500m
     time: "4:05.02"
-  - event: 900m
-    time: "2:03.75"
+  - event: Mile
+    time: "4:24.09"
+  - event: 5000m
+    time: "15:05.90"
 accolades:
   - figure: 2x
     description: US Champ
