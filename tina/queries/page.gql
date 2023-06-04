@@ -1,16 +1,13 @@
 query getPagesAndNavDocument($relativePath: String!) {
-  getNavDocument(relativePath: "site-nav.md") {
-    data {
-      ...NavParts2
-    }
+  nav(relativePath: "site-nav.md") {
+    ...NavParts2
   }
-  getPagesDocument(relativePath: $relativePath) {
-    id
-    __typename
-    data {
-      __typename
-      ...PagesPartsWithReferences
+  pages(relativePath: $relativePath) {
+    ... on Document {
+      id
     }
+    __typename
+    ...PagesPartsWithReferences
   }
 }
 
@@ -39,32 +36,28 @@ fragment NavParts2 on Nav {
         featured_post {
           ... on Document {
             id
-            sys {
+            _sys {
               filename
               breadcrumbs
             }
           }
-          ... on PostsDocument {
-            data {
-              ... on PostsPost {
-                image
-                title
-                preface
-                author {
-                  ... on Document {
-                    sys {
-                      filename
-                    }
+          ... on PostsPost {
+            ... on PostsPost {
+              image
+              title
+              preface
+              author {
+                ... on Document {
+                  _sys {
+                    filename
                   }
+                }
+                __typename
+                ... on AuthorsAuthor {
                   __typename
-                  ... on AuthorsDocument {
-                    data {
-                      __typename
-                      ... on AuthorsAuthor {
-                        name
-                        image
-                      }
-                    }
+                  ... on AuthorsAuthor {
+                    name
+                    image
                   }
                 }
               }
@@ -76,32 +69,28 @@ fragment NavParts2 on Nav {
           reference {
             ... on Document {
               id
-              sys {
+              _sys {
                 filename
                 breadcrumbs
               }
             }
-            ... on PostsDocument {
-              data {
-                ... on PostsPost {
-                  image
-                  title
-                  preface
-                  author {
-                    ... on Document {
-                      sys {
-                        filename
-                      }
+            ... on PostsPost {
+              ... on PostsPost {
+                image
+                title
+                preface
+                author {
+                  ... on Document {
+                    _sys {
+                      filename
                     }
+                  }
+                  __typename
+                  ... on AuthorsAuthor {
                     __typename
-                    ... on AuthorsDocument {
-                      data {
-                        __typename
-                        ... on AuthorsAuthor {
-                          name
-                          image
-                        }
-                      }
+                    ... on AuthorsAuthor {
+                      name
+                      image
                     }
                   }
                 }
@@ -143,33 +132,32 @@ fragment PagesPartsWithReferences on Pages {
         members {
           __typename
           reference {
-            ... on AuthorsDocument {
+            __typename
+            ... on AuthorsAthlete {
+              name
+              image
+              country
+              personal_bests {
+                event
+                time
+              }
+              social_media {
+                source
+                handle
+              }
+            }
+            ... on AuthorsAuthor {
               __typename
               id
-              sys {
+              _sys {
                 filename
               }
-              data {
-                __typename
-                ... on AuthorsAthlete {
-                  name
-                  image
-                  country
-                  personal_bests {
-                    event
-                    time
-                  }
-                  social_media {
-                    source
-                    handle
-                  }
-                }
-                ... on AuthorsAuthor {
-                  image
-                  name
-                  role
-                  bioDescription
-                }
+              __typename
+              ... on AuthorsAuthor {
+                image
+                name
+                role
+                bioDescription
               }
             }
             ... on Document {
@@ -183,15 +171,13 @@ fragment PagesPartsWithReferences on Pages {
         posts {
           __typename
           reference {
-            ... on PostsDocument {
+            ... on PostsPost {
               __typename
-              sys {
+              _sys {
                 filename
               }
-              data {
-                ... on PostsPost {
-                  ...PostsParts
-                }
+              ... on PostsPost {
+                ...PostsParts
               }
             }
           }
@@ -212,24 +198,20 @@ fragment PagesPartsWithReferences on Pages {
         leaders {
           __typename
           reference {
-            ... on AuthorsDocument {
+            ... on AuthorsAuthor {
               __typename
-              sys {
+              _sys {
                 filename
               }
-              data {
-                ... on AuthorsAuthor {
-                  __typename
-                  name
-                  bioDescription
-                  role
-                  accolades {
-                    figure
-                    description
-                  }
-                  image
-                }
+              __typename
+              name
+              bioDescription
+              role
+              accolades {
+                figure
+                description
               }
+              image
             }
           }
         }
@@ -248,11 +230,9 @@ fragment PagesPartsWithReferences on Pages {
           __typename
           reference {
             __typename
-            ... on PostsDocument {
-              data {
-                ... on PostsPost {
-                  title
-                }
+            ... on PostsPost {
+              ... on PostsPost {
+                title
               }
             }
           }

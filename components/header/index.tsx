@@ -2,11 +2,14 @@ import React from "react";
 import { Link } from "../link";
 import { Snippet } from "../author/snippet";
 import { Img } from "../image";
-import { NavData } from "../../pages/posts/[slug]";
+// import { NavData } from "../../pages/posts/[slug]";
+import type { Nav } from '../../tina/__generated__/types'
 
-export const Header2 = (props: NavData) => {
+type NavData = Nav
+
+export const Header2 = (props: Omit<Nav, 'id' | '_sys' | '_values'>) => {
   const dt = {
-    ...props.data,
+    ...props
   };
   const [activeItem, setActiveItem] = React.useState(null);
   const [isMobileNavOpen, setMobileNavOpen] = React.useState(false);
@@ -54,7 +57,7 @@ export const Header2 = (props: NavData) => {
   );
 };
 
-type PopoutNavType = NavData["data"]["items"][number];
+type PopoutNavType = NavData['items'][number]
 const PopoutNav = (props: PopoutNavType) => {
   // const PopoutNav = (props: Object.Path<Tina.NavFragment, ["data", "items"]>) => {
   // type FlatCompany = HybridDeepPick<Company, { "addressId": ["address", "id"] }>
@@ -125,11 +128,11 @@ const MainNav = (props: { menu: NavData; onItemSelect: OnItemSelect }) => {
   return (
     <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
       <nav className="flex space-x-10">
-        {props.menu.data.items.map((item) => {
+        {props.menu.items.map((item) => {
           return <MainNavItem {...item} onItemSelect={props.onItemSelect} />;
         })}
       </nav>
-      {props.menu.data.show_auth && <DesktopAuth />}
+      {props.menu.show_auth && <DesktopAuth />}
     </div>
   );
 };

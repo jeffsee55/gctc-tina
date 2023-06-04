@@ -57,34 +57,34 @@ export const ThumbnailList = (props: LayerPostListProps) => {
           {props.posts.map((reference) => {
             const post = reference.reference
             switch (post.__typename) {
-              case "PostsDocument":
+              case "PostsPost":
                 return (
               <div className="flex flex-col rounded-lg shadow-lg overflow-hidden">
                 <div className="flex-shrink-0">
                   <img
                     className="h-48 w-full object-cover"
-                    src={post.data.image}
+                    src={post.image}
                     alt=""
                   />
                 </div>
                 <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                   <div className="flex-1">
                     <p className="text-sm font-medium text-steel-medium">
-                      {post.data.tags?.join(", ")}
+                      {post.tags?.join(", ")}
                     </p>
                     <a
-                      href={`/posts/${post.sys.filename}`}
+                      href={`/posts/${post._sys.filename}`}
                       className="block mt-2"
                     >
                       <p className="text-xl font-semibold text-gray-900">
-                        {post.data.title}
+                        {post.title}
                       </p>
                       <p className="mt-3 text-base text-gray-500 line-clamp-3">
-                        {post.data.preface}
+                        {post.preface}
                       </p>
                       <div className="mt-6 text-base font-medium">
                         <a
-                          href={`/posts/${post.sys.filename}`}
+                          href={`/posts/${post._sys.filename}`}
                           className="text-steel-medium hover:text-steel-light"
                         >
                           Read

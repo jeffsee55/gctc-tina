@@ -1,5 +1,5 @@
 import React from "react";
-import type * as Tina from "../../.tina/sdk";
+import type * as Tina from "../../tina/sdk";
 import { Markdown } from "../markdown";
 
 export const News = (props: Tina.CuratedCollectionFragment) => {

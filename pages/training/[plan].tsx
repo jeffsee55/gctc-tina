@@ -6,7 +6,7 @@ import { Header2 } from "../../components/header";
 import { Img } from "../../components/image";
 import { Footer } from "../../components/footer";
 
-import { ExperimentalGetTinaClient } from "../../.tina/__generated__/types";
+import { ExperimentalGetTinaClient } from "../../tina/__generated__/types";
 const client = ExperimentalGetTinaClient();
 
 type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];

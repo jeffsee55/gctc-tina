@@ -1,0 +1,1316 @@
+fragment PostsParts on Posts {
+  ... on PostsPost {
+    title
+    tags
+    image
+    image_small
+    accolades {
+      __typename
+      figure
+      description
+    }
+    author {
+      ... on Authors {
+        ... on AuthorsAuthor {
+          name
+          bioDescription
+          _body
+          role
+          accolades {
+            __typename
+            figure
+            description
+          }
+          image
+          bio_image
+          story_image
+          form {
+            ... on Forms {
+              ... on FormsJenCcoaching {
+                title
+                description
+                fields {
+                  __typename
+                  ... on FormsJenCcoachingFieldsFieldBoolean {
+                    label
+                    subLabel
+                    name
+                  }
+                  ... on FormsJenCcoachingFieldsFieldText {
+                    label
+                    subLabel
+                    placeholder
+                    prefix
+                    suffix
+                    name
+                  }
+                  ... on FormsJenCcoachingFieldsFieldTextarea {
+                    label
+                    subLabel
+                    placeholder
+                    name
+                  }
+                  ... on FormsJenCcoachingFieldsFieldCheckbox {
+                    label
+                    subLabel
+                    placeholder
+                    name
+                    options {
+                      __typename
+                      label
+                      value
+                    }
+                  }
+                  ... on FormsJenCcoachingFieldsFieldRadio {
+                    label
+                    subLabel
+                    placeholder
+                    name
+                    options {
+                      __typename
+                      label
+                      value
+                    }
+                  }
+                  ... on FormsJenCcoachingFieldsFieldGroupText {
+                    label
+                    subLabel
+                    fields {
+                      __typename
+                      ... on FormsJenCcoachingFieldsFieldGroupTextFieldsFieldText {
+                        label
+                        subLabel
+                        name
+                      }
+                    }
+                    prefix_class
+                  }
+                  ... on FormsJenCcoachingFieldsFieldWeekCheckbox {
+                    label
+                    subLabel
+                    placeholder
+                    name
+                  }
+                }
+              }
+            }
+            ... on Document {
+              id
+            }
+          }
+          posts_collection {
+            __typename
+            reference {
+              ... on Posts {
+                ... on PostsPost {
+                  title
+                  tags
+                  image
+                  image_small
+                  accolades {
+                    __typename
+                    figure
+                    description
+                  }
+                  preface
+                  _body
+                }
+              }
+              ... on Document {
+                id
+              }
+            }
+          }
+          ebook {
+            __typename
+            title
+            description
+            link
+            link_text
+            image
+          }
+        }
+        ... on AuthorsAthlete {
+          name
+          description
+          _body
+          country
+          personal_bests {
+            __typename
+            event
+            time
+          }
+          accolades {
+            __typename
+            figure
+            description
+          }
+          social_media {
+            __typename
+            source
+            handle
+          }
+          image
+        }
+      }
+      ... on Document {
+        id
+      }
+    }
+    preface
+    _body
+  }
+}
+
+fragment PagesParts on Pages {
+  ... on PagesPage {
+    title
+    _body
+    seo {
+      __typename
+      title
+      description
+      image
+    }
+    layers {
+      __typename
+      ... on PagesPageLayersLayerHero {
+        image
+      }
+      ... on PagesPageLayersLayerTeam {
+        description
+        members {
+          __typename
+          reference {
+            ... on Authors {
+              ... on AuthorsAuthor {
+                name
+                bioDescription
+                _body
+                role
+                accolades {
+                  __typename
+                  figure
+                  description
+                }
+                image
+                bio_image
+                story_image
+                form {
+                  ... on Forms {
+                    ... on FormsJenCcoaching {
+                      title
+                      description
+                      fields {
+                        __typename
+                        ... on FormsJenCcoachingFieldsFieldBoolean {
+                          label
+                          subLabel
+                          name
+                        }
+                        ... on FormsJenCcoachingFieldsFieldText {
+                          label
+                          subLabel
+                          placeholder
+                          prefix
+                          suffix
+                          name
+                        }
+                        ... on FormsJenCcoachingFieldsFieldTextarea {
+                          label
+                          subLabel
+                          placeholder
+                          name
+                        }
+                        ... on FormsJenCcoachingFieldsFieldCheckbox {
+                          label
+                          subLabel
+                          placeholder
+                          name
+                          options {
+                            __typename
+                            label
+                            value
+                          }
+                        }
+                        ... on FormsJenCcoachingFieldsFieldRadio {
+                          label
+                          subLabel
+                          placeholder
+                          name
+                          options {
+                            __typename
+                            label
+                            value
+                          }
+                        }
+                        ... on FormsJenCcoachingFieldsFieldGroupText {
+                          label
+                          subLabel
+                          fields {
+                            __typename
+                            ... on FormsJenCcoachingFieldsFieldGroupTextFieldsFieldText {
+                              label
+                              subLabel
+                              name
+                            }
+                          }
+                          prefix_class
+                        }
+                        ... on FormsJenCcoachingFieldsFieldWeekCheckbox {
+                          label
+                          subLabel
+                          placeholder
+                          name
+                        }
+                      }
+                    }
+                  }
+                  ... on Document {
+                    id
+                  }
+                }
+                posts_collection {
+                  __typename
+                  reference {
+                    ... on Posts {
+                      ... on PostsPost {
+                        title
+                        tags
+                        image
+                        image_small
+                        accolades {
+                          __typename
+                          figure
+                          description
+                        }
+                        preface
+                        _body
+                      }
+                    }
+                    ... on Document {
+                      id
+                    }
+                  }
+                }
+                ebook {
+                  __typename
+                  title
+                  description
+                  link
+                  link_text
+                  image
+                }
+              }
+              ... on AuthorsAthlete {
+                name
+                description
+                _body
+                country
+                personal_bests {
+                  __typename
+                  event
+                  time
+                }
+                accolades {
+                  __typename
+                  figure
+                  description
+                }
+                social_media {
+                  __typename
+                  source
+                  handle
+                }
+                image
+              }
+            }
+            ... on Document {
+              id
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerPostList {
+        postListDescription
+        posts {
+          __typename
+          reference {
+            ... on Posts {
+              ... on PostsPost {
+                title
+                tags
+                image
+                image_small
+                accolades {
+                  __typename
+                  figure
+                  description
+                }
+                author {
+                  ... on Authors {
+                    ... on AuthorsAuthor {
+                      name
+                      bioDescription
+                      _body
+                      role
+                      accolades {
+                        __typename
+                        figure
+                        description
+                      }
+                      image
+                      bio_image
+                      story_image
+                      posts_collection {
+                        __typename
+                      }
+                      ebook {
+                        __typename
+                        title
+                        description
+                        link
+                        link_text
+                        image
+                      }
+                    }
+                    ... on AuthorsAthlete {
+                      name
+                      description
+                      _body
+                      country
+                      personal_bests {
+                        __typename
+                        event
+                        time
+                      }
+                      accolades {
+                        __typename
+                        figure
+                        description
+                      }
+                      social_media {
+                        __typename
+                        source
+                        handle
+                      }
+                      image
+                    }
+                  }
+                  ... on Document {
+                    id
+                  }
+                }
+                preface
+                _body
+              }
+            }
+            ... on Document {
+              id
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerDarkFeature {
+        hint
+        title
+        description
+        feature_list {
+          __typename
+          header
+          description
+        }
+      }
+      ... on PagesPageLayersLayerLeadership {
+        title
+        leaders {
+          __typename
+          reference {
+            ... on Authors {
+              ... on AuthorsAuthor {
+                name
+                bioDescription
+                _body
+                role
+                accolades {
+                  __typename
+                  figure
+                  description
+                }
+                image
+                bio_image
+                story_image
+                form {
+                  ... on Forms {
+                    ... on FormsJenCcoaching {
+                      title
+                      description
+                      fields {
+                        __typename
+                        ... on FormsJenCcoachingFieldsFieldBoolean {
+                          label
+                          subLabel
+                          name
+                        }
+                        ... on FormsJenCcoachingFieldsFieldText {
+                          label
+                          subLabel
+                          placeholder
+                          prefix
+                          suffix
+                          name
+                        }
+                        ... on FormsJenCcoachingFieldsFieldTextarea {
+                          label
+                          subLabel
+                          placeholder
+                          name
+                        }
+                        ... on FormsJenCcoachingFieldsFieldCheckbox {
+                          label
+                          subLabel
+                          placeholder
+                          name
+                          options {
+                            __typename
+                            label
+                            value
+                          }
+                        }
+                        ... on FormsJenCcoachingFieldsFieldRadio {
+                          label
+                          subLabel
+                          placeholder
+                          name
+                          options {
+                            __typename
+                            label
+                            value
+                          }
+                        }
+                        ... on FormsJenCcoachingFieldsFieldGroupText {
+                          label
+                          subLabel
+                          fields {
+                            __typename
+                            ... on FormsJenCcoachingFieldsFieldGroupTextFieldsFieldText {
+                              label
+                              subLabel
+                              name
+                            }
+                          }
+                          prefix_class
+                        }
+                        ... on FormsJenCcoachingFieldsFieldWeekCheckbox {
+                          label
+                          subLabel
+                          placeholder
+                          name
+                        }
+                      }
+                    }
+                  }
+                  ... on Document {
+                    id
+                  }
+                }
+                posts_collection {
+                  __typename
+                  reference {
+                    ... on Posts {
+                      ... on PostsPost {
+                        title
+                        tags
+                        image
+                        image_small
+                        accolades {
+                          __typename
+                          figure
+                          description
+                        }
+                        preface
+                        _body
+                      }
+                    }
+                    ... on Document {
+                      id
+                    }
+                  }
+                }
+                ebook {
+                  __typename
+                  title
+                  description
+                  link
+                  link_text
+                  image
+                }
+              }
+              ... on AuthorsAthlete {
+                name
+                description
+                _body
+                country
+                personal_bests {
+                  __typename
+                  event
+                  time
+                }
+                accolades {
+                  __typename
+                  figure
+                  description
+                }
+                social_media {
+                  __typename
+                  source
+                  handle
+                }
+                image
+              }
+            }
+            ... on Document {
+              id
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerSponsors {
+        title
+        sponsors {
+          __typename
+          name
+          link
+        }
+      }
+      ... on PagesPageLayersCuratedCollection {
+        curatedDescription
+        posts_collection {
+          __typename
+          reference {
+            ... on Posts {
+              ... on PostsPost {
+                title
+                tags
+                image
+                image_small
+                accolades {
+                  __typename
+                  figure
+                  description
+                }
+                author {
+                  ... on Authors {
+                    ... on AuthorsAuthor {
+                      name
+                      bioDescription
+                      _body
+                      role
+                      accolades {
+                        __typename
+                        figure
+                        description
+                      }
+                      image
+                      bio_image
+                      story_image
+                      posts_collection {
+                        __typename
+                      }
+                      ebook {
+                        __typename
+                        title
+                        description
+                        link
+                        link_text
+                        image
+                      }
+                    }
+                    ... on AuthorsAthlete {
+                      name
+                      description
+                      _body
+                      country
+                      personal_bests {
+                        __typename
+                        event
+                        time
+                      }
+                      accolades {
+                        __typename
+                        figure
+                        description
+                      }
+                      social_media {
+                        __typename
+                        source
+                        handle
+                      }
+                      image
+                    }
+                  }
+                  ... on Document {
+                    id
+                  }
+                }
+                preface
+                _body
+              }
+            }
+            ... on Document {
+              id
+            }
+          }
+        }
+      }
+      ... on PagesPageLayersLayerCta {
+        ctaDescription
+        cta_text
+        cta_link
+        cta_image
+      }
+    }
+  }
+  ... on PagesTrainingPage {
+    faq {
+      __typename
+      question
+      answer
+    }
+  }
+}
+
+fragment FormsParts on Forms {
+  ... on FormsJenCcoaching {
+    title
+    description
+    fields {
+      __typename
+      ... on FormsJenCcoachingFieldsFieldBoolean {
+        label
+        subLabel
+        name
+      }
+      ... on FormsJenCcoachingFieldsFieldText {
+        label
+        subLabel
+        placeholder
+        prefix
+        suffix
+        name
+      }
+      ... on FormsJenCcoachingFieldsFieldTextarea {
+        label
+        subLabel
+        placeholder
+        name
+      }
+      ... on FormsJenCcoachingFieldsFieldCheckbox {
+        label
+        subLabel
+        placeholder
+        name
+        options {
+          __typename
+          label
+          value
+        }
+      }
+      ... on FormsJenCcoachingFieldsFieldRadio {
+        label
+        subLabel
+        placeholder
+        name
+        options {
+          __typename
+          label
+          value
+        }
+      }
+      ... on FormsJenCcoachingFieldsFieldGroupText {
+        label
+        subLabel
+        fields {
+          __typename
+          ... on FormsJenCcoachingFieldsFieldGroupTextFieldsFieldText {
+            label
+            subLabel
+            name
+          }
+        }
+        prefix_class
+      }
+      ... on FormsJenCcoachingFieldsFieldWeekCheckbox {
+        label
+        subLabel
+        placeholder
+        name
+      }
+    }
+  }
+}
+
+fragment CuratedParts on Curated {
+  ... on CuratedCurated {
+    title
+    curations {
+      __typename
+      ... on CuratedCuratedCurationsCuratedHero {
+        curatedDescription
+        hero_post {
+          ... on Posts {
+            ... on PostsPost {
+              title
+              tags
+              image
+              image_small
+              accolades {
+                __typename
+                figure
+                description
+              }
+              author {
+                ... on Authors {
+                  ... on AuthorsAuthor {
+                    name
+                    bioDescription
+                    _body
+                    role
+                    accolades {
+                      __typename
+                      figure
+                      description
+                    }
+                    image
+                    bio_image
+                    story_image
+                    posts_collection {
+                      __typename
+                    }
+                    ebook {
+                      __typename
+                      title
+                      description
+                      link
+                      link_text
+                      image
+                    }
+                  }
+                  ... on AuthorsAthlete {
+                    name
+                    description
+                    _body
+                    country
+                    personal_bests {
+                      __typename
+                      event
+                      time
+                    }
+                    accolades {
+                      __typename
+                      figure
+                      description
+                    }
+                    social_media {
+                      __typename
+                      source
+                      handle
+                    }
+                    image
+                  }
+                }
+                ... on Document {
+                  id
+                }
+              }
+              preface
+              _body
+            }
+          }
+          ... on Document {
+            id
+          }
+        }
+      }
+      ... on CuratedCuratedCurationsCuratedCollection {
+        curatedDescription
+        posts_collection {
+          __typename
+          reference {
+            ... on Posts {
+              ... on PostsPost {
+                title
+                tags
+                image
+                image_small
+                accolades {
+                  __typename
+                  figure
+                  description
+                }
+                author {
+                  ... on Authors {
+                    ... on AuthorsAuthor {
+                      name
+                      bioDescription
+                      _body
+                      role
+                      accolades {
+                        __typename
+                        figure
+                        description
+                      }
+                      image
+                      bio_image
+                      story_image
+                      posts_collection {
+                        __typename
+                      }
+                      ebook {
+                        __typename
+                        title
+                        description
+                        link
+                        link_text
+                        image
+                      }
+                    }
+                    ... on AuthorsAthlete {
+                      name
+                      description
+                      _body
+                      country
+                      personal_bests {
+                        __typename
+                        event
+                        time
+                      }
+                      accolades {
+                        __typename
+                        figure
+                        description
+                      }
+                      social_media {
+                        __typename
+                        source
+                        handle
+                      }
+                      image
+                    }
+                  }
+                  ... on Document {
+                    id
+                  }
+                }
+                preface
+                _body
+              }
+            }
+            ... on Document {
+              id
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment AuthorsParts on Authors {
+  ... on AuthorsAuthor {
+    name
+    bioDescription
+    _body
+    role
+    accolades {
+      __typename
+      figure
+      description
+    }
+    image
+    bio_image
+    story_image
+    form {
+      ... on Forms {
+        ... on FormsJenCcoaching {
+          title
+          description
+          fields {
+            __typename
+            ... on FormsJenCcoachingFieldsFieldBoolean {
+              label
+              subLabel
+              name
+            }
+            ... on FormsJenCcoachingFieldsFieldText {
+              label
+              subLabel
+              placeholder
+              prefix
+              suffix
+              name
+            }
+            ... on FormsJenCcoachingFieldsFieldTextarea {
+              label
+              subLabel
+              placeholder
+              name
+            }
+            ... on FormsJenCcoachingFieldsFieldCheckbox {
+              label
+              subLabel
+              placeholder
+              name
+              options {
+                __typename
+                label
+                value
+              }
+            }
+            ... on FormsJenCcoachingFieldsFieldRadio {
+              label
+              subLabel
+              placeholder
+              name
+              options {
+                __typename
+                label
+                value
+              }
+            }
+            ... on FormsJenCcoachingFieldsFieldGroupText {
+              label
+              subLabel
+              fields {
+                __typename
+                ... on FormsJenCcoachingFieldsFieldGroupTextFieldsFieldText {
+                  label
+                  subLabel
+                  name
+                }
+              }
+              prefix_class
+            }
+            ... on FormsJenCcoachingFieldsFieldWeekCheckbox {
+              label
+              subLabel
+              placeholder
+              name
+            }
+          }
+        }
+      }
+      ... on Document {
+        id
+      }
+    }
+    posts_collection {
+      __typename
+      reference {
+        ... on Posts {
+          ... on PostsPost {
+            title
+            tags
+            image
+            image_small
+            accolades {
+              __typename
+              figure
+              description
+            }
+            author {
+              ... on Authors {
+                ... on AuthorsAuthor {
+                  name
+                  bioDescription
+                  _body
+                  role
+                  accolades {
+                    __typename
+                    figure
+                    description
+                  }
+                  image
+                  bio_image
+                  story_image
+                  posts_collection {
+                    __typename
+                  }
+                  ebook {
+                    __typename
+                    title
+                    description
+                    link
+                    link_text
+                    image
+                  }
+                }
+                ... on AuthorsAthlete {
+                  name
+                  description
+                  _body
+                  country
+                  personal_bests {
+                    __typename
+                    event
+                    time
+                  }
+                  accolades {
+                    __typename
+                    figure
+                    description
+                  }
+                  social_media {
+                    __typename
+                    source
+                    handle
+                  }
+                  image
+                }
+              }
+              ... on Document {
+                id
+              }
+            }
+            preface
+            _body
+          }
+        }
+        ... on Document {
+          id
+        }
+      }
+    }
+    ebook {
+      __typename
+      title
+      description
+      link
+      link_text
+      image
+    }
+  }
+  ... on AuthorsAthlete {
+    name
+    description
+    _body
+    country
+    personal_bests {
+      __typename
+      event
+      time
+    }
+    accolades {
+      __typename
+      figure
+      description
+    }
+    social_media {
+      __typename
+      source
+      handle
+    }
+    image
+  }
+}
+
+fragment TrainingPlansParts on TrainingPlans {
+  event
+  category
+  time
+  workouts {
+    __typename
+    Day
+    Notes
+    Title
+    Description
+  }
+}
+
+fragment NavParts on Nav {
+  ... on NavNav {
+    items {
+      __typename
+      ... on NavNavItemsNavItemPopout {
+        label
+        children {
+          __typename
+          label
+          description
+          value
+          icon
+        }
+        extra {
+          __typename
+          label
+          value
+          icon
+        }
+      }
+      ... on NavNavItemsNavItemMore {
+        label
+        featured_post {
+          ... on Posts {
+            ... on PostsPost {
+              title
+              tags
+              image
+              image_small
+              accolades {
+                __typename
+                figure
+                description
+              }
+              author {
+                ... on Authors {
+                  ... on AuthorsAuthor {
+                    name
+                    bioDescription
+                    _body
+                    role
+                    accolades {
+                      __typename
+                      figure
+                      description
+                    }
+                    image
+                    bio_image
+                    story_image
+                    posts_collection {
+                      __typename
+                    }
+                    ebook {
+                      __typename
+                      title
+                      description
+                      link
+                      link_text
+                      image
+                    }
+                  }
+                  ... on AuthorsAthlete {
+                    name
+                    description
+                    _body
+                    country
+                    personal_bests {
+                      __typename
+                      event
+                      time
+                    }
+                    accolades {
+                      __typename
+                      figure
+                      description
+                    }
+                    social_media {
+                      __typename
+                      source
+                      handle
+                    }
+                    image
+                  }
+                }
+                ... on Document {
+                  id
+                }
+              }
+              preface
+              _body
+            }
+          }
+          ... on Document {
+            id
+          }
+        }
+        from_the_blog {
+          __typename
+          reference {
+            ... on Posts {
+              ... on PostsPost {
+                title
+                tags
+                image
+                image_small
+                accolades {
+                  __typename
+                  figure
+                  description
+                }
+                author {
+                  ... on Authors {
+                    ... on AuthorsAuthor {
+                      name
+                      bioDescription
+                      _body
+                      role
+                      accolades {
+                        __typename
+                        figure
+                        description
+                      }
+                      image
+                      bio_image
+                      story_image
+                      posts_collection {
+                        __typename
+                      }
+                      ebook {
+                        __typename
+                        title
+                        description
+                        link
+                        link_text
+                        image
+                      }
+                    }
+                    ... on AuthorsAthlete {
+                      name
+                      description
+                      _body
+                      country
+                      personal_bests {
+                        __typename
+                        event
+                        time
+                      }
+                      accolades {
+                        __typename
+                        figure
+                        description
+                      }
+                      social_media {
+                        __typename
+                        source
+                        handle
+                      }
+                      image
+                    }
+                  }
+                  ... on Document {
+                    id
+                  }
+                }
+                preface
+                _body
+              }
+            }
+            ... on Document {
+              id
+            }
+          }
+        }
+        read_more {
+          __typename
+          label
+          value
+        }
+      }
+      ... on NavNavItemsNavItemLink {
+        label
+        value
+      }
+    }
+    show_auth
+  }
+}

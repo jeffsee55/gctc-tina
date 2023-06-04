@@ -6,8 +6,9 @@ import { Sponsors } from "../sponsors";
 import { Home } from "../hero/home";
 import { Img } from "../image";
 import { Footer } from "../footer";
+import { useTina, tinaField } from "tinacms/dist/react";
 
-import { ExperimentalGetTinaClient } from "../../.tina/__generated__/types";
+import { ExperimentalGetTinaClient } from "../../tina/__generated__/types";
 import { ThumbnailList } from "../post/list";
 
 const client = ExperimentalGetTinaClient();
@@ -33,21 +34,23 @@ export async function getStaticPropsForPage({
 }
 
 export const Static = (props: Res) => {
-  const { getNavDocument, getPagesDocument } = props.data;
+  const { data } = useTina(props);
+  const { nav, pages } = data;
+  // return <div>Hi</div>;
   return (
     <>
-      <Header2 {...getNavDocument} />
-      <Switch {...getPagesDocument} />
-      <Footer {...getNavDocument} />
+      <Header2 {...nav} />
+      <Switch {...pages} />
+      {/* <Footer {...nav} /> */}
     </>
   );
 };
 
-type Switch = Res["data"]["getPagesDocument"];
+type Switch = Res["data"]["pages"];
 
 const Switch = (props: Switch) => {
   switch (props.__typename) {
-    case "PagesDocument":
+    case "PagesPage":
       return <Page {...props} />;
 
     default:
@@ -56,16 +59,16 @@ const Switch = (props: Switch) => {
   return <pre>{JSON.stringify(props, null, 2)}</pre>;
 };
 
-type Page = Extract<Switch, { __typename?: "PagesDocument" }>;
+type Page = Extract<Switch, { __typename?: "PagesPage" }>;
 const Page = (props: Page) => {
-  switch (props.data.__typename) {
+  switch (props.__typename) {
     case "PagesPage":
-      return <PagesPage {...props.data} />;
+      return <PagesPage {...props} />;
     default:
       return <pre>{JSON.stringify(props, null, 2)}</pre>;
   }
 };
-type PagesPageProps = Extract<Page["data"], { __typename?: "PagesPage" }>;
+type PagesPageProps = Extract<Page, { __typename?: "PagesPage" }>;
 const PagesPage = (props: PagesPageProps) => {
   return (
     <>
@@ -249,8 +252,8 @@ type LeadershipProps = LayerLeadershipProps["leaders"][number];
 const Leadership = (props: LeadershipProps) => {
   const leader = props.reference;
   switch (leader.__typename) {
-    case "AuthorsDocument":
-      if (leader.data.__typename === "AuthorsAuthor") {
+    case "AuthorsAuthor":
+      if (leader.__typename === "AuthorsAuthor") {
         return (
           <li className="mb-10">
             <div className="space-y-4 sm:grid sm:grid-cols-3 sm:gap-6 sm:space-y-0 lg:gap-8">
@@ -259,30 +262,30 @@ const Leadership = (props: LeadershipProps) => {
                   className="object-cover shadow-lg rounded-lg"
                   width={200}
                   quality={90}
-                  src={leader.data.image}
+                  src={leader.image}
                   alt=""
                 />
               </div>
               <div className="sm:col-span-2">
                 <div className="space-y-4">
                   <div className="text-lg leading-6 font-medium space-y-1">
-                    <h3>{leader.data.name}</h3>
-                    <p className="text-steel-medium">{leader.data.role}</p>
+                    <h3>{leader.name}</h3>
+                    <p className="text-steel-medium">{leader.role}</p>
                   </div>
                   <div className="text-lg">
                     <Markdown
                       classNames={{
                         p: "text-gray-500 line-clamp-2",
                       }}
-                      content={leader.data.description}
+                      content={leader.bioDescription}
                     />
                     <div className="mt-6 text-sm font-medium">
                       <a
-                        href={`/team/${leader.sys.filename}`}
+                        href={`/team/${leader._sys.filename}`}
                         className="text-steel-medium hover:text-steel-dark"
                       >
                         {/* <a href="" style={{ color: "#437598" }} className=""> */}
-                        Work with {leader.data.name.split(" ")[0]}{" "}
+                        Work with {leader.name.split(" ")[0]}{" "}
                         <span aria-hidden="true">→</span>
                       </a>
                     </div>
@@ -485,18 +488,21 @@ const TeamMembers = (props: LayerTeamProps) => {
             <ul className="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:gap-x-8">
               {Object.values(props.members).map((m) => {
                 const item = m.reference;
-                switch (item.data.__typename) {
+                switch (item.__typename) {
                   case "AuthorsAthlete":
                     return (
                       <li key={item.id}>
                         <div className="space-y-4">
-                          <div className="aspect-w-2 aspect-h-2">
+                          <div
+                            data-tina-field={tinaField(item, "image")}
+                            className="aspect-w-2 aspect-h-2"
+                          >
                             <Img
                               className="object-cover shadow-lg rounded-lg"
                               width={500}
                               quality={90}
                               src={
-                                item.data.image ||
+                                item.image ||
                                 "https://res.cloudinary.com/deuzrsg3m/image/upload/v1672974402/gctc/portraits/Group_10_yum940.jpg"
                               }
                               alt=""
@@ -504,13 +510,25 @@ const TeamMembers = (props: LayerTeamProps) => {
                           </div>
                           <div className="text-lg leading-6 font-medium space-y-1">
                             <div className="flex justify-between mb-2">
-                              <h3>{item.data.name}</h3>
-                              <div className="text-gray-400">
-                                {item.data.country}
+                              <h3 data-tina-field={tinaField(item, "name")}>
+                                {item.name}
+                              </h3>
+                              <div
+                                data-tina-field={tinaField(item, "country")}
+                                className="text-gray-400"
+                              >
+                                {item.country}
                               </div>
                             </div>
-                            <p className="text-md text-steel-medium">
-                              {item.data.personal_bests
+                            <p
+                              className="text-md text-steel-medium"
+                              // FIXME: Uncaught TypeError: Cannot read properties of undefined (reading 'undefined')
+                              // data-tina-field={tinaField(
+                              //   item,
+                              //   "personal_bests"
+                              // )}
+                            >
+                              {item.personal_bests
                                 ?.map((pb) => {
                                   return `${pb.event} - ${pb.time}`;
                                 })
@@ -518,9 +536,12 @@ const TeamMembers = (props: LayerTeamProps) => {
                             </p>
                           </div>
                           <ul className="flex space-x-5">
-                            {item.data.social_media?.map((social) => {
+                            {item.social_media?.map((social) => {
                               return (
-                                <li key={social.handle}>
+                                <li
+                                  key={social.handle}
+                                  data-tina-field={tinaField(social, "handle")}
+                                >
                                   <a
                                     href={social.handle}
                                     className="text-gray-400 hover:text-gray-500"

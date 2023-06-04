@@ -69,6 +69,11 @@ export const Page: TinaTemplate = {
               name: "members",
               type: "object",
               list: true,
+              ui: {
+                itemProps: item => {
+                  return {label: item.reference || 'N/A'}
+                }
+              },
               fields: [{
                 name: "reference",
                 label: "Reference",

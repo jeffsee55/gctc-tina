@@ -10,7 +10,7 @@ import {
   Stats,
 } from "../../components/team/member";
 
-import { ExperimentalGetTinaClient } from "../../.tina/__generated__/types";
+import { ExperimentalGetTinaClient } from "../../tina/__generated__/types";
 const client = ExperimentalGetTinaClient();
 
 type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];

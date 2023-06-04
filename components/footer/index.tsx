@@ -15,7 +15,7 @@ export const Footer = (props: NavData) => {
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                {props.data.items.map((item) => {
+                {props.items.map((item) => {
                   switch (item.__typename) {
                     case "NavNavItemsNavItemPopout":
                       return (

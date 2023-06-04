@@ -7,6 +7,7 @@ scalar JSON
 
 type SystemInfo {
   filename: String!
+  title: String
   basename: String!
   breadcrumbs(excludeExtension: Boolean): [String!]!
   path: String!
@@ -14,6 +15,11 @@ type SystemInfo {
   extension: String!
   template: String!
   collection: Collection!
+}
+
+type Folder {
+  name: String!
+  path: String!
 }
 
 type PageInfo {
@@ -30,102 +36,142 @@ interface Node {
 
 """"""
 interface Document {
-  sys: SystemInfo
   id: ID!
-  form: JSON!
-  values: JSON!
+  _sys: SystemInfo
+  _values: JSON!
 }
 
 """A relay-compliant pagination connection"""
 interface Connection {
-  totalCount: Int!
+  totalCount: Float!
+  pageInfo: PageInfo!
 }
 
 type Query {
-  getCollection(collection: String): Collection!
-  getCollections: [Collection!]!
+  getOptimizedQuery(queryString: String!): String
+  collection(collection: String): Collection!
+  collections: [Collection!]!
   node(id: String): Node!
-  getDocument(collection: String, relativePath: String): DocumentNode!
-  getDocumentList(before: String, after: String, first: Int, last: Int): DocumentConnection!
-  getDocumentFields: JSON!
-  getPostsDocument(relativePath: String): PostsDocument!
-  getPostsList(before: String, after: String, first: Int, last: Int): PostsConnection!
-  getPagesDocument(relativePath: String): PagesDocument!
-  getPagesList(before: String, after: String, first: Int, last: Int): PagesConnection!
-  getFormsDocument(relativePath: String): FormsDocument!
-  getFormsList(before: String, after: String, first: Int, last: Int): FormsConnection!
-  getCuratedDocument(relativePath: String): CuratedDocument!
-  getCuratedList(before: String, after: String, first: Int, last: Int): CuratedConnection!
-  getAuthorsDocument(relativePath: String): AuthorsDocument!
-  getAuthorsList(before: String, after: String, first: Int, last: Int): AuthorsConnection!
-  getTrainingPlansDocument(relativePath: String): TrainingPlansDocument!
-  getTrainingPlansList(before: String, after: String, first: Int, last: Int): TrainingPlansConnection!
-  getNavDocument(relativePath: String): NavDocument!
-  getNavList(before: String, after: String, first: Int, last: Int): NavConnection!
+  document(collection: String, relativePath: String): DocumentNode!
+  posts(relativePath: String): Posts!
+  postsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostsFilter): PostsConnection!
+  pages(relativePath: String): Pages!
+  pagesConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PagesFilter): PagesConnection!
+  forms(relativePath: String): Forms!
+  formsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: FormsFilter): FormsConnection!
+  curated(relativePath: String): Curated!
+  curatedConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: CuratedFilter): CuratedConnection!
+  authors(relativePath: String): Authors!
+  authorsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: AuthorsFilter): AuthorsConnection!
+  trainingPlans(relativePath: String): TrainingPlans!
+  trainingPlansConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: TrainingPlansFilter): TrainingPlansConnection!
+  nav(relativePath: String): Nav!
+  navConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: NavFilter): NavConnection!
+}
+
+input DocumentFilter {
+  posts: PostsFilter
+  pages: PagesFilter
+  forms: FormsFilter
+  curated: CuratedFilter
+  authors: AuthorsFilter
+  trainingPlans: TrainingPlansFilter
+  nav: NavFilter
 }
 
 type DocumentConnectionEdges {
-  cursor: String
+  cursor: String!
   node: DocumentNode
 }
 
 type DocumentConnection implements Connection {
-  pageInfo: PageInfo
-  totalCount: Int!
+  pageInfo: PageInfo!
+  totalCount: Float!
   edges: [DocumentConnectionEdges]
 }
 
 type Collection {
   name: String!
   slug: String!
-  label: String!
+  label: String
   path: String!
   format: String
   matches: String
   templates: [JSON]
   fields: [JSON]
-  documents(before: String, after: String, first: Int, last: Int): DocumentConnection!
+  documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = PostsDocument | PagesDocument | FormsDocument | CuratedDocument | AuthorsDocument | TrainingPlansDocument | NavDocument
+union DocumentNode = PostsPost | PagesPage | PagesTrainingPage | FormsJenCcoaching | CuratedCurated | AuthorsAuthor | AuthorsAthlete | TrainingPlans | NavNav | Folder
 
 type PostsPostAccolades {
   figure: String
   description: String
 }
 
-union PostsPostAuthorDocument = AuthorsDocument
+union PostsPostAuthor = AuthorsAuthor | AuthorsAthlete
 
-type PostsPost {
+type PostsPost implements Node & Document {
   title: String
   tags: [String]
   image: String
   image_small: String
   accolades: PostsPostAccolades
-  author: PostsPostAuthorDocument
+  author: PostsPostAuthor
   preface: String
   _body: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
 }
 
 union Posts = PostsPost
 
-type PostsDocument implements Node & Document {
-  id: ID!
-  sys: SystemInfo!
-  data: Posts!
-  form: JSON!
-  values: JSON!
-  dataJSON: JSON!
+input StringFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input PostsPostAccoladesFilter {
+  figure: StringFilter
+  description: StringFilter
+}
+
+input PostsPostAuthorFilter {
+  authors: AuthorsFilter
+}
+
+input RichTextFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+}
+
+input PostsPostFilter {
+  title: StringFilter
+  tags: StringFilter
+  image: StringFilter
+  image_small: StringFilter
+  accolades: PostsPostAccoladesFilter
+  author: PostsPostAuthorFilter
+  preface: StringFilter
+  _body: RichTextFilter
+}
+
+input PostsFilter {
+  post: PostsPostFilter
 }
 
 type PostsConnectionEdges {
-  cursor: String
-  node: PostsDocument
+  cursor: String!
+  node: Posts
 }
 
 type PostsConnection implements Connection {
-  pageInfo: PageInfo
-  totalCount: Int!
+  pageInfo: PageInfo!
+  totalCount: Float!
   edges: [PostsConnectionEdges]
 }
 
@@ -139,10 +185,10 @@ type PagesPageLayersLayerHero {
   image: String
 }
 
-union PagesPageLayersLayerTeamMembersReferenceDocument = AuthorsDocument
+union PagesPageLayersLayerTeamMembersReference = AuthorsAuthor | AuthorsAthlete
 
 type PagesPageLayersLayerTeamMembers {
-  reference: PagesPageLayersLayerTeamMembersReferenceDocument
+  reference: PagesPageLayersLayerTeamMembersReference
 }
 
 type PagesPageLayersLayerTeam {
@@ -150,10 +196,10 @@ type PagesPageLayersLayerTeam {
   members: [PagesPageLayersLayerTeamMembers]
 }
 
-union PagesPageLayersLayerPostListPostsReferenceDocument = PostsDocument
+union PagesPageLayersLayerPostListPostsReference = PostsPost
 
 type PagesPageLayersLayerPostListPosts {
-  reference: PagesPageLayersLayerPostListPostsReferenceDocument
+  reference: PagesPageLayersLayerPostListPostsReference
 }
 
 type PagesPageLayersLayerPostList {
@@ -173,10 +219,10 @@ type PagesPageLayersLayerDarkFeature {
   feature_list: [PagesPageLayersLayerDarkFeatureFeature_list]
 }
 
-union PagesPageLayersLayerLeadershipLeadersReferenceDocument = AuthorsDocument
+union PagesPageLayersLayerLeadershipLeadersReference = AuthorsAuthor | AuthorsAthlete
 
 type PagesPageLayersLayerLeadershipLeaders {
-  reference: PagesPageLayersLayerLeadershipLeadersReferenceDocument
+  reference: PagesPageLayersLayerLeadershipLeadersReference
 }
 
 type PagesPageLayersLayerLeadership {
@@ -194,10 +240,10 @@ type PagesPageLayersLayerSponsors {
   sponsors: [PagesPageLayersLayerSponsorsSponsors]
 }
 
-union PagesPageLayersCuratedCollectionPosts_collectionReferenceDocument = PostsDocument
+union CuratedCuratedCurationsCuratedCollectionPosts_collectionReference = PostsPost
 
 type PagesPageLayersCuratedCollectionPosts_collection {
-  reference: PagesPageLayersCuratedCollectionPosts_collectionReferenceDocument
+  reference: CuratedCuratedCurationsCuratedCollectionPosts_collectionReference
 }
 
 type PagesPageLayersCuratedCollection {
@@ -214,11 +260,14 @@ type PagesPageLayersLayerCta {
 
 union PagesPageLayers = PagesPageLayersLayerHero | PagesPageLayersLayerTeam | PagesPageLayersLayerPostList | PagesPageLayersLayerDarkFeature | PagesPageLayersLayerLeadership | PagesPageLayersLayerSponsors | PagesPageLayersCuratedCollection | PagesPageLayersLayerCta
 
-type PagesPage {
+type PagesPage implements Node & Document {
   title: String
   _body: String
   seo: PagesPageSeo
   layers: [PagesPageLayers]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
 }
 
 type PagesTrainingPageFaq {
@@ -226,29 +275,146 @@ type PagesTrainingPageFaq {
   answer: String
 }
 
-type PagesTrainingPage {
+type PagesTrainingPage implements Node & Document {
   faq: [PagesTrainingPageFaq]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
 }
 
 union Pages = PagesPage | PagesTrainingPage
 
-type PagesDocument implements Node & Document {
-  id: ID!
-  sys: SystemInfo!
-  data: Pages!
-  form: JSON!
-  values: JSON!
-  dataJSON: JSON!
+input PagesPageSeoFilter {
+  title: StringFilter
+  description: StringFilter
+  image: StringFilter
+}
+
+input PagesPageLayersLayerHeroFilter {
+  image: StringFilter
+}
+
+input PagesPageLayersLayerTeamMembersReferenceFilter {
+  authors: AuthorsFilter
+}
+
+input PagesPageLayersLayerTeamMembersFilter {
+  reference: PagesPageLayersLayerTeamMembersReferenceFilter
+}
+
+input PagesPageLayersLayerTeamFilter {
+  description: StringFilter
+  members: PagesPageLayersLayerTeamMembersFilter
+}
+
+input PagesPageLayersLayerPostListPostsReferenceFilter {
+  posts: PostsFilter
+}
+
+input PagesPageLayersLayerPostListPostsFilter {
+  reference: PagesPageLayersLayerPostListPostsReferenceFilter
+}
+
+input PagesPageLayersLayerPostListFilter {
+  postListDescription: RichTextFilter
+  posts: PagesPageLayersLayerPostListPostsFilter
+}
+
+input PagesPageLayersLayerDarkFeatureFeature_listFilter {
+  header: StringFilter
+  description: StringFilter
+}
+
+input PagesPageLayersLayerDarkFeatureFilter {
+  hint: StringFilter
+  title: StringFilter
+  description: StringFilter
+  feature_list: PagesPageLayersLayerDarkFeatureFeature_listFilter
+}
+
+input PagesPageLayersLayerLeadershipLeadersReferenceFilter {
+  authors: AuthorsFilter
+}
+
+input PagesPageLayersLayerLeadershipLeadersFilter {
+  reference: PagesPageLayersLayerLeadershipLeadersReferenceFilter
+}
+
+input PagesPageLayersLayerLeadershipFilter {
+  title: StringFilter
+  leaders: PagesPageLayersLayerLeadershipLeadersFilter
+}
+
+input PagesPageLayersLayerSponsorsSponsorsFilter {
+  name: StringFilter
+  link: StringFilter
+}
+
+input PagesPageLayersLayerSponsorsFilter {
+  title: StringFilter
+  sponsors: PagesPageLayersLayerSponsorsSponsorsFilter
+}
+
+input CuratedCuratedCurationsCuratedCollectionPosts_collectionReferenceFilter {
+  posts: PostsFilter
+}
+
+input PagesPageLayersCuratedCollectionPosts_collectionFilter {
+  reference: CuratedCuratedCurationsCuratedCollectionPosts_collectionReferenceFilter
+}
+
+input PagesPageLayersCuratedCollectionFilter {
+  curatedDescription: RichTextFilter
+  posts_collection: PagesPageLayersCuratedCollectionPosts_collectionFilter
+}
+
+input PagesPageLayersLayerCtaFilter {
+  ctaDescription: RichTextFilter
+  cta_text: StringFilter
+  cta_link: StringFilter
+  cta_image: StringFilter
+}
+
+input PagesPageLayersFilter {
+  layerHero: PagesPageLayersLayerHeroFilter
+  layerTeam: PagesPageLayersLayerTeamFilter
+  layerPostList: PagesPageLayersLayerPostListFilter
+  layerDarkFeature: PagesPageLayersLayerDarkFeatureFilter
+  layerLeadership: PagesPageLayersLayerLeadershipFilter
+  layerSponsors: PagesPageLayersLayerSponsorsFilter
+  curatedCollection: PagesPageLayersCuratedCollectionFilter
+  layerCta: PagesPageLayersLayerCtaFilter
+}
+
+input PagesPageFilter {
+  title: StringFilter
+  _body: StringFilter
+  seo: PagesPageSeoFilter
+  layers: PagesPageLayersFilter
+}
+
+input PagesTrainingPageFaqFilter {
+  question: StringFilter
+  answer: StringFilter
+}
+
+input PagesTrainingPageFilter {
+  faq: PagesTrainingPageFaqFilter
+}
+
+input PagesFilter {
+  page: PagesPageFilter
+  trainingPage: PagesTrainingPageFilter
 }
 
 type PagesConnectionEdges {
-  cursor: String
-  node: PagesDocument
+  cursor: String!
+  node: Pages
 }
 
 type PagesConnection implements Connection {
-  pageInfo: PageInfo
-  totalCount: Int!
+  pageInfo: PageInfo!
+  totalCount: Float!
   edges: [PagesConnectionEdges]
 }
 
@@ -324,45 +490,129 @@ type FormsJenCcoachingFieldsFieldWeekCheckbox {
 
 union FormsJenCcoachingFields = FormsJenCcoachingFieldsFieldBoolean | FormsJenCcoachingFieldsFieldText | FormsJenCcoachingFieldsFieldTextarea | FormsJenCcoachingFieldsFieldCheckbox | FormsJenCcoachingFieldsFieldRadio | FormsJenCcoachingFieldsFieldGroupText | FormsJenCcoachingFieldsFieldWeekCheckbox
 
-type FormsJenCcoaching {
+type FormsJenCcoaching implements Node & Document {
   title: String
   description: String
   fields: [FormsJenCcoachingFields]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
 }
 
 union Forms = FormsJenCcoaching
 
-type FormsDocument implements Node & Document {
-  id: ID!
-  sys: SystemInfo!
-  data: Forms!
-  form: JSON!
-  values: JSON!
-  dataJSON: JSON!
+input FormsJenCcoachingFieldsFieldBooleanFilter {
+  label: StringFilter
+  subLabel: StringFilter
+  name: StringFilter
+}
+
+input FormsJenCcoachingFieldsFieldTextFilter {
+  label: StringFilter
+  subLabel: StringFilter
+  placeholder: StringFilter
+  prefix: StringFilter
+  suffix: StringFilter
+  name: StringFilter
+}
+
+input FormsJenCcoachingFieldsFieldTextareaFilter {
+  label: StringFilter
+  subLabel: StringFilter
+  placeholder: StringFilter
+  name: StringFilter
+}
+
+input FormsJenCcoachingFieldsFieldCheckboxOptionsFilter {
+  label: StringFilter
+  value: StringFilter
+}
+
+input FormsJenCcoachingFieldsFieldCheckboxFilter {
+  label: StringFilter
+  subLabel: StringFilter
+  placeholder: StringFilter
+  name: StringFilter
+  options: FormsJenCcoachingFieldsFieldCheckboxOptionsFilter
+}
+
+input FormsJenCcoachingFieldsFieldRadioOptionsFilter {
+  label: StringFilter
+  value: StringFilter
+}
+
+input FormsJenCcoachingFieldsFieldRadioFilter {
+  label: StringFilter
+  subLabel: StringFilter
+  placeholder: StringFilter
+  name: StringFilter
+  options: FormsJenCcoachingFieldsFieldRadioOptionsFilter
+}
+
+input FormsJenCcoachingFieldsFieldGroupTextFieldsFieldTextFilter {
+  label: StringFilter
+  subLabel: StringFilter
+  name: StringFilter
+}
+
+input FormsJenCcoachingFieldsFieldGroupTextFieldsFilter {
+  fieldText: FormsJenCcoachingFieldsFieldGroupTextFieldsFieldTextFilter
+}
+
+input FormsJenCcoachingFieldsFieldGroupTextFilter {
+  label: StringFilter
+  subLabel: StringFilter
+  fields: FormsJenCcoachingFieldsFieldGroupTextFieldsFilter
+  prefix_class: StringFilter
+}
+
+input FormsJenCcoachingFieldsFieldWeekCheckboxFilter {
+  label: StringFilter
+  subLabel: StringFilter
+  placeholder: StringFilter
+  name: StringFilter
+}
+
+input FormsJenCcoachingFieldsFilter {
+  fieldBoolean: FormsJenCcoachingFieldsFieldBooleanFilter
+  fieldText: FormsJenCcoachingFieldsFieldTextFilter
+  fieldTextarea: FormsJenCcoachingFieldsFieldTextareaFilter
+  fieldCheckbox: FormsJenCcoachingFieldsFieldCheckboxFilter
+  fieldRadio: FormsJenCcoachingFieldsFieldRadioFilter
+  fieldGroupText: FormsJenCcoachingFieldsFieldGroupTextFilter
+  fieldWeekCheckbox: FormsJenCcoachingFieldsFieldWeekCheckboxFilter
+}
+
+input FormsJenCcoachingFilter {
+  title: StringFilter
+  description: StringFilter
+  fields: FormsJenCcoachingFieldsFilter
+}
+
+input FormsFilter {
+  jenCcoaching: FormsJenCcoachingFilter
 }
 
 type FormsConnectionEdges {
-  cursor: String
-  node: FormsDocument
+  cursor: String!
+  node: Forms
 }
 
 type FormsConnection implements Connection {
-  pageInfo: PageInfo
-  totalCount: Int!
+  pageInfo: PageInfo!
+  totalCount: Float!
   edges: [FormsConnectionEdges]
 }
 
-union CuratedCuratedCurationsCuratedHeroHero_postDocument = PostsDocument
+union CuratedCuratedCurationsCuratedHeroHero_post = PostsPost
 
 type CuratedCuratedCurationsCuratedHero {
   curatedDescription: JSON
-  hero_post: CuratedCuratedCurationsCuratedHeroHero_postDocument
+  hero_post: CuratedCuratedCurationsCuratedHeroHero_post
 }
 
-union CuratedCuratedCurationsCuratedCollectionPosts_collectionReferenceDocument = PostsDocument
-
 type CuratedCuratedCurationsCuratedCollectionPosts_collection {
-  reference: CuratedCuratedCurationsCuratedCollectionPosts_collectionReferenceDocument
+  reference: CuratedCuratedCurationsCuratedCollectionPosts_collectionReference
 }
 
 type CuratedCuratedCurationsCuratedCollection {
@@ -372,30 +622,56 @@ type CuratedCuratedCurationsCuratedCollection {
 
 union CuratedCuratedCurations = CuratedCuratedCurationsCuratedHero | CuratedCuratedCurationsCuratedCollection
 
-type CuratedCurated {
+type CuratedCurated implements Node & Document {
   title: String
   curations: [CuratedCuratedCurations]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
 }
 
 union Curated = CuratedCurated
 
-type CuratedDocument implements Node & Document {
-  id: ID!
-  sys: SystemInfo!
-  data: Curated!
-  form: JSON!
-  values: JSON!
-  dataJSON: JSON!
+input CuratedCuratedCurationsCuratedHeroHero_postFilter {
+  posts: PostsFilter
+}
+
+input CuratedCuratedCurationsCuratedHeroFilter {
+  curatedDescription: RichTextFilter
+  hero_post: CuratedCuratedCurationsCuratedHeroHero_postFilter
+}
+
+input CuratedCuratedCurationsCuratedCollectionPosts_collectionFilter {
+  reference: CuratedCuratedCurationsCuratedCollectionPosts_collectionReferenceFilter
+}
+
+input CuratedCuratedCurationsCuratedCollectionFilter {
+  curatedDescription: RichTextFilter
+  posts_collection: CuratedCuratedCurationsCuratedCollectionPosts_collectionFilter
+}
+
+input CuratedCuratedCurationsFilter {
+  curatedHero: CuratedCuratedCurationsCuratedHeroFilter
+  curatedCollection: CuratedCuratedCurationsCuratedCollectionFilter
+}
+
+input CuratedCuratedFilter {
+  title: StringFilter
+  curations: CuratedCuratedCurationsFilter
+}
+
+input CuratedFilter {
+  curated: CuratedCuratedFilter
 }
 
 type CuratedConnectionEdges {
-  cursor: String
-  node: CuratedDocument
+  cursor: String!
+  node: Curated
 }
 
 type CuratedConnection implements Connection {
-  pageInfo: PageInfo
-  totalCount: Int!
+  pageInfo: PageInfo!
+  totalCount: Float!
   edges: [CuratedConnectionEdges]
 }
 
@@ -404,12 +680,12 @@ type AuthorsAuthorAccolades {
   description: String
 }
 
-union AuthorsAuthorFormDocument = FormsDocument
+union AuthorsAuthorForm = FormsJenCcoaching
 
-union AuthorsAuthorPosts_collectionReferenceDocument = PostsDocument
+union AuthorsAuthorPosts_collectionReference = PostsPost
 
 type AuthorsAuthorPosts_collection {
-  reference: AuthorsAuthorPosts_collectionReferenceDocument
+  reference: AuthorsAuthorPosts_collectionReference
 }
 
 type AuthorsAuthorEbook {
@@ -420,7 +696,7 @@ type AuthorsAuthorEbook {
   image: String
 }
 
-type AuthorsAuthor {
+type AuthorsAuthor implements Node & Document {
   name: String
   bioDescription: JSON
   _body: JSON
@@ -429,9 +705,12 @@ type AuthorsAuthor {
   image: String
   bio_image: String
   story_image: String
-  form: AuthorsAuthorFormDocument
+  form: AuthorsAuthorForm
   posts_collection: [AuthorsAuthorPosts_collection]
   ebook: AuthorsAuthorEbook
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
 }
 
 type AuthorsAthletePersonal_bests {
@@ -449,7 +728,7 @@ type AuthorsAthleteSocial_media {
   handle: String
 }
 
-type AuthorsAthlete {
+type AuthorsAthlete implements Node & Document {
   name: String
   description: String
   _body: JSON
@@ -458,61 +737,143 @@ type AuthorsAthlete {
   accolades: [AuthorsAthleteAccolades]
   social_media: [AuthorsAthleteSocial_media]
   image: String
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
 }
 
 union Authors = AuthorsAuthor | AuthorsAthlete
 
-type AuthorsDocument implements Node & Document {
-  id: ID!
-  sys: SystemInfo!
-  data: Authors!
-  form: JSON!
-  values: JSON!
-  dataJSON: JSON!
+input AuthorsAuthorAccoladesFilter {
+  figure: StringFilter
+  description: StringFilter
+}
+
+input AuthorsAuthorFormFilter {
+  forms: FormsFilter
+}
+
+input AuthorsAuthorPosts_collectionReferenceFilter {
+  posts: PostsFilter
+}
+
+input AuthorsAuthorPosts_collectionFilter {
+  reference: AuthorsAuthorPosts_collectionReferenceFilter
+}
+
+input AuthorsAuthorEbookFilter {
+  title: StringFilter
+  description: StringFilter
+  link: StringFilter
+  link_text: StringFilter
+  image: StringFilter
+}
+
+input AuthorsAuthorFilter {
+  name: StringFilter
+  bioDescription: RichTextFilter
+  _body: RichTextFilter
+  role: StringFilter
+  accolades: AuthorsAuthorAccoladesFilter
+  image: StringFilter
+  bio_image: StringFilter
+  story_image: StringFilter
+  form: AuthorsAuthorFormFilter
+  posts_collection: AuthorsAuthorPosts_collectionFilter
+  ebook: AuthorsAuthorEbookFilter
+}
+
+input AuthorsAthletePersonal_bestsFilter {
+  event: StringFilter
+  time: StringFilter
+}
+
+input AuthorsAthleteAccoladesFilter {
+  figure: StringFilter
+  description: StringFilter
+}
+
+input AuthorsAthleteSocial_mediaFilter {
+  source: StringFilter
+  handle: StringFilter
+}
+
+input AuthorsAthleteFilter {
+  name: StringFilter
+  description: StringFilter
+  _body: RichTextFilter
+  country: StringFilter
+  personal_bests: AuthorsAthletePersonal_bestsFilter
+  accolades: AuthorsAthleteAccoladesFilter
+  social_media: AuthorsAthleteSocial_mediaFilter
+  image: StringFilter
+}
+
+input AuthorsFilter {
+  author: AuthorsAuthorFilter
+  athlete: AuthorsAthleteFilter
 }
 
 type AuthorsConnectionEdges {
-  cursor: String
-  node: AuthorsDocument
+  cursor: String!
+  node: Authors
 }
 
 type AuthorsConnection implements Connection {
-  pageInfo: PageInfo
-  totalCount: Int!
+  pageInfo: PageInfo!
+  totalCount: Float!
   edges: [AuthorsConnectionEdges]
 }
 
 type TrainingPlansWorkouts {
-  Day: Int
+  Day: Float
   Notes: String
   Title: String
   Description: String
 }
 
-type TrainingPlans {
+type TrainingPlans implements Node & Document {
   event: String
   category: String
   time: String
   workouts: [TrainingPlansWorkouts]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
 }
 
-type TrainingPlansDocument implements Node & Document {
-  id: ID!
-  sys: SystemInfo!
-  data: TrainingPlans!
-  form: JSON!
-  values: JSON!
-  dataJSON: JSON!
+input NumberFilter {
+  lt: Float
+  lte: Float
+  gte: Float
+  gt: Float
+  eq: Float
+  exists: Boolean
+  in: [Float]
+}
+
+input TrainingPlansWorkoutsFilter {
+  Day: NumberFilter
+  Notes: StringFilter
+  Title: StringFilter
+  Description: StringFilter
+}
+
+input TrainingPlansFilter {
+  event: StringFilter
+  category: StringFilter
+  time: StringFilter
+  workouts: TrainingPlansWorkoutsFilter
 }
 
 type TrainingPlansConnectionEdges {
-  cursor: String
-  node: TrainingPlansDocument
+  cursor: String!
+  node: TrainingPlans
 }
 
 type TrainingPlansConnection implements Connection {
-  pageInfo: PageInfo
-  totalCount: Int!
+  pageInfo: PageInfo!
+  totalCount: Float!
   edges: [TrainingPlansConnectionEdges]
 }
 
@@ -535,12 +896,12 @@ type NavNavItemsNavItemPopout {
   extra: [NavNavItemsNavItemPopoutExtra]
 }
 
-union NavNavItemsNavItemMoreFeatured_postDocument = PostsDocument
+union NavNavItemsNavItemMoreFeatured_post = PostsPost
 
-union NavNavItemsNavItemMoreFrom_the_blogReferenceDocument = PostsDocument
+union NavNavItemsNavItemMoreFrom_the_blogReference = PostsPost
 
 type NavNavItemsNavItemMoreFrom_the_blog {
-  reference: NavNavItemsNavItemMoreFrom_the_blogReferenceDocument
+  reference: NavNavItemsNavItemMoreFrom_the_blogReference
 }
 
 type NavNavItemsNavItemMoreRead_more {
@@ -550,7 +911,7 @@ type NavNavItemsNavItemMoreRead_more {
 
 type NavNavItemsNavItemMore {
   label: String
-  featured_post: NavNavItemsNavItemMoreFeatured_postDocument
+  featured_post: NavNavItemsNavItemMoreFeatured_post
   from_the_blog: [NavNavItemsNavItemMoreFrom_the_blog]
   read_more: NavNavItemsNavItemMoreRead_more
 }
@@ -562,51 +923,125 @@ type NavNavItemsNavItemLink {
 
 union NavNavItems = NavNavItemsNavItemPopout | NavNavItemsNavItemMore | NavNavItemsNavItemLink
 
-type NavNav {
+type NavNav implements Node & Document {
   items: [NavNavItems]
   show_auth: Boolean
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
 }
 
 union Nav = NavNav
 
-type NavDocument implements Node & Document {
-  id: ID!
-  sys: SystemInfo!
-  data: Nav!
-  form: JSON!
-  values: JSON!
-  dataJSON: JSON!
+input NavNavItemsNavItemPopoutChildrenFilter {
+  label: StringFilter
+  description: StringFilter
+  value: StringFilter
+  icon: StringFilter
+}
+
+input NavNavItemsNavItemPopoutExtraFilter {
+  label: StringFilter
+  value: StringFilter
+  icon: StringFilter
+}
+
+input NavNavItemsNavItemPopoutFilter {
+  label: StringFilter
+  children: NavNavItemsNavItemPopoutChildrenFilter
+  extra: NavNavItemsNavItemPopoutExtraFilter
+}
+
+input NavNavItemsNavItemMoreFeatured_postFilter {
+  posts: PostsFilter
+}
+
+input NavNavItemsNavItemMoreFrom_the_blogReferenceFilter {
+  posts: PostsFilter
+}
+
+input NavNavItemsNavItemMoreFrom_the_blogFilter {
+  reference: NavNavItemsNavItemMoreFrom_the_blogReferenceFilter
+}
+
+input NavNavItemsNavItemMoreRead_moreFilter {
+  label: StringFilter
+  value: StringFilter
+}
+
+input NavNavItemsNavItemMoreFilter {
+  label: StringFilter
+  featured_post: NavNavItemsNavItemMoreFeatured_postFilter
+  from_the_blog: NavNavItemsNavItemMoreFrom_the_blogFilter
+  read_more: NavNavItemsNavItemMoreRead_moreFilter
+}
+
+input NavNavItemsNavItemLinkFilter {
+  label: StringFilter
+  value: StringFilter
+}
+
+input NavNavItemsFilter {
+  navItemPopout: NavNavItemsNavItemPopoutFilter
+  navItemMore: NavNavItemsNavItemMoreFilter
+  navItemLink: NavNavItemsNavItemLinkFilter
+}
+
+input BooleanFilter {
+  eq: Boolean
+  exists: Boolean
+}
+
+input NavNavFilter {
+  items: NavNavItemsFilter
+  show_auth: BooleanFilter
+}
+
+input NavFilter {
+  nav: NavNavFilter
 }
 
 type NavConnectionEdges {
-  cursor: String
-  node: NavDocument
+  cursor: String!
+  node: Nav
 }
 
 type NavConnection implements Connection {
-  pageInfo: PageInfo
-  totalCount: Int!
+  pageInfo: PageInfo!
+  totalCount: Float!
   edges: [NavConnectionEdges]
 }
 
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
-  updateDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
+  updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
+  deleteDocument(collection: String, relativePath: String!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
-  updatePostsDocument(relativePath: String!, params: PostsMutation!): PostsDocument!
-  createPostsDocument(relativePath: String!, params: PostsMutation!): PostsDocument!
-  updatePagesDocument(relativePath: String!, params: PagesMutation!): PagesDocument!
-  createPagesDocument(relativePath: String!, params: PagesMutation!): PagesDocument!
-  updateFormsDocument(relativePath: String!, params: FormsMutation!): FormsDocument!
-  createFormsDocument(relativePath: String!, params: FormsMutation!): FormsDocument!
-  updateCuratedDocument(relativePath: String!, params: CuratedMutation!): CuratedDocument!
-  createCuratedDocument(relativePath: String!, params: CuratedMutation!): CuratedDocument!
-  updateAuthorsDocument(relativePath: String!, params: AuthorsMutation!): AuthorsDocument!
-  createAuthorsDocument(relativePath: String!, params: AuthorsMutation!): AuthorsDocument!
-  updateTrainingPlansDocument(relativePath: String!, params: TrainingPlansMutation!): TrainingPlansDocument!
-  createTrainingPlansDocument(relativePath: String!, params: TrainingPlansMutation!): TrainingPlansDocument!
-  updateNavDocument(relativePath: String!, params: NavMutation!): NavDocument!
-  createNavDocument(relativePath: String!, params: NavMutation!): NavDocument!
+  updatePosts(relativePath: String!, params: PostsMutation!): Posts!
+  createPosts(relativePath: String!, params: PostsMutation!): Posts!
+  updatePages(relativePath: String!, params: PagesMutation!): Pages!
+  createPages(relativePath: String!, params: PagesMutation!): Pages!
+  updateForms(relativePath: String!, params: FormsMutation!): Forms!
+  createForms(relativePath: String!, params: FormsMutation!): Forms!
+  updateCurated(relativePath: String!, params: CuratedMutation!): Curated!
+  createCurated(relativePath: String!, params: CuratedMutation!): Curated!
+  updateAuthors(relativePath: String!, params: AuthorsMutation!): Authors!
+  createAuthors(relativePath: String!, params: AuthorsMutation!): Authors!
+  updateTrainingPlans(relativePath: String!, params: TrainingPlansMutation!): TrainingPlans!
+  createTrainingPlans(relativePath: String!, params: TrainingPlansMutation!): TrainingPlans!
+  updateNav(relativePath: String!, params: NavMutation!): Nav!
+  createNav(relativePath: String!, params: NavMutation!): Nav!
+}
+
+input DocumentUpdateMutation {
+  posts: PostsMutation
+  pages: PagesMutation
+  forms: FormsMutation
+  curated: CuratedMutation
+  authors: AuthorsMutation
+  trainingPlans: TrainingPlansMutation
+  nav: NavMutation
+  relativePath: String
 }
 
 input DocumentMutation {
@@ -929,7 +1364,7 @@ input AuthorsMutation {
 }
 
 input TrainingPlansWorkoutsMutation {
-  Day: Int
+  Day: Float
   Notes: String
   Title: String
   Description: String
@@ -1001,4 +1436,3 @@ schema {
   query: Query
   mutation: Mutation
 }
-  
