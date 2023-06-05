@@ -7,9 +7,9 @@ import { Page, TrainingPage } from "./schema/pages";
 import { Post, Curated } from "./schema/post";
 
 export default defineConfig({
-  branch: "",
-  clientId: "",
-  token: "",
+  branch: process.env.VERCEL_GIT_COMMIT_REF,
+  clientId: process.env.TINA_CLIENT_ID,
+  token: process.env.TINA_TOKEN,
   build: {
     publicFolder: "public",
     outputFolder: "admin",
