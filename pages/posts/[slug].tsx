@@ -6,15 +6,14 @@ import { Header2 } from "../../components/header";
 import { Img } from "../../components/image";
 import { Footer } from "../../components/footer";
 
-import { ExperimentalGetTinaClient } from "../../tina/__generated__/types";
+import { client } from "../../tina/__generated__/client";
 import { tinaField, useTina } from "tinacms/dist/react";
-const client = ExperimentalGetTinaClient();
 
 type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
 
 export async function getStaticProps({ params, preview }) {
   const relativePath = `${params.slug}.md`;
-  const tinaProps = await client.getPostAndNav({
+  const tinaProps = await client.queries.getPostAndNav({
     relativePath,
   });
 
@@ -26,7 +25,7 @@ export async function getStaticProps({ params, preview }) {
 }
 
 export const getStaticPaths = async () => {
-  const posts = await client.getPostListWithSys();
+  const posts = await client.queries.getPostListWithSys();
   return {
     paths: posts.data.postsConnection.edges.map((doc) => ({
       params: { slug: doc.node._sys.filename },

@@ -10,14 +10,13 @@ import {
   Stats,
 } from "../../components/team/member";
 
-import { ExperimentalGetTinaClient } from "../../tina/__generated__/types";
+import { client } from "../../tina/__generated__/client";
 import { useTina } from "tinacms/dist/react";
-const client = ExperimentalGetTinaClient();
 
 type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
 export const getStaticProps = async ({ params, preview }) => {
   const variables = { relativePath: `${params.member}.md` };
-  const tinaProps = await client.getAuthorWithNav(variables);
+  const tinaProps = await client.queries.getAuthorWithNav(variables);
   return {
     props: {
       ...tinaProps,

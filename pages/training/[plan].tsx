@@ -6,14 +6,13 @@ import { Header2 } from "../../components/header";
 import { Img } from "../../components/image";
 import { Footer } from "../../components/footer";
 
-import { ExperimentalGetTinaClient } from "../../tina/__generated__/types";
-const client = ExperimentalGetTinaClient();
+import { client } from "../../tina/__generated__/client";
 
 type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
 
 export async function getStaticProps({ params, preview }) {
   const relativePath = `${params.plan}.json`;
-  const tinaProps = await client.trainingPlans({
+  const tinaProps = await client.queries.trainingPlans({
     relativePath,
   });
 
@@ -25,7 +24,7 @@ export async function getStaticProps({ params, preview }) {
 }
 
 export const getStaticPaths = async () => {
-  const posts = await client.trainingPlansConnection();
+  const posts = await client.queries.trainingPlansConnection();
   return {
     paths: posts.data.trainingPlansConnection.edges.map((doc) => ({
       params: { plan: doc.node._sys.filename },

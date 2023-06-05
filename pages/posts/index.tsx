@@ -6,14 +6,13 @@ import { Header2 } from "../../components/header";
 import { Footer } from "../../components/footer";
 import { Img } from "../../components/image";
 
-import { ExperimentalGetTinaClient } from "../../tina/__generated__/types";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField, useTina } from "tinacms/dist/react";
-const client = ExperimentalGetTinaClient();
+import { client } from "../../tina/__generated__/client";
 
 type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
 export async function getStaticProps() {
-  const tinaProps = await client.getCuratedPostAndNavDocument({
+  const tinaProps = await client.queries.getCuratedPostAndNavDocument({
     relativePath: "posts.md",
   });
 

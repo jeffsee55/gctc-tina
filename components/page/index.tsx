@@ -8,11 +8,8 @@ import { Img } from "../image";
 import { Footer } from "../footer";
 import { useTina, tinaField } from "tinacms/dist/react";
 
-import { ExperimentalGetTinaClient } from "../../tina/__generated__/types";
+import { client } from "../../tina/__generated__/client";
 import { ThumbnailList } from "../post/list";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
-
-const client = ExperimentalGetTinaClient();
 
 export type Awaited<T> = T extends PromiseLike<infer U>
   ? { 0: Awaited<U>; 1: U }[U extends PromiseLike<any> ? 0 : 1]
@@ -24,7 +21,7 @@ export async function getStaticPropsForPage({
 }: {
   relativePath: string;
 }) {
-  const tinaProps = await client.getPagesAndNavDocument({
+  const tinaProps = await client.queries.getPagesAndNavDocument({
     relativePath,
   });
   return {
