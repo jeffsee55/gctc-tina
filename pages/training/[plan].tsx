@@ -13,7 +13,7 @@ type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
 
 export async function getStaticProps({ params, preview }) {
   const relativePath = `${params.plan}.json`;
-  const tinaProps = await client.getTrainingPlansDocument({
+  const tinaProps = await client.trainingPlans({
     relativePath,
   });
 
@@ -25,10 +25,10 @@ export async function getStaticProps({ params, preview }) {
 }
 
 export const getStaticPaths = async () => {
-  const posts = await client.getTrainingPlansList();
+  const posts = await client.trainingPlansConnection();
   return {
-    paths: posts.data.getTrainingPlansList.edges.map((doc) => ({
-      params: { plan: doc.node.sys.filename },
+    paths: posts.data.trainingPlansConnection.edges.map((doc) => ({
+      params: { plan: doc.node._sys.filename },
     })),
     fallback: false,
   };
@@ -502,7 +502,7 @@ export function Table(props: Res) {
             </div>
           </div>
         </li>
-        {props.data.getTrainingPlansDocument.data.workouts.map((workout) => (
+        {props.data.trainingPlans.workouts.map((workout) => (
           <li key={workout.Day}>
             <div className="flex items-center px-4 py-4 sm:px-6">
               <div className="min-w-0 flex-1 flex items-center">
