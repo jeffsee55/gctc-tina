@@ -2,6 +2,7 @@ import React from "react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import type { LayerPostListProps } from "../page";
 import { Markdown } from "../markdown";
+import { tinaField } from "tinacms/dist/react";
 
 export const ThumbnailList = (props: LayerPostListProps) => {
   const colors = {
@@ -49,17 +50,20 @@ export const ThumbnailList = (props: LayerPostListProps) => {
       </div>
       <div className="relative max-w-7xl mx-auto">
         <div className="text-center">
-          <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4 prose">
+          <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4 prose" data-tina-field={tinaField(props,'postListDescription')}>
             <TinaMarkdown content={props.postListDescription} />
           </p>
         </div>
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-          {props.posts.map((reference) => {
+          {props.posts?.map((reference) => {
             const post = reference.reference
+            if(!post) {
+              return null
+            }
             switch (post.__typename) {
               case "PostsPost":
                 return (
-              <div className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+              <div data-tina-field={tinaField(reference)} className="flex flex-col rounded-lg shadow-lg overflow-hidden">
                 <div className="flex-shrink-0">
                   <img
                     className="h-48 w-full object-cover"

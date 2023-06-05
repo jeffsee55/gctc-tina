@@ -207,18 +207,6 @@ type PagesPageLayersLayerPostList {
   posts: [PagesPageLayersLayerPostListPosts]
 }
 
-type PagesPageLayersLayerDarkFeatureFeature_list {
-  header: String
-  description: String
-}
-
-type PagesPageLayersLayerDarkFeature {
-  hint: String
-  title: String
-  description: String
-  feature_list: [PagesPageLayersLayerDarkFeatureFeature_list]
-}
-
 union PagesPageLayersLayerLeadershipLeadersReference = AuthorsAuthor | AuthorsAthlete
 
 type PagesPageLayersLayerLeadershipLeaders {
@@ -258,7 +246,7 @@ type PagesPageLayersLayerCta {
   cta_image: String
 }
 
-union PagesPageLayers = PagesPageLayersLayerHero | PagesPageLayersLayerTeam | PagesPageLayersLayerPostList | PagesPageLayersLayerDarkFeature | PagesPageLayersLayerLeadership | PagesPageLayersLayerSponsors | PagesPageLayersCuratedCollection | PagesPageLayersLayerCta
+union PagesPageLayers = PagesPageLayersLayerHero | PagesPageLayersLayerTeam | PagesPageLayersLayerPostList | PagesPageLayersLayerLeadership | PagesPageLayersLayerSponsors | PagesPageLayersCuratedCollection | PagesPageLayersLayerCta
 
 type PagesPage implements Node & Document {
   title: String
@@ -320,18 +308,6 @@ input PagesPageLayersLayerPostListFilter {
   posts: PagesPageLayersLayerPostListPostsFilter
 }
 
-input PagesPageLayersLayerDarkFeatureFeature_listFilter {
-  header: StringFilter
-  description: StringFilter
-}
-
-input PagesPageLayersLayerDarkFeatureFilter {
-  hint: StringFilter
-  title: StringFilter
-  description: StringFilter
-  feature_list: PagesPageLayersLayerDarkFeatureFeature_listFilter
-}
-
 input PagesPageLayersLayerLeadershipLeadersReferenceFilter {
   authors: AuthorsFilter
 }
@@ -379,7 +355,6 @@ input PagesPageLayersFilter {
   layerHero: PagesPageLayersLayerHeroFilter
   layerTeam: PagesPageLayersLayerTeamFilter
   layerPostList: PagesPageLayersLayerPostListFilter
-  layerDarkFeature: PagesPageLayersLayerDarkFeatureFilter
   layerLeadership: PagesPageLayersLayerLeadershipFilter
   layerSponsors: PagesPageLayersLayerSponsorsFilter
   curatedCollection: PagesPageLayersCuratedCollectionFilter
@@ -1102,18 +1077,6 @@ input PagesPageLayersLayerPostListMutation {
   posts: [PagesPageLayersLayerPostListPostsMutation]
 }
 
-input PagesPageLayersLayerDarkFeatureFeature_listMutation {
-  header: String
-  description: String
-}
-
-input PagesPageLayersLayerDarkFeatureMutation {
-  hint: String
-  title: String
-  description: String
-  feature_list: [PagesPageLayersLayerDarkFeatureFeature_listMutation]
-}
-
 input PagesPageLayersLayerLeadershipLeadersMutation {
   reference: String
 }
@@ -1153,7 +1116,6 @@ input PagesPageLayersMutation {
   layerHero: PagesPageLayersLayerHeroMutation
   layerTeam: PagesPageLayersLayerTeamMutation
   layerPostList: PagesPageLayersLayerPostListMutation
-  layerDarkFeature: PagesPageLayersLayerDarkFeatureMutation
   layerLeadership: PagesPageLayersLayerLeadershipMutation
   layerSponsors: PagesPageLayersLayerSponsorsMutation
   curatedCollection: PagesPageLayersCuratedCollectionMutation

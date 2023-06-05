@@ -46,7 +46,7 @@ export const Page: TinaTemplate = {
       templates: [
         {
           name: "layerHero",
-          label: "Hero Layer",
+          label: "Welcome Banner",
           fields: [
             {
               label: "Image",
@@ -107,45 +107,6 @@ export const Page: TinaTemplate = {
           ],
         },
         {
-          name: "layerDarkFeature",
-          label: "Feature List Layer",
-          fields: [
-            {
-              label: "Hint",
-              name: "hint",
-              type: "string",
-            },
-            {
-              label: "Title",
-              name: "title",
-              type: "string",
-            },
-            {
-              label: "Description",
-              name: "description",
-              type: "string",
-            },
-            {
-              name: "feature_list",
-              label: "Feature List",
-              list: true,
-              type: "object",
-              fields: [
-                {
-                  name: "header",
-                  label: "Header",
-                  type: "string",
-                },
-                {
-                  name: "description",
-                  type: "string",
-                  label: "Description",
-                },
-              ],
-            },
-          ],
-        },
-        {
           name: "layerLeadership",
           label: "Leadership Layer",
           fields: [
@@ -155,7 +116,7 @@ export const Page: TinaTemplate = {
               type: "string",
             },
             {
-              label: "Posts",
+              label: "Leaders",
               name: "leaders",
               type: "object",
               list: true,

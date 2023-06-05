@@ -1,3 +1,5 @@
+import { tinaField } from "tinacms/dist/react";
+
 export const Sponsors = (props: {
   title?: string;
   sponsors?: { name?: string; link?: string }[];
@@ -6,16 +8,20 @@ export const Sponsors = (props: {
     <div className="bg-white">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="flex items-center">
-          <h4 className="flex-shrink-0 pr-4 bg-white text-sm tracking-wider font-semibold uppercase text-steel-medium">
+          <h4
+            data-tina-field={tinaField(props, "title")}
+            className="flex-shrink-0 pr-4 bg-white text-sm tracking-wider font-semibold uppercase text-steel-medium"
+          >
             {props.title}
           </h4>
           <div className="flex-1 border-t-2 border-gray-200" />
         </div>
 
         <div className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
-          {props.sponsors.map((sponsor) => {
+          {props.sponsors?.map((sponsor) => {
             return (
               <a
+                data-tina-field={tinaField(sponsor, "name")}
                 className="col-span-1 flex justify-center py-8 px-8 bg-gray-50 hover:bg-gray-100"
                 href={sponsor.link}
               >

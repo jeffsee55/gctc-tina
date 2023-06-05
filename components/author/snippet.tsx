@@ -3,7 +3,11 @@ import React from "react";
 import { Img } from "../image";
 
 export const Snippet = (
-  props: { center?: boolean; className?: string } & Tina.AuthorSnippetFragment
+  props: {
+    short?: boolean;
+    center?: boolean;
+    className?: string;
+  } & Tina.AuthorSnippetFragment
 ) => {
   const justifyClass = props.center ? "justify-center" : "";
   return (
@@ -29,11 +33,13 @@ export const Snippet = (
               {props.name}
             </a>
           </p>
-          <div className="flex text-sm leading-5 text-gray-500">
-            <time dateTime="2020-03-16">Mar 16, 2020</time>
-            <span className="mx-1">·</span>
-            <span>6 min read</span>
-          </div>
+          {!props.short && (
+            <div className="flex text-sm leading-5 text-gray-500">
+              <time dateTime="2020-03-16">Mar 16, 2020</time>
+              <span className="mx-1">·</span>
+              <span>6 min read</span>
+            </div>
+          )}
         </div>
       </div>
     </div>

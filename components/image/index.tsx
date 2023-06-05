@@ -81,6 +81,9 @@ export const UnsplashImg = React.forwardRef((props: ImgType, ref) => {
 });
 
 export const Img = React.forwardRef((props: ImgType, ref) => {
+  if (!props.src) {
+    return <span />;
+  }
   if (props.src.includes("unsplash")) {
     return <UnsplashImg {...props} ref={ref} />;
   } else if (props.src.includes("cloudinary")) {

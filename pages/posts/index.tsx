@@ -8,6 +8,7 @@ import { Img } from "../../components/image";
 
 import { ExperimentalGetTinaClient } from "../../tina/__generated__/types";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { tinaField, useTina } from "tinacms/dist/react";
 const client = ExperimentalGetTinaClient();
 
 type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
@@ -24,8 +25,8 @@ export async function getStaticProps() {
 }
 
 export const Static = (props: Res) => {
-  // const { getCuratedDocument, getNavDocument } = props.data;
-  const { curated, nav } = props.data;
+  const { data } = useTina(props);
+  const { curated, nav } = data;
   const rest = curated;
 
   return (
@@ -84,7 +85,10 @@ export const HeroPost = (props: HeroPostProps) => {
         <div className="relative transform -translate-y-12">
           <div className="max-w-3xl mx-auto">
             <div className="relative transform -translate-y-24">
-              <div className="bg-white p-8 rounded shadow-xl">
+              <div
+                className="bg-white p-8 rounded shadow-xl"
+                data-tina-field={tinaField(props)}
+              >
                 <p className="line-clamp-3 text-base leading-6 text-gray-500 undefined">
                   {post.preface}
                 </p>
@@ -131,7 +135,10 @@ export const FeatureList = (props: FeatureListProps) => {
     <div className="bg-white pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
       <div className="relative max-w-lg mx-auto lg:max-w-7xl">
         {props.curatedDescription && (
-          <p className="mt-3 text-lg leading-6 text-gray-500 prose">
+          <p
+            className="mt-3 text-lg leading-6 text-gray-500 prose"
+            data-tina-field={tinaField(props, "curatedDescription")}
+          >
             <TinaMarkdown content={props.curatedDescription} />
           </p>
         )}
@@ -143,7 +150,7 @@ export const FeatureList = (props: FeatureListProps) => {
               return <span />;
             }
             return (
-              <div>
+              <div data-tina-field={tinaField(p)}>
                 <div>
                   <a href="#" className="inline-block">
                     <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">

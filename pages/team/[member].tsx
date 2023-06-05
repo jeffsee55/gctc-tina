@@ -11,6 +11,7 @@ import {
 } from "../../components/team/member";
 
 import { ExperimentalGetTinaClient } from "../../tina/__generated__/types";
+import { useTina } from "tinacms/dist/react";
 const client = ExperimentalGetTinaClient();
 
 type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
@@ -40,29 +41,28 @@ export const getStaticPaths = async () => {
 
 export type MemberHero = Res["data"]["getAuthorsDocument"]["data"];
 export const Static = (props: Res) => {
-  const { getAuthorsDocument, getNavDocument } = props.data;
-  const { data } = getAuthorsDocument;
-
-  switch (data.__typename) {
+  const { data } = useTina(props);
+  const { authors, nav } = data;
+  switch (authors.__typename) {
     case "AuthorsAthlete":
-      return <pre>{JSON.stringify(data)}</pre>;
+      return <pre>{JSON.stringify(authors)}</pre>;
     case "AuthorsAuthor":
       return (
         <div>
-          <Header2 {...getNavDocument} />
-          <Hero {...data} />
-          {data.accolades?.length > 0 && <Stats {...data} />}
-          {data.posts_collection?.length > 0 && (
+          <Header2 {...nav} />
+          <Hero {...authors} />
+          {authors.accolades?.length > 0 && <Stats {...authors} />}
+          {authors.posts_collection?.length > 0 && (
             <ThumbnailList
-              title={`${data.name.split(" ")[0]}'s Featured Articles`}
+              title={`${authors.name.split(" ")[0]}'s Featured Articles`}
               description={``}
-              posts={data.posts_collection}
+              posts={authors.posts_collection}
             />
           )}
-          <Story {...data} />
+          <Story {...authors} />
           {/* {data.form && <CoachingForm {...data?.form?.data} />} */}
-          {data.ebook && <Ebook {...data.ebook} />}
-          <Footer {...getNavDocument} />
+          {authors.ebook && <Ebook {...authors.ebook} />}
+          <Footer {...nav} />
         </div>
       );
   }

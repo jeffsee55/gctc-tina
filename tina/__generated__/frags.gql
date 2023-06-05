@@ -411,16 +411,6 @@ fragment PagesParts on Pages {
           }
         }
       }
-      ... on PagesPageLayersLayerDarkFeature {
-        hint
-        title
-        description
-        feature_list {
-          __typename
-          header
-          description
-        }
-      }
       ... on PagesPageLayersLayerLeadership {
         title
         leaders {

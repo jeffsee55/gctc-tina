@@ -7,6 +7,7 @@ import { Img } from "../../components/image";
 import { Footer } from "../../components/footer";
 
 import { ExperimentalGetTinaClient } from "../../tina/__generated__/types";
+import { tinaField, useTina } from "tinacms/dist/react";
 const client = ExperimentalGetTinaClient();
 
 type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
@@ -37,7 +38,8 @@ export const getStaticPaths = async () => {
 export type NavData = Res["data"]["nav"];
 
 export const Static = (props: Res) => {
-  const { posts, nav } = props.data;
+  const { data } = useTina(props);
+  const { posts, nav } = data;
 
   return (
     <>
@@ -51,25 +53,31 @@ export const Static = (props: Res) => {
             </p>
           )}
           <div className="relative">
-            <h1 className="mt-2 mb-8 text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+            <h1
+              data-tina-field={tinaField(posts, "title")}
+              className="mt-2 mb-8 text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
+            >
               {posts.title}
             </h1>
           </div>
-          <p className="mt-1 text-md text-gray-500 line-clamp-3">
+          <p
+            className="mt-1 text-md text-gray-500 line-clamp-3"
+            data-tina-field={tinaField(posts, "preface")}
+          >
             {posts.preface}
           </p>
-          <div>
+          <div data-tina-field={tinaField(posts, "author")}>
             <Snippet center={true} className="my-8" {...posts?.author} />
           </div>
         </div>
-        <Img
-          className={"mx-auto"}
-          width={2000}
-          quality={80}
-          src={posts.image}
-        />
+        <div className={"mx-auto"} data-tina-field={tinaField(posts, "image")}>
+          <Img width={2000} quality={80} src={posts.image} />
+        </div>
         <div className="my-12">
-          <div className="max-w-prose prose mx-auto text-gray-500">
+          <div
+            className="max-w-prose prose mx-auto text-gray-500"
+            data-tina-field={tinaField(posts, "_body")}
+          >
             <Markdown content={posts?._body} />
           </div>
         </div>
