@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Home!
 seo:
   title: Golden Coast Track Club
   description: >-
@@ -37,5 +37,6 @@ layers:
     _template: layerLeadership
 _template: page
 ---
+
 
 
