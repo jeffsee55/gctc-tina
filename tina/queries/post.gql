@@ -29,7 +29,6 @@ query getCuratedPostAndNavDocument($relativePath: String!) {
       curations {
         __typename
         ... on CuratedCuratedCurationsCuratedHero {
-          curatedDescription
           hero_post {
             __typename
             ... on PostsPost {

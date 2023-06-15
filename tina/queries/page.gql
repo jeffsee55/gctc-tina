@@ -22,13 +22,11 @@ fragment NavParts2 on Nav {
           label
           description
           value
-          icon
         }
         extra {
           __typename
           label
           value
-          icon
         }
       }
       ... on NavNavItemsNavItemMore {
@@ -215,7 +213,6 @@ fragment PagesPartsWithReferences on Pages {
         }
       }
       ... on PagesPageLayersCuratedCollection {
-        curatedDescription
         posts_collection {
           __typename
           reference {

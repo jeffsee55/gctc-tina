@@ -47,7 +47,10 @@ export const Static = (props: Res) => {
       <div className="relative px-4 sm:px-6 lg:px-8">
         <div className="text-lg max-w-prose mx-auto mb-6 md:mb-24">
           {posts.tags?.length > 0 && (
-            <p className="text-base text-center leading-6 text-steel-medium font-semibold tracking-wide uppercase">
+            <p
+              data-tina-field={tinaField(posts, "tags")}
+              className="text-base text-center leading-6 text-steel-medium font-semibold tracking-wide uppercase"
+            >
               {posts.tags.join(", ")}
             </p>
           )}

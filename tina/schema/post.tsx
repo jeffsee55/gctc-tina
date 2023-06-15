@@ -76,51 +76,27 @@ export const Post: TinaTemplate = {
       label: "Tags",
       list: true,
       type: "string",
+      ui: {
+        component: 'tags'
+      }
     },
     {
       name: "image",
       label: "Image URL",
-      type: "string",
+      type: "image",
       description: "The external image URL",
     },
     {
       name: "image_small",
       label: "Small Image URL",
-      type: "string",
+      type: "image",
       description: "The external image URL for smaller rendering",
-    },
-    {
-      name: "accolades",
-      label: "Accolades",
-      description: "Key accomplishments which make this person stand out",
-      type: "object",
-      fields: [
-        {
-          name: "figure",
-          type: "string",
-          label: "Figure",
-          description: "A single number or word to emphasize",
-        },
-        {
-          name: "description",
-          type: "string",
-          label: "Description",
-        },
-      ],
     },
     {
       name: "author",
       type: "reference",
       collections: ["authors"],
       label: "Author",
-    },
-    {
-      name: "authorName",
-      type: "string",
-      label: "Author",
-      ui: {
-        component: CustomSelect
-      }
     },
     {
       name: "preface",
@@ -155,11 +131,11 @@ export const Curated: TinaTemplate = {
           name: "curatedHero",
           label: "Curated Hero",
           fields: [
-            {
-              label: "Description",
-              name: "curatedDescription",
-              type: "rich-text",
-            },
+            // {
+            //   label: "Description",
+            //   name: "curatedDescription",
+            //   type: "rich-text",
+            // },
             {
               label: "Hero Post",
               name: "hero_post",

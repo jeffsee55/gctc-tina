@@ -42,7 +42,7 @@ export const Header2 = (props: Omit<Nav, 'id' | '_sys' | '_values'>) => {
         )
         .map((item) => {
           return (
-            <div key={item.label} className="z-20 relative">
+            <div key={item.label} className="z-20 relative border-t">
               <PopoutNav {...item} />
             </div>
           );
@@ -127,7 +127,7 @@ const Header = (props: {
 const MainNav = (props: { menu: NavData; onItemSelect: OnItemSelect }) => {
   return (
     <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
-      <nav className="flex space-x-10">
+      <nav className="flex space-x-10 items-center">
         {props.menu.items.map((item) => {
           return <MainNavItem key={item.label} {...item} onItemSelect={props.onItemSelect} />;
         })}
@@ -177,7 +177,7 @@ const MainNavPopoutItem = (
       <button
         type="button"
         onClick={() => props.onItemSelect(props.label)}
-        className="group bg-white rounded-md text-gray-500 inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-steel-light"
+        className="p-3 group bg-white rounded-md text-gray-500 inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-steel-light"
       >
         <span>{props.label}</span>
         {/*
@@ -219,7 +219,7 @@ const MainNavLink = (props: MainNavLinkProps) => {
 
 const FromTheBlog = (props: MoreNavProps) => {
   return (
-    <div className="bg-gray-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12">
+    <div className="bg-gray-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12 border-l">
       <div>
         <h3 className="text-sm font-medium tracking-wide text-gray-500 uppercase">
           {/* {props.label} */}
@@ -423,19 +423,6 @@ const IconNavItem = (props) => {
     <Link href={props.value}>
       <a className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50">
         <div className="flex md:h-full lg:flex-col">
-          <div className="flex-shrink-0">
-            <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-steel-light text-white sm:h-12 sm:w-12">
-              <svg
-                className="h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <IconSvg name={image} />
-              </svg>
-            </span>
-          </div>
           <div className="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
             <div>
               <p className="text-base font-medium text-gray-900">
