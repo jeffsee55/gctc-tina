@@ -51,7 +51,7 @@ export const Page: TinaTemplate = {
             {
               label: "Image",
               name: "image",
-              type: "string",
+              type: "image",
             },
           ],
         },

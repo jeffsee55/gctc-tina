@@ -28,12 +28,24 @@ export default defineConfig({
         label: "Posts",
         name: "posts",
         path: "content/posts",
+        ui: {
+          router: (args) => {
+            return `posts/${args.document._sys.filename}`;
+          },
+        },
         templates: [Post],
       },
       {
         label: "Pages",
         name: "pages",
         path: "content/pages",
+        ui: {
+          router: (args) => {
+            if (args.document._sys.filename === "home") {
+              return "/";
+            }
+          },
+        },
         templates: [Page, TrainingPage],
       },
       {
