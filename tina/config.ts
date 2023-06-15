@@ -14,6 +14,14 @@ export default defineConfig({
     publicFolder: "public",
     outputFolder: "admin",
   },
+  media: {
+    loadCustomStore: async () => {
+      const pack = await import("next-tinacms-cloudinary");
+      const store = pack.TinaCloudCloudinaryMediaStore;
+      console.log(store);
+      return store;
+    },
+  },
   schema: {
     collections: [
       {
@@ -105,5 +113,9 @@ export default defineConfig({
         templates: [Nav],
       },
     ],
+  },
+  cmsCallback: (cms) => {
+    console.log(cms.media);
+    return cms;
   },
 });
