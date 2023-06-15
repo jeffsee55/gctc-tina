@@ -129,11 +129,6 @@ export const Nav: TinaTemplate = {
                   name: "value",
                   label: "Value",
                 },
-                {
-                  type: "string",
-                  name: "icon",
-                  label: "Icon",
-                },
               ],
             },
             {
@@ -151,11 +146,6 @@ export const Nav: TinaTemplate = {
                   type: "string",
                   name: "value",
                   label: "Value",
-                },
-                {
-                  type: "string",
-                  name: "icon",
-                  label: "Icon",
                 },
               ],
             },

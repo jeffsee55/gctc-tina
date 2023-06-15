@@ -1,9 +1,10 @@
 import React from "react";
 import { Img } from "../../components/image";
+import { tinaField } from "tinacms/dist/react";
 
 export const Home = (props: { image?: string }) => {
   return (
-    <div className="relative ">
+    <div className="relative" data-tina-field-overlay={tinaField(props)}>
       <Img
         width={2560}
         quality={90}

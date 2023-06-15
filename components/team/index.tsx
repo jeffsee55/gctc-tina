@@ -1,5 +1,5 @@
 import React from "react";
-import * as Tina from "../../.tina/types";
+import * as Tina from "../../tina/types";
 import { Markdown } from "../markdown";
 
 export const Team = (props: Tina.LayerTeam_Data) => {

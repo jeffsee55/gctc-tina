@@ -6,11 +6,10 @@ import { Sponsors } from "../sponsors";
 import { Home } from "../hero/home";
 import { Img } from "../image";
 import { Footer } from "../footer";
+import { useTina, tinaField } from "tinacms/dist/react";
 
-import { ExperimentalGetTinaClient } from "../../.tina/__generated__/types";
+import { client } from "../../tina/__generated__/client";
 import { ThumbnailList } from "../post/list";
-
-const client = ExperimentalGetTinaClient();
 
 export type Awaited<T> = T extends PromiseLike<infer U>
   ? { 0: Awaited<U>; 1: U }[U extends PromiseLike<any> ? 0 : 1]
@@ -22,7 +21,7 @@ export async function getStaticPropsForPage({
 }: {
   relativePath: string;
 }) {
-  const tinaProps = await client.getPagesAndNavDocument({
+  const tinaProps = await client.queries.getPagesAndNavDocument({
     relativePath,
   });
   return {
@@ -33,21 +32,23 @@ export async function getStaticPropsForPage({
 }
 
 export const Static = (props: Res) => {
-  const { getNavDocument, getPagesDocument } = props.data;
+  const { data } = useTina(props);
+  const { nav, pages } = data;
+  // return <div>Hi</div>;
   return (
     <>
-      <Header2 {...getNavDocument} />
-      <Switch {...getPagesDocument} />
-      <Footer {...getNavDocument} />
+      <Header2 {...nav} />
+      <Switch {...pages} />
+      {/* <Footer {...nav} /> */}
     </>
   );
 };
 
-type Switch = Res["data"]["getPagesDocument"];
+type Switch = Res["data"]["pages"];
 
 const Switch = (props: Switch) => {
   switch (props.__typename) {
-    case "PagesDocument":
+    case "PagesPage":
       return <Page {...props} />;
 
     default:
@@ -56,37 +57,35 @@ const Switch = (props: Switch) => {
   return <pre>{JSON.stringify(props, null, 2)}</pre>;
 };
 
-type Page = Extract<Switch, { __typename?: "PagesDocument" }>;
+type Page = Extract<Switch, { __typename?: "PagesPage" }>;
 const Page = (props: Page) => {
-  switch (props.data.__typename) {
+  switch (props.__typename) {
     case "PagesPage":
-      return <PagesPage {...props.data} />;
+      return <PagesPage {...props} />;
     default:
       return <pre>{JSON.stringify(props, null, 2)}</pre>;
   }
 };
-type PagesPageProps = Extract<Page["data"], { __typename?: "PagesPage" }>;
+type PagesPageProps = Extract<Page, { __typename?: "PagesPage" }>;
 const PagesPage = (props: PagesPageProps) => {
   return (
     <>
-      {props.layers.map((layer) => {
+      {props.layers.map((layer, i) => {
         switch (layer.__typename) {
           case "PagesPageLayersLayerHero":
-            return <Home {...layer} />;
+            return <Home key={i} {...layer} />;
           case "PagesPageLayersLayerCta":
-            return <LayerCta {...layer} />;
-          case "PagesPageLayersLayerDarkFeature":
-            return <LayerDarkFeatures {...layer} />;
+            return <LayerCta key={i} {...layer} />;
           case "PagesPageLayersLayerLeadership":
-            return <LayerLeadership {...layer} />;
+            return <LayerLeadership key={i} {...layer} />;
           case "PagesPageLayersLayerPostList":
-            return <LayerPostList {...layer} />;
+            return <LayerPostList key={i} {...layer} />;
           case "PagesPageLayersLayerSponsors":
-            return <LayerSponsors {...layer} />;
+            return <LayerSponsors key={i} {...layer} />;
           case "PagesPageLayersLayerTeam":
-            return <LayerTeam {...layer} />;
+            return <LayerTeam key={i} {...layer} />;
           case "PagesPageLayersCuratedCollection":
-            return <LayerCuratedCollections {...layer} />;
+            return <LayerCuratedCollections key={i} {...layer} />;
           default:
             return <pre>{JSON.stringify(props, null, 2)}</pre>;
         }
@@ -230,7 +229,10 @@ const LeadershipLayer = (props: LayerLeadershipProps) => {
 
       <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24 relative z-10">
         <div className="space-y-12">
-          <h2 className="text-3xl text-steel-xdark font-extrabold tracking-tight sm:text-4xl">
+          <h2
+            data-tina-field={tinaField(props, "title")}
+            className="text-3xl text-steel-xdark font-extrabold tracking-tight sm:text-4xl"
+          >
             {props.title}
           </h2>
 
@@ -248,41 +250,57 @@ const LeadershipLayer = (props: LayerLeadershipProps) => {
 type LeadershipProps = LayerLeadershipProps["leaders"][number];
 const Leadership = (props: LeadershipProps) => {
   const leader = props.reference;
+  if (!leader) {
+    return null;
+  }
   switch (leader.__typename) {
-    case "AuthorsDocument":
-      if (leader.data.__typename === "AuthorsAuthor") {
+    case "AuthorsAuthor":
+      if (leader.__typename === "AuthorsAuthor") {
         return (
           <li className="mb-10">
             <div className="space-y-4 sm:grid sm:grid-cols-3 sm:gap-6 sm:space-y-0 lg:gap-8">
-              <div className="h-0 aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4">
+              <div
+                data-tina-field={tinaField(leader, "image")}
+                className="h-0 aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4"
+              >
                 <Img
                   className="object-cover shadow-lg rounded-lg"
                   width={200}
                   quality={90}
-                  src={leader.data.image}
+                  src={leader.image}
                   alt=""
                 />
               </div>
               <div className="sm:col-span-2">
                 <div className="space-y-4">
                   <div className="text-lg leading-6 font-medium space-y-1">
-                    <h3>{leader.data.name}</h3>
-                    <p className="text-steel-medium">{leader.data.role}</p>
+                    <h3 data-tina-field={tinaField(leader, "name")}>
+                      {leader.name}
+                    </h3>
+                    <p
+                      data-tina-field={tinaField(leader, "role")}
+                      className="text-steel-medium"
+                    >
+                      {leader.role}
+                    </p>
                   </div>
-                  <div className="text-lg">
+                  <div
+                    className="text-lg"
+                    data-tina-field={tinaField(leader, "bioDescription")}
+                  >
                     <Markdown
                       classNames={{
                         p: "text-gray-500 line-clamp-2",
                       }}
-                      content={leader.data.description}
+                      content={leader.bioDescription}
                     />
                     <div className="mt-6 text-sm font-medium">
                       <a
-                        href={`/team/${leader.sys.filename}`}
+                        href={`/team/${leader._sys.filename}`}
                         className="text-steel-medium hover:text-steel-dark"
                       >
                         {/* <a href="" style={{ color: "#437598" }} className=""> */}
-                        Work with {leader.data.name.split(" ")[0]}{" "}
+                        Work with {leader.name.split(" ")[0]}{" "}
                         <span aria-hidden="true">→</span>
                       </a>
                     </div>
@@ -297,7 +315,7 @@ const Leadership = (props: LeadershipProps) => {
       }
 
     default:
-      throw new Error(`Expected type for ${leader.__typename}`);
+      return null;
   }
 };
 
@@ -351,7 +369,7 @@ const Pitch = (props: LayerDarkFeatureProps) => {
 
 const Screenshot = (props: LayerCtaProps) => {
   return (
-    <div>
+    <div data-tina-field={tinaField(props)}>
       {/* pb-16  lg:pb-0 lg:z-10 lg:relative */}
       <div className="relative sm:py-16">
         <div aria-hidden="true" className="hidden sm:block">
@@ -476,78 +494,108 @@ const TeamMembers = (props: LayerTeamProps) => {
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
               Our Pros
             </h2>
-            <p className="text-xl text-gray-500">
-              Spanning from all across the globe, the GCTC Pros have come from
-              everywhere to work with the group, get to know them!
+            <p
+              data-tina-field={tinaField(props, "description")}
+              className="text-xl text-gray-500"
+            >
+              {props.description}
             </p>
           </div>
           <div className="lg:col-span-2">
             <ul className="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:gap-x-8">
-              {Object.values(props.members).map((m) => {
-                const item = m.reference;
-                switch (item.data.__typename) {
-                  case "AuthorsAthlete":
-                    return (
-                      <li key={item.id}>
-                        <div className="space-y-4">
-                          <div className="aspect-w-2 aspect-h-2">
-                            <Img
-                              className="object-cover shadow-lg rounded-lg"
-                              width={500}
-                              quality={90}
-                              src={
-                                item.data.image ||
-                                "https://res.cloudinary.com/deuzrsg3m/image/upload/v1672974402/gctc/portraits/Group_10_yum940.jpg"
-                              }
-                              alt=""
-                            />
-                          </div>
-                          <div className="text-lg leading-6 font-medium space-y-1">
-                            <div className="flex justify-between mb-2">
-                              <h3>{item.data.name}</h3>
-                              <div className="text-gray-400">
-                                {item.data.country}
-                              </div>
+              {props.members ? (
+                Object.values(props.members).map((m) => {
+                  const item = m.reference;
+                  if (!item) {
+                    return null;
+                  }
+                  switch (item.__typename) {
+                    case "AuthorsAthlete":
+                      return (
+                        <li key={item.id}>
+                          <div className="space-y-4">
+                            <div
+                              data-tina-field={tinaField(item, "image")}
+                              className="aspect-w-2 aspect-h-2"
+                            >
+                              <Img
+                                className="object-cover shadow-lg rounded-lg"
+                                width={500}
+                                quality={90}
+                                src={
+                                  item.image ||
+                                  "https://res.cloudinary.com/deuzrsg3m/image/upload/v1672974402/gctc/portraits/Group_10_yum940.jpg"
+                                }
+                                alt=""
+                              />
                             </div>
-                            <p className="text-md text-steel-medium">
-                              {item.data.personal_bests
-                                ?.map((pb) => {
-                                  return `${pb.event} - ${pb.time}`;
-                                })
-                                .join(" • ")}
-                            </p>
-                          </div>
-                          <ul className="flex space-x-5">
-                            {item.data.social_media?.map((social) => {
-                              return (
-                                <li key={social.handle}>
-                                  <a
-                                    href={social.handle}
-                                    className="text-gray-400 hover:text-gray-500"
+                            <div className="text-lg leading-6 font-medium space-y-1">
+                              <div className="flex justify-between mb-2">
+                                <h3 data-tina-field={tinaField(item, "name")}>
+                                  {item.name}
+                                </h3>
+                                <div
+                                  data-tina-field={tinaField(item, "country")}
+                                  className="text-gray-400"
+                                >
+                                  {item.country}
+                                </div>
+                              </div>
+                              <p
+                                className="text-md text-steel-medium"
+                                // FIXME: Uncaught TypeError: Cannot read properties of undefined (reading 'undefined')
+                                // data-tina-field={tinaField(
+                                //   item,
+                                //   "personal_bests"
+                                // )}
+                              >
+                                {item.personal_bests
+                                  ?.map((pb) => {
+                                    return `${pb.event} - ${pb.time}`;
+                                  })
+                                  .join(" • ")}
+                              </p>
+                            </div>
+                            <ul className="flex space-x-5">
+                              {item.social_media?.map((social) => {
+                                return (
+                                  <li
+                                    key={social.handle}
+                                    data-tina-field={tinaField(
+                                      social,
+                                      "handle"
+                                    )}
                                   >
-                                    <span className="sr-only">
-                                      {social.handle}
-                                    </span>
-                                    <svg
-                                      className="w-5 h-5"
-                                      fill="currentColor"
-                                      viewBox="0 0 16 16"
-                                      aria-hidden="true"
+                                    <a
+                                      href={social.handle}
+                                      className="text-gray-400 hover:text-gray-500"
                                     >
-                                      <SocialIcon source={social.source} />
-                                    </svg>
-                                  </a>
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        </div>
-                      </li>
-                    );
-                  default:
-                    break;
-                }
-              })}
+                                      <span className="sr-only">
+                                        {social.handle}
+                                      </span>
+                                      <svg
+                                        className="w-5 h-5"
+                                        fill="currentColor"
+                                        viewBox="0 0 16 16"
+                                        aria-hidden="true"
+                                      >
+                                        <SocialIcon source={social.source} />
+                                      </svg>
+                                    </a>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
+                        </li>
+                      );
+                    default:
+                      break;
+                  }
+                })
+              ) : (
+                <div />
+              )}
             </ul>
           </div>
         </div>

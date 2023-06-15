@@ -10,13 +10,13 @@ import {
   Stats,
 } from "../../components/team/member";
 
-import { ExperimentalGetTinaClient } from "../../.tina/__generated__/types";
-const client = ExperimentalGetTinaClient();
+import { client } from "../../tina/__generated__/client";
+import { useTina } from "tinacms/dist/react";
 
 type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
 export const getStaticProps = async ({ params, preview }) => {
   const variables = { relativePath: `${params.member}.md` };
-  const tinaProps = await client.getAuthorWithNav(variables);
+  const tinaProps = await client.queries.getAuthorWithNav(variables);
   return {
     props: {
       ...tinaProps,
@@ -40,29 +40,28 @@ export const getStaticPaths = async () => {
 
 export type MemberHero = Res["data"]["getAuthorsDocument"]["data"];
 export const Static = (props: Res) => {
-  const { getAuthorsDocument, getNavDocument } = props.data;
-  const { data } = getAuthorsDocument;
-
-  switch (data.__typename) {
+  const { data } = useTina(props);
+  const { authors, nav } = data;
+  switch (authors.__typename) {
     case "AuthorsAthlete":
-      return <pre>{JSON.stringify(data)}</pre>;
+      return <pre>{JSON.stringify(authors)}</pre>;
     case "AuthorsAuthor":
       return (
         <div>
-          <Header2 {...getNavDocument} />
-          <Hero {...data} />
-          {data.accolades?.length > 0 && <Stats {...data} />}
-          {data.posts_collection?.length > 0 && (
+          <Header2 {...nav} />
+          <Hero {...authors} />
+          {authors.accolades?.length > 0 && <Stats {...authors} />}
+          {authors.posts_collection?.length > 0 && (
             <ThumbnailList
-              title={`${data.name.split(" ")[0]}'s Featured Articles`}
+              title={`${authors.name.split(" ")[0]}'s Featured Articles`}
               description={``}
-              posts={data.posts_collection}
+              posts={authors.posts_collection}
             />
           )}
-          <Story {...data} />
+          <Story {...authors} />
           {/* {data.form && <CoachingForm {...data?.form?.data} />} */}
-          {data.ebook && <Ebook {...data.ebook} />}
-          <Footer {...getNavDocument} />
+          {authors.ebook && <Ebook {...authors.ebook} />}
+          <Footer {...nav} />
         </div>
       );
   }

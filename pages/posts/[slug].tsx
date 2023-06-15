@@ -6,14 +6,14 @@ import { Header2 } from "../../components/header";
 import { Img } from "../../components/image";
 import { Footer } from "../../components/footer";
 
-import { ExperimentalGetTinaClient } from "../../.tina/__generated__/types";
-const client = ExperimentalGetTinaClient();
+import { client } from "../../tina/__generated__/client";
+import { tinaField, useTina } from "tinacms/dist/react";
 
 type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
 
 export async function getStaticProps({ params, preview }) {
   const relativePath = `${params.slug}.md`;
-  const tinaProps = await client.getPostAndNav({
+  const tinaProps = await client.queries.getPostAndNav({
     relativePath,
   });
 
@@ -25,53 +25,66 @@ export async function getStaticProps({ params, preview }) {
 }
 
 export const getStaticPaths = async () => {
-  const posts = await client.getPostListWithSys();
+  const posts = await client.queries.getPostListWithSys();
   return {
-    paths: posts.data.getPostsList.edges.map((doc) => ({
-      params: { slug: doc.node.sys.filename },
+    paths: posts.data.postsConnection.edges.map((doc) => ({
+      params: { slug: doc.node._sys.filename },
     })),
     fallback: false,
   };
 };
 
-export type NavData = Res["data"]["getNavDocument"];
+export type NavData = Res["data"]["nav"];
 
 export const Static = (props: Res) => {
-  const { getPostsDocument, getNavDocument } = props.data;
-
-  const { data } = getPostsDocument;
+  const { data } = useTina(props);
+  const { posts, nav } = data;
 
   return (
     <>
-      <Header2 {...getNavDocument} />
+      <Header2 {...nav} />
       <div className="h-12 md:h-32" />
       <div className="relative px-4 sm:px-6 lg:px-8">
         <div className="text-lg max-w-prose mx-auto mb-6 md:mb-24">
-          {data.tags?.length > 0 && (
-            <p className="text-base text-center leading-6 text-steel-medium font-semibold tracking-wide uppercase">
-              {data.tags.join(", ")}
+          {posts.tags?.length > 0 && (
+            <p
+              data-tina-field={tinaField(posts, "tags")}
+              className="text-base text-center leading-6 text-steel-medium font-semibold tracking-wide uppercase"
+            >
+              {posts.tags.join(", ")}
             </p>
           )}
           <div className="relative">
-            <h1 className="mt-2 mb-8 text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
-              {data.title}
+            <h1
+              data-tina-field={tinaField(posts, "title")}
+              className="mt-2 mb-8 text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
+            >
+              {posts.title}
             </h1>
           </div>
-          <p className="mt-1 text-md text-gray-500 line-clamp-3">
-            {data.preface}
+          <p
+            className="mt-1 text-md text-gray-500 line-clamp-3"
+            data-tina-field={tinaField(posts, "preface")}
+          >
+            {posts.preface}
           </p>
-          <div>
-            <Snippet center={true} className="my-8" {...data?.author} />
+          <div data-tina-field={tinaField(posts, "author")}>
+            <Snippet center={true} className="my-8" {...posts?.author} />
           </div>
         </div>
-        <Img className={"mx-auto"} width={2000} quality={80} src={data.image} />
+        <div className={"mx-auto"} data-tina-field={tinaField(posts, "image")}>
+          <Img width={2000} quality={80} src={posts.image} />
+        </div>
         <div className="my-12">
-          <div className="max-w-prose prose mx-auto text-gray-500">
-            <Markdown content={data?._body} />
+          <div
+            className="max-w-prose prose mx-auto text-gray-500"
+            data-tina-field={tinaField(posts, "_body")}
+          >
+            <Markdown content={posts?._body} />
           </div>
         </div>
       </div>
-      <Footer {...getNavDocument} />
+      <Footer {...nav} />
     </>
   );
 };

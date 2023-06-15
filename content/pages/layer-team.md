@@ -1,7 +1,10 @@
 ---
 title: Our Team
 layers:
-  - members:
+  - description: >-
+      Spanning from all across the globe, the GCTC Pros have come from
+      everywhere to work with the group, get to know them!
+    members:
       - reference: content/authors/christian.md
       - reference: content/authors/clare.md
       - reference: content/authors/elaina.md
@@ -15,3 +18,4 @@ layers:
     _template: layerTeam
 _template: page
 ---
+

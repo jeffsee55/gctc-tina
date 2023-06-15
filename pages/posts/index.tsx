@@ -6,13 +6,13 @@ import { Header2 } from "../../components/header";
 import { Footer } from "../../components/footer";
 import { Img } from "../../components/image";
 
-import { ExperimentalGetTinaClient } from "../../.tina/__generated__/types";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
-const client = ExperimentalGetTinaClient();
+import { tinaField, useTina } from "tinacms/dist/react";
+import { client } from "../../tina/__generated__/client";
 
 type Res = Awaited<ReturnType<typeof getStaticProps>>["props"];
 export async function getStaticProps() {
-  const tinaProps = await client.getCuratedPostAndNavDocument({
+  const tinaProps = await client.queries.getCuratedPostAndNavDocument({
     relativePath: "posts.md",
   });
 
@@ -24,13 +24,14 @@ export async function getStaticProps() {
 }
 
 export const Static = (props: Res) => {
-  const { getCuratedDocument, getNavDocument } = props.data;
-  const rest = getCuratedDocument;
+  const { data } = useTina(props);
+  const { curated, nav } = data;
+  const rest = curated;
 
   return (
     <>
-      <Header2 {...getNavDocument} />
-      {rest.data.curations?.map((curation) => {
+      <Header2 {...nav} />
+      {rest.curations?.map((curation) => {
         switch (curation?.__typename) {
           case "CuratedCuratedCurationsCuratedHero":
             return <HeroPost {...curation} />;
@@ -48,7 +49,7 @@ export const Static = (props: Res) => {
 export default Static;
 
 type HeroPostProps = Extract<
-  Res["data"]["getCuratedDocument"]["data"]["curations"][number],
+  Res["data"]["curated"]["curations"][number],
   { __typename: "CuratedCuratedCurationsCuratedHero" }
 >;
 export const HeroPost = (props: HeroPostProps) => {
@@ -58,7 +59,7 @@ export const HeroPost = (props: HeroPostProps) => {
       <div className="relative overflow-hidden">
         <div className="form absolute -top-24 -bottom-24 -right-24 -left-24 pointer-events-none">
           <div className="relative transform -translate-y-1/2 top-1/2 scale-">
-            <Img src={post.data?.image || ""} width={2000} />
+            <Img src={post?.image || ""} width={2000} />
           </div>
         </div>
         <div className="relative z-10 pointer-events-none">
@@ -71,7 +72,7 @@ export const HeroPost = (props: HeroPostProps) => {
                 </div>
               </div>
               <h1 className="text-4xl tracking-tight leading-10 font-extrabold text-white sm:text-5xl sm:leading-none md:text-6xl">
-                {post.data?.title}
+                {post?.title}
               </h1>
             </div>
           </div>
@@ -83,16 +84,19 @@ export const HeroPost = (props: HeroPostProps) => {
         <div className="relative transform -translate-y-12">
           <div className="max-w-3xl mx-auto">
             <div className="relative transform -translate-y-24">
-              <div className="bg-white p-8 rounded shadow-xl">
+              <div
+                className="bg-white p-8 rounded shadow-xl"
+                data-tina-field={tinaField(props)}
+              >
                 <p className="line-clamp-3 text-base leading-6 text-gray-500 undefined">
-                  {post.data.preface}
+                  {post.preface}
                 </p>
                 <div className="flex justify-between items-center mt-8">
-                  <Snippet className="" {...post.data?.author} />
+                  <Snippet className="" {...post?.author} />
                   <a
                     href={`${
-                      post.sys?.collection?.slug
-                    }/${post.sys?.breadcrumbs?.join("/")}`}
+                      post._sys?.collection?.slug
+                    }/${post._sys?.breadcrumbs?.join("/")}`}
                     className="flex items-center justify-between text-base leading-6 font-semibold text-steel-medium hover:text-steel-light transition ease-in-out duration-150"
                   >
                     <span className="">Read full story</span>
@@ -122,7 +126,7 @@ export const HeroPost = (props: HeroPostProps) => {
 };
 
 type FeatureListProps = Extract<
-  Res["data"]["getCuratedDocument"]["data"]["curations"][number],
+  Res["data"]["curated"]["curations"][number],
   { __typename: "CuratedCuratedCurationsCuratedCollection" }
 >;
 export const FeatureList = (props: FeatureListProps) => {
@@ -130,7 +134,10 @@ export const FeatureList = (props: FeatureListProps) => {
     <div className="bg-white pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
       <div className="relative max-w-lg mx-auto lg:max-w-7xl">
         {props.curatedDescription && (
-          <p className="mt-3 text-lg leading-6 text-gray-500 prose">
+          <p
+            className="mt-3 text-lg leading-6 text-gray-500 prose"
+            data-tina-field={tinaField(props, "curatedDescription")}
+          >
             <TinaMarkdown content={props.curatedDescription} />
           </p>
         )}
@@ -142,28 +149,28 @@ export const FeatureList = (props: FeatureListProps) => {
               return <span />;
             }
             return (
-              <div>
-                <div>
+              <div data-tina-field={tinaField(p)}>
+                {/* <div>
                   <a href="#" className="inline-block">
                     <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">
                       Article
                     </span>
                   </a>
-                </div>
+                </div> */}
                 <a
                   href={`${
-                    post.sys?.collection?.slug
-                  }/${post.sys?.breadcrumbs?.join("/")}`}
+                    post._sys?.collection?.slug
+                  }/${post._sys?.breadcrumbs?.join("/")}`}
                   className="block"
                 >
                   <h3 className="mt-4 text-xl leading-7 font-semibold text-gray-900">
-                    {post?.data?.title}
+                    {post?.title}
                   </h3>
                   <p className="mt-3 text-base leading-6 text-gray-500 line-clamp-3">
-                    {post.data.preface}
+                    {post.preface}
                   </p>
                 </a>
-                <Snippet className="mt-6" {...post?.data?.author} />
+                <Snippet className="mt-6" {...post?.author} />
               </div>
             );
           })}

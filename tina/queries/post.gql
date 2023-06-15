@@ -1,0 +1,128 @@
+query getPostListWithSys {
+  postsConnection {
+    edges {
+      node {
+        ... on Document {
+          _sys {
+            filename
+          }
+        }
+      }
+    }
+  }
+}
+
+query getCuratedPostAndNavDocument($relativePath: String!) {
+  nav(relativePath: "site-nav.md") {
+    ...NavParts2
+  }
+  curated(relativePath: $relativePath) {
+    ... on Document {
+      id
+      _sys {
+        filename
+      }
+    }
+    __typename
+    ... on CuratedCurated {
+      title
+      curations {
+        __typename
+        ... on CuratedCuratedCurationsCuratedHero {
+          hero_post {
+            __typename
+            ... on PostsPost {
+              _sys {
+                filename
+                collection {
+                  slug
+                }
+                breadcrumbs
+              }
+              __typename
+              ... on PostsPost {
+                ...PostsParts
+                author {
+                  __typename
+                  ... on AuthorsAuthor {
+                    _sys {
+                      filename
+                    }
+                    name
+                    image
+                  }
+                }
+              }
+            }
+          }
+        }
+        ... on CuratedCuratedCurationsCuratedCollection {
+          curatedDescription
+          posts_collection {
+            __typename
+            reference {
+              __typename
+              ... on PostsPost {
+                id
+                _sys {
+                  filename
+                  collection {
+                    slug
+                  }
+                  breadcrumbs
+                }
+                ... on PostsPost {
+                  ...PostsParts
+                  author {
+                    __typename
+                    ... on Document {
+                      _sys {
+                        filename
+                      }
+                    }
+                    ... on AuthorsAuthor {
+                      name
+                      image
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+query getPostAndNav($relativePath: String!) {
+  nav(relativePath: "site-nav.md") {
+    ...NavParts2
+  }
+  posts(relativePath: $relativePath) {
+    ... on Document {
+      id
+      _sys {
+        filename
+        collection {
+          slug
+        }
+      }
+    }
+    ...PostsParts
+    ... on PostsPost {
+      author {
+        ... on AuthorsAuthor {
+          id
+          _sys {
+            filename
+            collection {
+              slug
+            }
+          }
+          ...AuthorsParts
+        }
+      }
+    }
+  }
+}

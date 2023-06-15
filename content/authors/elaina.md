@@ -12,8 +12,6 @@ personal_bests:
     time: "1:10:44"
   - event: Marathon
     time: "2:28:04"
-accolades:
-social_media:
 image: ""
 _template: athlete
 ---

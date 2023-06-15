@@ -2,11 +2,14 @@ import React from "react";
 import { Link } from "../link";
 import { Snippet } from "../author/snippet";
 import { Img } from "../image";
-import { NavData } from "../../pages/posts/[slug]";
+// import { NavData } from "../../pages/posts/[slug]";
+import type { Nav } from '../../tina/__generated__/types'
 
-export const Header2 = (props: NavData) => {
+type NavData = Nav
+
+export const Header2 = (props: Omit<Nav, 'id' | '_sys' | '_values'>) => {
   const dt = {
-    ...props.data,
+    ...props
   };
   const [activeItem, setActiveItem] = React.useState(null);
   const [isMobileNavOpen, setMobileNavOpen] = React.useState(false);
@@ -39,7 +42,7 @@ export const Header2 = (props: NavData) => {
         )
         .map((item) => {
           return (
-            <div className="z-20 relative">
+            <div key={item.label} className="z-20 relative border-t">
               <PopoutNav {...item} />
             </div>
           );
@@ -54,7 +57,7 @@ export const Header2 = (props: NavData) => {
   );
 };
 
-type PopoutNavType = NavData["data"]["items"][number];
+type PopoutNavType = NavData['items'][number]
 const PopoutNav = (props: PopoutNavType) => {
   // const PopoutNav = (props: Object.Path<Tina.NavFragment, ["data", "items"]>) => {
   // type FlatCompany = HybridDeepPick<Company, { "addressId": ["address", "id"] }>
@@ -124,12 +127,12 @@ const Header = (props: {
 const MainNav = (props: { menu: NavData; onItemSelect: OnItemSelect }) => {
   return (
     <div className="hidden md:flex-1 md:flex md:items-center md:justify-between">
-      <nav className="flex space-x-10">
-        {props.menu.data.items.map((item) => {
-          return <MainNavItem {...item} onItemSelect={props.onItemSelect} />;
+      <nav className="flex space-x-10 items-center">
+        {props.menu.items.map((item) => {
+          return <MainNavItem key={item.label} {...item} onItemSelect={props.onItemSelect} />;
         })}
       </nav>
-      {props.menu.data.show_auth && <DesktopAuth />}
+      {props.menu.show_auth && <DesktopAuth />}
     </div>
   );
 };
@@ -174,7 +177,7 @@ const MainNavPopoutItem = (
       <button
         type="button"
         onClick={() => props.onItemSelect(props.label)}
-        className="group bg-white rounded-md text-gray-500 inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-steel-light"
+        className="p-3 group bg-white rounded-md text-gray-500 inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-steel-light"
       >
         <span>{props.label}</span>
         {/*
@@ -216,7 +219,7 @@ const MainNavLink = (props: MainNavLinkProps) => {
 
 const FromTheBlog = (props: MoreNavProps) => {
   return (
-    <div className="bg-gray-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12">
+    <div className="bg-gray-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12 border-l">
       <div>
         <h3 className="text-sm font-medium tracking-wide text-gray-500 uppercase">
           {/* {props.label} */}
@@ -226,17 +229,17 @@ const FromTheBlog = (props: MoreNavProps) => {
           {props.from_the_blog?.map((child) => {
             const post = child.reference;
             // FIXING Tina issue
-            if (!post.sys) {
+            if (!post._sys) {
               return <div />;
             }
             return (
-              <li className="flow-root">
-                <Link href={`/posts/${post?.sys?.breadcrumbs.join("/")}`}>
+              <li className="flow-root" key={post._sys.path}>
+                <Link href={`/posts/${post?._sys?.breadcrumbs.join("/")}`}>
                   <a className="-m-3 p-3 flex rounded-lg hover:bg-gray-100">
                     <div className="hidden sm:block flex-shrink-0">
                       <Img
                         className="w-32 h-20 object-cover rounded-md"
-                        src={post.data.image}
+                        src={post.image}
                         width={120}
                         quality={80}
                         alt=""
@@ -244,10 +247,10 @@ const FromTheBlog = (props: MoreNavProps) => {
                     </div>
                     <div className="w-0 flex-1 sm:ml-8">
                       <h4 className="text-base font-medium text-gray-900 truncate">
-                        {post.data.title}
+                        {post.title}
                       </h4>
                       <p className="mt-1 text-sm text-gray-500 line-clamp-3">
-                        {post.data.preface}
+                        {post.preface}
                       </p>
                     </div>
                   </a>
@@ -420,19 +423,6 @@ const IconNavItem = (props) => {
     <Link href={props.value}>
       <a className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50">
         <div className="flex md:h-full lg:flex-col">
-          <div className="flex-shrink-0">
-            <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-steel-light text-white sm:h-12 sm:w-12">
-              <svg
-                className="h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <IconSvg name={image} />
-              </svg>
-            </span>
-          </div>
           <div className="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
             <div>
               <p className="text-base font-medium text-gray-900">
@@ -562,18 +552,18 @@ const MoreNav = (props: MoreNavProps) => {
         <div className="bg-white w-1/2" />
       </div>
       <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2">
-        {child && child.sys && (
+        {child && child._sys && (
           <div className="bg-white px-4 pt-8 sm:pt-12 pb-4 sm:px-6 lg:px-8 ">
             <h3 className="text-sm font-medium tracking-wide text-gray-500 uppercase">
               {/* {props.label} */}
               Featured Article
             </h3>
-            <Link href={`/posts/${child.sys.breadcrumbs.join("/")}`}>
+            <Link href={`/posts/${child._sys.breadcrumbs.join("/")}`}>
               <a className="mt-3 -mx-3 p-3 flex rounded-lg hover:bg-gray-100">
                 <div className="hidden sm:block flex-shrink-0">
                   <Img
                     className="w-64 h-64 object-cover rounded-md"
-                    src={child.data.image}
+                    src={child.image}
                     width={300}
                     quality={90}
                     alt=""
@@ -581,10 +571,10 @@ const MoreNav = (props: MoreNavProps) => {
                 </div>
                 <div className="w-0 flex-1 sm:ml-8">
                   <h4 className="text-base font-medium text-gray-900 truncate">
-                    {child.data.title}
+                    {child.title}
                   </h4>
                   <p className="mt-1 text-sm text-gray-500 line-clamp-6">
-                    {child.data.preface}
+                    {child.preface}
                   </p>
 
                   <div className="mt-4 text-sm font-medium">
@@ -593,7 +583,7 @@ const MoreNav = (props: MoreNavProps) => {
                     </span>
                   </div>
                   <div className="mt-6">
-                    <Snippet {...child.data.author} />
+                    <Snippet short {...child.author} />
                   </div>
                 </div>
               </a>
@@ -673,7 +663,7 @@ To: "opacity-0 scale-95"
             <nav>
               <div className="grid gap-7 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4">
                 {mainItem?.children?.map((item, index) => (
-                  <IconNavItem {...item} index={index} />
+                  <IconNavItem {...item} key={index} index={index} />
                 ))}
               </div>
             </nav>
@@ -683,7 +673,7 @@ To: "opacity-0 scale-95"
           <div className="grid grid-cols-2 gap-4">
             {mainItem.extra.map((item) => {
               return (
-                <Link href={item.value}>
+                <Link key={item.value} href={item.value}>
                   <a className="rounded-md text-base font-medium text-gray-900 hover:text-gray-700">
                     {item.label}
                   </a>

@@ -10,6 +10,14 @@ module.exports = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
+  async rewrites() {
+    return [
+      {
+        source: "/admin",
+        destination: "/admin/index.html",
+      },
+    ];
+  },
   webpack: (config) => {
     /**
      * Enable these when you want to work with Tina locally

@@ -10,8 +10,6 @@ personal_bests:
     time: "15:37.08"
   - event: 10k
     time: "32:36.90"
-accolades:
-social_media:
 image: ""
 _template: athlete
 ---

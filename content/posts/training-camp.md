@@ -35,7 +35,7 @@ As camp settles in, the silence begins to speak. Or maybe it simply reaches into
 
 We stretch again, but not just our limbs. We stretch our intents - the ones that got lost in the shuffle. We strengthen all those parts that we somehow denied. It is a rediscovery of our will. We renew beliefs in ourselves and our teammates, in our goals and our perseverance. This chance to refocus without distractions is precious. It is what is needed to move ahead - and although fatigue is setting in it is somehow a welcome feeling. It is an embrace with the truth. The truth that says all great things take work.
 
-![image by Jeremy Bishop https://unsplash.com/@jeremybishop](https://images.unsplash.com/photo-1482203460252-be3456f7c8d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80)
+![image by Jeremy Bishop https://unsplash.com/@jeremybishop](https://images.unsplash.com/photo-1482203460252-be3456f7c8d8?ixlib=rb-1.2.1\&ixid=eyJhcHBfaWQiOjEyMDd9\&auto=format\&fit=crop\&w=3450\&q=80)
 
 ### Scherzo - Reimagine
 
