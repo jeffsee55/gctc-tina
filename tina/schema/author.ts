@@ -11,12 +11,6 @@ export const Athlete: TinaTemplate= {
       description: "Your first name & last name",
     },
     {
-      name: "description",
-      label: "Description",
-      type: "string",
-      description: "A bit about the author",
-    },
-    {
       type: "rich-text",
       name: "_body",
       isBody: true,
@@ -48,26 +42,6 @@ export const Athlete: TinaTemplate= {
       description: "Key accomplishments which make this person stand out",
     },
     {
-      name: "accolades",
-      list: true,
-      type: "object",
-      fields: [
-        {
-          name: "figure",
-          type: "string",
-          label: "Figure",
-          description: "A single number or word to emphasize",
-        },
-        {
-          name: "description",
-          type: "string",
-          label: "Description",
-        },
-      ],
-      label: "Accolades",
-      description: "Key accomplishments which make this person stand out",
-    },
-    {
       name: "social_media",
       label: "Social Media",
       type: "object",
@@ -89,7 +63,7 @@ export const Athlete: TinaTemplate= {
     {
       name: "image",
       label: "Image URL",
-      type: "string",
+      type: "image",
       description: "The external image URL",
     },
   ],

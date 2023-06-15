@@ -1,4 +1,6 @@
+import React from 'react'
 import type { TinaTemplate } from "@tinacms/cli";
+import { Client, FieldMeta, LocalClient, TinaCMS, useCMS, wrapFieldsWithMeta } from 'tinacms';
 
 export const CuratedCollection: TinaTemplate = {
   name: "curatedCollection",
@@ -23,6 +25,41 @@ export const CuratedCollection: TinaTemplate = {
     },
   ],
 };
+
+const CustomSelect = (args) => {
+  const [options,setOptions] = React.useState([])
+  const cms = useCMS()
+  React.useEffect(() => {
+    const run = async () => {
+    const client = cms.api.tina as Client
+    const res = await client.request(`
+    query authorsConnection {
+      authorsConnection {
+        totalCount
+        edges {
+          cursor
+          node {
+            __typename
+            ... on AuthorsAthlete {
+              name
+            }
+          }
+        }
+      }
+    }
+    `, {variables: {}})
+    const opts = []
+    res.authorsConnection?.edges?.map(edge => opts.push(edge.node.name))
+    setOptions(opts)
+    }
+    run()
+  },[])
+  return (<div><select onChange={args.input.onChange}>{options.map(option => {
+    return <option>{option}</option>
+  })}
+  </select>
+  </div>)
+}
 
 export const Post: TinaTemplate = {
   name: "post",
@@ -76,6 +113,14 @@ export const Post: TinaTemplate = {
       type: "reference",
       collections: ["authors"],
       label: "Author",
+    },
+    {
+      name: "authorName",
+      type: "string",
+      label: "Author",
+      ui: {
+        component: CustomSelect
+      }
     },
     {
       name: "preface",

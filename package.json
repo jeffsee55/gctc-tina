@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "yarn tinacms server:start -c \"yarn next-dev\"",
+    "dev": "yarn tinacms dev -c \"yarn next-dev\"",
     "next-dev": "next dev",
     "next-build": "next build",
     "build-sdk": "ts-node --project tsconfig.sdk-builder.json lib/sdk-builder/index.ts",
