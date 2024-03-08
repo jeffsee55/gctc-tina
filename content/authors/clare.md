@@ -1,15 +1,16 @@
 ---
-name: Clare O'Brien
-country: ""
+name: ''
+country: ''
 personal_bests:
-  - event: 1500m
-    time: "4:26.80"
-  - event: 3K
-    time: "9:34.09"
-  - event: 5k
-    time: "15:37.08"
-  - event: 10k
-    time: "32:36.90"
-image: ""
+  - event: ''
+    time: ''
+  - event: ''
+    time: ''
+  - event: ''
+    time: ''
+  - event: ''
+    time: ''
+image: ''
 _template: athlete
 ---
+
