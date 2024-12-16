@@ -42,16 +42,16 @@ query getCuratedPostAndNavDocument($relativePath: String!) {
               __typename
               ... on PostsPost {
                 ...PostsParts
-                author {
-                  __typename
-                  ... on AuthorsAuthor {
-                    _sys {
-                      filename
-                    }
-                    name
-                    image
-                  }
-                }
+                # author {
+                #   __typename
+                #   ... on AuthorsAuthor {
+                #     _sys {
+                #       filename
+                #     }
+                #     name
+                #     image
+                #   }
+                # }
               }
             }
           }
@@ -110,19 +110,19 @@ query getPostAndNav($relativePath: String!) {
       }
     }
     ...PostsParts
-    ... on PostsPost {
-      author {
-        ... on AuthorsAuthor {
-          id
-          _sys {
-            filename
-            collection {
-              slug
-            }
-          }
-          ...AuthorsParts
-        }
-      }
-    }
+    # ... on PostsPost {
+    #   author {
+    #     ... on AuthorsAuthor {
+    #       id
+    #       _sys {
+    #         filename
+    #         collection {
+    #           slug
+    #         }
+    #       }
+    #       ...AuthorsParts
+    #     }
+    #   }
+    # }
   }
 }
